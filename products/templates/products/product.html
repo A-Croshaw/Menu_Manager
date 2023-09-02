@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<h1 class="text-center p-2 d-block">
+    Products
+</h1>
+<div class="container d-flex flex-row flex-wrap justify-content-end">
+    <a class="btn btn-primary mt-2 mb-2" aria-current="page" href="{% url 'add_product' %}">Add</a>
+</div>
+<div class="container d-flex flex-wrap flex-column pb-2">
+    <h2 class="text-center p-2 d-block">
+        Search Products
+    </h2>
+    <form class="d-flex" role="search" method="GET" action="{% url 'products' %}">
+        <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+</div>
+{% for  product in products %}
+        <div class="row gap-2 pt-3 text-center product-table">
+            <div class="col">
+                <h3 class="prodHeading">Product</h3>
+                {{ product.product_name|title }}
+            </div>
+            <div class="col">
+                <h3 class="prodHeading">Type</h3>
+                {{ product.product_type|title }}
+            </div>
+            <div class="col">
+                <h3 class="prodHeading">Freshness</h3>
+                {{ product.product_freshness|title }}
+            </div>
+            <div class="col">
+                <h3 class="prodHeading">Cost</h3>
+                {{ product.product_cost }}
+            </div>
+            <div class="col">
+                <h3 class="prodHeading">Quantity</h3>
+                {{ product.product_quantity }}
+            </div>
+            <div class="col">
+                <a class="btn " aria-current="page" href="{% url 'edit_product' product.id %}">
+                    <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
+                </a>
+            </div>
+            <div class="col">
+                <a class="btn" aria-current="page" href="{% url 'delete_product' product.id %}">
+                    <img src="{% static '/icons/delete_icon.svg' %}" alt="Delete Icon" class="delete">
+                </a>
+            </div>
+        </div>
+{% endfor %}
+
+{% endblock %}
