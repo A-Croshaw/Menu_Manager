@@ -1,0 +1,82 @@
+{% load static %}
+
+<header>
+  {% with request.resolver_match.url_name as url_name %}
+  <nav class="navbar navbar-expand-lg ">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand" href="#"><img src="{% static 'images/Logo.png' %}" alt="Restaurant Menu Manager Logo"
+          class="logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Navigation Items  -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2">
+          <li class="nav-item">
+            <a class="nav-link menu_item {% if url_name == 'home' %}active{% endif %}" aria-current="page"
+              href="">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link menu_item {% if url_name == 'menu' %}active{% endif %}" aria-current="page" href="">Menus</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link menu_item {% if url_name == 'dish' %}active{% endif %}" aria-current="page"
+              href="">Dishes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link menu_item{% if url_name == 'main_course' %}active{% endif %}" aria-current="page" 
+              href="">Starters</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link menu_item{% if url_name == 'main_course' %}active{% endif %}" aria-current="page" 
+              href="">Main Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link menu_item{% if url_name == 'dessert' %}active{% endif %}" aria-current="page" 
+              href="">Desserts</a>
+          </li>
+          {% if user.is_superuser %}
+          <li class="nav-item">
+            <a class="nav-link menu_item {% if url_name == 'products' %}active{% endif %}" aria-current="page"
+              href="">Products</a>
+          </li>
+          {% endif %}
+        </ul>
+        <!-- Form For Searching -->
+        {% if url_name == 'products' %}
+          <form class="d-flex" role="search" method="GET" action="">
+        {% elif url_name == 'recipestore' %}
+          <form class="d-flex" role="search" method="GET" action="">
+        {% elif url_name == 'dishes' %}
+          <form class="d-flex" role="search" method="GET" action="}">
+        {% elif url_name == 'menus' %}
+          <form class="d-flex" role="search" method="GET" action="">
+        {%else%}
+          <form class="d-flex" role="search" method="GET" action="">
+        {% endif %}
+          <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <ul class="navbar-nav me-left mb-2">
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link login {% if url_name == 'accounts_logout' %}active{% endif %}"
+              href="/accounts/logout/">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link login {% if url_name == 'accounts_signup' %}active{% endif %}"
+              href="/accounts/signup/">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link login {% if url_name == 'accounts_login' %}active{% endif %}" href="/accounts/login/">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  {% endwith %}
+</header>
