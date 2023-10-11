@@ -20,6 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('starters/', include('starters.urls')),
+    path('desserts/', include('desserts.urls')),
     path('djrichtextfield/', include('djrichtextfield.urls')),
     path('products/', include('products.urls')),
     path('accounts/', include('allauth.urls')),

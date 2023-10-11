@@ -1,0 +1,75 @@
+from django.urls import path
+from .views import ViewDessert, DessertDelete
+from . import views
+
+
+urlpatterns = [
+    path("",
+         ViewDessert.as_view(),
+         name="desserts"
+         ),
+    path('desserts/add_dessert/',
+         views.add_dessert,
+         name='add_dessert'
+         ),
+    path('dessert_view/<pk>/',
+         views.dessert_view,
+         name='dessert_view'
+         ),
+    path('edit_dessert/<pk>/update/',
+         views.edit_dessert,
+         name="edit_dessert"
+         ),
+    path('dessert_delete/<pk>/delete/',
+         DessertDelete.as_view(),
+         name="dessert_delete"
+         ),
+    path('dessert_method/<pk>/',
+         views.dessert_method,
+         name='dessert_method'
+         ),
+    path('dessert_ingredients/<pk>/',
+         views.dessert_ingredients,
+         name='dessert_ingredients'
+         ),
+    path('htmx/add_dessert_ing/',
+         views.add_dessert_ing,
+         name='add_dessert_ing'
+         ),
+    path('htmx/dessert_ing_details/<pk>/',
+         views.dessert_ing_details,
+         name="dessert_ing_details"
+         ),
+    path('dessert_ing_detail_view/<pk>/',
+         views.dessert_ing_detail_view,
+         name="dessert_ing_detail_view"
+         ),
+    path('dessert_step_detail_view/<pk>/',
+         views.dessert_step_detail_view,
+         name="dessert_stepdetail_view"
+         ),
+    path('htmx/update_dessert_ing/<pk>/update/',
+         views.update_dessert_ing,
+         name="update_dessert_ing"
+         ),
+    path('htmx/delete_ingredient/<pk>/delete/',
+         views.delete_dessert_ing,
+         name="delete_dessert_ing"
+         ),
+    path('htmx/add_dessert_step/',
+         views.add_dessert_step,
+         name='add_dessert_step'
+         ),
+    path('htmx/dessert_step_details/<pk>/update/',
+         views.dessert_step_details,
+         name="dessert_step_details"
+         ),
+    path('htmx/update_dessert_step/<pk>/update/',
+         views.update_dessert_step,
+         name="update_dessert_step"
+         ),
+    path('htmx/delete_dessert_step/<pk>/delete/',
+         views.delete_dessert_step,
+         name="delete_dessert_step"
+         ),
+]
