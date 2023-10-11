@@ -141,11 +141,106 @@ footer{
     margin: 1rem;
 }
 
+/* Buttons */
+
+.delete{
+    width: 1rem;
+}
+
+.recipe-delete{
+    width: 1.5rem;
+}
+
+.edit{
+    width: 1.5rem;    
+}
+
+.add{
+    width: 1.5rem;
+}
+
+.btn-edit{
+    padding: 0;
+}
+
+.btn-edit:hover{
+    background-color: var(--nav-hover-txt);
+}
+
+.btn-view{
+    justify-content: right;
+    display: flex;
+}
+
+.btn-edit-view{
+    justify-content: space-evenly;
+    display: flex;
+}
+
+.btn-submit, .btn-cancel, .btn-return{
+    background-color: var(--btn-color);
+    border: var(--borders);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.btn-submit:hover, .btn-cancel:hover, .btn-add:hover, .btn-return:hover{
+    background-color: var(--nav-hover-txt);
+}
+
+.btn-delete{
+    padding: 0 3px 2px 3px;
+    margin: 0;
+}
+
+.btn-delete:hover, .btn-recipe-delete:hover{
+    background-color: var(--delete);
+    align-items: center;
+}
+
+.btn-recipe-delete{
+    padding: 2px;
+    justify-items: center;
+    align-content: center;
+    
+}
+
+/* Form */
+.edit-form{
+    width: 50%;
+    font-size: 1.30rem;
+    color: var(--main-txt);
+    font-weight: 400;
+}
+
+.add-form{
+    width: 75%;
+    font-size: 1.30rem;
+    color: var(--main-txt);
+    font-weight: 400;
+}
+
+.form{
+    width: 100%;
+    margin: 3% auto;
+    box-shadow: var(--box-shadows);
+    border: var(--borders);
+    border-radius: 5px;
+}
+
 /* Generic */
 
 .detail-container{
     display: flex;
     flex-wrap: wrap;
+}
+
+.method, .details, .description, .ingredients{
+    flex: 100%; 
+}
+
+.bg-fade{
+    background-color: var(--bg-cover) ;
 }
 
 .bg-fade-details{
@@ -184,6 +279,25 @@ a.card-link:hover{
     margin: 0; 
 }
 
+.view-border{
+    border: var(--border-view);
+}
+
+.view-headers{
+    text-align: center;
+}
+
+.view-txt{
+    padding: 0;
+    margin: 0;
+}
+
+.detail-txt, .view-txt{
+    font-size: 1.30rem;
+    color: var(--main-txt);
+    font-weight: 400;
+}
+
 /* Product Page */
 
 .prodHeading{
@@ -201,3 +315,41 @@ a.card-link:hover{
 }
 
 /* Media Queries */
+
+@media screen and (min-width: 400px){
+    .form {
+        width: 75%;
+    }
+}
+
+@media screen and (min-width: 500px){
+    .method, .details, .description, .ingredients{
+        flex: 50%;
+    }
+
+}
+
+@media screen and (min-width: 1200px){
+    .form {
+        width: 35%;
+    }
+
+    .bg-fade{
+        max-width: 78%;
+        padding: 0;
+    }
+
+    .bg-fade-details {
+        max-width: 60%;
+     }
+}
+
+@media screen and (min-width: 1500px){
+    .form {
+        width: 35%;
+    }
+
+    .bg-fade-details {
+        max-width: 50%;
+     }
+}

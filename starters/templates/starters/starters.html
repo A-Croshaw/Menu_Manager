@@ -10,7 +10,7 @@
         </h1>
         <div class="container d-flex flex-row flex-wrap justify-content-center">
             {% for starter in starters %} 
-            <a href="" class="card-link" aria-label="Click to view {{starter.starter_name}}">
+            <a href="{% url 'starter_view' starter.id %}" class="card-link" aria-label="Click to view {{starter.starter_name}}">
                 <div class="card m-2" style="width: 18rem;">
                     <div class="card-body">
                         <h2 class="card-name">{{starter.starter_name}}</h2>
