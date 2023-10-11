@@ -36,7 +36,7 @@
             Mains
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item nav-txt" href="{% url 'main_courses' %}">View Recipes</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">View Recipes</a></li>
             <li><a class="dropdown-item nav-txt" href="#">Add Recipe</a></li>
             <li><a class="dropdown-item nav-txt" href="#">View Dishes</a></li>
             <li><a class="dropdown-item nav-txt" href="#">Add Dish</a></li>
@@ -57,7 +57,7 @@
             Desserts
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item nav-txt" href="{% url 'desserts' %}">View Recipes</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">View Recipes</a></li>
             <li><a class="dropdown-item nav-txt" href="#">Add Recipe</a></li>
             <li><a class="dropdown-item nav-txt" href="#">View Dishes</a></li>
             <li><a class="dropdown-item nav-txt" href="#">Add Dish</a></li>
@@ -72,11 +72,11 @@
       </ul>
       <!-- Form For Searching -->
       {% if url_name == 'products' %}
-      <form class="d-flex position-absolute top-0 start-100" role="search" method="GET" action="{% url 'products' %}">
+      <form class="d-flex position-absolute top-0 start-100" role="search" method="GET" action="#">
       {% elif url_name == 'main_courses' %}
-      <form class="d-flex" role="search" method="GET" action="{% url 'main_courses' %}">
+      <form class="d-flex" role="search" method="GET" action="#">
       {% elif url_name == 'starters' %}
-        <form class="d-flex" role="search" method="GET" action="{% url 'starters' %}">
+        <form class="d-flex" role="search" method="GET" action="#">
       {% elif url_name == 'dishes' %}
       <form class="d-flex" role="search" method="GET" action="">
       {% elif url_name == 'menus' %}
