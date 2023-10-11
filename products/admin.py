@@ -12,4 +12,4 @@ class ProductAdmin(admin.ModelAdmin):
         "product_quantity",
     )
     list_filter = ("product_type", "product_freshness",)
-    ordering = ('product_type', 'product_name', 'product_freshness',).
+    ordering = ('product_type', 'product_name', 'product_freshness',)

@@ -37,15 +37,15 @@ ALLOWED_HOSTS = ["menu-manager-32aec1a9f4d5.herokuapp.com", "localhost"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
 
     # Apps
     'menu',
@@ -63,6 +63,8 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'djrichtextfield'
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

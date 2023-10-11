@@ -1,0 +1,137 @@
+@import url('http://fonts.googlepis.com/css2?family=EB+Garmond:wght@400;500;600&family=Roboto:wght@400;500&display=swap');
+
+:root {
+    /** Fonts */
+    --headers: 'EB Garamond', serif, arial;
+    --text-fonts: 'Roboto', serif, arial;
+
+    /* Colours */
+    --background: #3f006a0f;
+    --header-footer: #54f4ff;
+    --black: #000;
+    --pale-blue: #add6f8;
+
+    /* Box Styling */
+    --box-shadows: 1px -1px 7px 0 #00000078;
+    --borders: 2px solid #00000025;
+}
+
+html, body {
+    height: 100%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    font-family: var(--text-fonts);
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: var(--headers);
+}
+
+main{
+    flex: auto;
+    background-color: var(--pale-blue);
+}
+
+/* Header */
+
+nav {
+    background-color: var(--header-footer);
+    box-shadow: var(--box-shadows);
+}
+
+a.nav-link {
+    color: var(--black);
+    
+}
+
+img.logo {
+    width: 8rem;
+}
+
+.menu_item{
+    font-size: 1.5rem;
+}
+
+.login{
+    font-size: 1rem;
+}
+
+/* Footer */
+
+footer {
+    flex-shrink: 0;
+    background-color: var(--header-footer);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-top: var(--borders);
+}
+
+.social{
+    height: 2rem;
+    margin: 1rem;
+}
+
+.active {
+    border-bottom: 2px solid var(--background);
+    font-weight: 500;
+}
+
+/* Form */
+
+.form {
+    width: 100%;
+    margin: 3% auto;
+    box-shadow: var(--box-shadows);
+    border-radius: 5px;
+}
+
+@media screen and (min-width: 400px) {
+    .form {
+        width: 75%;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .form {
+        width: 65%;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+    .form {
+        width: 35%;
+    }
+}
+.list-group-item {
+    flex: 50%;
+}
+.list-group {
+    flex: 100%;
+}
+
+.delete, .edit{
+    width: 1.5rem;
+    height: 3rem;
+}
+
+.prodHeading{
+    font-size: 1rem;
+    text-decoration: 1px underline var(--black);
+    padding: 0;
+    margin: 0;
+}
+
+.product-table{
+    border: 1px solid var(--black);
+    font-size: 1.5rem;
+    padding: 0;
+    margin: 0;
+}
+
+
