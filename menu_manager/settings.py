@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["menu-manager-32aec1a9f4d5.herokuapp.com", "localhost"]
+ALLOWED_HOSTS = ["menu-manager-32aec1a9f4d5.herokuapp.com", "localhost", "8000-acroshaw-menumanager-kxkvt1guwh5.ws-eu105.gitpod.io"]
 
 
 # Application definition
