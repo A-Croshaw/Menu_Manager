@@ -4,79 +4,109 @@
   {% with request.resolver_match.url_name as url_name %}
   <nav class="navbar navbar-expand-lg ">
     <div class="container-fluid">
-      <!-- Logo -->
-      <a class="navbar-brand" href="#"><img src="{% static 'images/Logo.png' %}" alt="Restaurant Menu Manager Logo"
-          class="logo"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!-- Navigation Items  -->
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto mb-2">
-          <li class="nav-item">
-            <a class="nav-link menu_item {% if url_name == 'home' %}active{% endif %}" aria-current="page"
-              href="{% url 'home' %}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link menu_item {% if url_name == 'menu' %}active{% endif %}" aria-current="page" href="">Menus</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link menu_item {% if url_name == 'dishes' %}active{% endif %}" aria-current="page"
-              href="">Dishes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link menu_item{% if url_name == 'starters' %}active{% endif %}" aria-current="page" 
-              href="{% url 'starters' %}">Starters</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link menu_item{% if url_name == 'main_courses' %}active{% endif %}" aria-current="page" 
-              href="">Main Courses</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link menu_item{% if url_name == 'desserts' %}active{% endif %}" aria-current="page" 
-              href="">Desserts</a>
-          </li>
-          {% if user.is_superuser %}
-          <li class="nav-item">
-            <a class="nav-link menu_item {% if url_name == 'products' %}active{% endif %}" aria-current="page"
-              href="{% url 'products' %}">Products</a>
-          </li>
-          {% endif %}
-        </ul>
-        <!-- Form For Searching -->
-        {% if url_name == 'products' %}
-          <form class="d-flex" role="search" method="GET" action="{% url 'products' %}">
-        {% elif url_name == 'starters' %}
-          <form class="d-flex" role="search" method="GET" action="{% url 'starters' %}">
-        {% elif url_name == 'dishes' %}
-          <form class="d-flex" role="search" method="GET" action="}">
-        {% elif url_name == 'menus' %}
-          <form class="d-flex" role="search" method="GET" action="">
-        {%else%}
-          <form class="d-flex" role="search" method="GET" action="">
+      <a class="navbar-brand" href="#"><img src="{% static 'images/Loo.png' %}" alt="Logo"
+        class="logo"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link nav-txt {% if url_name == 'home' %}active-link{% endif %}" aria-current="page"
+            href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-txt {% if url_name == 'menu' %}active-link{% endif %}" aria-current="page" href="">
+            Menus
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-txt {% if url_name == 'starters' %}active-link{% endif %} dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+            Starters
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item nav-txt" href="{% url 'starters' %}">View Recipes</a></li>
+            <li><a class="dropdown-item nav-txt" href="{% url 'add_starter' %}">Add Recipe</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">View Dishes</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">Add Dish</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-txt {% if url_name == 'main_courses' %}active-link{% endif %} dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+            Mains
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item nav-txt" href="{% url 'main_courses' %}">View Recipes</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">Add Recipe</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">View Dishes</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">Add Dish</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-txt {% if url_name == 'sides' %}active-link{% endif %} dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+            Sides
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item nav-txt" href="#">View Recipes</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">View Dishes</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">Add Recipe</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-txt {% if url_name == 'desserts' %}active-link{% endif %} dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+            Desserts
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item nav-txt" href="{% url 'desserts' %}">View Recipes</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">Add Recipe</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">View Dishes</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">Add Dish</a></li>
+          </ul>
+        </li>
+        {% if user.is_superuser %}
+        <li class="nav-item">
+          <a class="nav-link nav-txt {% if url_name == 'products' %}active-link{% endif %}" aria-current="page"
+            href="{% url 'products' %}">Products</a>
+        </li>
         {% endif %}
-          <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-        <ul class="navbar-nav me-left mb-2">
-          {% if request.user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link login {% if url_name == 'accounts_logout' %}active{% endif %}"
-              href="/accounts/logout/">Logout</a>
-          </li>
-          {% else %}
-          <li class="nav-item">
-            <a class="nav-link login {% if url_name == 'accounts_signup' %}active{% endif %}"
-              href="/accounts/signup/">Register</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link login {% if url_name == 'accounts_login' %}active{% endif %}" href="/accounts/login/">Login</a>
-          </li>
-          {% endif %}
-        </ul>
-      </div>
+      </ul>
+      <!-- Form For Searching -->
+      {% if url_name == 'products' %}
+      <form class="d-flex position-absolute top-0 start-100" role="search" method="GET" action="{% url 'products' %}">
+      {% elif url_name == 'main_courses' %}
+      <form class="d-flex" role="search" method="GET" action="{% url 'main_courses' %}">
+      {% elif url_name == 'starters' %}
+        <form class="d-flex" role="search" method="GET" action="{% url 'starters' %}">
+      {% elif url_name == 'dishes' %}
+      <form class="d-flex" role="search" method="GET" action="">
+      {% elif url_name == 'menus' %}
+      <form class="d-flex" role="search" method="GET" action="">
+      {%else%}  
+      <form class="d-flex" role="search" method="GET" action="{% url 'home' %}">
+      {% endif %}
+        <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      <ul class="navbar-nav">
+        {% if request.user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link login {% if url_name == 'accounts_logout' %}active{% endif %}"
+            href="/accounts/logout/">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link login {% if url_name == 'accounts_signup' %}active{% endif %}"
+            href="/accounts/signup/">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link login {% if url_name == 'accounts_login' %}active{% endif %}" href="/accounts/login/">Login</a>
+        </li>
+        {% endif %}
+      </ul>
+      </form>
     </div>
+    </div>
+  </div>
   </nav>
   {% endwith %}
 </header>
