@@ -1,0 +1,75 @@
+from django.urls import path
+from .views import ViewMain, MainDelete
+from . import views
+
+
+urlpatterns = [
+    path("",
+         ViewMain.as_view(),
+         name="mains"
+         ),
+    path('main_courses/add_main/',
+         views.add_main,
+         name='add_main'
+         ),
+    path('main_view/<pk>/',
+         views.main_view,
+         name='main_view'
+         ),
+    path('edit_main/<pk>/update/',
+         views.edit_main,
+         name="edit_main"
+         ),
+    path('main_delete/<pk>/delete/',
+         MainDelete.as_view(),
+         name="main_delete"
+         ),
+    path('main_method/<pk>/',
+         views.main_method,
+         name='main_method'
+         ),
+    path('main_ingredients/<pk>/',
+         views.main_ingredients,
+         name='main_ingredients'
+         ),
+    path('htmx/add_main_ing/',
+         views.add_main_ing,
+         name='add_main_ing'
+         ),
+    path('htmx/main_ing_details/<pk>/',
+         views.main_ing_details,
+         name="main_ing_details"
+         ),
+    path('main_ing_detail_view/<pk>/',
+         views.main_ing_detail_view,
+         name="main_ing_detail_view"
+         ),
+    path('main_step_detail_view/<pk>/',
+         views.main_step_detail_view,
+         name="main_stepdetail_view"
+         ),
+    path('htmx/update_main_ing/<pk>/update/',
+         views.update_main_ing,
+         name="update_main_ing"
+         ),
+    path('htmx/delete_ingredient/<pk>/delete/',
+         views.delete_main_ing,
+         name="delete_main_ing"
+         ),
+    path('htmx/add_main_step/',
+         views.add_main_step,
+         name='add_main_step'
+         ),
+    path('htmx/main_step_details/<pk>/update/',
+         views.main_step_details,
+         name="main_step_details"
+         ),
+    path('htmx/update_main_step/<pk>/update/',
+         views.update_main_step,
+         name="update_main_step"
+         ),
+    path('htmx/delete_main_step/<pk>/delete/',
+         views.delete_main_step,
+         name="delete_main_step"
+         ),
+]

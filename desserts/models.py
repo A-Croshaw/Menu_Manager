@@ -5,11 +5,8 @@ from django.contrib.auth.models import User
 
 # Choice Fields
 TYPE = (
-    ("Soup", "Soup"),
-    ("Cold_Dessert", "Cold_Dessert"),
+    ("Cold Dessert", "Cold Dessert"),
     ("Hot Dessert", "Hot Dessert"),
-    ("Hot Sauce", "Hot Sauce"),
-    ("Cold Sauce", "Cold Sauce"),
     )
 
 UNITS = (

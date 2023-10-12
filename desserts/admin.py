@@ -24,10 +24,9 @@ class DessertRecipeAdmin(admin.ModelAdmin):
     And Ingredients To an Inline Output and Displays as one Item
     """
     fieldsets = []
-    inlines = [ DessertIndgredientsAdmin, DessertMethodAdmin]
+    inlines = [DessertIndgredientsAdmin, DessertMethodAdmin]
 
 
 admin.site.register(Dessert, DessertRecipeAdmin)
 admin.site.register(DessertIngredients)
 admin.site.register(DessertMethod)
-

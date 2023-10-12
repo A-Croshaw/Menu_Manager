@@ -21,6 +21,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('starters/', include('starters.urls')),
     path('desserts/', include('desserts.urls')),
+    path('main_courses/', include('main_courses.urls')),
     path('djrichtextfield/', include('djrichtextfield.urls')),
     path('products/', include('products.urls')),
     path('accounts/', include('allauth.urls')),

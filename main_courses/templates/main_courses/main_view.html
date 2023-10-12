@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section>
+    <div class="container mt-4 pb-4 bg-fade-details">
+        <div class="detail-container mb-2 pt-2 justify-content-center">
+            <h1 class="view-headers">{{main.main_name|title}}</h1>
+        </div>
+        <div class="detail-container justify-content-center">
+            <div class="p-3 details col view-border">
+                <h2 class="view-headers">Details</h2>
+                <p class="detail-txt">Recipe for a {{main.main_type}}</p>
+                <p class="detail-txt">Recipe With {{main.main_meat_type}}</p>
+                <div class="btn-view">
+                    <a href="{% url 'edit_main' pk=main.id%}" class="btn btn-edit" aria-label="Click to view ">
+                        <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
+                    </a>
+                </div>
+            </div>
+            <div class="description col p-3 view-border">
+                <h2 class="view-headers">Description</h2>
+                <p class="view-txt" >{{main.main_description}}</p>
+            </div>
+        </div>
+        <div class="detail-container justify-content-center">
+            <div class="ingredients col p-3 view-border">
+                <h2 class="view-headers">Ingredients</h2>
+                {% for main_ingredient in main_ingredients %}
+                {% include "includes/main_ing_detail_view.html" %}
+                {% endfor %}
+                <div class="btn-view">
+                    <a href="{% url 'main_ingredients' pk=main.id%}" class="btn btn-edit" aria-label="Click to edit ingredients ">
+                        <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
+                    </a>
+                </div>
+            </div>
+            <div class="p-3 method col view-border">
+                <h2 class="view-headers">Method</h2>
+                {% for main_step in main_step %}
+                {% include "includes/main_step_detail_view.html" %}
+                {% endfor %}
+                <div class="btn-view">
+                    <a href="{% url 'main_method' pk=main.id%}" class="btn btn-edit" aria-label="Click to edit method ">
+                        <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="detail-container btn-edit-view">
+            <a href="{% url 'mains' %}" class="btn btn-return mt-2" aria-label="Click to return">
+                Return
+            </a>
+            <a href="{% url 'main_delete' main.id %}" class="btn btn-recipe-delete mt-2 pt-1" aria-label="Click to Delete">
+                <img src="{% static '/icons/delete_icon.svg' %}" alt="Delete Icon" class="recipe-delete">
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
