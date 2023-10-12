@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     # Apps
     'menu',
     'home',
-    'dishes',
     'desserts',
     'main_courses',
     'starters',
