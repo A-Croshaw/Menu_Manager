@@ -46,7 +46,7 @@ urlpatterns = [
          ),
     path('starter_step_detail_view/<pk>/',
          views.starter_step_detail_view,
-         name="starter_stepdetail_view"
+         name="starter_step_detail_view"
          ),
     path('htmx/update_starter_ing/<pk>/update/',
          views.update_starter_ing,

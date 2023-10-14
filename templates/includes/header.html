@@ -78,11 +78,11 @@
           <a class="nav-link nav-txt 
           {% if url_name == 'sides' %}
           active-link
-          {% elif url_name == 'sides_view' %}
+          {% elif url_name == 'side_view' %}
           active-link
-          {% elif url_name == 'sides_ingredients' %}
+          {% elif url_name == 'side_ingredients' %}
           active-link
-          {% elif url_name == 'sides_method' %}
+          {% elif url_name == 'side_method' %}
           active-link
           {% elif url_name == 'edit_sides' %}
           active-link
@@ -94,9 +94,8 @@
             Sides
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item nav-txt" href="#">View Recipes</a></li>
-            <li><a class="dropdown-item nav-txt" href="#">View Dishes</a></li>
-            <li><a class="dropdown-item nav-txt" href="#">Add Recipe</a></li>
+            <li><a class="dropdown-item nav-txt" href="{% url 'sides' %}#">View Recipes</a></li>
+            <li><a class="dropdown-item nav-txt" href="{% url 'add_side' %}">Add Recipe</a></li>           
           </ul>
         </li>
         <li class="nav-item dropdown">

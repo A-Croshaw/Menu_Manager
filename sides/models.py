@@ -5,98 +5,95 @@ from django.contrib.auth.models import User
 
 # Choice Fields
 TYPE = (
-    ("Cold Dessert", "Cold Dessert"),
-    ("Hot Dessert", "Hot Dessert"),
+    ("Cold Side", "Cold Side"),
+    ("Hot Side", "Hot Side"),
     )
 
 UNITS = (
     ('gr', 'gr'),
-    ('Kg', 'Kg'),
-    ('Oz', 'Oz'),
-    ('lb', 'lSb'),
+    ('kg', 'Kg'),
+    ('oz', 'Oz'),
+    ('lb', 'Lb'),
     ('tsp', 'tsp'),
     ('Tbsp', 'Tbsp'),
     ('floz', 'floz'),
-    ('Pint', 'Pint'),
+    ('pint', 'Pint'),
     ('ml', 'ml'),
     ('lt', 'lt'),
     )
 
 
-class Dessert(models.Model):
+class Side(models.Model):
     """
-    A Model To Create Dessert Recipes
+    A Model To Create Recipes
     """
     user = models.ForeignKey(
         User,
-        related_name="dessert_user",
+        related_name="side_recipe_user",
         on_delete=models.SET_NULL,
         null=True,
     )
-    dessert_name = models.CharField(
+    side_name = models.CharField(
         max_length=300,
         null=False,
         blank=False
-        )
-    dessert_description = models.CharField(
+    )
+    side_description = models.CharField(
         max_length=500,
         null=False,
         blank=False
-        )
-    dessert_type = models.CharField(
-        max_length=50, choices=TYPE, default="old Dessert"
+    )
+    side_type = models.CharField(
+        max_length=50, choices=TYPE, default="soup"
     )
 
-    class Meta:
-        ordering = ["dessert_name"]
-
     def __str__(self):
-        return str(self.dessert_name)
+        return str(self.side_name)
 
 
-class DessertIngredients(models.Model):
+class SideIngredients(models.Model):
     """
     A Model To Create Ingredients For The Recipes
     """
-    dessert = models.ForeignKey(
-        Dessert,
+    side = models.ForeignKey(
+        Side,
         on_delete=models.CASCADE
         )
-    dessert_ingredient = models.ForeignKey(
+    side_ingredient = models.ForeignKey(
         Product,
         on_delete=models.
         SET_NULL,
         null=True,
-        related_name="desserting"
+        related_name="sideing"
         )
-    dessert_quantity = models.DecimalField(
+    side_quantity = models.DecimalField(
         max_digits=10,
         decimal_places=2
         )
-    dessert_unit_type = models.CharField(
+    side_unit_type = models.CharField(
         max_length=50,
         choices=UNITS,
         default="gr"
         )
 
     def __str__(self):
-        return str(self.dessert_ingredient)
+        return str(self.side_ingredient)
 
 
-class DessertMethod(models.Model):
+class SideMethod(models.Model):
     """
-    A Model To Create Steps For The Recipe
+    A Model To create Steps For The Recipe
     """
-    dessert = models.ForeignKey(
-        Dessert,
+    side = models.ForeignKey(
+        Side,
         on_delete=models.CASCADE
         )
-    dessert_Steps = models.CharField(
+    side_Steps = models.CharField(
         max_length=500,
         null=False,
         blank=False
     )
 
     def __str__(self):
-        return str(self.dessert_Steps)
+        return str(self.side_Steps)
 

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section>
+    <div class="container mt-4 pb-4 bg-fade-details">
+        <div class="detail-container mb-2 pt-2 justify-content-center">
+            <h1 class="view-headers">{{side.side_name|title}}</h1>
+        </div>
+        <div class="detail-container justify-content-center">
+            <div class="description col p-3 view-border">
+                <div class="detail-container justify-content-center">
+                    <form action="." method="POST" enctype="multipart/form-data" class="edit-form">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="btn-edit-view">
+                            <button type="submit" class="btn btn-submit mt-2" aria-label="Click to submit">
+                                Submit
+                            </button> 
+                            <a href="{% url 'side_view' side.id %}" class="btn btn-cancel mt-2" aria-label="Click to Cancel">
+                                Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="detail-container justify-content-center">
+            <div class="ingredients col p-3 view-border">
+                <h2 class="view-headers">Ingredients</h2>
+                {% for side_ingredient in side_ingredients %}
+                {% include "includes/side_ing_detail_view.html" %}
+                {% endfor %}
+            </div>
+            <div class="p-3 method col view-border">
+                <h2 class="view-headers">Method</h2>
+                {% for side_step in side_step %}
+                {% include "includes/side_step_detail_view.html" %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
