@@ -2,7 +2,7 @@
 
 <header>
   {% with request.resolver_match.url_name as url_name %}
-  <nav class="navbar navbar-expand-lg ">
+  <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand" href="#"><img src="{% static 'images/logo.png' %}" alt="Logo"
         class="logo"></a>
@@ -10,9 +10,9 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-tabs">
         <li class="nav-item">
-          <a class="nav-link nav-txt {% if url_name == 'home' %}active-link{% endif %}" aria-current="page"
+          <a class="nav-link nav-txt {% if url_name == 'home' %}active-link active{% endif %}" aria-current="page"
             href="{% url 'home' %}">Home</a>
         </li>
         <li class="nav-item">
@@ -23,17 +23,17 @@
         <li class="nav-item dropdown">
           <a class="nav-link nav-txt 
               {% if url_name == 'starters' %}
-              active-link
+              active-link active
               {% elif url_name == 'starter_view' %}
-              active-link
+              active-link active
               {% elif url_name == 'starter_ingredients' %}
-              active-link
+              active-link active
               {% elif url_name == 'starter_method' %}
-              active-link
+              active-link active
               {% elif url_name == 'edit_starter' %}
-              active-link
+              active-link active
               {% elif url_name == 'add_starter' %}
-              active-link
+              active-link active
               {% endif %} 
               dropdown-toggle" href="#" role="button" 
               data-bs-toggle="dropdown" aria-expanded="true"
@@ -50,17 +50,17 @@
         <li class="nav-item dropdown">
           <a class="nav-link nav-txt 
               {% if url_name == 'mains' %}
-              active-link
+              active-link active
               {% elif url_name == 'main_view' %}
-              active-link
+              active-link active
               {% elif url_name == 'main_ingredients' %}
-              active-link
+              active-link active
               {% elif url_name == 'main_method' %}
-              active-link
+              active-link active
               {% elif url_name == 'edit_main' %}
-              active-link
+              active-link active
               {% elif url_name == 'add_main' %}
-              active-link
+              active-link active
               {% endif %} 
               dropdown-toggle" href="#" role="button" 
               data-bs-toggle="dropdown" aria-expanded="true"
@@ -77,17 +77,17 @@
         <li class="nav-item dropdown">
           <a class="nav-link nav-txt 
           {% if url_name == 'sides' %}
-          active-link
+          active-link active
           {% elif url_name == 'side_view' %}
-          active-link
+          active-link active
           {% elif url_name == 'side_ingredients' %}
-          active-link
+          active-link active
           {% elif url_name == 'side_method' %}
-          active-link
+          active-link active
           {% elif url_name == 'edit_sides' %}
-          active-link
+          active-link active
           {% elif url_name == 'add_sides' %}
-          active-link
+          active-link active
           {% endif %} 
           dropdown-toggle" href="#" role="button" 
           data-bs-toggle="dropdown" aria-expanded="true">
@@ -101,17 +101,17 @@
         <li class="nav-item dropdown">
           <a class="nav-link nav-txt 
           {% if url_name == 'sauces' %}
-          active-link
+          active-link active
           {% elif url_name == 'sauce_view' %}
-          active-link
+          active-link active
           {% elif url_name == 'sauce_ingredients' %}
-          active-link
+          active-link active
           {% elif url_name == 'sauce_method' %}
-          active-link
+          active-link active
           {% elif url_name == 'edit_sauces' %}
-          active-link
+          active-link active
           {% elif url_name == 'add_sauces' %}
-          active-link
+          active-link active
           {% endif %} 
           dropdown-toggle" href="#" role="button" 
           data-bs-toggle="dropdown" aria-expanded="true">
@@ -125,17 +125,17 @@
         <li class="nav-item dropdown">
           <a class="nav-link nav-txt 
               {% if url_name == 'desserts' %}
-              active-link
+              active-link active
               {% elif url_name == 'dessert_view' %}
-              active-link
+              active-link active
               {% elif url_name == 'dessert_ingredients' %}
-              active-link
+              active-link active
               {% elif url_name == 'dessert_method' %}
-              active-link
+              active-link active
               {% elif url_name == 'edit_dessert' %}
-              active-link
+              active-link active
               {% elif url_name == 'add_dessert' %}
-              active-link
+              active-link active
               {% endif %}
           dropdown-toggle" href="#" role="button" 
           data-bs-toggle="dropdown" aria-expanded="true"
@@ -151,7 +151,7 @@
         </li>
         {% if user.is_superuser %}
         <li class="nav-item">
-          <a class="nav-link nav-txt {% if url_name == 'products' %}active-link{% endif %}" aria-current="page"
+          <a class="nav-link nav-txt {% if url_name == 'products' %}active-link active{% endif %}" aria-current="page"
             href="{% url 'products' %}">Products</a>
         </li>
         {% endif %}

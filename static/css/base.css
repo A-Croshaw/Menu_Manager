@@ -7,7 +7,7 @@
 
     /* Colours */
     --background: #18003a2d;
-    --header-footer: #ff0000b9;
+    --header-footer: #ff0000e7;
     --nav-txt: #000000;
     --nav-hover-txt: #e9ca1c;
     --btn-hover-txt: #000000b9;
@@ -66,6 +66,7 @@ main{
 nav{
     border-bottom: var(--borders);
 }
+
 .navbar, .dropdown-menu{
     background-color: var(--header-footer);
     box-shadow: var(--box-shadows);
@@ -117,13 +118,14 @@ button.btn-outline-success:hover{
 }
 
 .nav-txt{
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 400;
 }
 
 .active-link{
-    border-bottom: 2px solid var(--red);
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 500;
+    padding-bottom: 13px;
 }
 
 a.dropdown-item{
