@@ -23,6 +23,7 @@ urlpatterns = [
     path('desserts/', include('desserts.urls')),
     path('main_courses/', include('main_courses.urls')),
     path('sides/', include('sides.urls')),
+    path('sauces/', include('sauces.urls')),
     path('djrichtextfield/', include('djrichtextfield.urls')),
     path('products/', include('products.urls')),
     path('accounts/', include('allauth.urls')),

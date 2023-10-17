@@ -100,6 +100,30 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link nav-txt 
+          {% if url_name == 'sauces' %}
+          active-link
+          {% elif url_name == 'sauce_view' %}
+          active-link
+          {% elif url_name == 'sauce_ingredients' %}
+          active-link
+          {% elif url_name == 'sauce_method' %}
+          active-link
+          {% elif url_name == 'edit_sauces' %}
+          active-link
+          {% elif url_name == 'add_sauces' %}
+          active-link
+          {% endif %} 
+          dropdown-toggle" href="#" role="button" 
+          data-bs-toggle="dropdown" aria-expanded="true">
+            Sauces
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item nav-txt" href="{% url 'sauces' %}#">View Recipes</a></li>
+            <li><a class="dropdown-item nav-txt" href="{% url 'add_sauce' %}">Add Recipe</a></li>           
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-txt 
               {% if url_name == 'desserts' %}
               active-link
               {% elif url_name == 'dessert_view' %}

@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'starters',
     'products',
     'sides',
+    'sauces',
 
     # Other
     'crispy_forms',

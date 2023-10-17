@@ -1,0 +1,75 @@
+from django.urls import path
+from .views import ViewSauce, SauceDelete
+from . import views
+
+
+urlpatterns = [
+    path("",
+         ViewSauce.as_view(),
+         name="sauces"
+         ),
+    path('sauce/add_sauce/',
+         views.add_sauce,
+         name='add_sauce'
+         ),
+    path('sauce_view/<pk>/',
+         views.sauce_view,
+         name='sauce_view'
+         ),
+    path('edit_sauce/<pk>/update/',
+         views.edit_sauce,
+         name="edit_sauce"
+         ),
+    path('sauce_delete/<pk>/delete/',
+         SauceDelete.as_view(),
+         name="sauce_delete"
+         ),
+    path('sauce_method/<pk>/',
+         views.sauce_method,
+         name='sauce_method'
+         ),
+    path('sauce_ingredients/<pk>/',
+         views.sauce_ingredients,
+         name='sauce_ingredients'
+         ),
+    path('htmx/add_sauce_ing/',
+         views.add_sauce_ing,
+         name='add_sauce_ing'
+         ),
+    path('htmx/sauce_ing_details/<pk>/',
+         views.sauce_ing_details,
+         name="sauce_ing_details"
+         ),
+    path('sauce_ing_detail_view/<pk>/',
+         views.sauce_ing_detail_view,
+         name="sauce_ing_detail_view"
+         ),
+    path('sauce_step_detail_view/<pk>/',
+         views.sauce_step_detail_view,
+         name="sauce_step_detail_view"
+         ),
+    path('htmx/update_sauce_ing/<pk>/update/',
+         views.update_sauce_ing,
+         name="update_sauce_ing"
+         ),
+    path('htmx/delete_ingredient/<pk>/delete/',
+         views.delete_sauce_ing,
+         name="delete_sauce_ing"
+         ),
+    path('htmx/add_sauce_step/',
+         views.add_sauce_step,
+         name='add_sauce_step'
+         ),
+    path('htmx/sauce_step_details/<pk>/update/',
+         views.sauce_step_details,
+         name="sauce_step_details"
+         ),
+    path('htmx/update_sauce_step/<pk>/update/',
+         views.update_sauce_step,
+         name="update_sauce_step"
+         ),
+    path('htmx/delete_sauce_step/<pk>/delete/',
+         views.delete_sauce_step,
+         name="delete_sauce_step"
+         ),
+]

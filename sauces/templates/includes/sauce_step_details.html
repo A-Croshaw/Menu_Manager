@@ -1,0 +1,18 @@
+{% load static %}
+<div hx-target="this" >
+    <div class="detail-container row">
+        <div class="col-10">
+            <p class="view-txt">- {{ sauce_step}}</p>
+        </div>
+        <div class="btn-view col-2">
+            <button hx-get="{% url 'update_sauce_step' sauce_step.id %}" hx-ta="outerHTML"
+                class="btn btn-edit">
+                    <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
+            </button>
+            <button hx-post="{% url 'delete_sauce_step' sauce_step.id %}" hx-swap="outerHTML swap:1s"
+                class="btn btn-delete">
+                    <img src="{% static '/icons/delete_icon.svg' %}" alt="Delete Icon" class="delete">
+            </button>
+        </div>
+    </div>
+</div>
