@@ -14,7 +14,7 @@
     --btn-color: #ff0000;
     --header-txt: #000000;
     --main-txt: #000000;
-    --bg-cover: #96969683;
+    --bg-cover: #ffffffa1;
     --card-bg: #ff00009c;
     --card-hover: #e9ca1c;
     --delete: #af0808;
@@ -41,10 +41,13 @@ body{
     flex-direction: column;
     font-family: var(--text-fonts);
     background: url(../images/background.webp) no-repeat center;
-    background-size:auto;
     background-color: var(--bg-cover);
+    background-attachment:fixed;
 }
 
+section{
+    margin-bottom: 25px;
+}
 h1, h2, h3, h4, h5, h6{
     font-family: var(--headers);
     color: var(--header-txt);
@@ -101,8 +104,12 @@ button.btn-outline-success:hover{
     border: var(--borders);
 }
 
-img.logo{
-    width: 8rem;
+.logo{
+    width: 5rem;
+}
+
+.navbar-brand{
+    padding: 0;
 }
 
 .login{
@@ -218,6 +225,17 @@ footer{
     font-size: 1.30rem;
     color: var(--main-txt);
     font-weight: 400;
+    text-align: center;
+}
+
+.add-form-info{
+    text-align: right;
+    padding-right: 5px;
+}
+
+.add-form-inputs{
+    text-align: left;
+    padding-left: 10px;
 }
 
 .form{
@@ -229,7 +247,9 @@ footer{
 }
 
 /* Generic */
-
+.add-header{
+    text-align: center;
+}
 .detail-container{
     display: flex;
     flex-wrap: wrap;
