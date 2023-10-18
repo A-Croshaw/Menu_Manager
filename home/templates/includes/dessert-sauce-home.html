@@ -4,9 +4,11 @@
     <a href="#" class="btn btn-return mt-2" aria-label="Click to return">
         View
     </a>
+    {% if user.is_superuser %}
     <a href="#" class="btn btn-return mt-2" aria-label="Click to return">
         Add
     </a>
+    {% endif %}
 </div>
 <div id="carouselDessertDish" class="carousel slide mt-2" data-bs-ride="carousel" data-bs-interval="3000"
     data-bs-pause="hover" data-bs-touch="true">

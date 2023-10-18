@@ -33,6 +33,7 @@ html, body{
 
 body{
     display: flex;
+    padding-top: 30px;
     flex-direction: column;
     font-family: var(--text-fonts);
     background: url(../images/background.webp) no-repeat center;
@@ -405,7 +406,7 @@ a.card-link:hover{
      }
 
     .bg-fade-home {
-        max-width: 85%;
+        max-width: 75%;
      }
 }
 

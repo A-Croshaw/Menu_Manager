@@ -50,9 +50,11 @@
                 <div class="view-border p-2 m-1">
                     {% include 'includes/dessert-sauce-home.html' %}
                 </div>
+                {% if user.is_superuser %}
                 <div class="view-border p-2 m-1">
                     {% include 'includes/products-home.html' %}
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>

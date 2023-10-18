@@ -2,7 +2,7 @@
 
 <header>
   {% with request.resolver_match.url_name as url_name %}
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar fixed-top navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand" href="#"><img src="{% static 'images/logo.png' %}" alt="Logo"
         class="logo"></a>
@@ -150,9 +150,24 @@
           </ul>
         </li>
         {% if user.is_superuser %}
-        <li class="nav-item">
-          <a class="nav-link nav-txt {% if url_name == 'products' %}active-link active{% endif %}" aria-current="page"
-            href="{% url 'products' %}">Products</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-txt 
+              {% if url_name == 'products' %}
+              active-link active
+              {% elif url_name == 'edit_product' %}
+              active-link active
+              {% elif url_name == 'add_product' %}
+              active-link active
+              {% endif %}
+          dropdown-toggle" href="#" role="button" 
+          data-bs-toggle="dropdown" aria-expanded="true"
+          >
+          Products
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item nav-txt" href="{% url 'products' %}">View Products</a></li>
+            <li><a class="dropdown-item nav-txt" href="{% url 'add_product' %}">Add Products</a></li>
+          </ul>
         </li>
         {% endif %}
       </ul>
