@@ -1,14 +1,24 @@
 {% load static %}
-<div id="carouselstarter" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover" data-bs-touch="true">
+<h2 class="home-section-header">Starter Recipes</h2>
+<div class="btn-edit-view">
+  <a href="{% url 'starters' %}" class="btn btn-return mt-2" aria-label="Click to return">
+    View
+  </a>
+  <a href="{% url 'add_starter' %}" class="btn btn-return mt-2" aria-label="Click to return">
+    Add
+  </a>
+</div>
+<div id="carouselstarter" class="carousel slide mt-2" data-bs-ride="carousel" data-bs-interval="3000"
+  data-bs-pause="hover" data-bs-touch="true">
   <div class="carousel-inner">
     {% for starter in starter %}
     <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}" id="slide{{forloop.counter}}">
       <a href="{% url 'starter_view' starter.id %}" class="card-link"
         aria-label="Click to view {{starter.starter_name}}">
-        <div class="carousel-card">
-          <h2 class="carousel-name">{{starter.starter_name}}</h2>
-          <h3 class="carousel-type">{{starter.starter_type}}</h3>
-          <p class="carousel-desc">{{starter.starter_description|truncatechars:100}}</p>
+        <div class="carousel-card my-3 py-2 view-border">
+          <h2 class="carousel-name pt-1">{{starter.starter_name}}</h2>
+          <h3 class="carousel-type pt-1">{{starter.starter_type}}</h3>
+          <p class="carousel-desc pt-1">{{starter.starter_description|truncatechars:100}}</p>
         </div>
       </a>
     </div>

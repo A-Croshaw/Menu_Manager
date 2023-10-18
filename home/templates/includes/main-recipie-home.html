@@ -1,13 +1,23 @@
 {% load static %}
-<div id="carouselMain" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover" data-bs-touch="true">
+<h2 class="home-section-header">Main Recipes</h2>
+<div class="btn-edit-view">
+  <a href="{% url 'mains' %}" class="btn btn-return mt-2" aria-label="Click to return">
+    View
+  </a>
+  <a href="{% url 'add_main' %}" class="btn btn-return mt-2" aria-label="Click to return">
+    Add
+  </a>
+</div>
+<div id="carouselMain" class="carousel slide mt-2" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover"
+  data-bs-touch="true">
   <div class="carousel-inner">
     {% for main in main %}
     <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}" id="slide{{forloop.counter}}">
       <a href="{% url 'main_view' main.id %}" class="card-link" aria-label="Click to view {{main.main_name}}">
-        <div class="carousel-card">
-          <h3 class="carousel-name">{{main.main_name}}</h3>
-          <h4 class="carousel-type">{{main.main_type}}</h4>
-          <p class="carousel-desc">{{main.main_description|truncatechars:100}}</p>
+        <div class="carousel-card view-border my-3 py-2">
+          <h3 class="carousel-name pt-1">{{main.main_name}}</h3>
+          <h4 class="carousel-type pt-1">{{main.main_type}}</h4>
+          <p class="carousel-desc pt-1">{{main.main_description|truncatechars:100}}</p>
         </div>
       </a>
     </div>

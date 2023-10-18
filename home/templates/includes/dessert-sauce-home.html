@@ -1,0 +1,33 @@
+{% load static %}
+<h2 class="home-section-header">Dessert Sauces</h2>
+<div class="btn-edit-view">
+    <a href="#" class="btn btn-return mt-2" aria-label="Click to return">
+        View
+    </a>
+    <a href="#" class="btn btn-return mt-2" aria-label="Click to return">
+        Add
+    </a>
+</div>
+<div id="carouselDessertDish" class="carousel slide mt-2" data-bs-ride="carousel" data-bs-interval="3000"
+    data-bs-pause="hover" data-bs-touch="true">
+    <div class="carousel-inner">
+        {% for dessert_dish in dessert_dish %}
+        <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}" id="slide{{forloop.counter}}">
+            <a href="#" class="card-link"
+                aria-label="Click to view ">
+                <div class="carousel-card view-border my-3 py-2">
+                    <h2 class="carousel-name pt-1">add dish</h2>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselDessertDish" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselDessertDish" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>

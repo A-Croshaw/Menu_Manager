@@ -258,25 +258,26 @@ footer{
     background-color: var(--bg-cover) ;
 }
 
-.recipe-carousel{
-    position: fixed;
-    bottom: 0;
-}
-
-.carousel-view{
-    flex:100%;
-}
-
 .carousel-card{
     text-align: center;
     background-color: var(--carousel-card) ;
     justify-content: center;
+    padding-top: 10px;
 
 }
 
-.carousel-header{
-    font-size: 1.4rem;
+.home-section-header{
     text-align: center;
+    font-size: 1.75rem;
+}
+
+.home-selection-header{
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.home-col{
+    flex: 100%;
 }
 
 .carousel-name{
@@ -374,20 +375,17 @@ a.card-link:hover{
     }
 }
 
-@media screen and (min-width: 450px){
-    .carousel-view{
-        flex: 50%;
-    }
-}
-
 @media screen and (min-width: 500px){
     .method, .details, .description, .ingredients{
         flex: 50%;
     }
+    .home-col{
+        flex: 50%;
+    }
 }
 
-@media screen and (min-width: 750px){
-    .carousel-view{
+@media screen and (min-width: 850px){
+    .home-col{
         flex: 30%;
     }
 }
@@ -407,7 +405,7 @@ a.card-link:hover{
      }
 
     .bg-fade-home {
-        max-width: 60%;
+        max-width: 85%;
      }
 }
 

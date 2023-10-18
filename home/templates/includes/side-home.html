@@ -1,0 +1,34 @@
+{% load static %}
+<h2 class="home-section-header">Sides</h2>
+<div class="btn-edit-view">
+  <a href="{% url 'sides' %}" class="btn btn-return mt-2" aria-label="Click to return">
+    View
+  </a>
+  <a href="{% url 'add_side' %}" class="btn btn-return mt-2" aria-label="Click to return">
+    Add
+  </a>
+</div>
+<div id="carouselSides" class="carousel slide mt-2" data-bs-ride="carousel" data-bs-interval="3000"
+  data-bs-pause="hover" data-bs-touch="true">
+  <div class="carousel-inner">
+    {% for side in side %}
+    <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}" id="slide{{forloop.counter}}">
+      <a href="{% url 'side_view' side.id %}" class="card-link" aria-label="Click to view {{side.side_name}}">
+        <div class="carousel-card my-3 py-2 view-border">
+          <h2 class="carousel-name pt-1">{{side.side_name}}</h2>
+          <h3 class="carousel-type pt-1">{{side.side_type}}</h3>
+          <p class="carousel-desc pt-1">{{side.side_description|truncatechars:100}}</p>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselSides" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselSides" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

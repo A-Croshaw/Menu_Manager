@@ -1,14 +1,24 @@
 {% load static %}
-<div id="carouseldessert" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover" data-bs-touch="true">
+<h2 class="home-section-header">Dessert Recipies</h2>
+<div class="btn-edit-view">
+  <a href="{% url 'desserts' %}" class="btn btn-return mt-2" aria-label="Click to return">
+    View
+  </a>
+  <a href="{% url 'add_dessert' %}" class="btn btn-return mt-2" aria-label="Click to return">
+    Add
+  </a>
+</div>
+<div id="carouseldessert" class="carousel slide mt-2" data-bs-ride="carousel" data-bs-interval="3000"
+  data-bs-pause="hover" data-bs-touch="true">
   <div class="carousel-inner">
     {% for dessert in dessert %}
     <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}" id="slide{{forloop.counter}}">
       <a href="{% url 'dessert_view' dessert.id %}" class="card-link"
         aria-label="Click to view {{dessert.dessert_name}}">
-        <div class="carousel-card">
-          <h2 class="carousel-name">{{dessert.dessert_name|title}}</h2>
-          <h3 class="carousel-type">{{dessert.dessert_type}}</h3>
-          <p class="carousel-desc">{{dessert.dessert_description|truncatechars:100}}</p>
+        <div class="carousel-card view-border my-3 py-2">
+          <h2 class="carousel-name pt-1">{{dessert.dessert_name|title}}</h2>
+          <h3 class="carousel-type pt-1">{{dessert.dessert_type}}</h3>
+          <p class="carousel-desc pt-1">{{dessert.dessert_description|truncatechars:100}}</p>
         </div>
       </a>
     </div>
