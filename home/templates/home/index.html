@@ -2,7 +2,28 @@
 {% load static %}
 {% block title %}Home{% endblock %}
 
-{% block content %} 
-    <h1> Hello app</h1>
+{% block content %}
+<section>
+    <div class="container mt-4 pb-4 bg-fade-home ">
+        <div class="detail-container justify-content-center">
+            <h1> Restraunt Menu Manager</h1>
+        </div>
+
+        <div class="detail-container justify-content-center">
+            <div class="col view-border carousel-view mx-1 p-2">
+                <h2 class="carousel-header">Starter Recipies</h2>
+                {% include 'includes/starter-home.html' %}
+            </div>
+            <div class="col view-border carousel-view mx-1 p-2">
+                <h2 class="carousel-header">Main Course Recipies</h2>
+                {% include 'includes/main-home.html' %}
+            </div>
+            <div class="col view-border carousel-view mx-1 p-2">
+                <h2 class="carousel-header">Dessert Recipies</h2>
+                {% include 'includes/dessert-home.html' %}
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock %}

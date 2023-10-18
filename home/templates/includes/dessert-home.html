@@ -1,0 +1,25 @@
+{% load static %}
+<div id="carouseldessert" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover" data-bs-touch="true">
+  <div class="carousel-inner">
+    {% for dessert in dessert %}
+    <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}" id="slide{{forloop.counter}}">
+      <a href="{% url 'dessert_view' dessert.id %}" class="card-link"
+        aria-label="Click to view {{dessert.dessert_name}}">
+        <div class="carousel-card">
+          <h2 class="carousel-name">{{dessert.dessert_name|title}}</h2>
+          <h3 class="carousel-type">{{dessert.dessert_type}}</h3>
+          <p class="carousel-desc">{{dessert.dessert_description|truncatechars:100}}</p>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouseldessert" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouseldessert" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

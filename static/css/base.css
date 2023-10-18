@@ -6,7 +6,7 @@
     --text-fonts: 'Roboto', serif, arial;
 
     /* Colours */
-    --background: #18003a2d;
+    --background: #ff00002c;
     --header-footer: #ff0000e7;
     --nav-txt: #000000;
     --nav-hover-txt: #e9ca1c;
@@ -15,15 +15,10 @@
     --header-txt: #000000;
     --main-txt: #000000;
     --bg-cover: #ffffffa1;
+    --carousel-card: #c4c4c4;
     --card-bg: #ff00009c;
     --card-hover: #e9ca1c;
     --delete: #af0808;
-
-    --red: #f50202;
-    --black: #000000;
-    --pale-blue: #add6f8;
-    --yellow: #e9ca1c;
-    --yellow-fade: #ffe657a4;
 
     /* Box Styling */
     --box-shadows: 2px -3px 8px 0 #000000c9;
@@ -41,7 +36,7 @@ body{
     flex-direction: column;
     font-family: var(--text-fonts);
     background: url(../images/background.webp) no-repeat center;
-    background-color: var(--bg-cover);
+    background-color: var(--background);
     background-attachment:fixed;
 }
 
@@ -249,9 +244,7 @@ footer{
 }
 
 /* Generic */
-.add-header{
-    text-align: center;
-}
+
 .detail-container{
     display: flex;
     flex-wrap: wrap;
@@ -261,12 +254,44 @@ footer{
     flex: 100%; 
 }
 
-.bg-fade{
+.bg-fade, .bg-fade-details, .bg-fade-home {
     background-color: var(--bg-cover) ;
 }
 
-.bg-fade-details{
-    background-color: var(--bg-cover) ;
+.recipe-carousel{
+    position: fixed;
+    bottom: 0;
+}
+
+.carousel-view{
+    flex:100%;
+}
+
+.carousel-card{
+    text-align: center;
+    background-color: var(--carousel-card) ;
+    justify-content: center;
+
+}
+
+.carousel-header{
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.carousel-name{
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.carousel-type{
+    font-size: 1.05rem;
+    text-align: center;
+}
+
+.carousel-desc{
+    font-size: 1rem;
+    color: var(--main-txt);
 }
 
 .card-link{
@@ -287,6 +312,7 @@ footer{
     font-size: 1.15rem;
     color: var(--main-txt);
 }
+
 .card{
     background-color: var(--card-bg) ;
     background-size:cover;
@@ -312,6 +338,10 @@ a.card-link:hover{
 .view-txt{
     padding: 0;
     margin: 0;
+}
+
+.add-header{
+    text-align: center;
 }
 
 .detail-txt, .view-txt{
@@ -344,11 +374,22 @@ a.card-link:hover{
     }
 }
 
+@media screen and (min-width: 450px){
+    .carousel-view{
+        flex: 50%;
+    }
+}
+
 @media screen and (min-width: 500px){
     .method, .details, .description, .ingredients{
         flex: 50%;
     }
+}
 
+@media screen and (min-width: 750px){
+    .carousel-view{
+        flex: 30%;
+    }
 }
 
 @media screen and (min-width: 1200px){
@@ -362,6 +403,10 @@ a.card-link:hover{
     }
 
     .bg-fade-details {
+        max-width: 60%;
+     }
+
+    .bg-fade-home {
         max-width: 60%;
      }
 }
