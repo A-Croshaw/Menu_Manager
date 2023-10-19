@@ -33,7 +33,7 @@ html, body{
 
 body{
     display: flex;
-    padding-top: 30px;
+    padding-top: 40px;
     flex-direction: column;
     font-family: var(--text-fonts);
     background: url(../images/background.webp) no-repeat center;
@@ -114,18 +114,17 @@ button.btn-outline-success:hover{
 }
 
 .nav-txt{
-    font-size: 1.25rem;
-    font-weight: 400;
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 .active-link{
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: .8rem;
     padding-bottom: 13px;
 }
 
 a.dropdown-item{
-    font-size: 1.25rem;
+    font-size: 1rem;
 }
 
 /* Footer */
@@ -387,7 +386,7 @@ a.card-link:hover{
 
 @media screen and (min-width: 850px){
     .home-col{
-        flex: 30%;
+        flex: 33%;
     }
 }
 

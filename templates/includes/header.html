@@ -9,8 +9,8 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-tabs">
+    <div class="collapse navbar-collapse "  id="navbarSupportedContent" style="width: 50%">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-tabs ">
         <li class="nav-item">
           <a class="nav-link nav-txt {% if url_name == 'home' %}active-link active{% endif %}" aria-current="page"
             href="{% url 'home' %}">Home</a>
@@ -149,6 +149,32 @@
             <li><a class="dropdown-item nav-txt" href="#">Add Dish</a></li>
           </ul>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-txt 
+              {% if url_name == 'dessert_sauces' %}
+              active-link active
+              {% elif url_name == 'dessert_sauce_view' %}
+              active-link active
+              {% elif url_name == 'dessert_sauce_ingredients' %}
+              active-link active
+              {% elif url_name == 'dessert_sauce_method' %}
+              active-link active
+              {% elif url_name == 'edit_dessert_sauce' %}
+              active-link active
+              {% elif url_name == 'add_dessert_sauce' %}
+              active-link active
+              {% endif %}
+          dropdown-toggle" href="#" role="button" 
+          data-bs-toggle="dropdown" aria-expanded="true"
+          >
+            Dessert Sauces
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item nav-txt" href="{% url 'dessert_sauces' %}">View Recipes</a></li>
+            <li><a class="dropdown-item nav-txt" href="{% url 'add_dessert_sauce' %}">Add Recipe</a></li>
+
+          </ul>
+        </li>
         {% if user.is_superuser %}
         <li class="nav-item dropdown">
           <a class="nav-link nav-txt 
@@ -168,6 +194,11 @@
             <li><a class="dropdown-item nav-txt" href="{% url 'products' %}">View Products</a></li>
             <li><a class="dropdown-item nav-txt" href="{% url 'add_product' %}">Add Products</a></li>
           </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-txt" aria-current="page" href="{% url 'admin:index' %}">
+            Admin
+          </a>
         </li>
         {% endif %}
       </ul>
