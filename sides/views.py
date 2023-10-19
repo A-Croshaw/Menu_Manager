@@ -160,7 +160,7 @@ def update_side_ing(request, pk):
 
 def update_side_step(request, pk):
     """
-    Updates Ingredient Fields
+    Updates step Fields
     """
     side_step = SideMethod.objects.get(id=pk)
     form = SideMethodForm(request.POST or None, instance=side_step)
@@ -176,12 +176,12 @@ def update_side_step(request, pk):
         "side_step": side_step
     }
 
-    return render(request, "includes/add_side_ing.html", context)
+    return render(request, "includes/add_side_step.html", context)
 
 
 def edit_side(request, pk):
     """
-    Updates Ingredient Fields
+    Updates recipe Fields
     """
     side = Side.objects.get(id=pk)
     form = SideForm(request.POST or None, instance=side)
@@ -254,7 +254,7 @@ class SideDelete(DeleteView):
 
 def side_ing_details(request, pk):
     """
-    Displays Ingredient Fields After Being Added
+    Displays Ingredient Fields for updating
     """
     side_ingredient = get_object_or_404(SideIngredients, id=pk)
     context = {
@@ -265,7 +265,7 @@ def side_ing_details(request, pk):
 
 def side_step_details(request, pk):
     """
-    Displays Step Fields After Being Added
+    Displays Step Fields for updating
     """
     side_step = get_object_or_404(SideMethod, id=pk)
     context = {
@@ -309,7 +309,7 @@ def add_side_ing(request):
 
 def add_side_step(request):
     """
-    Renders The Form Add Extra Ingredients
+    Renders The Form Add Extra step
     """
     form = SideMethodForm()
     context = {

@@ -160,7 +160,7 @@ def update_starter_ing(request, pk):
 
 def update_starter_step(request, pk):
     """
-    Updates Ingredient Fields
+    Updates step Fields
     """
     starter_step = StarterMethod.objects.get(id=pk)
     form = StarterMethodForm(request.POST or None, instance=starter_step)
@@ -176,7 +176,7 @@ def update_starter_step(request, pk):
         "starter_step": starter_step
     }
 
-    return render(request, "includes/add_starter_ing.html", context)
+    return render(request, "includes/add_starter_step.html", context)
 
 
 def edit_starter(request, pk):
@@ -254,7 +254,7 @@ class StarterDelete(DeleteView):
 
 def starter_ing_details(request, pk):
     """
-    Displays Ingredient Fields After Being Added
+    Displays Ingredient Fields for updating
     """
     starter_ingredient = get_object_or_404(StarterIngredients, id=pk)
     context = {
@@ -265,7 +265,7 @@ def starter_ing_details(request, pk):
 
 def starter_step_details(request, pk):
     """
-    Displays Step Fields After Being Added
+    Displays Step Fields for updating
     """
     starter_step = get_object_or_404(StarterMethod, id=pk)
     context = {
@@ -309,7 +309,7 @@ def add_starter_ing(request):
 
 def add_starter_step(request):
     """
-    Renders The Form Add Extra Ingredients
+    Renders The Form Add Extra Step
     """
     form = StarterMethodForm()
     context = {

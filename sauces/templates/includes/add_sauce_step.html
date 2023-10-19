@@ -2,7 +2,7 @@
     {% csrf_token %}
     {{ form|crispy }}
     <div class="btn-edit-view pb-2">
-        {% if sauce_ingredient %}
+        {% if sauce_step %}
             <button type="submit" hx-post="{% url 'update_sauce_step' sauce_step.id %}"
                 class="btn btn-submit mt-2">
                 Submit

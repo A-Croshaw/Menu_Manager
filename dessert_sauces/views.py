@@ -192,7 +192,7 @@ def update_dessert_sauce_step(request, pk):
 
 def edit_dessert_sauce(request, pk):
     """
-    Updates Ingredient Fields
+    Updates Dessert Sauce Fields
     """
     dessert_sauce = DessertSauce.objects.get(id=pk)
     form = DessertSauceForm(request.POST or None, instance=dessert_sauce)
@@ -268,7 +268,7 @@ class DessertSauceDelete(DeleteView):
 
 def dessert_sauce_ing_details(request, pk):
     """
-    Displays Ingredient Fields After Being Added
+    Displays Ingredient Fields for updating
     """
     dessert_sauce_ingredient = get_object_or_404(
         DessertSauceIngredients, id=pk)
@@ -280,7 +280,7 @@ def dessert_sauce_ing_details(request, pk):
 
 def dessert_sauce_step_details(request, pk):
     """
-    Displays Step Fields After Being Added
+    Displays Step Fields for updating
     """
     dessert_sauce_step = get_object_or_404(DessertSauceMethod, id=pk)
     context = {
@@ -303,7 +303,7 @@ def dessert_sauce_ing_detail_view(request, pk):
 
 def dessert_sauce_step_detail_view(request, pk):
     """
-    Displays Ingredient Fields After Being Added
+    Displays Dessert Sauce Fields After Being Added
     """
     dessert_sauce_step = get_object_or_404(DessertSauceMethod, id=pk)
     context = {
@@ -326,7 +326,7 @@ def add_dessert_sauce_ing(request):
 
 def add_dessert_sauce_step(request):
     """
-    Renders The Form Add Extra Ingredients
+    Renders The Form Add Extra Step
     """
     form = DessertSauceMethodForm()
     context = {

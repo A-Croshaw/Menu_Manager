@@ -160,7 +160,7 @@ def update_sauce_ing(request, pk):
 
 def update_sauce_step(request, pk):
     """
-    Updates Ingredient Fields
+    Updates step Fields
     """
     sauce_step = SauceMethod.objects.get(id=pk)
     form = SauceMethodForm(request.POST or None, instance=sauce_step)
@@ -176,12 +176,12 @@ def update_sauce_step(request, pk):
         "sauce_step": sauce_step
     }
 
-    return render(request, "includes/add_sauce_ing.html", context)
+    return render(request, "includes/add_sauce_step.html", context)
 
 
 def edit_sauce(request, pk):
     """
-    Updates Ingredient Fields
+    Updates Recipie Fields
     """
     sauce = Sauce.objects.get(id=pk)
     form = SauceForm(request.POST or None, instance=sauce)
@@ -254,7 +254,7 @@ class SauceDelete(DeleteView):
 
 def sauce_ing_details(request, pk):
     """
-    Displays Ingredient Fields After Being Added
+    Displays Ingredient Fields for updating
     """
     sauce_ingredient = get_object_or_404(SauceIngredients, id=pk)
     context = {
@@ -265,7 +265,7 @@ def sauce_ing_details(request, pk):
 
 def sauce_step_details(request, pk):
     """
-    Displays Step Fields After Being Added
+    Displays Step Fields for updating
     """
     sauce_step = get_object_or_404(SauceMethod, id=pk)
     context = {
@@ -287,7 +287,7 @@ def sauce_ing_detail_view(request, pk):
 
 def sauce_step_detail_view(request, pk):
     """
-    Displays Ingredient Fields After Being Added
+    Displays Step Fields After Being Added
     """
     sauce_step = get_object_or_404(SauceMethod, id=pk)
     context = {
@@ -309,7 +309,7 @@ def add_sauce_ing(request):
 
 def add_sauce_step(request):
     """
-    Renders The Form Add Extra Ingredients
+    Renders The Form Add Extra Steps
     """
     form = SauceMethodForm()
     context = {

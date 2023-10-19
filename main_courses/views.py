@@ -173,7 +173,7 @@ def update_main_step(request, pk):
         "main_step": main_step
     }
 
-    return render(request, "includes/add_main_ing.html", context)
+    return render(request, "includes/add_main_step.html", context)
 
 
 def edit_main(request, pk):
@@ -251,7 +251,7 @@ class MainDelete(DeleteView):
 
 def main_ing_details(request, pk):
     """
-    Displays Ingredient Fields After Being Added
+    Displays Ingredient Fields for updating
     """
     main_ingredient = get_object_or_404(MainIngredients, id=pk)
     context = {
@@ -262,7 +262,7 @@ def main_ing_details(request, pk):
 
 def main_step_details(request, pk):
     """
-    Displays Step Fields After Being Added
+    Displays Step Fields for updating
     """
     main_step = get_object_or_404(MainMethod, id=pk)
     context = {
@@ -284,7 +284,7 @@ def main_ing_detail_view(request, pk):
 
 def main_step_detail_view(request, pk):
     """
-    Displays Ingredient Fields After Being Added
+    Displays Step Fields After Being Added
     """
     main_step = get_object_or_404(MainMethod, id=pk)
     context = {
@@ -306,7 +306,7 @@ def add_main_ing(request):
 
 def add_main_step(request):
     """
-    Renders The Form Add Extra Ingredients
+    Renders The Form Add Extra Steps
     """
     form = MainMethodForm()
     context = {
