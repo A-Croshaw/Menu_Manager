@@ -50,13 +50,14 @@ INSTALLED_APPS = [
     # Apps
     'menu',
     'home',
-    'desserts',
-    'main_courses',
-    'starters',
     'products',
+    'starters',
+    'main_courses',
     'sides',
     'sauces',
+    'desserts',
     'dessert_sauces',
+    'dessert_dishes',
 
     # Other
     'crispy_forms',

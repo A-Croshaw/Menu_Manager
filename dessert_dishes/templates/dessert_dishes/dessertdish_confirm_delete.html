@@ -1,0 +1,22 @@
+{% extends "base.html" %} 
+{% load static %}
+
+{% block title %}Delete Dessert Dish {{object.dessert_dish_name}}{% endblock %} 
+
+{% block content %}
+<div class="container mt-4 pb-4 bg-fade-details">
+    <div class="d-flex justify-content-center mb-2 pt-2">
+        <h1 >Confirm Dessert Dish Deletion</h1>
+    </div>
+    <div class="d-flex justify-content-center pt-4">
+        <form method="post">
+            {% csrf_token %}
+            <p class="view-txt">Are you sure you want to delete "{{object.dessert_dish_name}}"?</p>
+            <div class="btn-edit-view mt-5">
+                <input type="submit" value="Confirm" class="btn btn-submit">
+                <a href="{% url 'dessert_dishes' %}" class="btn btn-cancel w-25">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

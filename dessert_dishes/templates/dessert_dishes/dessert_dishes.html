@@ -1,0 +1,27 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block title %}Dessert Dishes{% endblock %}
+
+{% block content %}
+<section>
+    <div class="container mt-4 pb-4 bg-fade">
+        <h1 class="text-center p-2 d-block">
+            Dessert Dishes
+        </h1>
+        <div class="container d-flex flex-row flex-wrap justify-content-center">
+            {% for dessert_dish in dessert_dishes %} 
+            <a href="{% url 'dessert_dish_view' dessert_dish.id %}" class="card-link" aria-label="Click to view {{dessert_dish.dessert_dish_name}}">
+                <div class="card m-2" style="width: 18rem;">
+                    <div class="card-body">
+                        <h2 class="card-name">{{dessert_dish.dessert_dish_name}}</h2>
+                        <h3 class="card-type">{{dessert_dish.dessert_dish_type}}</h3>
+                        <p class="card-desc">{{dessert_dish.dessert_dish_description|truncatechars:100}}</p>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+</section>
+{% endblock %}

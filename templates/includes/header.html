@@ -133,6 +133,8 @@
                   active-link active
                   {% elif url_name == 'add_dessert' %}
                   active-link active
+                  {% elif url_name == 'dessert_dishes' %}
+                  active-link active
                   {% endif %}
               dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
               Desserts
@@ -140,8 +142,8 @@
             <ul class="dropdown-menu dropdown-color">
               <li><a class="dropdown-item nav-txt" href="{% url 'desserts' %}">View Recipes</a></li>
               <li><a class="dropdown-item nav-txt" href="{% url 'add_dessert' %}">Add Recipe</a></li>
-              <li><a class="dropdown-item nav-txt" href="#">View Dishes</a></li>
-              <li><a class="dropdown-item nav-txt" href="#">Add Dish</a></li>
+              <li><a class="dropdown-item nav-txt" href="{% url 'dessert_dishes' %}">View Dishes</a></li>
+              <li><a class="dropdown-item nav-txt" href="{% url 'add_dessert_dish' %}">Add Dish</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -165,7 +167,6 @@
             <ul class="dropdown-menu dropdown-color">
               <li><a class="dropdown-item nav-txt" href="{% url 'dessert_sauces' %}">View Recipes</a></li>
               <li><a class="dropdown-item nav-txt" href="{% url 'add_dessert_sauce' %}">Add Recipe</a></li>
-
             </ul>
           </li>
           {% if user.is_superuser %}

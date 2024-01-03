@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section>
+    <div class="container mt-4 pb-4 bg-fade-details">
+        <div class="detail-container mb-2 pt-2 justify-content-center">
+            <h1 class="view-headers">{{dessert_dish.dessert_dish_name|title}}</h1>
+        </div>
+        <div class="detail-container justify-content-center">
+            <div class="description col p-3 view-border">
+                <div class="detail-container justify-content-center">
+                    <form action="." method="POST" enctype="multipart/form-data" class="edit-form">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="btn-edit-view">
+                            <button type="submit" class="btn btn-submit mt-2" aria-label="Click to submit">
+                                Submit
+                            </button> 
+                            <a href="{% url 'dessert_dish_view' dessert_dish.id %}" class="btn btn-cancel mt-2" aria-label="Click to Cancel">
+                                Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="detail-container justify-content-center">
+            <div class="ingredients col p-3 view-border">
+
+            </div>
+            <div class="p-3 method col view-border">
+                <h2 class="view-headers">Elements</h2>
+                {% for dessert_dish_element in dessert_dish_element %}
+                {% include "includes/dessert_dish_element_detail_view.html" %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
