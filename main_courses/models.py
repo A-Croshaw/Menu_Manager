@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 
 # Choice Fields
 TYPE = (
-    ("cold_main", "Cold_main"),
-    ("hot_main", "Hot main"),
+    ("Cold Main", "Cold_main"),
+    ("Hot Main", "Hot main"),
     )
 
 Meat_TYPE = (

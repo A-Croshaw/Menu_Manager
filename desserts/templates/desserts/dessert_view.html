@@ -11,7 +11,7 @@
                 <h2 class="view-headers">Details</h2>
                 <p class="detail-txt">Recipe for a {{dessert.dessert_type}}</p>
                 <p class="detail-txt">Recipe With {{dessert.dessert_meat_type}}</p>
-                <div class="btn-view">
+                <div class="btn-view pt-3">
                     <a href="{% url 'edit_dessert' pk=dessert.id%}" class="btn btn-edit" aria-label="Click to view ">
                         <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
                     </a>
@@ -28,7 +28,7 @@
                 {% for dessert_ingredient in dessert_ingredients %}
                 {% include "includes/dessert_ing_detail_view.html" %}
                 {% endfor %}
-                <div class="btn-view">
+                <div class="btn-view pt-3">
                     <a href="{% url 'dessert_ingredients' pk=dessert.id%}" class="btn btn-edit" aria-label="Click to edit ingredients ">
                         <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
                     </a>
@@ -39,7 +39,7 @@
                 {% for dessert_step in dessert_step %}
                 {% include "includes/dessert_step_detail_view.html" %}
                 {% endfor %}
-                <div class="btn-view">
+                <div class="btn-view pt-3">
                     <a href="{% url 'dessert_method' pk=dessert.id%}" class="btn btn-edit" aria-label="Click to edit method ">
                         <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
                     </a>

@@ -11,7 +11,8 @@
                 <h2 class="view-headers">Details</h2>
                 <p class="detail-txt">Recipe for a {{dessert_sauce.dessert_sauce_type}}</p>
                 <p class="detail-txt">Recipe With {{dessert_sauce.dessert_sauce_meat_type}}</p>
-                <div class="btn-view">
+                <div class="btn-view pt-3">
+                    <div class="btn-view ">
                     <a href="{% url 'edit_dessert_sauce' pk=dessert_sauce.id%}" class="btn btn-edit" aria-label="Click to view ">
                         <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
                     </a>
@@ -28,7 +29,8 @@
                 {% for dessert_sauce_ingredient in dessert_sauce_ingredients %}
                 {% include "includes/dessert_sauce_ing_detail_view.html" %}
                 {% endfor %}
-                <div class="btn-view">
+                <div class="btn-view pt-3">
+                    <div class="btn-view ">
                     <a href="{% url 'dessert_sauce_ingredients' pk=dessert_sauce.id%}" class="btn btn-edit" aria-label="Click to edit ingredients ">
                         <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
                     </a>
@@ -39,7 +41,8 @@
                 {% for dessert_sauce_step in dessert_sauce_step %}
                 {% include "includes/dessert_sauce_step_detail_view.html" %}
                 {% endfor %}
-                <div class="btn-view">
+                <div class="btn-view pt-3">
+                    <div class="btn-view ">
                     <a href="{% url 'dessert_sauce_method' pk=dessert_sauce.id%}" class="btn btn-edit" aria-label="Click to edit method ">
                         <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
                     </a>

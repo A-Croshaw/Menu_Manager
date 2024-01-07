@@ -7,8 +7,8 @@ from django.contrib.auth.models import User
 
 # Choice Fields
 TYPE = (
-    ("cold_main", "Cold Main"),
-    ("hot_main", "Hot Main"),
+    ("Cold Main", "Cold Main"),
+    ("Hot Main", "Hot Main"),
     )
 
 

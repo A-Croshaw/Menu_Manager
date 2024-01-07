@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 
 # Choice Fields
 TYPE = (
-    ("cold_sauce", "Cold Sauce"),
-    ("hot_sauce", "Hot Sauce"),
+    ("Cold Sauce", "Cold Sauce"),
+    ("Hot Sauce", "Hot Sauce"),
     )
 
 COURSE = (
