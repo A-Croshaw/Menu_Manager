@@ -56,7 +56,7 @@ class DessertDishSauce(models.Model):
         on_delete=models.
         SET_NULL,
         null=True,
-        related_name="dessertsauce"
+        related_name="dessert_sauce"
         )
         
     def __str__(self):
@@ -76,7 +76,7 @@ class DessertDishElement(models.Model):
         on_delete=models.
         SET_NULL,
         null=True,
-        related_name="dessertelement"
+        related_name="dessert_element"
         )
 
     def __str__(self):

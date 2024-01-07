@@ -53,7 +53,7 @@ def add_dessert_dish(request):
 
 def dessert_dish_view(request, pk):
     """
-    View full Dessert Recipie
+    View full Dessert dish
     """
     dessert_dish = DessertDish.objects.get(id=pk)
     dessert_dish_sauce = DessertDishSauce.objects.filter(dessert_dish=dessert_dish)
@@ -70,7 +70,7 @@ def dessert_dish_view(request, pk):
 
 def edit_dessert_dish(request, pk):
     """
-    Updates Recipe Fields
+    Updates dish Fields
     """
     dessert_dish = DessertDish.objects.get(id=pk)
     form = DessertDishForm(request.POST or None, instance=dessert_dish)
@@ -296,7 +296,7 @@ def add_dessert_dish_sauce(request):
 
 def delete_dessert_dish_sauce(request, pk):
     """
-    Deletes Eauce Field
+    Deletes sauce Field
     """
     dessert_dish_sauce = get_object_or_404(DessertDishSauce, id=pk)
 

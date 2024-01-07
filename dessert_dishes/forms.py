@@ -21,7 +21,7 @@ class DessertDishSauceForm(forms.ModelForm):
 
 class DessertDishForm(forms.ModelForm):
     """
-    Dessert Sauce Setup Form
+    Dessert Dish Form
     """
     class Meta:
         """
@@ -44,7 +44,7 @@ class DessertDishForm(forms.ModelForm):
 
 class DessertDishElementForm(forms.ModelForm):
     """
-    Dessert Sauce Method form
+    Dessert Element form
     """
     class Meta:
         """
