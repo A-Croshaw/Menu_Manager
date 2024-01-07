@@ -21,12 +21,6 @@ Meat_TYPE = (
 UNITS = (
     ('gr', 'gr'),
     ('kg', 'Kg'),
-    ('oz', 'Oz'),
-    ('lb', 'Lb'),
-    ('tsp', 'tsp'),
-    ('Tbsp', 'Tbsp'),
-    ('floz', 'floz'),
-    ('pint', 'Pint'),
     ('ml', 'ml'),
     ('lt', 'lt'),
     )
@@ -76,7 +70,7 @@ class StarterIngredients(models.Model):
         on_delete=models.
         SET_NULL,
         null=True,
-        related_name="startering"
+        related_name="starter_ing"
         )
     starter_quantity = models.DecimalField(
         max_digits=10,

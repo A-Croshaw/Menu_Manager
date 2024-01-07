@@ -12,12 +12,6 @@ TYPE = (
 UNITS = (
     ('gr', 'gr'),
     ('Kg', 'Kg'),
-    ('Oz', 'Oz'),
-    ('lb', 'lSb'),
-    ('tsp', 'tsp'),
-    ('Tbsp', 'Tbsp'),
-    ('floz', 'floz'),
-    ('Pint', 'Pint'),
     ('ml', 'ml'),
     ('lt', 'lt'),
     )
@@ -25,7 +19,7 @@ UNITS = (
 
 class DessertSauce(models.Model):
     """
-    A Model To Create Dessert_sauce Recipes
+    A Model To Create Dessert Sauce Recipes
     """
     user = models.ForeignKey(
         User,
@@ -44,7 +38,7 @@ class DessertSauce(models.Model):
         blank=False
         )
     dessert_sauce_type = models.CharField(
-        max_length=50, choices=TYPE, default="old Dessert_sauce"
+        max_length=50, choices=TYPE, default="Cold Dessert Sauce"
     )
 
     class Meta:
@@ -67,7 +61,7 @@ class DessertSauceIngredients(models.Model):
         on_delete=models.
         SET_NULL,
         null=True,
-        related_name="dessert_sauceing"
+        related_name="dessert_sauce_ing"
         )
     dessert_sauce_quantity = models.DecimalField(
         max_digits=10,

@@ -12,12 +12,6 @@ TYPE = (
 UNITS = (
     ('gr', 'gr'),
     ('kg', 'Kg'),
-    ('oz', 'Oz'),
-    ('lb', 'Lb'),
-    ('tsp', 'tsp'),
-    ('Tbsp', 'Tbsp'),
-    ('floz', 'floz'),
-    ('pint', 'Pint'),
     ('ml', 'ml'),
     ('lt', 'lt'),
     )
@@ -64,7 +58,7 @@ class SideIngredients(models.Model):
         on_delete=models.
         SET_NULL,
         null=True,
-        related_name="sideing"
+        related_name="side_ing"
         )
     side_quantity = models.DecimalField(
         max_digits=10,

@@ -12,12 +12,6 @@ TYPE = (
 UNITS = (
     ('gr', 'gr'),
     ('Kg', 'Kg'),
-    ('Oz', 'Oz'),
-    ('lb', 'lSb'),
-    ('tsp', 'tsp'),
-    ('Tbsp', 'Tbsp'),
-    ('floz', 'floz'),
-    ('Pint', 'Pint'),
     ('ml', 'ml'),
     ('lt', 'lt'),
     )
@@ -44,7 +38,7 @@ class Dessert(models.Model):
         blank=False
         )
     dessert_type = models.CharField(
-        max_length=50, choices=TYPE, default="old Dessert"
+        max_length=50, choices=TYPE, default="Cold Dessert"
     )
 
     class Meta:
@@ -67,7 +61,7 @@ class DessertIngredients(models.Model):
         on_delete=models.
         SET_NULL,
         null=True,
-        related_name="desserting"
+        related_name="dessert_ing"
         )
     dessert_quantity = models.DecimalField(
         max_digits=10,

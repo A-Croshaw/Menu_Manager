@@ -5,20 +5,19 @@ from django.contrib.auth.models import User
 
 # Choice Fields
 TYPE = (
-    ("Cold Sauce", "Cold Sauce"),
-    ("Hot Sauce", "Hot Sauce"),
+    ("cold_sauce", "Cold Sauce"),
+    ("hot_sauce", "Hot Sauce"),
     )
 
+COURSE = (
+    ("main", "Main"),
+    ("starter", "Starter"),
+    ("side", "Side"),
+)
 
 UNITS = (
     ('gr', 'gr'),
     ('kg', 'Kg'),
-    ('oz', 'Oz'),
-    ('lb', 'Lb'),
-    ('tsp', 'tsp'),
-    ('Tbsp', 'Tbsp'),
-    ('floz', 'floz'),
-    ('pint', 'Pint'),
     ('ml', 'ml'),
     ('lt', 'lt'),
     )
@@ -45,9 +44,11 @@ class Sauce(models.Model):
         blank=False
     )
     sauce_type = models.CharField(
-        max_length=50, choices=TYPE, default="soup"
+        max_length=50, choices=TYPE, default="Cold Sauce"
     )
-
+    sauce_course = models.CharField(
+        max_length=50, choices=COURSE, default="Side"
+    )
     def __str__(self):
         return str(self.sauce_name)
 
@@ -65,7 +66,7 @@ class SauceIngredients(models.Model):
         on_delete=models.
         SET_NULL,
         null=True,
-        related_name="sauceing"
+        related_name="sauce_ing"
         )
     sauce_quantity = models.DecimalField(
         max_digits=10,

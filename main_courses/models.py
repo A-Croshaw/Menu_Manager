@@ -20,12 +20,6 @@ Meat_TYPE = (
 UNITS = (
     ('gr', 'gr'),
     ('kg', 'Kg'),
-    ('oz', 'Oz'),
-    ('lb', 'Lb'),
-    ('tsp', 'tsp'),
-    ('Tbsp', 'Tbsp'),
-    ('floz', 'floz'),
-    ('pint', 'Pint'),
     ('ml', 'ml'),
     ('lt', 'lt'),
     )
@@ -52,7 +46,7 @@ class Main(models.Model):
         blank=False
         )
     main_type = models.CharField(
-        max_length=50, choices=TYPE, default="Cold_main"
+        max_length=50, choices=TYPE, default="Cold Main"
     )
     main_meat_type = models.CharField(
         max_length=50, choices=Meat_TYPE, default="chicken"
@@ -78,7 +72,7 @@ class MainIngredients(models.Model):
         on_delete=models.
         SET_NULL,
         null=True,
-        related_name="maining"
+        related_name="main_ing"
         )
     main_quantity = models.DecimalField(
         max_digits=10,

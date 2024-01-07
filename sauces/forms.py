@@ -35,6 +35,7 @@ class SauceForm(forms.ModelForm):
         fields = ("sauce_name",
                   "sauce_description",
                   "sauce_type",
+                  "sauce_course",
                   )
         widget = {
             "sauce_description": forms.Textarea(attrs={"rows": 5}),
@@ -43,6 +44,7 @@ class SauceForm(forms.ModelForm):
             "sauce_name": "Name",
             "sauce_description": "Description",
             "sauce_type": "Type",
+            "sauce_course": "Sauce Course",
         }
 
 
