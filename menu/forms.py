@@ -10,14 +10,12 @@ class StarterDishItemForm(forms.ModelForm):
         """
         Form Fields
         """
-        model = MainIngredients
+        model = StarterDishItem
         fields = (
-            'menu',
             'starter_dish',
             'starter_price',
                   )
         labels = {
-            'menu': 'Menu',
             'starter_dish': 'Starter Dish',
             'starter_price': 'Starter Price',
         }
@@ -31,14 +29,12 @@ class MainDishItemForm(forms.ModelForm):
         """
         Form Fields
         """
-        model = MainIngredients
+        model = MainDishItem
         fields = (
-            'menu',
             'main_dish',
             'main_price',
                   )
         labels = {
-            'menu': 'Menu',
             'main_dish': 'Main Dish',
             'main_price': 'Main Price',
         }
@@ -52,14 +48,12 @@ class DessertDishItemForm(forms.ModelForm):
         """
         Form Fields
         """
-        model = MainIngredients
+        model = DessertDishItem
         fields = (
-            'menu',
             'dessert_dish',
             'dessert_price',
                   )
         labels = {
-            'menu': 'Menu',
             'dessert_dish': 'Dessert Dish',
             'dessert_price': 'Dessert Price',
         }
@@ -73,15 +67,13 @@ class SideItemForm(forms.ModelForm):
         """
         Form Fields
         """
-        model = MainIngredients
+        model = SideItem
         fields = (
-            'menu',
-            'side_dish',
+            'side',
             'side_price',
                   )
         labels = {
-            'menu': 'Menu',
-            'side_dish': 'Side Dish',
+            'side': 'Side',
             'side_price': 'Side Price',
         }
 
@@ -94,19 +86,12 @@ class MenuForm(forms.ModelForm):
         """
         Form Fields
         """
-        model = Main
+        model = Menu
         fields = ("title",
-                  "menu_date",
-                  "date_updated",
                   "menu_type",
                   )
-        widget = {
-            "main_description": forms.Textarea(attrs={"rows": 5}),
-        }
         labels = {
             "title": "Title",
-            "menu_date": "Menu Date",
-            "date_updated": "Date Updated",
             "menu_type": "Menu Type",
         }
 
@@ -120,7 +105,7 @@ class AllegensForm(forms.ModelForm):
         Form Fields
         """
 
-        model = MainMethod
+        model = Allegens
         fields = ("allegens",
                   )
         labels = {

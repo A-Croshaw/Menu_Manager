@@ -2,30 +2,30 @@ from django.db import models
 from django.contrib.auth.models import User
 from starter_dishes.models import StarterDish
 from main_dishes.models import MainDish
-from dessert_dishes.models import DesertDish
+from dessert_dishes.models import DessertDish
 from sides.models import Side
 
 # Choice fields
 ALLEGENS = (
-    ('gluten': 'Gluten'),
-    ('eggs': 'Eggs'),
-    ('fish': 'Fish'),
-    ('peanuts': 'Peanuts'),
-    ('soya': 'Soya'),
-    ('milk': 'Milk'),
-    ('nuts': 'Nuts'),
-    ('mustard': 'Mustard'),
-    ('sesame':'Sesame'),
-    ('sulphites': 'Sulphites'),
-    ('lupin': 'Lupin '),
-    ('molluscs': 'Molluscs')
+    ('gluten', 'Gluten'),
+    ('eggs', 'Eggs'),
+    ('fish', 'Fish'),
+    ('peanuts', 'Peanuts'),
+    ('soya', 'Soya'),
+    ('milk', 'Milk'),
+    ('nuts', 'Nuts'),
+    ('mustard', 'Mustard'),
+    ('sesame','Sesame'),
+    ('sulphites', 'Sulphites'),
+    ('lupin', 'Lupin '),
+    ('molluscs', 'Molluscs')
     )
 
 
 MENU_TYPE = (
-    ('à la carte': 'À la carte'),
-    ('early bird': 'Early Bird'),
-    ('specials': 'Specials'),
+    ('à la carte', 'À la carte'),
+    ('early bird', 'Early Bird'),
+    ('specials', 'Specials'),
 )
 
 
@@ -34,8 +34,8 @@ class Menu(models.Model):
     """ Model to create a menu """
     user = models.ForeignKey(User,related_name="menu_user",on_delete=models.SET_NULL,null=True,)
     title = models.CharField(max_length=25)
-    menu_date = models.DateTimeField(auto_now_add=True)
-    date_updated = models.DateTimeField(auto_now=True)
+    menu_date = models.DateField(auto_now_add=True)
+    date_updated = models.DateField(auto_now=True)
     menu_type = models.CharField(max_length=25, choices=MENU_TYPE, default="Specials")
 
     class Meta:
@@ -43,7 +43,7 @@ class Menu(models.Model):
         ordering = ['title']
 
     def __str__(self):
-        return str(self.name)
+        return str(self.title)
 
 
 class StarterDishItem(models.Model):
@@ -57,7 +57,7 @@ class StarterDishItem(models.Model):
         ordering = ['starter_dish']
 
     def __str__(self):
-        return str(self.name)
+        return str(self.starter_dish)
 
 
 class MainDishItem(models.Model):
@@ -71,7 +71,7 @@ class MainDishItem(models.Model):
         ordering = ['main_dish']
 
     def __str__(self):
-        return str(self.name)
+        return str(self.main_dish)
 
         
 class DessertDishItem(models.Model):
@@ -85,7 +85,7 @@ class DessertDishItem(models.Model):
         ordering = ['dessert_dish']
 
     def __str__(self):
-        return str(self.name)
+        return str(self.dessert_dish)
 
 
 class SideItem(models.Model):
@@ -101,7 +101,7 @@ class SideItem(models.Model):
         ordering = ['side']
 
     def __str__(self):
-        return str(self.name)
+        return str(self.side)
 
 
 class Allegens(models.Model):

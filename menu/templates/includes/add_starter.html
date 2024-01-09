@@ -1,0 +1,16 @@
+<form method="POST" hx-target="this" hx-swap="outerHTML" hx-post="." id="starter_dish_item-form" class="edit-form">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <div class="btn-edit-view pb-2">
+        {% if starter_dish_item %}
+            <button type="submit" hx-post=""
+                class="btn btn-submit mt-2">
+                Submit
+            </button>
+        {% else %}
+            <button type="submit" id="starter_dish_item-form" class="btn btn-submit mt-2">
+                Add
+            </button>
+        {% endif %}
+    </div>
+</form>

@@ -1,0 +1,24 @@
+{% load static %}
+<div hx-target="this" >
+    <div class="detail-container row">
+        <div class="col-12">
+            <h2 class="menu-dish-header">{{ main_dish_item }}</h2>
+        </div>
+        <div class="col-8">
+            <p class="menu-dish-txt">{{ main_dish_item.main_dish.main_dish_description }}</p>
+        </div>
+        <div class="col-2">
+            <p class="menu-dish-txt">{{ main_dish_item.main_price }}</p>
+        </div>
+        <div class="btn-view col-2">
+            <button hx-get="" hx-ta="outerHTML"
+                class="btn btn-edit">
+                    <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
+            </button>
+            <button hx-post="" hx-swap="outerHTML swap:1s"
+                class="btn btn-delete">
+                    <img src="{% static '/icons/delete_icon.svg' %}" alt="Delete Icon" class="delete">
+            </button>
+        </div>
+    </div>
+</div>

@@ -19,9 +19,31 @@
               href="{% url 'home' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-txt {% if url_name == 'menu' %}active-link{% endif %}" aria-current="page" href="">
-              Menus
+            <a class="nav-link nav-txt {% if url_name == 'menu' %}active-link{% endif %}" aria-current="page" href="{% url 'menus' %}">
             </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link nav-txt 
+                  {% if url_name == 'menus' %}
+                  active-link active
+                  {% elif url_name == 'menu_view' %}
+                  active-link active
+                  {% elif url_name == '' %}
+                  active-link active
+                  {% elif url_name == '' %}
+                  active-link active
+                  {% elif url_name == 'edit_menu' %}
+                  active-link active
+                  {% elif url_name == 'add_menu' %}
+                  active-link active
+                  {% endif %} 
+                  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                Menus
+            </a>
+            <ul class="dropdown-menu dropdown-color">
+              <li><a class="dropdown-item nav-txt" href="{% url 'menus' %}">View Menu's</a></li>
+              <li><a class="dropdown-item nav-txt" href="{% url 'add_menu' %}">Add Menu</a></li>
+            </ul>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link nav-txt 

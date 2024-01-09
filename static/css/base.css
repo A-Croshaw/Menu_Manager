@@ -376,6 +376,10 @@ a.card-link:hover{
     margin: 0;
 }
 
+menu-header
+menu-subheader
+menu-dish-header
+menu-dish-txt
 /* Media Queries */
 
 @media screen and (min-width: 400px){

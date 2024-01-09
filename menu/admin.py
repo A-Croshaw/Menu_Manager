@@ -51,9 +51,9 @@ class MenuAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Menu, MenuAdmin)
-admin.site.register(StarterDishItemAdmin)
-admin.site.register(MainDishItemAdmin)
-admin.site.register(DessertDishItemAdmin)
-admin.site.register(SideItemAdmin)
-admin.site.register(AllegensAdmin)
+admin.site.register(StarterDishItem)
+admin.site.register(MainDishItem)
+admin.site.register(DessertDishItem)
+admin.site.register(SideItem)
+admin.site.register(Allegens)
 
