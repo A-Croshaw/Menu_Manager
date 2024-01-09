@@ -98,6 +98,7 @@ class MenuForm(forms.ModelForm):
         fields = ("title",
                   "menu_date",
                   "date_updated",
+                  "menu_type",
                   )
         widget = {
             "main_description": forms.Textarea(attrs={"rows": 5}),
@@ -106,6 +107,7 @@ class MenuForm(forms.ModelForm):
             "title": "Title",
             "menu_date": "Menu Date",
             "date_updated": "Date Updated",
+            "menu_type": "Menu Type",
         }
 
 

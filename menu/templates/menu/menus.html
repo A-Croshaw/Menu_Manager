@@ -1,0 +1,31 @@
+{% extends "base.html" %} 
+{% load static %}
+{% block title %}Menu's{% endblock %}
+
+{% block content %}
+<section>
+    <div class="container mt-4 pb-4 bg-fade">
+        <h1 class="text-center p-2 d-block">
+            Menu's
+        </h1>
+        <div class="container d-flex flex-row flex-wrap justify-content-center">
+            {% for menu in menu %} 
+            <a href="" class="card-link" aria-label="Click to view {{menus.menu_title}} {{menus.menu_date}}">
+                <div class="card m-2" style="width: 18rem;">
+                    <div class="card-body">
+                        <h2 class="card-name">{{menu.menu_title}}</h2>
+                        <h3 class="card-type">{{menu.menu_menu_date}}</h3>
+                        <p class="card-desc">{{menu.menu_type|truncatechars:100}}</p>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+</section>
+{% endblock %}
+
+<!-- 
+    {% url 'menu_view' menu.id %}
+-->

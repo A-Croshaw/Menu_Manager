@@ -6,21 +6,37 @@ from dessert_dishes.models import DesertDish
 from sides.models import Side
 
 # Choice fields
-ITEM_TYPES = (
-    ("starter", "Starter"),
-    ("main", "Main"),
-    ("desert", "Desert"),
-    ("drink", "Drink"),
-    ("side", "Side")
+ALLEGENS = (
+    ('gluten': 'Gluten'),
+    ('eggs': 'Eggs'),
+    ('fish': 'Fish'),
+    ('peanuts': 'Peanuts'),
+    ('soya': 'Soya'),
+    ('milk': 'Milk'),
+    ('nuts': 'Nuts'),
+    ('mustard': 'Mustard'),
+    ('sesame':'Sesame'),
+    ('sulphites': 'Sulphites'),
+    ('lupin': 'Lupin '),
+    ('molluscs': 'Molluscs')
+    )
+
+
+MENU_TYPE = (
+    ('à la carte': 'À la carte'),
+    ('early bird': 'Early Bird'),
+    ('specials': 'Specials'),
 )
 
 
+# classes
 class Menu(models.Model):
     """ Model to create a menu """
     user = models.ForeignKey(User,related_name="menu_user",on_delete=models.SET_NULL,null=True,)
     title = models.CharField(max_length=25)
     menu_date = models.DateTimeField(auto_now_add=True)
-    date_updated= models.DateTimeField(auto_now=True)
+    date_updated = models.DateTimeField(auto_now=True)
+    menu_type = models.CharField(max_length=25, choices=MENU_TYPE, default="Specials")
 
     class Meta:
         """ Order by title """
@@ -90,7 +106,7 @@ class SideItem(models.Model):
 
 class Allegens(models.Model):
     menu = models.ForeignKey(Menu,on_delete=models.CASCADE)
-    allegens = models.CharField(max_length=50, choices=ALLEGENS, default="Gluten")
+    allegens = models.CharField(max_length=25, choices=ALLEGENS, default="Gluten")
 
     def __str__(self):
         return str(self.allegens)

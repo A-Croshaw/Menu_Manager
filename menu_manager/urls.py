@@ -29,6 +29,7 @@ urlpatterns = [
     path('desserts/', include('desserts.urls')),
     path('dessert_sauces/', include('dessert_sauces.urls')),
     path('dessert_dishes/', include('dessert_dishes.urls')),
+    path('menu/', include('menu.urls')),
     path('djrichtextfield/', include('djrichtextfield.urls')),
     path('accounts/', include('allauth.urls')),
     ]
