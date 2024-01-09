@@ -12,7 +12,6 @@ TYPE = (
 COURSE = (
     ("main", "Main"),
     ("starter", "Starter"),
-    ("side", "Side"),
 )
 
 UNITS = (
