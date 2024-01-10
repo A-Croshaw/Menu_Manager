@@ -3,8 +3,8 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView, DeleteView
 from django.db.models import Q
 from django.contrib import messages
-from .forms import MenuForm, StarterDishItemForm, MainDishItemForm, DessertDishItemForm, SideItemForm, SauceItemForm, AllegensForm
-from .models import Menu, StarterDishItem, MainDishItem, DessertDishItem, SideItem, SauceItem, Allegens
+from .forms import MenuForm, StarterDishItemForm, MainDishItemForm, DessertDishItemForm, SideItemForm, SauceItemForm
+from .models import Menu, StarterDishItem, MainDishItem, DessertDishItem, SideItem, SauceItem
 
 
 class ViewMenus(ListView):
@@ -21,7 +21,7 @@ class ViewMenus(ListView):
         menu_search = self.request.GET.get('q')
         if menu_search:
             menu = self.model.objects.filter(
-                Q(menu_title__icontains=menu_search) |
+                Q(title__icontains=menu_search) |
                 Q(menu_type__icontains=menu_search) |
                 Q(menu_date__icontains=menu_search)
             )
@@ -64,7 +64,6 @@ def menu_view(request, pk):
     dessert_dish_item = DessertDishItem.objects.filter(menu=menu)
     side_item = SideItem.objects.filter(menu=menu)
     sauce_item = SauceItem.objects.filter(menu=menu)
-    allegens = Allegens.objects.filter(menu=menu)
 
     context = {
         "menu": menu,
@@ -73,7 +72,6 @@ def menu_view(request, pk):
         "dessert_dish_item": dessert_dish_item,
         "side_item": side_item,
         "sauce_item": sauce_item,
-        "allegens": allegens,
     }
 
     if menu.menu_type == "specials":

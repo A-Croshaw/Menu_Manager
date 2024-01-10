@@ -7,23 +7,6 @@ from sides.models import Side
 from sauces.models import Sauce
 
 
-# Choice fields
-ALLEGENS = (
-    ('gluten', 'Gluten'),
-    ('eggs', 'Eggs'),
-    ('fish', 'Fish'),
-    ('peanuts', 'Peanuts'),
-    ('soya', 'Soya'),
-    ('milk', 'Milk'),
-    ('nuts', 'Nuts'),
-    ('mustard', 'Mustard'),
-    ('sesame','Sesame'),
-    ('sulphites', 'Sulphites'),
-    ('lupin', 'Lupin '),
-    ('molluscs', 'Molluscs')
-    )
-
-
 MENU_TYPE = (
     ('à la carte', 'À la carte'),
     ('early bird', 'Early Bird'),
@@ -116,11 +99,3 @@ class SauceItem(models.Model):
 
     def __str__(self):
         return str(self.sauce)
-    
-
-class Allegens(models.Model):
-    menu = models.ForeignKey(Menu,on_delete=models.CASCADE)
-    allegens = models.CharField(max_length=25, choices=ALLEGENS, default="Gluten")
-
-    def __str__(self):
-        return str(self.allegens)

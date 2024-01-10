@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Menu, StarterDishItem, MainDishItem, DessertDishItem, SideItem, SauceItem, Allegens
+from .models import Menu, StarterDishItem, MainDishItem, DessertDishItem, SideItem, SauceItem
 
 
 class StarterDishItemAdmin(admin.StackedInline):
@@ -41,21 +41,13 @@ class SauceItemAdmin(admin.StackedInline):
     extra = 0
 
 
-class AllegensAdmin(admin.StackedInline):
-    """
-    Creates Admin For The Method
-    """
-    model = Allegens
-    extra = 0
-
-
 class MenuAdmin(admin.ModelAdmin):
     """
     Creates Admin For The Main Part OF The Recipe And Adds Method
     And Ingredients To an Inline Output and Displays as one Item
     """
     fieldsets = []
-    inlines = [StarterDishItemAdmin, MainDishItemAdmin, DessertDishItemAdmin, SideItemAdmin, SauceItemAdmin, AllegensAdmin]
+    inlines = [StarterDishItemAdmin, MainDishItemAdmin, DessertDishItemAdmin, SideItemAdmin, SauceItemAdmin]
 
 
 admin.site.register(Menu, MenuAdmin)
@@ -64,5 +56,4 @@ admin.site.register(MainDishItem)
 admin.site.register(DessertDishItem)
 admin.site.register(SideItem)
 admin.site.register(SauceItem)
-admin.site.register(Allegens)
 

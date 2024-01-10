@@ -1,5 +1,5 @@
 from django import forms
-from .models import Menu, StarterDishItem, MainDishItem, DessertDishItem, SideItem, Allegens, SauceItem
+from .models import Menu, StarterDishItem, MainDishItem, DessertDishItem, SideItem, SauceItem
 
 
 class StarterDishItemForm(forms.ModelForm):
@@ -114,19 +114,3 @@ class MenuForm(forms.ModelForm):
             "menu_type": "Menu Type",
         }
 
-
-class AllegensForm(forms.ModelForm):
-    """
-    Allegens form
-    """
-    class Meta:
-        """
-        Form Fields
-        """
-
-        model = Allegens
-        fields = ("allegens",
-                  )
-        labels = {
-            "allegens": "Allegens",
-        }

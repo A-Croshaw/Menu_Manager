@@ -7,7 +7,8 @@
       aria-controls="navbarOffcanvasLg">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="offcanvas offcanvas-end canvas-body" tabindex="-1" id="navbarOffcanvasLg" aria-labelledby="navbarOffcanvasLgLabel">
+    <div class="offcanvas offcanvas-end canvas-body" tabindex="-1" id="navbarOffcanvasLg"
+      aria-labelledby="navbarOffcanvasLgLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -19,7 +20,8 @@
               href="{% url 'home' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-txt {% if url_name == 'menu' %}active-link{% endif %}" aria-current="page" href="{% url 'menus' %}">
+            <a class="nav-link nav-txt {% if url_name == 'menu' %}active-link{% endif %}" aria-current="page"
+              href="{% url 'menus' %}">
             </a>
           </li>
           <li class="nav-item dropdown">
@@ -38,10 +40,10 @@
                   active-link active
                   {% endif %} 
                   dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-                Menus
+              Menus
             </a>
             <ul class="dropdown-menu dropdown-color">
-              <li><a class="dropdown-item nav-txt" href="{% url 'menus' %}">View Menu's</a></li>
+              <li><a class="dropdown-item nav-txt" href="{% url 'menus' %}">Menu's</a></li>
               <li><a class="dropdown-item nav-txt" href="{% url 'add_menu' %}">Add Menu</a></li>
             </ul>
           </li>
@@ -64,9 +66,9 @@
               Starters
             </a>
             <ul class="dropdown-menu dropdown-color">
-              <li><a class="dropdown-item nav-txt" href="{% url 'starters' %}">View Recipes</a></li>
+              <li><a class="dropdown-item nav-txt" href="{% url 'starters' %}">Recipes</a></li>
               <li><a class="dropdown-item nav-txt" href="{% url 'add_starter' %}">Add Recipe</a></li>
-              <li><a class="dropdown-item nav-txt" href="{% url 'starter_dishes' %}">View Dishes</a></li>
+              <li><a class="dropdown-item nav-txt" href="{% url 'starter_dishes' %}">Dishes</a></li>
               <li><a class="dropdown-item nav-txt" href="{% url 'add_starter_dish' %}">Add Dish</a></li>
             </ul>
           </li>
@@ -89,9 +91,9 @@
               Mains
             </a>
             <ul class="dropdown-menu dropdown-color">
-              <li><a class="dropdown-item nav-txt" href="{% url 'mains' %}">View Recipes</a></li>
+              <li><a class="dropdown-item nav-txt" href="{% url 'mains' %}">Recipes</a></li>
               <li><a class="dropdown-item nav-txt" href="{% url 'add_main' %}">Add Recipe</a></li>
-              <li><a class="dropdown-item nav-txt" href="{% url 'main_dishes' %}">View Dishes</a></li>
+              <li><a class="dropdown-item nav-txt" href="{% url 'main_dishes' %}">Dishes</a></li>
               <li><a class="dropdown-item nav-txt" href="{% url 'add_main_dish' %}">Add Dish</a></li>
             </ul>
           </li>
@@ -114,7 +116,7 @@
               Sides
             </a>
             <ul class="dropdown-menu dropdown-color">
-              <li><a class="dropdown-item nav-txt" href="{% url 'sides' %}#">View Recipes</a></li>
+              <li><a class="dropdown-item nav-txt" href="{% url 'sides' %}#">Recipes</a></li>
               <li><a class="dropdown-item nav-txt" href="{% url 'add_side' %}">Add Recipe</a></li>
             </ul>
           </li>
@@ -137,7 +139,7 @@
               Sauces
             </a>
             <ul class="dropdown-menu dropdown-color">
-              <li><a class="dropdown-item nav-txt" href="{% url 'sauces' %}#">View Recipes</a></li>
+              <li><a class="dropdown-item nav-txt" href="{% url 'sauces' %}#">Recipes</a></li>
               <li><a class="dropdown-item nav-txt" href="{% url 'add_sauce' %}">Add Recipe</a></li>
             </ul>
           </li>
@@ -157,20 +159,7 @@
                   active-link active
                   {% elif url_name == 'dessert_dishes' %}
                   active-link active
-                  {% endif %}
-              dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-              Desserts
-            </a>
-            <ul class="dropdown-menu dropdown-color">
-              <li><a class="dropdown-item nav-txt" href="{% url 'desserts' %}">View Recipes</a></li>
-              <li><a class="dropdown-item nav-txt" href="{% url 'add_dessert' %}">Add Recipe</a></li>
-              <li><a class="dropdown-item nav-txt" href="{% url 'dessert_dishes' %}">View Dishes</a></li>
-              <li><a class="dropdown-item nav-txt" href="{% url 'add_dessert_dish' %}">Add Dish</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link nav-txt 
-                  {% if url_name == 'dessert_sauces' %}
+                  {% elif url_name == 'dessert_sauces' %}
                   active-link active
                   {% elif url_name == 'dessert_sauce_view' %}
                   active-link active
@@ -184,11 +173,15 @@
                   active-link active
                   {% endif %}
               dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-              Dessert Sauces
+              Desserts
             </a>
             <ul class="dropdown-menu dropdown-color">
-              <li><a class="dropdown-item nav-txt" href="{% url 'dessert_sauces' %}">View Recipes</a></li>
-              <li><a class="dropdown-item nav-txt" href="{% url 'add_dessert_sauce' %}">Add Recipe</a></li>
+              <li><a class="dropdown-item nav-txt" href="{% url 'desserts' %}">Recipes</a></li>
+              <li><a class="dropdown-item nav-txt" href="{% url 'add_dessert' %}">Add Recipe</a></li>
+              <li><a class="dropdown-item nav-txt" href="{% url 'dessert_dishes' %}">Dishes</a></li>
+              <li><a class="dropdown-item nav-txt" href="{% url 'add_dessert_dish' %}">Add Dish</a></li>
+              <li><a class="dropdown-item nav-txt" href="{% url 'dessert_sauces' %}">Sauces</a></li>
+              <li><a class="dropdown-item nav-txt" href="{% url 'add_dessert_sauce' %}">Add Sauce</a></li>
             </ul>
           </li>
           {% if user.is_superuser %}
@@ -205,7 +198,7 @@
               Products
             </a>
             <ul class="dropdown-menu dropdown-color">
-              <li><a class="dropdown-item nav-txt" href="{% url 'products' %}">View Products</a></li>
+              <li><a class="dropdown-item nav-txt" href="{% url 'products' %}">Products</a></li>
               <li><a class="dropdown-item nav-txt" href="{% url 'add_product' %}">Add Products</a></li>
             </ul>
           </li>
@@ -216,44 +209,59 @@
         <form class="d-flex position-absolute top-0 start-100" role="search" method="GET" action="#">
           {% elif url_name == 'main_courses' %}
           <form class="d-flex" role="search" method="GET" action="#">
-            {% elif url_name == 'starters' %}
-            <form class="d-flex" role="search" method="GET" action="#">
-              {% elif url_name == 'dishes' %}
-              <form class="d-flex" role="search" method="GET" action="">
-                {% elif url_name == 'menus' %}
+            {% elif url_name == 'main_dishes' %}
+            <form class="d-flex" role="search" method="GET" action="">
+              {% elif url_name == 'starters' %}
+              <form class="d-flex" role="search" method="GET" action="#">
+                {% elif url_name == 'starter_dishes' %}
                 <form class="d-flex" role="search" method="GET" action="">
-                  {%else%}
-                  <form class="d-flex" role="search" method="GET" action="{% url 'home' %}">
-                    {% endif %}
-                    <input class="form-control me-2 search-bar" type="search" name="q" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-sm btn-outline-success" type="submit">Search</button>
-                  </form>
-                  <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                      <a class="nav-link
-                            dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-                        {% if request.user.is_authenticated %}
-                        {{user.username}}
-                        {% else %}
-                        Account
-                        {% endif %}
-                        
-                      </a>
-                      <ul class="dropdown-menu dropdown-menu-lg-end mt-1 dropdown-color">
-                        {% if request.user.is_authenticated %}
-                        <li>
-                          <a class="nav-link login" aria-current="page" href="{% url 'admin:index' %}">
-                            Admin Pannel
-                          </a>
-                        </li>
-                        <li><a class="nav-link login" href="/accounts/logout/">Logout</a></li>
-                        {% else %}
-                        <li><a class="nav-link login" href="/accounts/signup/">Register</a></li>
-                        <li><a class="nav-link login" href="/accounts/login/">Login</a></li>
-                        {% endif %}
-                      </ul>
-                    </li>
-                  </ul>
+                  {% elif url_name == 'desserts' %}
+                  <form class="d-flex" role="search" method="GET" action="#">
+                    {% elif url_name == 'dessert_dishes' %}
+                    <form class="d-flex" role="search" method="GET" action="">
+                      {% elif url_name == 'dessert_sauces' %}
+                      <form class="d-flex" role="search" method="GET" action="">
+                        {% elif url_name == 'sides' %}
+                        <form class="d-flex" role="search" method="GET" action="#">
+                          {% elif url_name == 'sauses' %}
+                          <form class="d-flex" role="search" method="GET" action="">
+                            {% elif url_name == 'menu' %}
+                            <form class="d-flex" role="search" method="GET" action="#">
+                              {%else%}
+                              <form class="d-flex" role="search" method="GET" action="#">
+                                {% endif %}
+                                <input class="form-control me-2 search-bar" type="search" name="q" placeholder="Search"
+                                  aria-label="Search">
+                                <button class="btn btn-sm btn-outline-success" type="submit">Search</button>
+                              </form>
+                              <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                  <a class="nav-link
+                                    dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="true">
+                                    {% if request.user.is_authenticated %}
+                                    {{user.username}}
+                                    {% else %}
+                                    Account
+                                    {% endif %}
+                                  </a>
+                                  <ul class="dropdown-menu dropdown-menu-lg-end mt-1 dropdown-color">
+                                    {% if request.user.is_authenticated %}
+                                    {% if user.is_superuser %}
+                                    <li>
+                                      <a class="nav-link login" aria-current="page" href="{% url 'admin:index' %}">
+                                        Admin Pannel
+                                      </a>
+                                    </li>
+                                    {% endif %}
+                                    <li><a class="nav-link login" href="/accounts/logout/">Logout</a></li>
+                                    {% else %}
+                                    <li><a class="nav-link login" href="/accounts/signup/">Register</a></li>
+                                    <li><a class="nav-link login" href="/accounts/login/">Login</a></li>
+                                    {% endif %}
+                                  </ul>
+                                </li>
+                              </ul>
       </div>
     </div>
   </nav>
