@@ -33,6 +33,12 @@
                 {% include "includes/main_dish_sauce_details.html" %}
                 {% endfor %}
             </div>
+            <div class="ingredients col p-3 view-border">
+                <h2 class="view-headers">Sides</h2>
+                {% for main_dish_side in main_dish_side %}
+                {% include "includes/main_dish_side_details.html" %}
+                {% endfor %}
+            </div>
             <div class="p-3 method col view-border">
                 <h2 class="view-headers">Elements</h2>
                 {% for main_dish_element in main_dish_element %}

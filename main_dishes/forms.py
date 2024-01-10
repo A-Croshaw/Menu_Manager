@@ -1,5 +1,5 @@
 from django import forms
-from .models import MainDish, MainDishSauce, MainDishElement
+from .models import MainDish, MainDishSauce, MainDishElement, MainDishSide
 
 
 class MainDishSauceForm(forms.ModelForm):
@@ -56,4 +56,21 @@ class MainDishElementForm(forms.ModelForm):
                   )
         labels = {
             "main_dish_element": "Element",
+        }
+
+
+class MainDishSideForm(forms.ModelForm):
+    """
+    main side form
+    """
+    class Meta:
+        """
+        Form Fields
+        """
+
+        model = MainDishSide
+        fields = ("main_dish_side",
+                  )
+        labels = {
+            "main_dish_side": "Side",
         }

@@ -3,8 +3,8 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView, DeleteView
 from django.db.models import Q
 from django.contrib import messages
-from .models import MainDish, MainDishSauce, MainDishElement
-from .forms import MainDishForm, MainDishSauceForm, MainDishElementForm
+from .models import MainDish, MainDishSauce, MainDishElement, MainDishSide
+from .forms import MainDishForm, MainDishSauceForm, MainDishElementForm, MainDishSideForm
 
 class ViewMainDish(ListView):
     """View All Main Dishes"""
@@ -302,6 +302,113 @@ def delete_main_dish_sauce(request, pk):
 
     if request.method == "POST":
         main_dish_sauce.delete()
+        messages.success(request, 'Step Deleted')
+        return HttpResponse("")
+
+    return HttpResponseNotAllowed(
+        [
+            "POST",
+        ]
+    )
+
+
+# Sides
+
+def main_dish_side(request, pk):
+    """
+    Add Dish Side
+    """
+    main_dish = MainDish.objects.get(id=pk)
+    main_dish_sauce = MainDishSauce.objects.filter(main_dish=main_dish)
+    main_dish_element = MainDishElement.objects.filter(main_dish=main_dish)
+    main_dish_side = MainDishSide.objects.filter(main_dish=main_dish)
+    form = MainDishSideForm(request.POST or None)
+
+    if request.method == "POST":
+        if form.is_valid():
+            main_dish_side = form.save(commit=False)
+            main_dish_side.main_dish = main_dish
+            main_dish_side.save()
+            return redirect("main_dish_side_details", pk=main_dish_side.id)
+        else:
+            return render(request,
+                          "includes/add_main_dish_side.html",
+                          context={
+                              "form": form
+                              })
+
+    context = {
+        "form": form,
+        "main_dish": main_dish,
+        "main_dish_sauce": main_dish_sauce,
+        "main_dish_element": main_dish_element,
+    }
+
+    return render(request, "main_dishes/main_dish_side.html", context)
+
+
+def update_main_dish_side(request, pk):
+    """
+    Updates dish side Fields
+    """
+    main_dish_side = MainDishSide.objects.get(id=pk)
+    form = MainDishSideForm(request.POST or None, instance=main_dish_side)
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Updated Successfully!')
+        return redirect("main_dish_side_details", pk=main_dish_side.id)
+
+    context = {
+        "form": form,
+        "main_dish_side": main_dish_side
+    }
+
+    return render(request, "includes/add_main_dish_side.html", context)
+
+
+def main_dish_side_detail_view(request, pk):
+    """
+    Displays dish side Fields After Being Added
+    """
+    main_dish_side = get_object_or_404(MainDishSide, id=pk)
+    context = {
+        " main_dish_side":  main_dish_side
+        }
+    return render(request, "includes/ main_dish_side_details.html", context)
+
+
+def main_dish_side_details(request, pk):
+    """
+    Displays dish side Fields for updating
+    """
+    main_dish_side = get_object_or_404(MainDishSide, id=pk)
+    context = {
+        "main_dish_side": main_dish_side
+    }
+    return render(request, "includes/main_dish_side_details.html", context)
+
+
+def add_main_dish_side(request):
+    """
+    Renders The Form Add Extra dish_side
+    """
+    form = MainDishSideForm()
+    context = {
+        "form": form
+    }
+    return render(request, "includes/add_main_dish_side.html", context)
+
+
+def delete_main_dish_side(request, pk):
+    """
+    Deletes Side Field
+    """
+    main_dish_side = get_object_or_404(MainDishSide, id=pk)
+
+    if request.method == "POST":
+        main_dish_side.delete()
         messages.success(request, 'Step Deleted')
         return HttpResponse("")
 

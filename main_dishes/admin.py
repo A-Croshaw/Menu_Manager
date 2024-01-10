@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import MainDish, MainDishSauce, MainDishElement
+from .models import MainDish, MainDishSauce, MainDishElement, MainDishSide
 
 
 class MainDishSauceAdmin(admin.StackedInline):
     """
-    Creates Admin For The Ingredients
+    Creates Admin For The Dish Sauces
     """
     model = MainDishSauce
     extra = 0
@@ -12,22 +12,30 @@ class MainDishSauceAdmin(admin.StackedInline):
 
 class MainDishElementAdmin(admin.StackedInline):
     """
-    Creates Admin For The Method
+    Creates Admin For The Dish Elements
     """
     model = MainDishElement
     extra = 0
 
 
-class MainDishesAdmin(admin.ModelAdmin):
+class MainDishSideAdmin(admin.StackedInline):
     """
-    Creates Admin For The Main Part OF The Recipe And Adds Method
-    And Ingredients To an Inline Output and Displays as one Item
+    Creates Admin For The Dish Sides
+    """
+    model = MainDishSide
+    extra = 0
+
+
+class MainDisheAdmin(admin.ModelAdmin):
+    """
+    Creates Admin For The Main Part OF The Dish  And Adds Sauces, Elements
+    And Sides To an Inline Output and Displays as one Item
     """
     fieldsets = []
-    inlines = [MainDishSauceAdmin, MainDishElementAdmin]
+    inlines = [MainDishSauceAdmin, MainDishElementAdmin, MainDishSideAdmin]
 
 
-admin.site.register(MainDish, MainDishesAdmin)
+admin.site.register(MainDish, MainDisheAdmin)
 admin.site.register(MainDishSauce)
 admin.site.register(MainDishElement)
-
+admin.site.register(MainDishSide)

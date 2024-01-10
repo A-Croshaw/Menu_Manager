@@ -19,4 +19,9 @@ urlpatterns = [
      path('htmx/main_dish_sauce_details/<pk>/update/',views.main_dish_sauce_details,name="main_dish_sauce_details"),
      path('htmx/update_main_dish_sauce/<pk>/update/',views.update_main_dish_sauce,name="update_main_dish_sauce"),
      path('htmx/delete_main_dish_sauce/<pk>/delete/',views.delete_main_dish_sauce,name="delete_main_dish_sauce"),
+     path('main_dish_side/<pk>/',views.main_dish_side,name='main_dish_side'),
+     path('htmx/add_main_dish_side/',views.add_main_dish_side,name='add_main_dish_side'),
+     path('htmx/main_dish_side_details/<pk>/update/',views.main_dish_side_details,name="main_dish_side_details"),
+     path('htmx/update_main_dish_side/<pk>/update/',views.update_main_dish_side,name="update_main_dish_side"),
+     path('htmx/delete_main_dish_side/<pk>/delete/',views.delete_main_dish_side,name="delete_main_dish_side"),
 ]

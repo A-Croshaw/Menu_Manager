@@ -1,11 +1,8 @@
 <div class="detail-container row">
     <div class="col-12">
-        <h2 class="menu-dish-header">{{ main_dish_item }}</h2>
+        <h2 class="menu-dish-header text-center">{{ main_dish_item }}</h2>
     </div>
-    <div class="col-8">
-        <p class="menu-dish-txt">{{ main_dish_item.main_dish.main_dish_description }}</p>
-    </div>
-    <div class="col-2">
-        <p class="menu-dish-txt">{{ main_dish_item.main_price }}</p>
+    <div class="col-12">
+        <p class="menu-dish-txt text-center">{{ main_dish_item.main_dish.main_dish_sauce }} <strong> €{{ main_dish_item.main_price }}</strong></p>
     </div>
 </div>
