@@ -47,7 +47,10 @@
             <a href="{% url 'menus' %}" class="btn btn-return mt-2" aria-label="Click to return">
                 Return
             </a>
-            <a href="" class="btn btn-recipe-delete mt-2 pt-1" aria-label="Click to Delete">
+            <a href="{% url 'edit_menu' pk=menu.id%}" class="btn btn-return mt-2" aria-label="Click to edit menu ">
+                Edit
+            </a>
+            <a href="{% url 'menu_delete' menu.id%}" class="btn btn-recipe-delete mt-2 pt-1" aria-label="Click to Delete">
                 <img src="{% static '/icons/delete_icon.svg' %}" alt="Delete Icon" class="recipe-delete">
             </a>
         </div>

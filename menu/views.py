@@ -56,7 +56,7 @@ def add_menu(request):
 
 def menu_view(request, pk):
     """
-    View full Main Recipie
+    View full Menu
     """
     menu = Menu.objects.get(id=pk)
     starter_dish_item = StarterDishItem.objects.filter(menu=menu)
@@ -83,10 +83,44 @@ def menu_view(request, pk):
     if menu.menu_type == "à la carte":
         return render(request, "menu/menu_view_à_la_carte.html", context,)
 
+
+def edit_menu(request, pk):
+    """
+    Updates dish Fields
+    """
+    menu = Menu.objects.get(id=pk)
+    form = MenuForm(request.POST or None, instance=menu)
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Updated Successfully!')
+        return redirect("add_starter_item", pk=menu.id)
+
+    context = {
+        "form": form,
+        "menu": menu,
+    }
+
+    return render(request, "menu/edit_menu.html", context)
+
+
+class MenuDelete(DeleteView):
+    """
+    Deletes menu
+    """
+    model = Menu
+    success_url = '/menu/'
+
+    def test_func(self):
+
+        return self.request.user == self.get_object().user
+
+
 # starters
 def add_starter_item(request, pk):
     """
-    Creates Ingredient Fields And Add More Enterys
+    Creates Starter Item And Adds More Enterys
     """
     menu = Menu.objects.get(id=pk)
     starter_dish_item = StarterDishItem.objects.filter(menu=menu)
@@ -116,7 +150,7 @@ def add_starter_item(request, pk):
 
 def menu_starter_details(request, pk):
     """
-    Displays Ingredient Fields for updating
+    Displays Starter Item for updating
     """
     starter_dish_item = get_object_or_404(StarterDishItem, id=pk)
     context = {
@@ -127,7 +161,7 @@ def menu_starter_details(request, pk):
 
 def add_starter(request):
     """
-    Renders The Form Add Extra Ingredients
+    Renders The Form To Add Extra Starter Item
     """
     form = StarterDishItemForm()
     context = {
@@ -138,7 +172,7 @@ def add_starter(request):
 
 def menu_starter_view(request, pk):
     """
-    Displays Step Fields After Being Added
+    Displays Starter Item After Being Added
     """
     starter_dish_item = get_object_or_404(StarterDishItem, id=pk)
     context = {
@@ -147,10 +181,49 @@ def menu_starter_view(request, pk):
     return render(request, "includes/ menu_starter_view.html", context)
 
 
+def edit_menu_starter(request, pk):
+    """
+    Updates menu starter
+    """
+    starter_dish_item = StarterDishItem.objects.get(id=pk)
+    form = StarterDishItemForm(request.POST or None, instance=starter_dish_item)
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Updated Successfully!')
+        return redirect("menu_starter_details", pk=starter_dish_item.id)
+
+    context = {
+        "form": form,
+        "starter_dish_item": starter_dish_item,
+    }
+
+    return render(request, "includes/add_starter.html", context)
+
+
+def delete_starter_dish_item(request, pk):
+    """
+    Deletes Element Field
+    """
+    starter_dish_item = get_object_or_404(StarterDishItem, id=pk)
+
+    if request.method == "POST":
+        starter_dish_item.delete()
+        messages.success(request, 'Starter Item Deleted')
+        return HttpResponse("")
+
+    return HttpResponseNotAllowed(
+        [
+            "POST",
+        ]
+    )
+
+
 # mains
 def add_main_item(request, pk):
     """
-    Creates Ingredient Fields And Add More Enterys
+    Creates Main Item And Adds More Enterys
     """
     menu = Menu.objects.get(id=pk)
     main_dish_item = MainDishItem.objects.filter(menu=menu)
@@ -180,7 +253,7 @@ def add_main_item(request, pk):
 
 def menu_main_details(request, pk):
     """
-    Displays Ingredient Fields for updating
+    Displays Main Items for updating
     """
     main_dish_item = get_object_or_404(MainDishItem, id=pk)
     context = {
@@ -191,7 +264,7 @@ def menu_main_details(request, pk):
 
 def add_main(request):
     """
-    Renders The Form Add Extra Ingredients
+    Renders The Form To Add Extra Main Item
     """
     form = MainDishItemForm()
     context = {
@@ -202,7 +275,7 @@ def add_main(request):
 
 def menu_main_view(request, pk):
     """
-    Displays Step Fields After Being Added
+    Displays Main Item After Being Added
     """
     main_dish_item = get_object_or_404(MainDishItem, id=pk)
     context = {
@@ -211,10 +284,49 @@ def menu_main_view(request, pk):
     return render(request, "includes/ menu_main_view.html", context)
 
 
+def edit_menu_main(request, pk):
+    """
+    Updates menu main
+    """
+    main_dish_item = MainDishItem.objects.get(id=pk)
+    form = MainDishItemForm(request.POST or None, instance=main_dish_item)
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Updated Successfully!')
+        return redirect("menu_main_details", pk=main_dish_item.id)
+
+    context = {
+        "form": form,
+        "main_dish_item": main_dish_item,
+    }
+
+    return render(request, "includes/add_main.html", context)
+
+
+def delete_main_dish_item(request, pk):
+    """
+    Deletes Main Item
+    """
+    main_dish_item = get_object_or_404(MainDishItem, id=pk)
+
+    if request.method == "POST":
+        main_dish_item.delete()
+        messages.success(request, 'Main Item Deleted')
+        return HttpResponse("")
+
+    return HttpResponseNotAllowed(
+        [
+            "POST",
+        ]
+    )
+
+
 # desserts
 def add_dessert_item(request, pk):
     """
-    Creates Ingredient Fields And Add More Enterys
+    Creates Dessert Items And Adds More Enterys
     """
     menu = Menu.objects.get(id=pk)
     dessert_dish_item = DessertDishItem.objects.filter(menu=menu)
@@ -244,7 +356,7 @@ def add_dessert_item(request, pk):
 
 def menu_dessert_details(request, pk):
     """
-    Displays Ingredient Fields for updating
+    Displays Dessert Items for updating
     """
     dessert_dish_item = get_object_or_404(DessertDishItem, id=pk)
     context = {
@@ -255,7 +367,7 @@ def menu_dessert_details(request, pk):
 
 def add_dessert(request):
     """
-    Renders The Form Add Extra Ingredients
+    Renders The Form To Adds Extra Dessert Item
     """
     form = DessertDishItemForm()
     context = {
@@ -266,7 +378,7 @@ def add_dessert(request):
 
 def menu_dessert_view(request, pk):
     """
-    Displays Step Fields After Being Added
+    Displays Dessert Item After Being Added
     """
     dessert_dish_item = get_object_or_404(DessertDishItem, id=pk)
     context = {
@@ -275,10 +387,49 @@ def menu_dessert_view(request, pk):
     return render(request, "includes/ menu_dessert_view.html", context)
 
 
+def edit_menu_dessert(request, pk):
+    """
+    Updates menu dessert
+    """
+    dessert_dish_item = DessertDishItem.objects.get(id=pk)
+    form = DessertDishItemForm(request.POST or None, instance=dessert_dish_item)
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Updated Successfully!')
+        return redirect("menu_dessert_details", pk=dessert_dish_item.id)
+
+    context = {
+        "form": form,
+        "dessert_dish_item": dessert_dish_item,
+    }
+
+    return render(request, "includes/add_dessert.html", context)
+
+
+def delete_dessert_dish_item(request, pk):
+    """
+    Deletes Dessert Item
+    """
+    dessert_dish_item = get_object_or_404(DessertDishItem, id=pk)
+
+    if request.method == "POST":
+        dessert_dish_item.delete()
+        messages.success(request, 'Dessert Item Deleted')
+        return HttpResponse("")
+
+    return HttpResponseNotAllowed(
+        [
+            "POST",
+        ]
+    )
+
+
 # Sides
 def add_side_item(request, pk):
     """
-    Creates Ingredient Fields And Add More Enterys
+    Creates Side Item And Adds More Enterys
     """
     menu = Menu.objects.get(id=pk)
     side_item = SideItem.objects.filter(menu=menu)
@@ -308,7 +459,7 @@ def add_side_item(request, pk):
 
 def menu_side_details(request, pk):
     """
-    Displays Ingredient Fields for updating
+    Displays Side Items Fields for updating
     """
     side_item = get_object_or_404(SideItem, id=pk)
     context = {
@@ -319,7 +470,7 @@ def menu_side_details(request, pk):
 
 def add_side(request):
     """
-    Renders The Form Add Extra sides
+    Renders The Form To Add Extra Side Items
     """
     form = SideItemForm()
     context = {
@@ -330,13 +481,52 @@ def add_side(request):
 
 def menu_side_view(request, pk):
     """
-    Displays Step Fields After Being Added
+    Displays Side Item After Being Added
     """
     side_item = get_object_or_404(SideItem, id=pk)
     context = {
         "side_item":  side_item
         }
     return render(request, "includes/ menu_side_view.html", context)
+
+
+def edit_menu_side(request, pk):
+    """
+    Updates menu side
+    """
+    side_item = SideItem.objects.get(id=pk)
+    form = SideItemForm(request.POST or None, instance=side_item)
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Updated Successfully!')
+        return redirect("menu_dessert_details", pk=side_item.id)
+
+    context = {
+        "form": form,
+        "side_item": side_item,
+    }
+
+    return render(request, "includes/add_side.html", context)
+
+
+def delete_side_item(request, pk):
+    """
+    Deletes Side Item
+    """
+    side_item = get_object_or_404(SideItem, id=pk)
+
+    if request.method == "POST":
+        side_item.delete()
+        messages.success(request, 'Side Item Deleted')
+        return HttpResponse("")
+
+    return HttpResponseNotAllowed(
+        [
+            "POST",
+        ]
+    )
 
 
 # Sauces
@@ -401,3 +591,43 @@ def menu_sauce_view(request, pk):
         "sauce_item":  sauce_item
         }
     return render(request, "includes/ menu_sauce_view.html", context)
+
+
+def edit_menu_sauce(request, pk):
+    """
+    Updates menu dessert
+    """
+    sauce_item = SauceItem.objects.get(id=pk)
+    form = SauceItemForm(request.POST or None, instance=sauce_item)
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Updated Successfully!')
+        return redirect("menu_dessert_details", pk=sauce_item.id)
+
+    context = {
+        "form": form,
+        "sauce_item": sauce_item,
+    }
+
+    return render(request, "includes/add_sauce.html", context)
+
+
+def delete_sauce_item(request, pk):
+    """
+    Deletes Sauce Item
+    """
+    sauce_item = get_object_or_404(SauceItem, id=pk)
+
+    if request.method == "POST":
+        sauce_item.delete()
+        messages.success(request, 'Sauce Deleted')
+        return HttpResponse("")
+
+    return HttpResponseNotAllowed(
+        [
+            "POST",
+        ]
+    )
+

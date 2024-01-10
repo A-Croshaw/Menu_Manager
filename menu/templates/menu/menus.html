@@ -4,21 +4,68 @@
 
 {% block content %}
 <section>
-    <div class="container mt-4 pb-4 bg-fade">
-        <h1 class="text-center p-2 d-block">
-            Menu's
-        </h1>
+    <div class="container mt-4 pb-4 bg-fade">     
+            <h2 class="text-center p-2 d-block">
+                Menu's
+            </h2>
         <div class="container d-flex flex-row flex-wrap justify-content-center">
-            {% for menu in menu %} 
-            <a href="{% url 'menu_view' menu.id%}" class="card-link" aria-label="Click to view {{menus.menu_title}} {{menus.menu_date}}">
-                <div class="card m-2" style="width: 18rem;">
-                    <div class="card-body">
-                        <h2 class="card-name">{{menu.title}}</h2>
-                        <h3 class="card-type">{{menu.menu_date}}</h3>
-                        <p class="card-desc">{{menu.menu_type|truncatechars:100}}</p>
+            <div class="col-12">
+                <h2 class="text-center p-2 d-block">
+                    À La Carte
+                </h2>
+            </div>
+            {% for menu in menu %}
+                {% if menu.menu_type == "à la carte" %}
+                <a href="{% url 'menu_view' menu.id%}" class="card-link" aria-label="Click to view {{menus.menu_title}} {{menus.menu_date}}">
+                    <div class="card m-2" style="width: 15rem;">
+                        <div class="card-body">
+                            <h2 class="card-name">{{menu.title|title}}</h2>
+                            <h3 class="card-type">{{menu.menu_date}}</h3>
+                            <p class="card-desc text-center">{{menu.menu_type|title}}</p>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="container d-flex flex-row flex-wrap justify-content-center">
+            <div class="col-12">
+                <h2 class="text-center p-2 d-block">
+                    Early Bird
+                </h2>
+            </div>           
+            {% for menu in menu %}
+                {% if menu.menu_type == "early bird" %}
+                <a href="{% url 'menu_view' menu.id%}" class="card-link" aria-label="Click to view {{menus.menu_title}} {{menus.menu_date}}">
+                    <div class="card m-2" style="width: 15rem;">
+                        <div class="card-body">
+                            <h2 class="card-name">{{menu.title|title}}</h2>
+                            <h3 class="card-type">{{menu.menu_date}}</h3>
+                            <p class="card-desc text-center">{{menu.menu_type|title}}</p>
+                        </div>
+                    </div>
+                </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="container d-flex flex-row flex-wrap justify-content-center">
+            <div class="col-12">
+                <h2 class="text-center p-2 d-block">
+                    Specials
+                </h2>
+            </div>
+            {% for menu in menu %}
+                {% if menu.menu_type == "specials" %}
+                <a href="{% url 'menu_view' menu.id%}" class="card-link" aria-label="Click to view {{menus.menu_title}} {{menus.menu_date}}">
+                    <div class="card m-2" style="width: 15rem;">
+                        <div class="card-body">
+                            <h2 class="card-name">{{menu.title|title}}</h2>
+                            <h3 class="card-type">{{menu.menu_date}}</h3>
+                            <p class="card-desc text-center">{{menu.menu_type|title}}</p>
+                        </div>
+                    </div>
+                </a>
+                {% endif %}
             {% endfor %}
         </div>
     </div>

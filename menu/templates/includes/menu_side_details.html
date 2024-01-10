@@ -11,11 +11,11 @@
             <p class="menu-dish-txt">{{ side_item.side_price }}</p>
         </div>
         <div class="btn-view col-2">
-            <button hx-get="" hx-ta="outerHTML"
+            <button hx-get="{% url 'edit_menu_side' side_item.id %}" hx-ta="outerHTML"
                 class="btn btn-edit">
                     <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
             </button>
-            <button hx-post="" hx-swap="outerHTML swap:1s"
+            <button hx-post="{% url 'delete_side_item' side_item.id %}" hx-swap="outerHTML swap:1s"
                 class="btn btn-delete">
                     <img src="{% static '/icons/delete_icon.svg' %}" alt="Delete Icon" class="delete">
             </button>

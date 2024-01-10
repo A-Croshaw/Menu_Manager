@@ -9,7 +9,7 @@
         <div class="detail-container justify-content-center view-border">
             <div class="col p-3">
                 <h2 class="menu-header text-center">{{menu.menu_type|title}}</h2>
-                <h3 class="text-center">{{menu.menu_date|title}}</h3>
+                <h3 class="text-center">{{menu.menu_date}}</h3>
                 <p class="text-center">~~~~~</p>
                 <h3 class="menu-subheader text-center">Starters</h3>
                 {% for starter_dish_item in starter_dish_item %}
@@ -31,7 +31,10 @@
             <a href="{% url 'menus' %}" class="btn btn-return mt-2" aria-label="Click to return">
                 Return
             </a>
-            <a href="" class="btn btn-recipe-delete mt-2 pt-1" aria-label="Click to Delete">
+            <a href="{% url 'edit_menu' pk=menu.id%}" class="btn btn-return mt-2" aria-label="Click to edit menu ">
+                Edit
+            </a>
+            <a href="{% url 'menu_delete' menu.id%}" class="btn btn-recipe-delete mt-2 pt-1" aria-label="Click to Delete">
                 <img src="{% static '/icons/delete_icon.svg' %}" alt="Delete Icon" class="recipe-delete">
             </a>
         </div>

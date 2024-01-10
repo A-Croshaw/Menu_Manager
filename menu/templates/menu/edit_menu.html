@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Edit Menu{% endblock %} 
+
+{% block content %}
+<section>
+    <div class="container mt-4 pb-4 bg-fade-details">
+        <div class="detail-container mt-4 pt-4 justify-content-center">
+            <h1 class="view-header">Edit Menu</h1>
+        </div>
+        <div class="detail-container justify-content-center">
+            <form action="." method="POST" enctype="multipart/form-data" class="edit-form">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="btn-edit-view">
+                    <button type="submit" class="btn btn-submit mt-2" aria-label="Click to submit">
+                        Next
+                    </button> 
+                    <a href="{% url 'menu_view' menu.id %}" class="btn btn-cancel mt-2" aria-label="Click to Cancel">
+                        Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
