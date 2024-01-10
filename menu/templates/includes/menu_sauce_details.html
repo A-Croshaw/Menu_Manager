@@ -2,13 +2,13 @@
 <div hx-target="this" >
     <div class="detail-container row">
         <div class="col-12">
-            <h3 class="menu-dish-header">{{ main_dish_item }}</h3>
+            <h2 class="menu-dish-header">{{ sauce_item }}</h2>
         </div>
         <div class="col-8">
-            <p class="menu-dish-txt">{{ main_dish_item.main_dish.main_dish_description }}</p>
+            <p class="menu-dish-txt">{{ sauce_item.sauce.sauce_description }}</p>
         </div>
         <div class="col-2">
-            <p class="menu-dish-txt">{{ main_dish_item.main_price }}</p>
+            <p class="menu-dish-txt">{{ sauce_item.sauce_price }}</p>
         </div>
         <div class="btn-view col-2">
             <button hx-get="" hx-ta="outerHTML"

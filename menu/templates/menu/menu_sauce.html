@@ -4,24 +4,24 @@
 <section>
     <div class="container mt-4 pb-4 bg-fade-details">
         <div class="detail-container mb-2 pt-2 justify-content-center">
-            <h1 class="view-headers"><Div>Dessert's</h1>
+            <h1 class="view-headers">Sauces</h1>
         </div>
         <div class="detail-container justify-content-center">
             <div class="ingredients col p-3 view-border">
-                {% for dessert_dish_item in dessert_dish_item %}
-                {% include "includes/menu_dessert_details.html" %}
+                {% for sauce_item in sauce_item %}
+                {% include "includes/menu_sauce_details.html" %}
                 {% endfor %}
-                <div id="adddessertsforms" ></div>
+                <div id="addsaucesforms" ></div>
                 <div class="btn-edit-view">
-                    <button type="button" hx-get="{% url 'add_dessert' %}" hx-target="#adddessertsforms" hx-swap="beforeend" class="btn btn-return" aria-label="Click to edit ingredients ">
+                    <button type="button" hx-get="{% url 'add_sauce' %}" hx-target="#addsaucesforms" hx-swap="beforeend" class="btn btn-return" aria-label="Click to edit ingredients ">
                         Add
                     </button>
                 </div>
             </div>
         </div>
         <div class="btn-edit-view mt-5 pb-4">
-            <a href="{% url 'menu_view' menu.id%}" class="btn btn-return mt-2" aria-label="Click to return">
-                View Menu
+            <a href="{% url 'add_dessert_item' menu.id%}" class="btn btn-return mt-2" aria-label="Click to return">
+                Next
             </a>
         </div>
     </div>

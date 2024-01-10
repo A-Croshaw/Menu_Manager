@@ -3,8 +3,8 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView, DeleteView
 from django.db.models import Q
 from django.contrib import messages
-from .forms import MenuForm, StarterDishItemForm, MainDishItemForm, DessertDishItemForm, SideItemForm, AllegensForm
-from .models import Menu, StarterDishItem, MainDishItem, DessertDishItem, SideItem, Allegens
+from .forms import MenuForm, StarterDishItemForm, MainDishItemForm, DessertDishItemForm, SideItemForm, SauceItemForm, AllegensForm
+from .models import Menu, StarterDishItem, MainDishItem, DessertDishItem, SideItem, SauceItem, Allegens
 
 
 class ViewMenus(ListView):
@@ -63,6 +63,7 @@ def menu_view(request, pk):
     main_dish_item = MainDishItem.objects.filter(menu=menu)
     dessert_dish_item = DessertDishItem.objects.filter(menu=menu)
     side_item = SideItem.objects.filter(menu=menu)
+    sauce_item = SauceItem.objects.filter(menu=menu)
     allegens = Allegens.objects.filter(menu=menu)
 
     context = {
@@ -71,11 +72,16 @@ def menu_view(request, pk):
         "main_dish_item": main_dish_item,
         "dessert_dish_item": dessert_dish_item,
         "side_item": side_item,
+        "sauce_item": sauce_item,
         "allegens": allegens,
     }
 
-    return render(request, "menu/menu_view.html", context,)
-
+    if menu.menu_type == "specials":
+        return render(request, "menu/menu_view_specials.html", context,)
+    if menu.menu_type == "early bird":
+        return render(request, "menu/menu_view_early.html", context,)
+    if menu.menu_type == "à la carte":
+        return render(request, "menu/menu_view_à_la_carte.html", context,)
 
 # starters
 def add_starter_item(request, pk):
@@ -267,3 +273,131 @@ def menu_dessert_view(request, pk):
         "dessert_dish_item":  dessert_dish_item
         }
     return render(request, "includes/ menu_dessert_view.html", context)
+
+
+# Sides
+def add_side_item(request, pk):
+    """
+    Creates Ingredient Fields And Add More Enterys
+    """
+    menu = Menu.objects.get(id=pk)
+    side_item = SideItem.objects.filter(menu=menu)
+    form = SideItemForm(request.POST or None)
+
+    if request.method == "POST":
+        if form.is_valid():
+            side_item = form.save(commit=False)
+            side_item.menu = menu
+            side_item.save()
+            return redirect("menu_side_details", pk=side_item.id)
+        else:
+            return render(request,
+                          "includes/add_side.html",
+                          context={
+                              "form": form
+                              })
+
+    context = {
+        "form": form,
+        "menu": menu,
+        "side_item": side_item
+    }
+
+    return render(request, "menu/menu_side.html", context)
+
+
+def menu_side_details(request, pk):
+    """
+    Displays Ingredient Fields for updating
+    """
+    side_item = get_object_or_404(SideItem, id=pk)
+    context = {
+        "side_item": side_item
+    }
+    return render(request, "includes/menu_side_details.html", context)
+
+
+def add_side(request):
+    """
+    Renders The Form Add Extra sides
+    """
+    form = SideItemForm()
+    context = {
+        "form": form
+    }
+    return render(request, "includes/add_side.html", context)
+
+
+def menu_side_view(request, pk):
+    """
+    Displays Step Fields After Being Added
+    """
+    side_item = get_object_or_404(SideItem, id=pk)
+    context = {
+        "side_item":  side_item
+        }
+    return render(request, "includes/ menu_side_view.html", context)
+
+
+# Sauces
+def add_sauce_item(request, pk):
+    """
+    Creates sauce Fields And Add More Enterys
+    """
+    menu = Menu.objects.get(id=pk)
+    sauce_item = SauceItem.objects.filter(menu=menu)
+    form = SauceItemForm(request.POST or None)
+
+    if request.method == "POST":
+        if form.is_valid():
+            sauce_item = form.save(commit=False)
+            sauce_item.menu = menu
+            sauce_item.save()
+            return redirect("menu_sauce_details", pk=sauce_item.id)
+        else:
+            return render(request,
+                          "includes/add_sauce.html",
+                          context={
+                              "form": form
+                              })
+
+    context = {
+        "form": form,
+        "menu": menu,
+        "sauce_item": sauce_item
+    }
+
+    return render(request, "menu/menu_sauce.html", context)
+
+
+def menu_sauce_details(request, pk):
+    """
+    Displays sauce Fields for updating
+    """
+    sauce_item = get_object_or_404(SauceItem, id=pk)
+    context = {
+        "sauce_item": sauce_item
+    }
+    return render(request, "includes/menu_sauce_details.html", context)
+
+
+def add_sauce(request):
+    """
+    Renders The Form Add Extra sauces
+    """
+    form = SauceItemForm()
+    context = {
+        "form": form
+    }
+    return render(request, "includes/add_sauce.html", context)
+
+
+def menu_sauce_view(request, pk):
+    """
+    Displays sauce Fields After Being Added
+    """
+    sauce_item = get_object_or_404(SauceItem, id=pk)
+    context = {
+        "sauce_item":  sauce_item
+        }
+    return render(request, "includes/ menu_sauce_view.html", context)

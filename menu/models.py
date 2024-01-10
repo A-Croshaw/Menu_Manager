@@ -4,6 +4,8 @@ from starter_dishes.models import StarterDish
 from main_dishes.models import MainDish
 from dessert_dishes.models import DessertDish
 from sides.models import Side
+from sauces.models import Sauce
+
 
 # Choice fields
 ALLEGENS = (
@@ -75,7 +77,7 @@ class MainDishItem(models.Model):
 
         
 class DessertDishItem(models.Model):
-    """ A Model to create starter menu items """
+    """ A Model to create dessert menu items """
     menu = models.ForeignKey(Menu,on_delete=models.CASCADE)
     dessert_dish = models.ForeignKey(DessertDish, on_delete=models.CASCADE, related_name="dessert_dish_item")
     dessert_price = models.FloatField(default=0.00)
@@ -89,9 +91,7 @@ class DessertDishItem(models.Model):
 
 
 class SideItem(models.Model):
-    """
-    A Model to create starter menu items
-    """
+    """A Model to create side menu items"""
     menu = models.ForeignKey(Menu,on_delete=models.CASCADE)
     side = models.ForeignKey(Side, on_delete=models.CASCADE, related_name="side_item")
     side_price = models.FloatField(default=0.00)
@@ -103,6 +103,20 @@ class SideItem(models.Model):
     def __str__(self):
         return str(self.side)
 
+
+class SauceItem(models.Model):
+    """A Model to create sauce menu items"""
+    menu = models.ForeignKey(Menu,on_delete=models.CASCADE)
+    sauce = models.ForeignKey(Sauce, on_delete=models.CASCADE, related_name="sauce_item")
+    sauce_price = models.FloatField(default=0.00)
+    
+    class Meta:
+        """ Order by sauce """
+        ordering = ['sauce']
+
+    def __str__(self):
+        return str(self.sauce)
+    
 
 class Allegens(models.Model):
     menu = models.ForeignKey(Menu,on_delete=models.CASCADE)

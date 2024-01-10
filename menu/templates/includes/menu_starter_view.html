@@ -1,8 +1,43 @@
+{% if menu.menu_type == "à la carte" %}
 <div class="detail-container row">
-    <div class="col-12">
-        <h2 class="menu-dish-header text-center">{{ starter_dish_item }}</h2>
+    <div class="col-10">
+        <h3 class="a-la-carte-header">
+            {{ starter_dish_item }}
+        </h3>
+    </div>
+    <div class="col-2">
+        <p class="a-la-carte-txt">
+            <strong>
+                €{{ starter_dish_item.starter_price }}
+            </strong>
+        </p>
     </div>
     <div class="col-12">
-        <p class="menu-dish-txt text-center">{{ starter_dish_item.starter_dish.starter_dish_description }} <strong> €{{ starter_dish_item.starter_price }}</strong></p>
+        <p class="a-la-carte-txt">
+            {{ starter_dish_item.starter_dish.starter_dish_description }}
+        </p>
     </div>
 </div>
+{% else %}
+<div class="detail-container row">
+    <div class="col-12">
+        <h3 class="menu-dish-header text-center">
+            {{ starter_dish_item }}
+        </h3>
+    </div>
+    <div class="col-12">
+        <p class="menu-dish-txt text-center">
+            {{ starter_dish_item.starter_dish.starter_dish_description }} 
+        </p>
+    </div>
+    {% if menu.menu_type == "specials" %}
+    <div class="col-12">
+        <p class="menu-dish-txt text-center"> 
+            <strong>
+                €{{ starter_dish_item.starter_price }}
+            </strong>
+        </p>
+    </div>
+    {% endif %}
+</div>
+{% endif%}

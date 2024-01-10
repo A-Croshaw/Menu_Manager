@@ -9,19 +9,20 @@
         <div class="detail-container justify-content-center view-border">
             <div class="col p-3">
                 <h2 class="menu-header text-center">{{menu.menu_type|title}}</h2>
-                <h4 class="text-center">{{menu.menu_date|title}}</h4>
+                <p class="menu-dish-header text-center">2 Courses €35 </br> or </br>3 Courses €45</p>
+                <p class="menu-dish-txt text-center"><srong>*€10 Suplements for Steaks</srong></p>
                 <p class="text-center">~~~~~</p>
-                <h2 class="menu-subheader text-center">Starters</h2>
+                <h3 class="menu-subheader text-center">Starters</h3>
                 {% for starter_dish_item in starter_dish_item %}
                 {% include "includes/menu_starter_view.html" %}
                 {% endfor %}
                 <p class="text-center">~~~~~</p>
-                <h2 class="menu-subheader text-center">Mains</h2>
+                <h3 class="menu-subheader text-center">Mains</h3>
                 {% for main_dish_item in main_dish_item %}
                 {% include "includes/menu_main_view.html" %}
                 {% endfor %}
                 <p class="text-center">~~~~~</p>
-                <h2 class="menu-subheader text-center">Desserts</h2>
+                <h3 class="menu-subheader text-center">Desserts</h3>
                 {% for dessert_dish_item in dessert_dish_item %}
                 {% include "includes/menu_dessert_view.html" %}
                 {% endfor %}
