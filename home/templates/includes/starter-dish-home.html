@@ -1,11 +1,11 @@
 {% load static %}
 <h2 class="home-section-header">Starter Dishes</h2>
 <div class="btn-edit-view">
-  <a href="#" class="btn btn-return mt-2" aria-label="Click to return">
+  <a href="{% url 'starter_dishes' %}" class="btn btn-return mt-2" aria-label="Click to return">
     View
   </a>
   {% if user.is_superuser %}
-  <a href="#" class="btn btn-return mt-2" aria-label="Click to return">
+  <a href="{% url 'add_starter_dish' %}" class="btn btn-return mt-2" aria-label="Click to return">
     Add
   </a>
   {% endif %}
@@ -18,8 +18,9 @@
       <a href="#" class="card-link"
         aria-label="Click to view {{starter_dish.starter_dish_name}}">
         <div class="carousel-card my-3 py-2 view-border">
-          <h2 class="carousel-name pt-1">Add Dish here</h2>
-
+          <h2 class="carousel-name pt-1">{{starter_dish.starter_dish_name|title}}</h2>
+          <h3 class="carousel-type pt-1">{{starter_dish.starter_dish_type|title}}</h3>
+          <p class="carousel-desc pt-1">{{starter_dish.starter_dish_description}}</p>
         </div>
       </a>
     </div>

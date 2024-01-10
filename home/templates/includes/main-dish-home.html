@@ -1,11 +1,11 @@
 {% load static %}
 <h2 class="home-section-header">Main Dishes</h2>
 <div class="btn-edit-view">
-  <a href="#" class="btn btn-return mt-2" aria-label="Click to return">
+  <a href="{% url 'main_dishes' %}" class="btn btn-return mt-2" aria-label="Click to return">
     View
   </a>
   {% if user.is_superuser %}
-  <a href="#" class="btn btn-return mt-2" aria-label="Click to return">
+  <a href="{% url 'add_main_dish' %}" class="btn btn-return mt-2" aria-label="Click to return">
     Add
   </a>
   {% endif %}
@@ -17,7 +17,9 @@
     <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}" id="slide{{forloop.counter}}">
       <a href="#" class="card-link" aria-label="Click to view ">
         <div class="carousel-card view-border my-3 py-2">
-          <h3 class="carousel-name pt-1">add dish</h3>
+          <h2 class="carousel-name pt-1">{{main_dish.main_dish_name|title}}</h2>
+          <h3 class="carousel-type pt-1">{{main_dish.main_dish_type|title}}</h3>
+          <p class="carousel-desc pt-1">{{main_dish.main_dish_description}}</p>
         </div>
       </a>
     </div>
