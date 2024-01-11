@@ -1,5 +1,10 @@
 from django.http.response import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import (
+    UserPassesTestMixin,
+    LoginRequiredMixin
+)
 from django.views.generic import ListView, DeleteView
 from django.db.models import Q
 from django.contrib import messages
@@ -29,6 +34,7 @@ class ViewStarter(ListView):
         return starter
 
 
+@login_required
 def add_starter(request):
     """
     Add starter Course function
@@ -71,6 +77,7 @@ def starter_view(request, pk):
     return render(request, "starters/starter_view.html", context,)
 
 
+@login_required
 def starter_ingredients(request, pk):
     """
     Creates Ingredient Fields And Add More Enterys
@@ -137,6 +144,7 @@ def starter_method(request, pk):
     return render(request, "starters/starter_method.html", context)
 
 
+@login_required
 def update_starter_ing(request, pk):
     """
     Updates Ingredient Fields
@@ -161,6 +169,7 @@ def update_starter_ing(request, pk):
     return render(request, "includes/add_starter_ing.html", context)
 
 
+@login_required
 def update_starter_step(request, pk):
     """
     Updates step Fields
@@ -182,6 +191,7 @@ def update_starter_step(request, pk):
     return render(request, "includes/add_starter_step.html", context)
 
 
+@login_required
 def edit_starter(request, pk):
     """
     Updates Ingredient Fields
@@ -207,6 +217,7 @@ def edit_starter(request, pk):
     return render(request, "starters/edit_starter.html", context)
 
 
+@login_required
 def delete_starter_ing(request, pk):
     """
     Deletes Ingredient Fields
@@ -225,6 +236,7 @@ def delete_starter_ing(request, pk):
     )
 
 
+@login_required
 def delete_starter_step(request, pk):
     """
     Deletes Step Fields
@@ -243,7 +255,7 @@ def delete_starter_step(request, pk):
     )
 
 
-class StarterDelete(DeleteView):
+class StarterDelete(UserPassesTestMixin,LoginRequiredMixin, DeleteView):
     """
     Deletes Starter Course
     """
@@ -299,6 +311,7 @@ def starter_step_detail_view(request, pk):
     return render(request, "includes/ starter_step_details.html", context)
 
 
+@login_required
 def add_starter_ing(request):
     """
     Renders The Form Add Extra Ingredients
@@ -310,6 +323,7 @@ def add_starter_ing(request):
     return render(request, "includes/add_starter_ing.html", context)
 
 
+@login_required
 def add_starter_step(request):
     """
     Renders The Form Add Extra Step

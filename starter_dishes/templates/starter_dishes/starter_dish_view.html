@@ -27,18 +27,21 @@
             {% for starter_dish_sauce in starter_dish_sauce %}
             {% include "includes/starter_dish_sauce_details.html" %}
             {% endfor %}
+            {% if user.is_superuser %}
             <div class="btn-view pt-3">
                 <a href="{% url 'starter_dish_sauce' pk=starter_dish.id%}" class="btn btn-edit"
                     aria-label="Click to edit sauces ">
                     <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
                 </a>
             </div>
+            {% endif %}
         </div>
         <div class="p-3 method col view-border">
             <h2 class="view-headers">Elements</h2>
             {% for starter_dish_element in starter_dish_element %}
             {% include "includes/starter_dish_element_details.html" %}
             {% endfor %}
+            {% endif %}
             <div class="btn-view pt-3">
                 <a href="{% url 'starter_dish_element' pk=starter_dish.id%}" class="btn btn-edit"
                     aria-label="Click to edit elements ">
@@ -51,10 +54,12 @@
         <a href="{% url 'starter_dishes' %}" class="btn btn-return mt-2" aria-label="Click to return">
             Return
         </a>
+        {% if user.is_superuser %}
         <a href="{% url 'starter_dish_delete' starter_dish.id %}" class="btn btn-recipe-delete mt-2 pt-1"
             aria-label="Click to Delete">
             <img src="{% static '/icons/delete_icon.svg' %}" alt="Delete Icon" class="recipe-delete">
         </a>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

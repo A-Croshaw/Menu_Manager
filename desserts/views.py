@@ -1,4 +1,9 @@
 from django.http.response import HttpResponse, HttpResponseNotAllowed
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import (
+    UserPassesTestMixin,
+    LoginRequiredMixin
+)
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView, DeleteView
 from django.db.models import Q
@@ -28,6 +33,7 @@ class ViewDessert(ListView):
         return dessert
 
 
+@login_required
 def add_dessert(request):
     """Add Dessert Course function"""
 
@@ -132,6 +138,7 @@ def dessert_method(request, pk):
     return render(request, "desserts/dessert_method.html", context)
 
 
+@login_required
 def update_dessert_ing(request, pk):
     """Updates Ingredient Fields"""
 
@@ -155,6 +162,7 @@ def update_dessert_ing(request, pk):
     return render(request, "includes/add_dessert_ing.html", context)
 
 
+@login_required
 def update_dessert_step(request, pk):
     """Updates Step Fields"""
 
@@ -175,6 +183,7 @@ def update_dessert_step(request, pk):
     return render(request, "includes/add_dessert_step.html", context)
 
 
+@login_required
 def edit_dessert(request, pk):
     """Updates Recipe Fields"""
 
@@ -199,6 +208,7 @@ def edit_dessert(request, pk):
     return render(request, "desserts/edit_dessert.html", context)
 
 
+@login_required
 def delete_dessert_ing(request, pk):
     """Deletes Ingredient Fields"""
 
@@ -216,6 +226,7 @@ def delete_dessert_ing(request, pk):
     )
 
 
+@login_required
 def delete_dessert_step(request, pk):
     """Deletes Step Fields"""
 
@@ -233,7 +244,7 @@ def delete_dessert_step(request, pk):
     )
 
 
-class DessertDelete(DeleteView):
+class DessertDelete(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
     """Deletes Dessert Course"""
 
     model = Dessert
@@ -284,6 +295,7 @@ def dessert_step_detail_view(request, pk):
     return render(request, "includes/ dessert_step_details.html", context)
 
 
+@login_required
 def add_dessert_ing(request):
     """Renders The Form Add Extra Ingredients"""
 
@@ -294,6 +306,7 @@ def add_dessert_ing(request):
     return render(request, "includes/add_dessert_ing.html", context)
 
 
+@login_required
 def add_dessert_step(request):
     """Renders The Form Add Extra Step"""
 

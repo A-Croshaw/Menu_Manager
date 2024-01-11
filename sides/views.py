@@ -1,5 +1,10 @@
 from django.http.response import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import (
+    UserPassesTestMixin,
+    LoginRequiredMixin
+)
 from django.views.generic import ListView, DeleteView
 from django.db.models import Q
 from django.contrib import messages
@@ -29,6 +34,7 @@ class ViewSide(ListView):
         return side
 
 
+@login_required
 def add_side(request):
     """
     Add Side Course function
@@ -137,6 +143,7 @@ def side_method(request, pk):
     return render(request, "sides/side_method.html", context)
 
 
+@login_required
 def update_side_ing(request, pk):
     """
     Updates Ingredient Fields
@@ -161,6 +168,7 @@ def update_side_ing(request, pk):
     return render(request, "includes/add_side_ing.html", context)
 
 
+@login_required
 def update_side_step(request, pk):
     """
     Updates step Fields
@@ -182,6 +190,7 @@ def update_side_step(request, pk):
     return render(request, "includes/add_side_step.html", context)
 
 
+@login_required
 def edit_side(request, pk):
     """
     Updates recipe Fields
@@ -207,6 +216,7 @@ def edit_side(request, pk):
     return render(request, "sides/edit_side.html", context)
 
 
+@login_required
 def delete_side_ing(request, pk):
     """
     Deletes Ingredient Fields
@@ -225,6 +235,7 @@ def delete_side_ing(request, pk):
     )
 
 
+@login_required
 def delete_side_step(request, pk):
     """
     Deletes Step Fields
@@ -243,7 +254,7 @@ def delete_side_step(request, pk):
     )
 
 
-class SideDelete(DeleteView):
+class SideDelete(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
     """
     Deletes Side Course
     """
@@ -299,6 +310,7 @@ def side_step_detail_view(request, pk):
     return render(request, "includes/ side_step_details.html", context)
 
 
+@login_required
 def add_side_ing(request):
     """
     Renders The Form Add Extra Ingredients
@@ -310,6 +322,7 @@ def add_side_ing(request):
     return render(request, "includes/add_side_ing.html", context)
 
 
+@login_required
 def add_side_step(request):
     """
     Renders The Form Add Extra step

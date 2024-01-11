@@ -1,4 +1,9 @@
 from django.http.response import HttpResponse, HttpResponseNotAllowed
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import (
+    UserPassesTestMixin,
+    LoginRequiredMixin
+)
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView, DeleteView
 from django.db.models import Q
@@ -29,6 +34,7 @@ class ViewMain(ListView):
         return main
 
 
+@login_required
 def add_main(request):
     """
     Add Main Course function
@@ -137,6 +143,7 @@ def main_method(request, pk):
     return render(request, "main_courses/main_method.html", context)
 
 
+@login_required
 def update_main_ing(request, pk):
     """
     Updates Ingredient Fields
@@ -158,6 +165,7 @@ def update_main_ing(request, pk):
     return render(request, "includes/add_main_ing.html", context)
 
 
+@login_required
 def update_main_step(request, pk):
     """
     Updates step Fields
@@ -179,6 +187,7 @@ def update_main_step(request, pk):
     return render(request, "includes/add_main_step.html", context)
 
 
+@login_required
 def edit_main(request, pk):
     """
     Updates Main Fields
@@ -204,6 +213,7 @@ def edit_main(request, pk):
     return render(request, "main_courses/edit_main.html", context)
 
 
+@login_required
 def delete_main_ing(request, pk):
     """
     Deletes Ingredient Fields
@@ -222,6 +232,7 @@ def delete_main_ing(request, pk):
     )
 
 
+@login_required
 def delete_main_step(request, pk):
     """
     Deletes Step Fields
@@ -240,7 +251,7 @@ def delete_main_step(request, pk):
     )
 
 
-class MainDelete(DeleteView):
+class MainDelete(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
     """
     Deletes Main Course
     """
@@ -296,6 +307,7 @@ def main_step_detail_view(request, pk):
     return render(request, "includes/ main_step_details.html", context)
 
 
+@login_required
 def add_main_ing(request):
     """
     Renders The Form Add Extra Ingredients
@@ -307,6 +319,7 @@ def add_main_ing(request):
     return render(request, "includes/add_main_ing.html", context)
 
 
+@login_required
 def add_main_step(request):
     """
     Renders The Form Add Extra Steps

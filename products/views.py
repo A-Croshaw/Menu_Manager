@@ -9,6 +9,7 @@ from .forms import ProductForm
 from django.db.models import Q
 
 
+
 class AddProduct(LoginRequiredMixin, CreateView):
     """Adding a Product"""
 
@@ -49,6 +50,7 @@ class DeleteProduct(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         return self.request.user == self.get_object().user
+
 
 
 class EditProduct(LoginRequiredMixin, UserPassesTestMixin, UpdateView):

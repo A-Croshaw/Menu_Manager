@@ -12,12 +12,14 @@
             <p class="detail-txt">Recipe for a {{dessert_sauce.dessert_sauce_type}}</p>
             <p class="detail-txt">Recipe With {{dessert_sauce.dessert_sauce_meat_type}}</p>
             <div class="btn-view pt-3">
+                {% if user.is_superuser %}
                 <div class="btn-view ">
                     <a href="{% url 'edit_dessert_sauce' pk=dessert_sauce.id%}" class="btn btn-edit"
                         aria-label="Click to view ">
                         <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
                     </a>
                 </div>
+                {%endif%}
             </div>
             <div class="description col p-3 view-border">
                 <h2 class="view-headers">Description</h2>
@@ -31,18 +33,21 @@
                 {% include "includes/dessert_sauce_ing_detail_view.html" %}
                 {% endfor %}
                 <div class="btn-view pt-3">
+                    {% if user.is_superuser %}
                     <div class="btn-view ">
                         <a href="{% url 'dessert_sauce_ingredients' pk=dessert_sauce.id%}" class="btn btn-edit"
                             aria-label="Click to edit ingredients ">
                             <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
                         </a>
                     </div>
+                    {%endif%}
                 </div>
                 <div class="p-3 method col view-border">
                     <h2 class="view-headers">Method</h2>
                     {% for dessert_sauce_step in dessert_sauce_step %}
                     {% include "includes/dessert_sauce_step_detail_view.html" %}
                     {% endfor %}
+                    {% if user.is_superuser %}
                     <div class="btn-view pt-3">
                         <div class="btn-view ">
                             <a href="{% url 'dessert_sauce_method' pk=dessert_sauce.id%}" class="btn btn-edit"
@@ -51,15 +56,18 @@
                             </a>
                         </div>
                     </div>
+                    {%endif%}
                 </div>
                 <div class="detail-container btn-edit-view">
                     <a href="{% url 'dessert_sauces' %}" class="btn btn-return mt-2" aria-label="Click to return">
                         Return
                     </a>
+                    {% if user.is_superuser %}
                     <a href="{% url 'dessert_sauce_delete' dessert_sauce.id %}" class="btn btn-recipe-delete mt-2 pt-1"
                         aria-label="Click to Delete">
                         <img src="{% static '/icons/delete_icon.svg' %}" alt="Delete Icon" class="recipe-delete">
                     </a>
+                    {%endif%s}
                 </div>
             </div>
         </div>

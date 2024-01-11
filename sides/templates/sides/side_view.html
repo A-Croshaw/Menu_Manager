@@ -11,11 +11,13 @@
             <h2 class="view-headers">Details</h2>
             <p class="detail-txt">Recipe for a {{side.side_type}}</p>
             <p class="detail-txt">Recipe With {{side.side_meat_type}}</p>
+            {% if user.is_superuser %}
             <div class="btn-view pt-3">
                 <a href="{% url 'edit_side' pk=side.id%}" class="btn btn-edit" aria-label="Click to view ">
                     <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
                 </a>
             </div>
+            {% endif %}
         </div>
         <div class="description col p-3 view-border">
             <h2 class="view-headers">Description</h2>
@@ -28,32 +30,38 @@
             {% for side_ingredient in side_ingredients %}
             {% include "includes/side_ing_detail_view.html" %}
             {% endfor %}
+            {% if user.is_superuser %}
             <div class="btn-view pt-3">
                 <a href="{% url 'side_ingredients' pk=side.id%}" class="btn btn-edit"
                     aria-label="Click to edit ingredients ">
                     <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
                 </a>
             </div>
+            {% endif %}
         </div>
         <div class="p-3 method col view-border">
             <h2 class="view-headers">Method</h2>
             {% for side_step in side_step %}
             {% include "includes/side_step_detail_view.html" %}
             {% endfor %}
+            {% if user.is_superuser %}
             <div class="btn-view pt-3">
                 <a href="{% url 'side_method' pk=side.id%}" class="btn btn-edit" aria-label="Click to edit method ">
                     <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
                 </a>
             </div>
+            {% endif %}
         </div>
     </div>
     <div class="detail-container btn-edit-view">
         <a href="{% url 'sides' %}" class="btn btn-return mt-2" aria-label="Click to return">
             Return
         </a>
+        {% if user.is_superuser %}
         <a href="{% url 'side_delete' side.id %}" class="btn btn-recipe-delete mt-2 pt-1" aria-label="Click to Delete">
             <img src="{% static '/icons/delete_icon.svg' %}" alt="Delete Icon" class="recipe-delete">
         </a>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

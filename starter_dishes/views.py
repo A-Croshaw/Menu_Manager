@@ -1,5 +1,10 @@
 from django.http.response import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import (
+    UserPassesTestMixin,
+    LoginRequiredMixin
+)
 from django.views.generic import ListView, DeleteView
 from django.db.models import Q
 from django.contrib import messages
@@ -28,6 +33,7 @@ class ViewStarterDish(ListView):
         return starter_dish
 
 
+@login_required
 def add_starter_dish(request):
     """
     Add Starter Dish function
@@ -70,6 +76,7 @@ def starter_dish_view(request, pk):
     return render(request, "starter_dishes/starter_dish_view.html", context,)
 
 
+@login_required
 def edit_starter_dish(request, pk):
     """
     Updates dish Fields
@@ -94,7 +101,8 @@ def edit_starter_dish(request, pk):
 
     return render(request, "starter_dishes/edit_starter_dish.html", context)
 
-class StarterDishDelete(DeleteView):
+
+class StarterDishDelete(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
     """
     Deletes starter Dish
     """
@@ -139,6 +147,7 @@ def starter_dish_element(request, pk):
     return render(request, "starter_dishes/starter_dish_element.html", context)
 
 
+@login_required
 def update_starter_dish_element(request, pk):
     """
     Updates dish_element Fields
@@ -182,6 +191,7 @@ def starter_dish_element_details(request, pk):
     return render(request, "includes/starter_dish_element_details.html", context)
 
 
+@login_required
 def add_starter_dish_element(request):
     """
     Renders The Form Add Extra dish_element
@@ -193,6 +203,7 @@ def add_starter_dish_element(request):
     return render(request, "includes/add_starter_dish_element.html", context)
 
 
+@login_required
 def delete_starter_dish_element(request, pk):
     """
     Deletes Element Field
@@ -244,6 +255,7 @@ def starter_dish_sauce(request, pk):
     return render(request, "starter_dishes/starter_dish_sauce.html", context)
 
 
+@login_required
 def update_starter_dish_sauce(request, pk):
     """
     Updates dish sauce Fields
@@ -287,6 +299,7 @@ def starter_dish_sauce_details(request, pk):
     return render(request, "includes/starter_dish_sauce_details.html", context)
 
 
+@login_required
 def add_starter_dish_sauce(request):
     """
     Renders The Form Add Extra dish_sauce
@@ -298,6 +311,7 @@ def add_starter_dish_sauce(request):
     return render(request, "includes/add_starter_dish_sauce.html", context)
 
 
+@login_required
 def delete_starter_dish_sauce(request, pk):
     """
     Deletes Sauce Field
