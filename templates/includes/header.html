@@ -144,7 +144,7 @@
               <li><a class="dropdown-item nav-txt" href="{% url 'main_dishes' %}">Dishes</a></li>
               {% if user.is_superuser %}
               <li><a class="dropdown-item nav-txt" href="{% url 'add_main_dish' %}">Add Dish</a></li>
-              {% end if %}
+              {% endif %}
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -194,7 +194,7 @@
               <li><a class="dropdown-item nav-txt" href="{% url 'sauces' %}#">Recipes</a></li>
               {% if user.is_superuser %}
               <li><a class="dropdown-item nav-txt" href="{% url 'add_sauce' %}">Add Recipe</a></li>
-              {% end if %}
+              {% endif %}
             </ul>
           </li>
           <li class="nav-item dropdown">
