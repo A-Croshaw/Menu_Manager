@@ -3,11 +3,13 @@ from djrichtextfield.models import RichTextField
 from products.models import Product
 from django.contrib.auth.models import User
 
+
 # Choice Fields
 TYPE = (
     ("Cold Sauce", "Cold Sauce"),
     ("Hot Sauce", "Hot Sauce"),
     )
+
 
 UNITS = (
     ('gr', 'gr'),
@@ -18,9 +20,8 @@ UNITS = (
 
 
 class DessertSauce(models.Model):
-    """
-    A Model To Create Dessert Sauce Recipes
-    """
+    """A Model To Create Dessert Sauce Recipes"""
+
     user = models.ForeignKey(
         User,
         related_name="dessert_sauce_user",
@@ -38,7 +39,8 @@ class DessertSauce(models.Model):
         blank=False
         )
     dessert_sauce_type = models.CharField(
-        max_length=50, choices=TYPE, default="Cold Dessert Sauce"
+        max_length=50, choices=TYPE,
+        default="Cold Dessert Sauce"
     )
 
     class Meta:
@@ -49,9 +51,8 @@ class DessertSauce(models.Model):
 
 
 class DessertSauceIngredients(models.Model):
-    """
-    A Model To Create Ingredients For The Recipes
-    """
+    """A Model To Create Ingredients For The Recipes"""
+
     dessert_sauce = models.ForeignKey(
         DessertSauce,
         on_delete=models.CASCADE
@@ -78,9 +79,8 @@ class DessertSauceIngredients(models.Model):
 
 
 class DessertSauceMethod(models.Model):
-    """
-    A Model To Create Steps For The Recipe
-    """
+    """A Model To Create Steps For The Recipe"""
+    
     dessert_sauce = models.ForeignKey(
         DessertSauce,
         on_delete=models.CASCADE

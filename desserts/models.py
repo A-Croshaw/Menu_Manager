@@ -3,11 +3,13 @@ from djrichtextfield.models import RichTextField
 from products.models import Product
 from django.contrib.auth.models import User
 
+
 # Choice Fields
 TYPE = (
     ("Cold Dessert", "Cold Dessert"),
     ("Hot Dessert", "Hot Dessert"),
     )
+
 
 UNITS = (
     ('gr', 'gr'),
@@ -18,9 +20,8 @@ UNITS = (
 
 
 class Dessert(models.Model):
-    """
-    A Model To Create Dessert Recipes
-    """
+    """A Model To Create Dessert Recipes"""
+
     user = models.ForeignKey(
         User,
         related_name="dessert_user",
@@ -38,9 +39,9 @@ class Dessert(models.Model):
         blank=False
         )
     dessert_type = models.CharField(
-        max_length=50, choices=TYPE, default="Cold Dessert"
+        max_length=50, choices=TYPE,
+        default="Cold Dessert"
     )
-
     class Meta:
         ordering = ["dessert_name"]
 
@@ -49,9 +50,8 @@ class Dessert(models.Model):
 
 
 class DessertIngredients(models.Model):
-    """
-    A Model To Create Ingredients For The Recipes
-    """
+    """A Model To Create Ingredients For The Recipes"""
+
     dessert = models.ForeignKey(
         Dessert,
         on_delete=models.CASCADE
@@ -78,9 +78,8 @@ class DessertIngredients(models.Model):
 
 
 class DessertMethod(models.Model):
-    """
-    A Model To Create Steps For The Recipe
-    """
+    """A Model To Create Steps For The Recipe"""
+
     dessert = models.ForeignKey(
         Dessert,
         on_delete=models.CASCADE
@@ -93,4 +92,3 @@ class DessertMethod(models.Model):
 
     def __str__(self):
         return str(self.dessert_Steps)
-

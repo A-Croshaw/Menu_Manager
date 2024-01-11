@@ -1,72 +1,69 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Home{% endblock %}
-
 {% block content %}
-<section>
-    <div class="container mt-4 pb-4 bg-fade-home">
-        <div class="detail-container mb-2 pt-2 justify-content-center">
-            <h1 calss="home-header"> Restraunt Menu Manager</h1>
+<div class="container mt-4 pb-4 bg-fade-home">
+    <div class="detail-container mb-2 pt-2 justify-content-center">
+        <h1 calss="home-header"> Restraunt Menu Manager</h1>
+    </div>
+    <div class="detail-container justify-content-center mb-2">
+        <div class="col home-col">
+            {% if user.is_superuser %}
+            <div class="view-border p-2 m-1">
+                {% include 'includes/products-home.html' %}
+            </div>
+            {% endif %}
         </div>
-        <div class="detail-container justify-content-center mb-2">
-            <div class="col home-col">
-                {% if user.is_superuser %}
-                <div class="view-border p-2 m-1">
-                    {% include 'includes/products-home.html' %}
-                </div>
-                {% endif %}
+        <div class="col home-col">
+            <div class="view-border p-2 m-1">
+                {% include 'includes/menu-home.html' %}
             </div>
-            <div class="col home-col">
-                <div class="view-border p-2 m-1">
-                    {% include 'includes/menu-home.html' %}
-                </div>
+        </div>
+        <div class="col home-col">
+            <div class="view-border p-2 m-1">
+                {% include 'includes/starter-recipie-home.html' %}
             </div>
-            <div class="col home-col">
-                <div class="view-border p-2 m-1">
-                    {% include 'includes/starter-recipie-home.html' %}
-                </div>
+        </div>
+        <div class="col home-col">
+            <div class="view-border p-2 m-1">
+                {% include 'includes/starter-dish-home.html' %}
             </div>
-            <div class="col home-col">
-                <div class="view-border p-2 m-1">
-                    {% include 'includes/starter-dish-home.html' %}
-                </div>
+        </div>
+        <div class="col home-col">
+            <div class="view-border p-2 m-1">
+                {% include 'includes/main-recipie-home.html' %}
             </div>
-            <div class="col home-col">
-                <div class="view-border p-2 m-1">
-                    {% include 'includes/main-recipie-home.html' %}
-                </div>
+        </div>
+        <div class="col home-col">
+            <div class="view-border p-2 m-1">
+                {% include 'includes/main-dish-home.html' %}
             </div>
-            <div class="col home-col">
-                <div class="view-border p-2 m-1">
-                    {% include 'includes/main-dish-home.html' %}
-                </div>
+        </div>
+        <div class="col home-col">
+            <div class="view-border p-2 m-1">
+                {% include 'includes/side-home.html' %}
             </div>
-            <div class="col home-col">
-                <div class="view-border p-2 m-1">
-                    {% include 'includes/side-home.html' %}
-                </div>
+        </div>
+        <div class="col home-col">
+            <div class="view-border p-2 m-1">
+                {% include 'includes/sauce-home.html' %}
             </div>
-            <div class="col home-col">
-                <div class="view-border p-2 m-1">
-                    {% include 'includes/sauce-home.html' %}
-                </div>
+        </div>
+        <div class="col home-col">
+            <div class="view-border p-2 m-1">
+                {% include 'includes/dessert-recipie-home.html' %}
             </div>
-            <div class="col home-col">
-                <div class="view-border p-2 m-1">
-                    {% include 'includes/dessert-recipie-home.html' %}
-                </div>
+        </div>
+        <div class="col home-col">
+            <div class="view-border p-2 m-1">
+                {% include 'includes/dessert-dish-home.html' %}
             </div>
-            <div class="col home-col">
-                <div class="view-border p-2 m-1">
-                    {% include 'includes/dessert-dish-home.html' %}
-                </div>
-            </div>
-            <div class="col home-col">
-                <div class="view-border p-2 m-1">
-                    {% include 'includes/dessert-sauce-home.html' %}
-                </div>
+        </div>
+        <div class="col home-col">
+            <div class="view-border p-2 m-1">
+                {% include 'includes/dessert-sauce-home.html' %}
             </div>
         </div>
     </div>
-</section>
+</div>
 {% endblock %}

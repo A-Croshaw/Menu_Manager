@@ -17,6 +17,7 @@ class MainDishItemAdmin(admin.StackedInline):
     model = MainDishItem
     extra = 0
 
+
 class DessertDishItemAdmin(admin.StackedInline):
     """
     Creates Admin For The Ingredients

@@ -15,8 +15,7 @@
   <div class="carousel-inner">
     {% for starter_dish in starter_dish %}
     <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}" id="slide{{forloop.counter}}">
-      <a href="#" class="card-link"
-        aria-label="Click to view {{starter_dish.starter_dish_name}}">
+      <a href="#" class="card-link" aria-label="Click to view {{starter_dish.starter_dish_name}}">
         <div class="carousel-card my-3 py-2 view-border">
           <h2 class="carousel-name pt-1">{{starter_dish.starter_dish_name|title}}</h2>
           <h3 class="carousel-type pt-1">{{starter_dish.starter_dish_type|title}}</h3>

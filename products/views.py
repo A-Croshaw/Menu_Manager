@@ -1,8 +1,10 @@
 from django.views.generic import (CreateView, ListView, DeleteView, UpdateView)
 from .models import Product
 from django.contrib.auth.mixins import (
-    UserPassesTestMixin, LoginRequiredMixin
+    UserPassesTestMixin,
+    LoginRequiredMixin
 )
+
 from .forms import ProductForm
 from django.db.models import Q
 

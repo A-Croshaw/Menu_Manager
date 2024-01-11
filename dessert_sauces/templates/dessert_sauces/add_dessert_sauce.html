@@ -1,33 +1,30 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Add Dessert Recipe{% endblock %} 
+{% block title %}Add Dessert Sauce Recipe{% endblock %}
 
 {% block content %}
-<section>
-    <div class="container mt-4 pb-4 bg-fade-details">
-        <div class="detail-container mt-4 pt-4 justify-content-center">
-            <h1 class="add-header">Add Dessert Recipe</h1>
-        </div>
-        <div class="detail-container mt-4 justify-content-center">
-            <form action="." method="POST" enctype="multipart/form-data" class="add-form ">
-                {% csrf_token %}
-                {% for field in form %}
-                <div class="detail-container justify-content-center mt-4">
-                    <div class="col-sm-3 add-form-info">
-                        {{field.label_tag}}
-                    </div>
-                    <div class="col-sm-7 add-form-inputs">
-                        {{field}}
-                    </div>
-                </div>
-                {% endfor %}
-                <div class="btn-edit-view mt-5 pb-4">
-                    <button class="btn btn-submit mt-2" type="submit" value="submit">Submit</button>
-                    <a href="{% url 'dessert_sauces' %}" class="btn btn-cancel mt-2">Cancel</a>
-                </div>
-                
-            </form>
-        </div>
+<div class="container mt-3 pb-4 bg-fade-details">
+    <div class="detail-container mt-4 pt-4 justify-content-center">
+        <h1 class="add-header">Add Dessert Recipe</h1>
     </div>
-</section>
+    <div class="detail-container mt-4 justify-content-center">
+        <form action="." method="POST" enctype="multipart/form-data" class="add-form ">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="detail-container justify-content-center mt-4">
+                <div class="col-sm-3 add-form-info">
+                    {{field.label_tag}}
+                </div>
+                <div class="col-sm-7 add-form-inputs">
+                    {{field}}
+                </div>
+            </div>
+            {% endfor %}
+            <div class="btn-edit-view mt-5 pb-4">
+                <button class="btn btn-submit mt-2" type="submit" value="submit">Submit</button>
+                <a href="{% url 'dessert_sauces' %}" class="btn btn-cancel mt-2">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}

@@ -14,9 +14,7 @@ from django.shortcuts import render
 
 
 def Index(request):
-    """
-    View full Main Recipie
-    """
+    """View full Main Recipie"""
 
     menu = Menu.objects.all()
     main = Main.objects.all()

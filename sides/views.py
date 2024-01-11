@@ -40,6 +40,7 @@ def add_side(request):
             side = form.save(commit=False)
             side.side = side
             side.save()
+            messages.success(request, 'Side Successfully Added!')
             return redirect("side_view", pk=side.id)
         else:
             return render(request,
@@ -84,6 +85,7 @@ def side_ingredients(request, pk):
             side_ingredient = form.save(commit=False)
             side_ingredient.side = side
             side_ingredient.save()
+            messages.success(request, 'Ingredients Successfully Added!')
             return redirect("side_ing_details", pk=side_ingredient.id)
         else:
             return render(request,
@@ -116,6 +118,7 @@ def side_method(request, pk):
             side_step = form.save(commit=False)
             side_step.side = side
             side_step.save()
+            messages.success(request, 'Method Successfully Added!')
             return redirect("side_step_details", pk=side_step.id)
         else:
             return render(request,

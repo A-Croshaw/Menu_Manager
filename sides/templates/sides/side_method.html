@@ -1,58 +1,59 @@
 {% extends "base.html" %}
 {% load static %}
+{% block title %}Side Method{% endblock %}
 {% block content %}
-<section>
-    <div class="container mt-4 pb-4 bg-fade-details">
-        <div class="detail-container mb-2 pt-2 justify-content-center">
-            <h1 class="view-headers">{{side.side_name|title}}</h1>
-        </div>
-        <div class="detail-container justify-content-center">
-            <div class="p-3 details col view-border">
-                <h2 class="view-headers">Details</h2>
-                <p class="detail-txt">Recipe for a {{side.side_type}}</p>
-                <p class="detail-txt">Recipe With {{side.side_meat_type}}</p>
-                <div class="btn-view">
-                    <a href="{% url 'edit_side' pk=side.id%}" class="btn btn-edit" aria-label="Click to edit Recipe details ">
-                        <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
-                    </a>
-                </div>
-            </div>
-            <div class="description col p-3 view-border">
-                <h2 class="view-headers">Description</h2>
-                <p class="view-txt" >{{side.side_description}}</p>
-            </div>
-        </div>
-        <div class="detail-container justify-content-center">
-            <div class="ingredients col p-3 view-border">
-                <h2 class="view-headers">Ingredients</h2>
-                {% for side_ingredient in side_ingredients %}
-                {% include "includes/side_ing_detail_view.html" %}
-                {% endfor %}
-                <div class="btn-view">
-                    <a href="{% url 'side_ingredients' pk=side.id%}" class="btn btn-edit" aria-label="Click to edit ingredients ">
-                        <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
-                    </a>
-                </div>
-            </div>
-            <div class="p-3 method col view-border">
-                <h2 class="view-headers">Method</h2>
-                {% for side_step in side_step %}
-                {% include "includes/side_step_details.html" %}
-                {% endfor %}
-                <div id="addsidestep" ></div>
-                <div class="btn-edit-view">
-                    <button type="button" hx-get="{% url 'add_side_step' %}" hx-target="#addsidestep" hx-swap="beforeend"
-                        class="btn btn-add" aria-label="Click to Add steps">
-                        <img src="{% static '/icons/add-icon.svg' %}" alt="Add Icon" class="add">
-                    </button>
-                </div>
-            </div>
-            <div>
-                <a href="{% url 'side_view' side.id %}" class="btn btn-return mt-2" aria-label="Click to return">
-                    Return
+<div class="container mt-4 pb-4 bg-fade-details">
+    <div class="detail-container mb-2 pt-2 justify-content-center">
+        <h1 class="view-headers">{{side.side_name|title}}</h1>
+    </div>
+    <div class="detail-container justify-content-center">
+        <div class="p-3 details col view-border">
+            <h2 class="view-headers">Details</h2>
+            <p class="detail-txt">Recipe for a {{side.side_type}}</p>
+            <p class="detail-txt">Recipe With {{side.side_meat_type}}</p>
+            <div class="btn-view">
+                <a href="{% url 'edit_side' pk=side.id%}" class="btn btn-edit"
+                    aria-label="Click to edit Recipe details ">
+                    <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
                 </a>
             </div>
         </div>
+        <div class="description col p-3 view-border">
+            <h2 class="view-headers">Description</h2>
+            <p class="view-txt">{{side.side_description}}</p>
+        </div>
     </div>
-</section>
+    <div class="detail-container justify-content-center">
+        <div class="ingredients col p-3 view-border">
+            <h2 class="view-headers">Ingredients</h2>
+            {% for side_ingredient in side_ingredients %}
+            {% include "includes/side_ing_detail_view.html" %}
+            {% endfor %}
+            <div class="btn-view">
+                <a href="{% url 'side_ingredients' pk=side.id%}" class="btn btn-edit"
+                    aria-label="Click to edit ingredients ">
+                    <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
+                </a>
+            </div>
+        </div>
+        <div class="p-3 method col view-border">
+            <h2 class="view-headers">Method</h2>
+            {% for side_step in side_step %}
+            {% include "includes/side_step_details.html" %}
+            {% endfor %}
+            <div id="addsidestep"></div>
+            <div class="btn-edit-view">
+                <button type="button" hx-get="{% url 'add_side_step' %}" hx-target="#addsidestep" hx-swap="beforeend"
+                    class="btn btn-add" aria-label="Click to Add steps">
+                    <img src="{% static '/icons/add-icon.svg' %}" alt="Add Icon" class="add">
+                </button>
+            </div>
+        </div>
+        <div>
+            <a href="{% url 'side_view' side.id %}" class="btn btn-return mt-2" aria-label="Click to return">
+                Return
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock %}

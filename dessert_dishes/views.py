@@ -6,6 +6,7 @@ from django.contrib import messages
 from .models import DessertDish, DessertDishSauce, DessertDishElement
 from .forms import DessertDishForm, DessertDishSauceForm, DessertDishElementForm
 
+
 class ViewDessertDish(ListView):
     """View All Dessert Dishes"""
 
@@ -28,9 +29,8 @@ class ViewDessertDish(ListView):
 
 
 def add_dessert_dish(request):
-    """
-    Add Dessert Dish function
-    """
+    """Add Dessert Dish function"""
+
     form = DessertDishForm(request.POST or None)
 
     if request.method == "POST":
@@ -38,6 +38,7 @@ def add_dessert_dish(request):
             dessert_dish = form.save(commit=False)
             dessert_dish.dessert_dish = dessert_dish
             dessert_dish.save()
+            messages.success(request, 'Dessert Added Successfully!')
             return redirect("dessert_dish_view", pk=dessert_dish.id)
         else:
             return render(request,
@@ -52,9 +53,8 @@ def add_dessert_dish(request):
 
 
 def dessert_dish_view(request, pk):
-    """
-    View full Dessert dish
-    """
+    """View full Dessert dish"""
+
     dessert_dish = DessertDish.objects.get(id=pk)
     dessert_dish_sauce = DessertDishSauce.objects.filter(dessert_dish=dessert_dish)
     dessert_dish_element = DessertDishElement.objects.filter(dessert_dish=dessert_dish)
@@ -69,9 +69,8 @@ def dessert_dish_view(request, pk):
 
 
 def edit_dessert_dish(request, pk):
-    """
-    Updates dish Fields
-    """
+    """Updates dish Fields"""
+
     dessert_dish = DessertDish.objects.get(id=pk)
     form = DessertDishForm(request.POST or None, instance=dessert_dish)
     dessert_dish_sauce = DessertDishSauce.objects.filter(dessert_dish=dessert_dish)
@@ -92,22 +91,20 @@ def edit_dessert_dish(request, pk):
 
     return render(request, "dessert_dishes/edit_dessert_dish.html", context)
 
+
 class DessertDishDelete(DeleteView):
-    """
-    Deletes Dessert Dish
-    """
+    """Deletes Dessert Dish"""
+
     model = DessertDish
     success_url = '/dessert_dishes/'
-
     def test_func(self):
 
         return self.request.user == self.get_object().user
 
-
+# Elements
 def dessert_dish_element(request, pk):
-    """
-    Add Dish Elements
-    """
+    """Add Dish Elements"""
+
     dessert_dish = DessertDish.objects.get(id=pk)
     dessert_dish_sauce = DessertDishSauce.objects.filter(dessert_dish=dessert_dish)
     dessert_dish_element = DessertDishElement.objects.filter(dessert_dish=dessert_dish)
@@ -118,6 +115,7 @@ def dessert_dish_element(request, pk):
             dessert_dish_element = form.save(commit=False)
             dessert_dish_element.dessert_dish = dessert_dish
             dessert_dish_element.save()
+            messages.success(request, 'Dish Element Successfully!')
             return redirect("dessert_dish_element_details", pk=dessert_dish_element.id)
         else:
             return render(request,
@@ -137,9 +135,8 @@ def dessert_dish_element(request, pk):
 
 
 def update_dessert_dish_element(request, pk):
-    """
-    Updates dish_element Fields
-    """
+    """Updates dish_element Fields"""
+
     dessert_dish_element = DessertDishElement.objects.get(id=pk)
     form = DessertDishElementForm(request.POST or None, instance=dessert_dish_element)
 
@@ -158,9 +155,8 @@ def update_dessert_dish_element(request, pk):
 
 
 def dessert_dish_element_detail_view(request, pk):
-    """
-    Displays dish_element Fields After Being Added
-    """
+    """Displays dish_element Fields After Being Added"""
+
     dessert_dish_element = get_object_or_404(DessertDishElement, id=pk)
     context = {
         " dessert_dish_element":  dessert_dish_element
@@ -169,9 +165,8 @@ def dessert_dish_element_detail_view(request, pk):
 
 
 def dessert_dish_element_details(request, pk):
-    """
-    Displays dish_element Fields for updating
-    """
+    """Displays dish_element Fields for updating"""
+
     dessert_dish_element = get_object_or_404(DessertDishElement, id=pk)
     context = {
         "dessert_dish_element": dessert_dish_element
@@ -180,9 +175,8 @@ def dessert_dish_element_details(request, pk):
 
 
 def add_dessert_dish_element(request):
-    """
-    Renders The Form Add Extra dish_element
-    """
+    """Renders The Form Add Extra dish_element"""
+
     form = DessertDishElementForm()
     context = {
         "form": form
@@ -191,14 +185,13 @@ def add_dessert_dish_element(request):
 
 
 def delete_dessert_dish_element(request, pk):
-    """
-    Deletes Element Field
-    """
+    """Deletes Element Field"""
+
     dessert_dish_element = get_object_or_404(DessertDishElement, id=pk)
 
     if request.method == "POST":
         dessert_dish_element.delete()
-        messages.success(request, 'Step Deleted')
+        messages.success(request, 'Element Deleted')
         return HttpResponse("")
 
     return HttpResponseNotAllowed(
@@ -208,10 +201,10 @@ def delete_dessert_dish_element(request, pk):
     )
 
 
+# Sauces
 def dessert_dish_sauce(request, pk):
-    """
-    Add Dish Sauces
-    """
+    """Add Dish Sauces"""
+
     dessert_dish = DessertDish.objects.get(id=pk)
     dessert_dish_sauce = DessertDishSauce.objects.filter(dessert_dish=dessert_dish)
     dessert_dish_element = DessertDishElement.objects.filter(dessert_dish=dessert_dish)
@@ -222,6 +215,7 @@ def dessert_dish_sauce(request, pk):
             dessert_dish_sauce = form.save(commit=False)
             dessert_dish_sauce.dessert_dish = dessert_dish
             dessert_dish_sauce.save()
+            messages.success(request, 'Dish Sauce Successfully!')
             return redirect("dessert_dish_sauce_details", pk=dessert_dish_sauce.id)
         else:
             return render(request,
@@ -241,9 +235,8 @@ def dessert_dish_sauce(request, pk):
 
 
 def update_dessert_dish_sauce(request, pk):
-    """
-    Updates dish sauce Fields
-    """
+    """Updates dish sauce Fields"""
+
     dessert_dish_sauce = DessertDishSauce.objects.get(id=pk)
     form = DessertDishSauceForm(request.POST or None, instance=dessert_dish_sauce)
 
@@ -262,9 +255,8 @@ def update_dessert_dish_sauce(request, pk):
 
 
 def dessert_dish_sauce_detail_view(request, pk):
-    """
-    Displays dish sauce Fields After Being Added
-    """
+    """Displays dish sauce Fields After Being Added"""
+
     dessert_dish_sauce = get_object_or_404(DessertDishSauce, id=pk)
     context = {
         " dessert_dish_sauce":  dessert_dish_sauce
@@ -273,9 +265,8 @@ def dessert_dish_sauce_detail_view(request, pk):
 
 
 def dessert_dish_sauce_details(request, pk):
-    """
-    Displays dish sauce Fields for updating
-    """
+    """Displays dish sauce Fields for updating"""
+
     dessert_dish_sauce = get_object_or_404(DessertDishSauce, id=pk)
     context = {
         "dessert_dish_sauce": dessert_dish_sauce
@@ -284,9 +275,8 @@ def dessert_dish_sauce_details(request, pk):
 
 
 def add_dessert_dish_sauce(request):
-    """
-    Renders The Form Add Extra dish_sauce
-    """
+    """Renders The Form Add Extra dish_sauce"""
+
     form = DessertDishSauceForm()
     context = {
         "form": form
@@ -295,14 +285,13 @@ def add_dessert_dish_sauce(request):
 
 
 def delete_dessert_dish_sauce(request, pk):
-    """
-    Deletes sauce Field
-    """
+    """Deletes sauce Field"""
+
     dessert_dish_sauce = get_object_or_404(DessertDishSauce, id=pk)
 
     if request.method == "POST":
         dessert_dish_sauce.delete()
-        messages.success(request, 'Step Deleted')
+        messages.success(request, 'Sauce Deleted')
         return HttpResponse("")
 
     return HttpResponseNotAllowed(

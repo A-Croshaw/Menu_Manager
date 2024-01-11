@@ -31,7 +31,7 @@ class ViewSauce(ListView):
 
 def add_sauce(request):
     """
-    Add sauce Course function
+    Add Sauce function
     """
     form = SauceForm(request.POST or None)
 
@@ -40,6 +40,7 @@ def add_sauce(request):
             sauce = form.save(commit=False)
             sauce.sauce = sauce
             sauce.save()
+            messages.success(request, 'Sauce Successfully Added!')
             return redirect("sauce_view", pk=sauce.id)
         else:
             return render(request,
@@ -84,6 +85,7 @@ def sauce_ingredients(request, pk):
             sauce_ingredient = form.save(commit=False)
             sauce_ingredient.sauce = sauce
             sauce_ingredient.save()
+            messages.success(request, 'Ingredient Successfully Added!')
             return redirect("sauce_ing_details", pk=sauce_ingredient.id)
         else:
             return render(request,
@@ -116,6 +118,7 @@ def sauce_method(request, pk):
             sauce_step = form.save(commit=False)
             sauce_step.sauce = sauce
             sauce_step.save()
+            messages.success(request, 'Step Successfully Added!')
             return redirect("sauce_step_details", pk=sauce_step.id)
         else:
             return render(request,

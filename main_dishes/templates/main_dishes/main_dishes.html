@@ -1,27 +1,24 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 {% load static %}
 {% block title %}All Main Dishes View{% endblock %}
-
 {% block content %}
-<section>
-    <div class="container mt-4 pb-4 bg-fade">
-        <h1 class="text-center p-2 d-block">
-            Main Dishes
-        </h1>
-        <div class="container d-flex flex-row flex-wrap justify-content-center">
-            {% for main_dish in main_dishes %} 
-            <a href="{% url 'main_dish_view' main_dish.id %}" class="card-link" aria-label="Click to view {{main_dish.main_dish_name}}">
-                <div class="card m-2" style="width: 18rem;">
-                    <div class="card-body">
-                        <h2 class="card-name">{{main_dish.main_dish_name}}</h2>
-                        <h3 class="card-type">{{main_dish.main_dish_type}}</h3>
-                        <p class="card-desc">{{main_dish.main_dish_description|truncatechars:100}}</p>
-                    </div>
+<div class="container mt-4 pb-4 bg-fade">
+    <h1 class="text-center p-2 d-block">
+        Main Dishes
+    </h1>
+    <div class="container d-flex flex-row flex-wrap justify-content-center">
+        {% for main_dish in main_dishes %}
+        <a href="{% url 'main_dish_view' main_dish.id %}" class="card-link"
+            aria-label="Click to view {{main_dish.main_dish_name}}">
+            <div class="card m-2" style="width: 18rem;">
+                <div class="card-body">
+                    <h2 class="card-name">{{main_dish.main_dish_name}}</h2>
+                    <h3 class="card-type">{{main_dish.main_dish_type}}</h3>
+                    <p class="card-desc">{{main_dish.main_dish_description|truncatechars:100}}</p>
                 </div>
-            </a>
-            {% endfor %}
-        </div>
+            </div>
+        </a>
+        {% endfor %}
     </div>
-
-</section>
+</div>
 {% endblock %}

@@ -6,6 +6,7 @@ from django.contrib import messages
 from .models import StarterDish, StarterDishSauce, StarterDishElement
 from .forms import StarterDishForm, StarterDishSauceForm, StarterDishElementForm
 
+
 class ViewStarterDish(ListView):
     """View All Starter Dishes"""
 
@@ -38,6 +39,7 @@ def add_starter_dish(request):
             starter_dish = form.save(commit=False)
             starter_dish.starter_dish = starter_dish
             starter_dish.save()
+            messages.success(request, 'Starter Successfully Added!')
             return redirect("starter_dish_view", pk=starter_dish.id)
         else:
             return render(request,
@@ -118,6 +120,7 @@ def starter_dish_element(request, pk):
             starter_dish_element = form.save(commit=False)
             starter_dish_element.starter_dish = starter_dish
             starter_dish_element.save()
+            messages.success(request, 'Element Successfully Added!')
             return redirect("starter_dish_element_details", pk=starter_dish_element.id)
         else:
             return render(request,
@@ -198,7 +201,7 @@ def delete_starter_dish_element(request, pk):
 
     if request.method == "POST":
         starter_dish_element.delete()
-        messages.success(request, 'Step Deleted')
+        messages.success(request, 'Element Deleted')
         return HttpResponse("")
 
     return HttpResponseNotAllowed(
@@ -222,6 +225,7 @@ def starter_dish_sauce(request, pk):
             starter_dish_sauce = form.save(commit=False)
             starter_dish_sauce.starter_dish = starter_dish
             starter_dish_sauce.save()
+            messages.success(request, 'Sauce Successfully Added!')
             return redirect("starter_dish_sauce_details", pk=starter_dish_sauce.id)
         else:
             return render(request,

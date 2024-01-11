@@ -1,3 +1,4 @@
+{% load static %}
 {% if menu.menu_type == "à la carte" %}
 <div class="detail-container row">
     <div class="col-10">
@@ -27,12 +28,12 @@
     </div>
     <div class="col-12">
         <p class="menu-dish-txt text-center">
-            {{ main_dish_item.main_dish.main_dish_description }} 
+            {{ main_dish_item.main_dish.main_dish_description }}
         </p>
     </div>
     {% if menu.menu_type == "specials" %}
     <div class="col-12">
-        <p class="menu-dish-txt text-center"> 
+        <p class="menu-dish-txt text-center">
             <strong>
                 €{{ main_dish_item.main_price }}
             </strong>
@@ -41,4 +42,3 @@
     {% endif %}
 </div>
 {% endif%}
-

@@ -15,8 +15,8 @@
     <div class="carousel-inner">
         {% for dessert_sauce in dessert_sauces %}
         <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}" id="slide{{forloop.counter}}">
-            <a href="{% url 'dessert_sauce_view' dessert_sauce.id %}" class="card-link {{dessert_sauce.dessert_sauce_name}}"
-                aria-label="Click to view ">
+            <a href="{% url 'dessert_sauce_view' dessert_sauce.id %}"
+                class="card-link {{dessert_sauce.dessert_sauce_name}}" aria-label="Click to view ">
                 <div class="carousel-card view-border my-3 py-2">
                     <h2 class="carousel-name pt-1">{{dessert_sauce.dessert_sauce_name|title}}</h2>
                     <h3 class="carousel-type pt-1">{{dessert_sauce.dessert_sauce_type}}</h3>

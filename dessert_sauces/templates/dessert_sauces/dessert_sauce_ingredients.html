@@ -1,57 +1,60 @@
 {% extends "base.html" %}
 {% load static %}
+{% block title %}Dessert Sauce Ingredients{{object.dessert_sauce_name}}{% endblock %}
 {% block content %}
-<section>
-    <div class="container mt-4 pb-4 bg-fade-details">
-        <div class="detail-container mb-2 pt-2 justify-content-center">
-            <h1 class="view-headers">{{dessert_sauce.dessert_sauce_name|title}}</h1>
-        </div>
-        <div class="detail-container justify-content-center">
-            <div class="p-3 details col view-border">
-                <h2 class="view-headers">Details</h2>
-                <p class="detail-txt">Recipe for a {{dessert_sauce.dessert_sauce_type}}</p>
-                <p class="detail-txt">Recipe With {{dessert_sauce.dessert_sauce_meat_type}}</p>
-                <div class="btn-view">
-                    <a href="{% url 'edit_dessert_sauce' pk=dessert_sauce.id%}" class="btn btn-edit" aria-label="Click to edit Recipe details ">
-                        <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
-                    </a>
-                </div>
-            </div>
-            <div class="description col p-3 view-border">
-                <h2 class="view-headers">Description</h2>
-                <p class="view-txt" >{{dessert_sauce.dessert_sauce_description}}</p>
-            </div>
-        </div>
-        <div class="detail-container justify-content-center">
-            <div class="ingredients col p-3 view-border">
-                <h2 class="view-headers">Ingredients</h2>
-                {% for dessert_sauce_ingredient in dessert_sauce_ingredients %}
-                {% include "includes/dessert_sauce_ing_details.html" %}
-                {% endfor %}
-                <div id="adddessert_sauceforms" ></div>
-                <div class="btn-edit-view">
-                    <button type="button" hx-get="{% url 'add_dessert_sauce_ing' %}" hx-target="#adddessert_sauceforms" hx-swap="beforeend" class="btn btn-add" aria-label="Click to edit ingredients ">
-                        <img src="{% static '/icons/add-icon.svg' %}" alt="Add Icon" class="add">
-                    </button>
-                </div>
-            </div>
-            <div class="p-3 method col view-border">
-                <h2 class="view-headers">Method</h2>
-                {% for dessert_sauce_step in dessert_sauce_step %}
-                {% include "includes/dessert_sauce_step_detail_view.html" %}
-                {% endfor %}
-                <div class="btn-view">
-                    <a href="{% url 'dessert_sauce_method' pk=dessert_sauce.id%}" class="btn btn-edit" aria-label="Click to edit method ">
-                        <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
-                    </a>
-                </div>
-            </div>
-            <div>
-                <a href="{% url 'dessert_sauce_view' dessert_sauce.id %}" class="btn btn-return mt-2" aria-label="Click to return">
-                    Return
+<div class="container mt-3 pb-4 bg-fade-details">
+    <div class="detail-container mb-2 pt-2 justify-content-center">
+        <h1 class="view-headers">{{dessert_sauce.dessert_sauce_name|title}}</h1>
+    </div>
+    <div class="detail-container justify-content-center">
+        <div class="p-3 details col view-border">
+            <h2 class="view-headers">Details</h2>
+            <p class="detail-txt">Recipe for a {{dessert_sauce.dessert_sauce_type}}</p>
+            <p class="detail-txt">Recipe With {{dessert_sauce.dessert_sauce_meat_type}}</p>
+            <div class="btn-view">
+                <a href="{% url 'edit_dessert_sauce' pk=dessert_sauce.id%}" class="btn btn-edit"
+                    aria-label="Click to edit Recipe details ">
+                    <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
                 </a>
             </div>
         </div>
+        <div class="description col p-3 view-border">
+            <h2 class="view-headers">Description</h2>
+            <p class="view-txt">{{dessert_sauce.dessert_sauce_description}}</p>
+        </div>
     </div>
-</section>
+    <div class="detail-container justify-content-center">
+        <div class="ingredients col p-3 view-border">
+            <h2 class="view-headers">Ingredients</h2>
+            {% for dessert_sauce_ingredient in dessert_sauce_ingredients %}
+            {% include "includes/dessert_sauce_ing_details.html" %}
+            {% endfor %}
+            <div id="adddessert_sauceforms"></div>
+            <div class="btn-edit-view">
+                <button type="button" hx-get="{% url 'add_dessert_sauce_ing' %}" hx-target="#adddessert_sauceforms"
+                    hx-swap="beforeend" class="btn btn-add" aria-label="Click to edit ingredients ">
+                    <img src="{% static '/icons/add-icon.svg' %}" alt="Add Icon" class="add">
+                </button>
+            </div>
+        </div>
+        <div class="p-3 method col view-border">
+            <h2 class="view-headers">Method</h2>
+            {% for dessert_sauce_step in dessert_sauce_step %}
+            {% include "includes/dessert_sauce_step_detail_view.html" %}
+            {% endfor %}
+            <div class="btn-view">
+                <a href="{% url 'dessert_sauce_method' pk=dessert_sauce.id%}" class="btn btn-edit"
+                    aria-label="Click to edit method ">
+                    <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
+                </a>
+            </div>
+        </div>
+        <div>
+            <a href="{% url 'dessert_sauce_view' dessert_sauce.id %}" class="btn btn-return mt-2"
+                aria-label="Click to return">
+                Return
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -3,11 +3,13 @@ from djrichtextfield.models import RichTextField
 from products.models import Product
 from django.contrib.auth.models import User
 
+
 # Choice Fields
 TYPE = (
     ("Cold Side", "Cold Side"),
     ("Hot Side", "Hot Side"),
     )
+
 
 UNITS = (
     ('gr', 'gr'),
@@ -90,4 +92,3 @@ class SideMethod(models.Model):
 
     def __str__(self):
         return str(self.side_Steps)
-

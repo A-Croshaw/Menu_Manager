@@ -6,6 +6,7 @@ from django.contrib import messages
 from .models import MainDish, MainDishSauce, MainDishElement, MainDishSide
 from .forms import MainDishForm, MainDishSauceForm, MainDishElementForm, MainDishSideForm
 
+
 class ViewMainDish(ListView):
     """View All Main Dishes"""
 
@@ -38,6 +39,7 @@ def add_main_dish(request):
             main_dish = form.save(commit=False)
             main_dish.main_dish = main_dish
             main_dish.save()
+            messages.success(request, 'Dish Successfully Added!')
             return redirect("main_dish_view", pk=main_dish.id)
         else:
             return render(request,
@@ -118,6 +120,7 @@ def main_dish_element(request, pk):
             main_dish_element = form.save(commit=False)
             main_dish_element.main_dish = main_dish
             main_dish_element.save()
+            messages.success(request, 'Element Successfully Added!')
             return redirect("main_dish_element_details", pk=main_dish_element.id)
         else:
             return render(request,
@@ -198,7 +201,7 @@ def delete_main_dish_element(request, pk):
 
     if request.method == "POST":
         main_dish_element.delete()
-        messages.success(request, 'Step Deleted')
+        messages.success(request, 'Element Deleted')
         return HttpResponse("")
 
     return HttpResponseNotAllowed(
@@ -222,6 +225,7 @@ def main_dish_sauce(request, pk):
             main_dish_sauce = form.save(commit=False)
             main_dish_sauce.main_dish = main_dish
             main_dish_sauce.save()
+            messages.success(request, 'Sauce Successfully Added!')
             return redirect("main_dish_sauce_details", pk=main_dish_sauce.id)
         else:
             return render(request,
@@ -302,7 +306,7 @@ def delete_main_dish_sauce(request, pk):
 
     if request.method == "POST":
         main_dish_sauce.delete()
-        messages.success(request, 'Step Deleted')
+        messages.success(request, 'Sauce Deleted')
         return HttpResponse("")
 
     return HttpResponseNotAllowed(
@@ -329,6 +333,7 @@ def main_dish_side(request, pk):
             main_dish_side = form.save(commit=False)
             main_dish_side.main_dish = main_dish
             main_dish_side.save()
+            messages.success(request, 'Side Successfully Added!')
             return redirect("main_dish_side_details", pk=main_dish_side.id)
         else:
             return render(request,
@@ -409,7 +414,7 @@ def delete_main_dish_side(request, pk):
 
     if request.method == "POST":
         main_dish_side.delete()
-        messages.success(request, 'Step Deleted')
+        messages.success(request, 'Side Deleted')
         return HttpResponse("")
 
     return HttpResponseNotAllowed(

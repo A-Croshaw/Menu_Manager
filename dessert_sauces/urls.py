@@ -4,23 +4,23 @@ from . import views
 
 
 urlpatterns = [
-    path("",
+     path("",
          ViewDessertSauce.as_view(),
          name="dessert_sauces"
          ),
-    path('dessert_sauces/add_dessert_sauce/',
+     path('dessert_sauces/add_dessert_sauce/',
          views.add_dessert_sauce,
          name='add_dessert_sauce'
          ),
-    path('dessert_sauce_view/<pk>/',
+     path('dessert_sauce_view/<pk>/',
          views.dessert_sauce_view,
          name='dessert_sauce_view'
          ),
-    path('edit_dessert_sauce/<pk>/update/',
+     path('edit_dessert_sauce/<pk>/update/',
          views.edit_dessert_sauce,
          name="edit_dessert_sauce"
          ),
-    path('dessert_sauce_delete/<pk>/delete/',
+     path('dessert_sauce_delete/<pk>/delete/',
          DessertSauceDelete.as_view(),
          name="dessert_sauce_delete"
          ),
@@ -28,27 +28,23 @@ urlpatterns = [
          views.dessert_sauce_method,
          name='dessert_sauce_method'
          ),
-    path('dessert_sauce_ingredients/<pk>/',
+     path('dessert_sauce_ingredients/<pk>/',
          views.dessert_sauce_ingredients,
          name='dessert_sauce_ingredients'
          ),
-    path('htmx/add_dessert_sauce_ing/',
+     path('htmx/add_dessert_sauce_ing/',
          views.add_dessert_sauce_ing,
          name='add_dessert_sauce_ing'
          ),
-    path('htmx/dessert_sauce_ing_details/<pk>/',
+     path('htmx/dessert_sauce_ing_details/<pk>/',
          views.dessert_sauce_ing_details,
          name="dessert_sauce_ing_details"
          ),
-    path('dessert_sauce_ing_detail_view/<pk>/',
+     path('dessert_sauce_ing_detail_view/<pk>/',
          views.dessert_sauce_ing_detail_view,
          name="dessert_sauce_ing_detail_view"
          ),
-    path('dessert_sauce_step_detail_view/<pk>/',
-         views.dessert_sauce_step_detail_view,
-         name="dessert_sauce_stepdetail_view"
-         ),
-    path('htmx/update_dessert_sauce_ing/<pk>/update/',
+     path('htmx/update_dessert_sauce_ing/<pk>/update/',
          views.update_dessert_sauce_ing,
          name="update_dessert_sauce_ing"
          ),
@@ -56,19 +52,23 @@ urlpatterns = [
          views.delete_dessert_sauce_ing,
          name="delete_dessert_sauce_ing"
          ),
-    path('htmx/add_dessert_sauce_step/',
+     path('dessert_sauce_step_detail_view/<pk>/',
+         views.dessert_sauce_step_detail_view,
+         name="dessert_sauce_stepdetail_view"
+         ),
+     path('htmx/add_dessert_sauce_step/',
          views.add_dessert_sauce_step,
          name='add_dessert_sauce_step'
          ),
-    path('htmx/dessert_sauce_step_details/<pk>/update/',
+     path('htmx/dessert_sauce_step_details/<pk>/update/',
          views.dessert_sauce_step_details,
          name="dessert_sauce_step_details"
          ),
-    path('htmx/update_dessert_sauce_step/<pk>/update/',
+     path('htmx/update_dessert_sauce_step/<pk>/update/',
          views.update_dessert_sauce_step,
          name="update_dessert_sauce_step"
          ),
-    path('htmx/delete_dessert_sauce_step/<pk>/delete/',
+     path('htmx/delete_dessert_sauce_step/<pk>/delete/',
          views.delete_dessert_sauce_step,
          name="delete_dessert_sauce_step"
          ),

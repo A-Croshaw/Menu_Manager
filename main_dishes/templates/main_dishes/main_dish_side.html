@@ -1,54 +1,51 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Edit Main Sauce View{% endblock %}
-
+{% block title %}Main side View{% endblock %}
 {% block content %}
-<section>
-    <div class="container mt-4 pb-4 bg-fade-details">
-        <div class="detail-container mb-2 pt-2 justify-content-center">
-            <h1 class="view-headers">{{main_dish.main_dish_name|title}}</h1>
-        </div>
-        <div class="detail-container mb-2 pt-2 justify-content-center">
-            <h2>{{main_dish.main_dish_type}}</h2>
-        </div>
-        <div class="detail-container justify-content-center">
-            <div class="description col p-3 view-border">
-                <h2 class="view-headers">Description</h2>
-                <p class="view-txt" >{{main_dish.main_dish_description}}</p>
-            </div>
-        </div>
-        <div class="detail-container justify-content-center">
-            <div class="ingredients col p-3 view-border">
-                <h2 class="view-headers">Sauces</h2>
-                {% for main_dish_sauce in main_dish_sauce %}
-                {% include "includes/main_dish_sauce_details.html" %}
-                {% endfor %}
-            </div>
-            <div class="ingredients col p-3 view-border">
-                <h2 class="view-headers">Sides</h2>
-                {% for main_dish_side in main_dish_side %}
-                {% include "includes/main_dish_side_details.html" %}
-                {% endfor %}
-                <div id="addmaindishside" ></div>
-                <div class="btn-edit-view">
-                    <button type="button" hx-get="{% url 'add_main_dish_side' %}" hx-target="#addmaindishsode" hx-swap="beforeend"
-                        class="btn btn-add" aria-label="Click to Add Dish sides">
-                        <img src="{% static '/icons/add-icon.svg' %}" alt="Add Icon" class="add">
-                    </button>
-                </div>
-            </div>
-            <div class="p-3 method col view-border">
-                <h2 class="view-headers">Elements</h2>
-                {% for main_dish_element in main_dish_element %}
-                {% include "includes/main_dish_element_details.html" %}
-                {% endfor %}
-            </div>
-            <div>
-                <a href="{% url 'main_dish_view' main_dish.id %}" class="btn btn-return mt-2" aria-label="Click to return">
-                    Return
-                </a>
-            </div>
+<div class="container mt-4 pb-4 bg-fade-details">
+    <div class="detail-container mb-2 pt-2 justify-content-center">
+        <h1 class="view-headers">{{main_dish.main_dish_name|title}}</h1>
+    </div>
+    <div class="detail-container mb-2 pt-2 justify-content-center">
+        <h2>{{main_dish.main_dish_type}}</h2>
+    </div>
+    <div class="detail-container justify-content-center">
+        <div class="description col p-3 view-border">
+            <h2 class="view-headers">Description</h2>
+            <p class="view-txt">{{main_dish.main_dish_description}}</p>
         </div>
     </div>
-</section>
+    <div class="detail-container justify-content-center">
+        <div class="ingredients col p-3 view-border">
+            <h2 class="view-headers">Sauces</h2>
+            {% for main_dish_sauce in main_dish_sauce %}
+            {% include "includes/main_dish_sauce_details.html" %}
+            {% endfor %}
+        </div>
+        <div class="ingredients col p-3 view-border">
+            <h2 class="view-headers">Sides</h2>
+            {% for main_dish_side in main_dish_side %}
+            {% include "includes/main_dish_side_details.html" %}
+            {% endfor %}
+            <div id="addmaindishside"></div>
+            <div class="btn-edit-view">
+                <button type="button" hx-get="{% url 'add_main_dish_side' %}" hx-target="#addmaindishsode"
+                    hx-swap="beforeend" class="btn btn-add" aria-label="Click to Add Dish sides">
+                    <img src="{% static '/icons/add-icon.svg' %}" alt="Add Icon" class="add">
+                </button>
+            </div>
+        </div>
+        <div class="p-3 method col view-border">
+            <h2 class="view-headers">Elements</h2>
+            {% for main_dish_element in main_dish_element %}
+            {% include "includes/main_dish_element_details.html" %}
+            {% endfor %}
+        </div>
+        <div>
+            <a href="{% url 'main_dish_view' main_dish.id %}" class="btn btn-return mt-2" aria-label="Click to return">
+                Return
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock %}

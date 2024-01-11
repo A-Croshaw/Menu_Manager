@@ -40,6 +40,7 @@ def add_starter(request):
             starter = form.save(commit=False)
             starter.starter = starter
             starter.save()
+            messages.success(request, 'Starter Successfully Added!')
             return redirect("starter_view", pk=starter.id)
         else:
             return render(request,
@@ -84,6 +85,7 @@ def starter_ingredients(request, pk):
             starter_ingredient = form.save(commit=False)
             starter_ingredient.starter = starter
             starter_ingredient.save()
+            messages.success(request, 'Ingredient Successfully Added!')
             return redirect("starter_ing_details", pk=starter_ingredient.id)
         else:
             return render(request,
@@ -116,6 +118,7 @@ def starter_method(request, pk):
             starter_step = form.save(commit=False)
             starter_step.starter = starter
             starter_step.save()
+            messages.success(request, 'Step Successfully Added!')
             return redirect("starter_step_details", pk=starter_step.id)
         else:
             return render(request,

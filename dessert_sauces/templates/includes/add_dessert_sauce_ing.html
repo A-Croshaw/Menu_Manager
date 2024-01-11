@@ -1,16 +1,18 @@
-<form method="POST" hx-target="this" hx-swap="outerHTML" hx-post="." id="dessert_sauce-ingredient-form" class="edit-form">
+{% load static %}
+<form method="POST" hx-target="this" hx-swap="outerHTML" hx-post="." id="dessert_sauce-ingredient-form"
+    class="edit-form">
     {% csrf_token %}
     {{ form|crispy }}
     <div class="btn-edit-view pb-2">
         {% if dessert_sauce_ingredient %}
-            <button type="submit" hx-post="{% url 'update_dessert_sauce_ing' dessert_sauce_ingredient.id %}"
-                class="btn btn-submit mt-2">
-                Submit
-            </button>
+        <button type="submit" hx-post="{% url 'update_dessert_sauce_ing' dessert_sauce_ingredient.id %}"
+            class="btn btn-submit mt-2">
+            Submit
+        </button>
         {% else %}
-            <button type="submit" id="dessert_sauce-ingredient-form" class="btn btn-submit mt-2">
-                Add
-            </button>
+        <button type="submit" id="dessert_sauce-ingredient-form" class="btn btn-submit mt-2">
+            Add
+        </button>
         {% endif %}
     </div>
 </form>

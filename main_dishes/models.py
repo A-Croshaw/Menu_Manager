@@ -102,4 +102,3 @@ class MainDishSide(models.Model):
 
     def __str__(self):
         return str(self.main_dish_side)
-

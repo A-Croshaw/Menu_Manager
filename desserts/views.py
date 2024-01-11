@@ -15,9 +15,8 @@ class ViewDessert(ListView):
     model = Dessert
 
     def get_queryset(self, **kwargs):
-        """
-        Dessert search function
-        """
+        """Dessert search function"""
+
         dessert_search = self.request.GET.get('q')
         if dessert_search:
             dessert = self.model.objects.filter(
@@ -30,9 +29,8 @@ class ViewDessert(ListView):
 
 
 def add_dessert(request):
-    """
-    Add Dessert Course function
-    """
+    """Add Dessert Course function"""
+
     form = DessertForm(request.POST or None)
 
     if request.method == "POST":
@@ -40,6 +38,7 @@ def add_dessert(request):
             dessert = form.save(commit=False)
             dessert.dessert = dessert
             dessert.save()
+            messages.success(request, 'Dessert Added Successfully!')
             return redirect("dessert_view", pk=dessert.id)
         else:
             return render(request,
@@ -54,9 +53,8 @@ def add_dessert(request):
 
 
 def dessert_view(request, pk):
-    """
-    View full Dessert Recipie
-    """
+    """View full Dessert Recipie"""
+
     dessert = Dessert.objects.get(id=pk)
     dessert_step = DessertMethod.objects.filter(dessert=dessert)
     dessert_ingredients = DessertIngredients.objects.filter(dessert=dessert)
@@ -71,9 +69,8 @@ def dessert_view(request, pk):
 
 
 def dessert_ingredients(request, pk):
-    """
-    Creates Ingredient Fields And Add More Enterys
-    """
+    """Creates Ingredient Fields And Add More Enterys"""
+
     dessert = Dessert.objects.get(id=pk)
     dessert_ingredients = DessertIngredients.objects.filter(dessert=dessert)
     dessert_step = DessertMethod.objects.filter(dessert=dessert)
@@ -84,6 +81,7 @@ def dessert_ingredients(request, pk):
             dessert_ingredient = form.save(commit=False)
             dessert_ingredient.dessert = dessert
             dessert_ingredient.save()
+            messages.success(request, 'Ingredient Added Successfully!')
             return redirect("dessert_ing_details", pk=dessert_ingredient.id)
         else:
             return render(request,
@@ -103,9 +101,8 @@ def dessert_ingredients(request, pk):
 
 
 def dessert_method(request, pk):
-    """
-    Add Recipe Steps
-    """
+    """Add Recipe Steps"""
+
     dessert = Dessert.objects.get(id=pk)
     dessert_step = DessertMethod.objects.filter(dessert=dessert)
     dessert_ingredients = DessertIngredients.objects.filter(dessert=dessert)
@@ -116,6 +113,7 @@ def dessert_method(request, pk):
             dessert_step = form.save(commit=False)
             dessert_step.dessert = dessert
             dessert_step.save()
+            messages.success(request, 'Step Added Successfully!')
             return redirect("dessert_step_details", pk=dessert_step.id)
         else:
             return render(request,
@@ -135,9 +133,8 @@ def dessert_method(request, pk):
 
 
 def update_dessert_ing(request, pk):
-    """
-    Updates Ingredient Fields
-    """
+    """Updates Ingredient Fields"""
+
     dessert_ingredient = DessertIngredients.objects.get(id=pk)
     form = DessertIngredientForm(
         request.POST or None,
@@ -159,9 +156,8 @@ def update_dessert_ing(request, pk):
 
 
 def update_dessert_step(request, pk):
-    """
-    Updates Step Fields
-    """
+    """Updates Step Fields"""
+
     dessert_step = DessertMethod.objects.get(id=pk)
     form = DessertMethodForm(request.POST or None, instance=dessert_step)
 
@@ -180,9 +176,8 @@ def update_dessert_step(request, pk):
 
 
 def edit_dessert(request, pk):
-    """
-    Updates Recipe Fields
-    """
+    """Updates Recipe Fields"""
+
     dessert = Dessert.objects.get(id=pk)
     form = DessertForm(request.POST or None, instance=dessert)
     dessert_step = DessertMethod.objects.filter(dessert=dessert)
@@ -205,9 +200,8 @@ def edit_dessert(request, pk):
 
 
 def delete_dessert_ing(request, pk):
-    """
-    Deletes Ingredient Fields
-    """
+    """Deletes Ingredient Fields"""
+
     dessert_ingredient = get_object_or_404(DessertIngredients, id=pk)
 
     if request.method == "POST":
@@ -223,9 +217,8 @@ def delete_dessert_ing(request, pk):
 
 
 def delete_dessert_step(request, pk):
-    """
-    Deletes Step Fields
-    """
+    """Deletes Step Fields"""
+
     dessert_step = get_object_or_404(DessertMethod, id=pk)
 
     if request.method == "POST":
@@ -241,9 +234,8 @@ def delete_dessert_step(request, pk):
 
 
 class DessertDelete(DeleteView):
-    """
-    Deletes Dessert Course
-    """
+    """Deletes Dessert Course"""
+
     model = Dessert
     success_url = '/desserts/'
 
@@ -253,9 +245,8 @@ class DessertDelete(DeleteView):
 
 
 def dessert_ing_details(request, pk):
-    """
-    Displays Ingredient Fields for updating
-    """
+    """Displays Ingredient Fields for updating"""
+
     dessert_ingredient = get_object_or_404(DessertIngredients, id=pk)
     context = {
         "dessert_ingredient": dessert_ingredient
@@ -264,9 +255,8 @@ def dessert_ing_details(request, pk):
 
 
 def dessert_step_details(request, pk):
-    """
-    Displays Step Fields for updating
-    """
+    """Displays Step Fields for updating"""
+    
     dessert_step = get_object_or_404(DessertMethod, id=pk)
     context = {
         "dessert_step": dessert_step
@@ -275,9 +265,8 @@ def dessert_step_details(request, pk):
 
 
 def dessert_ing_detail_view(request, pk):
-    """
-    Displays Ingredient Fields After Being Added
-    """
+    """Displays Ingredient Fields After Being Added"""
+
     dessert_ingredient = get_object_or_404(DessertIngredients, id=pk)
     context = {
         "dessert_ingredient": dessert_ingredient
@@ -286,9 +275,8 @@ def dessert_ing_detail_view(request, pk):
 
 
 def dessert_step_detail_view(request, pk):
-    """
-    Displays Step Fields After Being Added
-    """
+    """Displays Step Fields After Being Added"""
+
     dessert_step = get_object_or_404(DessertMethod, id=pk)
     context = {
         " dessert_step":  dessert_step
@@ -297,9 +285,8 @@ def dessert_step_detail_view(request, pk):
 
 
 def add_dessert_ing(request):
-    """
-    Renders The Form Add Extra Ingredients
-    """
+    """Renders The Form Add Extra Ingredients"""
+
     form = DessertIngredientForm()
     context = {
         "form": form
@@ -308,9 +295,8 @@ def add_dessert_ing(request):
 
 
 def add_dessert_step(request):
-    """
-    Renders The Form Add Extra Step
-    """
+    """Renders The Form Add Extra Step"""
+
     form = DessertMethodForm()
     context = {
         "form": form

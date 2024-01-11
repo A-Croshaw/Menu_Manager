@@ -113,4 +113,3 @@ class MenuForm(forms.ModelForm):
             "title": "Menu Title",
             "menu_type": "Menu Type",
         }
-

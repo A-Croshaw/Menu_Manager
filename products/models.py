@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Choice Fields
 PRODUCT_TYPE = (
     ("dairy", "Dairy"),
@@ -11,6 +12,7 @@ PRODUCT_TYPE = (
     ("fruit", "Fruit"),
     ("n/a", "N/A"),
 )
+
 
 PRODUCT_FRESHNESS = (
     ("frozen", "Frozen"),
@@ -23,7 +25,6 @@ class Product(models.Model):
     """
     A model to create and manage Products
     """
-
     user = models.ForeignKey(
         User,
         related_name="admin_user",

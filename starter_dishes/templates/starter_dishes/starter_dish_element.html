@@ -1,47 +1,46 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Edit Starter Element View{% endblock %}
+{% block title %}Starter Element View{% endblock %}
 {% block content %}
-<section>
-    <div class="container mt-4 pb-4 bg-fade-details">
-        <div class="detail-container mb-2 pt-2 justify-content-center">
-            <h1 class="view-headers">{{starter_dish.starter_dish_name|title}}</h1>
-        </div>
-        <div class="detail-container mb-2 pt-2 justify-content-center">
-            <h2>{{starter_dish.starter_dish_type}}</h2>
-        </div>
-        <div class="detail-container justify-content-center">
-            <div class="description col p-3 view-border">
-                <h2 class="view-headers">Description</h2>
-                <p class="view-txt" >{{starter_dish.starter_dish_description}}</p>
-            </div>
-        </div>
-        <div class="detail-container justify-content-center">
-            <div class="ingredients col p-3 view-border">
-                <h2 class="view-headers">Sauces</h2>
-                {% for starter_dish_sauce in starter_dish_sauce %}
-                {% include "includes/starter_dish_sauce_details.html" %}
-                {% endfor %}
-            </div>
-            <div class="p-3 method col view-border">
-                <h2 class="view-headers">Elements</h2>
-                {% for starter_dish_element in starter_dish_element %}
-                {% include "includes/starter_dish_element_details.html" %}
-                {% endfor %}
-                <div id="addstarterdishelement" ></div>
-                <div class="btn-edit-view">
-                    <button type="button" hx-get="{% url 'add_starter_dish_element' %}" hx-target="#addstarterdishelement" hx-swap="beforeend"
-                        class="btn btn-add" aria-label="Click to Add Dish Elements">
-                        <img src="{% static '/icons/add-icon.svg' %}" alt="Add Icon" class="add">
-                    </button>
-                </div>
-            </div>
-            <div>
-                <a href="{% url 'starter_dish_view' starter_dish.id %}" class="btn btn-return mt-2" aria-label="Click to return">
-                    Return
-                </a>
-            </div>
+<div class="container mt-4 pb-4 bg-fade-details">
+    <div class="detail-container mb-2 pt-2 justify-content-center">
+        <h1 class="view-headers">{{starter_dish.starter_dish_name|title}}</h1>
+    </div>
+    <div class="detail-container mb-2 pt-2 justify-content-center">
+        <h2>{{starter_dish.starter_dish_type}}</h2>
+    </div>
+    <div class="detail-container justify-content-center">
+        <div class="description col p-3 view-border">
+            <h2 class="view-headers">Description</h2>
+            <p class="view-txt">{{starter_dish.starter_dish_description}}</p>
         </div>
     </div>
-</section>
+    <div class="detail-container justify-content-center">
+        <div class="ingredients col p-3 view-border">
+            <h2 class="view-headers">Sauces</h2>
+            {% for starter_dish_sauce in starter_dish_sauce %}
+            {% include "includes/starter_dish_sauce_details.html" %}
+            {% endfor %}
+        </div>
+        <div class="p-3 method col view-border">
+            <h2 class="view-headers">Elements</h2>
+            {% for starter_dish_element in starter_dish_element %}
+            {% include "includes/starter_dish_element_details.html" %}
+            {% endfor %}
+            <div id="addstarterdishelement"></div>
+            <div class="btn-edit-view">
+                <button type="button" hx-get="{% url 'add_starter_dish_element' %}" hx-target="#addstarterdishelement"
+                    hx-swap="beforeend" class="btn btn-add" aria-label="Click to Add Dish Elements">
+                    <img src="{% static '/icons/add-icon.svg' %}" alt="Add Icon" class="add">
+                </button>
+            </div>
+        </div>
+        <div>
+            <a href="{% url 'starter_dish_view' starter_dish.id %}" class="btn btn-return mt-2"
+                aria-label="Click to return">
+                Return
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock %}

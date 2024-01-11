@@ -1,27 +1,24 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 {% load static %}
 {% block title %}Dessert Recipes{% endblock %}
-
 {% block content %}
-<section>
-    <div class="container mt-4 pb-4 bg-fade">
-        <h1 class="text-center p-2 d-block">
-            Dessert Recipes
-        </h1>
-        <div class="container d-flex flex-row flex-wrap justify-content-center">
-            {% for dessert in desserts %} 
-            <a href="{% url 'dessert_view' dessert.id %}" class="card-link" aria-label="Click to view {{dessert.dessert_name}}">
-                <div class="card m-2" style="width: 18rem;">
-                    <div class="card-body">
-                        <h2 class="card-name">{{dessert.dessert_name}}</h2>
-                        <h3 class="card-type">{{dessert.dessert_type}}</h3>
-                        <p class="card-desc">{{dessert.dessert_description|truncatechars:100}}</p>
-                    </div>
+<div class="container mt-3 pb-4 bg-fade">
+    <h1 class="text-center p-2 d-block">
+        Dessert Recipes
+    </h1>
+    <div class="container d-flex flex-row flex-wrap justify-content-center">
+        {% for dessert in desserts %}
+        <a href="{% url 'dessert_view' dessert.id %}" class="card-link"
+            aria-label="Click to view {{dessert.dessert_name}}">
+            <div class="card m-2" style="width: 18rem;">
+                <div class="card-body">
+                    <h2 class="card-name">{{dessert.dessert_name}}</h2>
+                    <h3 class="card-type">{{dessert.dessert_type}}</h3>
+                    <p class="card-desc">{{dessert.dessert_description|truncatechars:100}}</p>
                 </div>
-            </a>
-            {% endfor %}
-        </div>
+            </div>
+        </a>
+        {% endfor %}
     </div>
-
-</section>
+</div>
 {% endblock %}

@@ -1,27 +1,23 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 {% load static %}
 {% block title %}Side Recipes{% endblock %}
-
 {% block content %}
-<section>
-    <div class="container mt-4 pb-4 bg-fade">
-        <h1 class="text-center p-2 d-block">
-            Side Recipes
-        </h1>
-        <div class="container d-flex flex-row flex-wrap justify-content-center">
-            {% for side in sides %} 
-            <a href="{% url 'side_view' side.id %}" class="card-link" aria-label="Click to view {{side.side_name}}">
-                <div class="card m-2" style="width: 18rem;">
-                    <div class="card-body">
-                        <h2 class="card-name">{{side.side_name}}</h2>
-                        <h3 class="card-type">{{side.side_type}}</h3>
-                        <p class="card-desc">{{side.side_description|truncatechars:100}}</p>
-                    </div>
+<div class="container mt-4 pb-4 bg-fade">
+    <h1 class="text-center p-2 d-block">
+        Side Recipes
+    </h1>
+    <div class="container d-flex flex-row flex-wrap justify-content-center">
+        {% for side in sides %}
+        <a href="{% url 'side_view' side.id %}" class="card-link" aria-label="Click to view {{side.side_name}}">
+            <div class="card m-2" style="width: 18rem;">
+                <div class="card-body">
+                    <h2 class="card-name">{{side.side_name}}</h2>
+                    <h3 class="card-type">{{side.side_type}}</h3>
+                    <p class="card-desc">{{side.side_description|truncatechars:100}}</p>
                 </div>
-            </a>
-            {% endfor %}
-        </div>
+            </div>
+        </a>
+        {% endfor %}
     </div>
-
-</section>
+</div>
 {% endblock %}

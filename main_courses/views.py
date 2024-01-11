@@ -40,6 +40,7 @@ def add_main(request):
             main = form.save(commit=False)
             main.main = main
             main.save()
+            messages.success(request, 'Main Course Successfull!')
             return redirect("main_view", pk=main.id)
         else:
             return render(request,
@@ -84,6 +85,7 @@ def main_ingredients(request, pk):
             main_ingredient = form.save(commit=False)
             main_ingredient.main = main
             main_ingredient.save()
+            messages.success(request, 'Ingredient Successfull Added!')
             return redirect("main_ing_details", pk=main_ingredient.id)
         else:
             return render(request,
@@ -116,6 +118,7 @@ def main_method(request, pk):
             main_step = form.save(commit=False)
             main_step.main = main
             main_step.save()
+            messages.success(request, 'Step Successfull Added!')
             return redirect("main_step_details", pk=main_step.id)
         else:
             return render(request,

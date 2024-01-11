@@ -3,11 +3,13 @@ from djrichtextfield.models import RichTextField
 from products.models import Product
 from django.contrib.auth.models import User
 
+
 # Choice Fields
 TYPE = (
     ("Cold Main", "Cold_main"),
     ("Hot Main", "Hot main"),
     )
+
 
 Meat_TYPE = (
     ('Chicken', 'Chicken'),
@@ -16,6 +18,7 @@ Meat_TYPE = (
     ('Lamb', 'Lamb'),
     ('No Meat', 'No Meat'),
     )
+
 
 UNITS = (
     ('gr', 'gr'),

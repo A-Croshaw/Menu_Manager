@@ -3,9 +3,8 @@ from .models import DessertSauce, DessertSauceIngredients, DessertSauceMethod
 
 
 class DessertSauceIngredientForm(forms.ModelForm):
-    """
-    Dessert Sauce Ingredient Field Form
-    """
+    """Dessert Sauce Ingredient Field Form"""
+
     class Meta:
         """
         Form Fields
@@ -24,9 +23,8 @@ class DessertSauceIngredientForm(forms.ModelForm):
 
 
 class DessertSauceForm(forms.ModelForm):
-    """
-    Dessert Sauce Setup Form
-    """
+    """Dessert Sauce Setup Form"""
+
     class Meta:
         """
         Form Fields
@@ -47,14 +45,11 @@ class DessertSauceForm(forms.ModelForm):
 
 
 class DessertSauceMethodForm(forms.ModelForm):
-    """
-    Dessert Sauce Method form
-    """
-    class Meta:
-        """
-        Form Fields
-        """
+    """Dessert Sauce Method form"""
 
+    class Meta:
+        """Form Fields"""
+        
         model = DessertSauceMethod
         fields = ("dessert_sauce_Steps",
                   )

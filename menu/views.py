@@ -41,6 +41,7 @@ def add_menu(request):
             menu = form.save(commit=False)
             menu.menu = menu
             menu.save()
+            messages.success(request, 'Menu Successfully added!')
             return redirect("add_starter_item", pk=menu.id)
         else:
             return render(request,
@@ -129,6 +130,7 @@ def add_starter_item(request, pk):
             starter_dish_item = form.save(commit=False)
             starter_dish_item.menu = menu
             starter_dish_item.save()
+            messages.success(request, 'Starter Successfully added!')
             return redirect("menu_starter_details", pk=starter_dish_item.id)
         else:
             return render(request,
@@ -232,6 +234,7 @@ def add_main_item(request, pk):
             main_dish_item = form.save(commit=False)
             main_dish_item.menu = menu
             main_dish_item.save()
+            messages.success(request, 'Main Successfully added!')
             return redirect("menu_main_details", pk=main_dish_item.id)
         else:
             return render(request,
@@ -335,6 +338,7 @@ def add_dessert_item(request, pk):
             dessert_dish_item = form.save(commit=False)
             dessert_dish_item.menu = menu
             dessert_dish_item.save()
+            messages.success(request, 'Dessert Successfully added!')
             return redirect("menu_dessert_details", pk=dessert_dish_item.id)
         else:
             return render(request,
@@ -438,6 +442,7 @@ def add_side_item(request, pk):
             side_item = form.save(commit=False)
             side_item.menu = menu
             side_item.save()
+            messages.success(request, 'Side Successfully added!')
             return redirect("menu_side_details", pk=side_item.id)
         else:
             return render(request,
@@ -541,6 +546,7 @@ def add_sauce_item(request, pk):
             sauce_item = form.save(commit=False)
             sauce_item.menu = menu
             sauce_item.save()
+            messages.success(request, 'Sauce Successfully added!')
             return redirect("menu_sauce_details", pk=sauce_item.id)
         else:
             return render(request,

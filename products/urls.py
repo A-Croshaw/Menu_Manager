@@ -1,6 +1,9 @@
 from django.urls import path
 from .views import (
-    AddProduct, DeleteProduct, ProductList, EditProduct
+    AddProduct,
+    DeleteProduct,
+    ProductList,
+    EditProduct
 )
 
 

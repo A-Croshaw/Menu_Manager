@@ -17,19 +17,64 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls, name='admin'),
-    path('', include('home.urls')),
-    path('products/', include('products.urls')),
-    path('starters/', include('starters.urls')),
-    path('starter_dishes/', include('starter_dishes.urls')),
-    path('main_courses/', include('main_courses.urls')),
-    path('main_course_dishes/', include('main_dishes.urls')),
-    path('sides/', include('sides.urls')),
-    path('sauces/', include('sauces.urls')),
-    path('desserts/', include('desserts.urls')),
-    path('dessert_sauces/', include('dessert_sauces.urls')),
-    path('dessert_dishes/', include('dessert_dishes.urls')),
-    path('menu/', include('menu.urls')),
-    path('djrichtextfield/', include('djrichtextfield.urls')),
-    path('accounts/', include('allauth.urls')),
+    path(
+        'admin/',
+        admin.site.urls,
+        name='admin'
+        ),
+    path(
+        '',include('home.urls')
+        ),
+    path(
+        'products/',
+        include('products.urls')
+        ),
+    path(
+        'starters/',
+         include('starters.urls')
+         ),
+    path(
+        'starter_dishes/',
+        include('starter_dishes.urls')
+        ),
+    path(
+        'main_courses/',
+         include('main_courses.urls')
+         ),
+    path(
+        'main_course_dishes/',
+        include('main_dishes.urls')
+        ),
+    path(
+        'sides/',
+        include('sides.urls')
+        ),
+    path(
+        'sauces/',
+        include('sauces.urls')
+        ),
+    path(
+        'desserts/',
+        include('desserts.urls')
+        ),
+    path(
+        'dessert_sauces/',
+        include('dessert_sauces.urls')
+        ),
+    path(
+        'dessert_dishes/',
+        include('dessert_dishes.urls')
+        ),
+    path(
+        'menu/',
+        include('menu.urls')
+        ),
+    path(
+        'djrichtextfield/',
+        include('djrichtextfield.urls')
+        ),
+    path(
+        'accounts/',
+        include('allauth.urls')
+        ),
     ]
