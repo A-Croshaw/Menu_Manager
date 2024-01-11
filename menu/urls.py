@@ -35,9 +35,9 @@ urlpatterns = [
         name='add_starter_item'
         ),
     path(
-        'htmx/add_starter/',
-        views.add_starter,
-        name='add_starter'
+        'htmx/add_menu_starter/',
+        views.add_menu_starter,
+        name='add_menu_starter'
         ),
     path(
         'htmx/menu_starter_details/<pk>/',
@@ -68,7 +68,7 @@ urlpatterns = [
     path(
         'htmx/add_main/',
         views.add_main,
-        name='add_main'
+        name='add_menu_main'
         ),
     path(
         'htmx/menu_main_details/<pk>/',
@@ -99,7 +99,7 @@ urlpatterns = [
     path(
         'htmx/add_dessert/',
         views.add_dessert,
-        name='add_dessert'
+        name='add_menu_dessert'
         ),
     path(
         'htmx/menu_dessert_details/<pk>/',
@@ -130,7 +130,7 @@ urlpatterns = [
     path(
         'htmx/add_side/',
         views.add_side,
-        name='add_side'
+        name='add_menu_side'
         ),
     path(
         'htmx/menu_side_details/<pk>/',
@@ -161,7 +161,7 @@ urlpatterns = [
     path(
         'htmx/add_sauce/',
         views.add_sauce,
-        name='add_sauce'
+        name='add_menu_sauce'
         ),
     path(
         'htmx/menu_sauce_details/<pk>/',

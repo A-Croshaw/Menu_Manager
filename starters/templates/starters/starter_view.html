@@ -18,46 +18,46 @@
                     </a>
                 </div>
             </div>
-            <div class="description col p-3 view-border">
-                <h2 class="view-headers">Description</h2>
-                <p class="view-txt">{{starter.starter_description}}</p>
+        </div>
+        <div class="description col p-3 view-border">
+            <h2 class="view-headers">Description</h2>
+            <p class="view-txt">{{starter.starter_description}}</p>
+        </div>
+    </div>
+    <div class="detail-container justify-content-center">
+        <div class="ingredients col p-3 view-border">
+            <h2 class="view-headers">Ingredients</h2>
+            {% for starter_ingredient in starter_ingredients %}
+            {% include "includes/starter_ing_detail_view.html" %}
+            {% endfor %}
+            <div class="btn-view pt-3">
+                <a href="{% url 'starter_ingredients' pk=starter.id%}" class="btn btn-edit"
+                    aria-label="Click to edit ingredients ">
+                    <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
+                </a>
             </div>
         </div>
-        <div class="detail-container justify-content-center">
-            <div class="ingredients col p-3 view-border">
-                <h2 class="view-headers">Ingredients</h2>
-                {% for starter_ingredient in starter_ingredients %}
-                {% include "includes/starter_ing_detail_view.html" %}
-                {% endfor %}
-                <div class="btn-view pt-3">
-                    <a href="{% url 'starter_ingredients' pk=starter.id%}" class="btn btn-edit"
-                        aria-label="Click to edit ingredients ">
-                        <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
-                    </a>
-                </div>
-            </div>
-            <div class="p-3 method col view-border">
-                <h2 class="view-headers">Method</h2>
-                {% for starter_step in starter_step %}
-                {% include "includes/starter_step_detail_view.html" %}
-                {% endfor %}
-                <div class="btn-view pt-3">
-                    <a href="{% url 'starter_method' pk=starter.id%}" class="btn btn-edit"
-                        aria-label="Click to edit method ">
-                        <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
-                    </a>
-                </div>
+        <div class="p-3 method col view-border">
+            <h2 class="view-headers">Method</h2>
+            {% for starter_step in starter_step %}
+            {% include "includes/starter_step_detail_view.html" %}
+            {% endfor %}
+            <div class="btn-view pt-3">
+                <a href="{% url 'starter_method' pk=starter.id%}" class="btn btn-edit"
+                    aria-label="Click to edit method ">
+                    <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
+                </a>
             </div>
         </div>
-        <div class="detail-container btn-edit-view">
-            <a href="{% url 'starters' %}" class="btn btn-return mt-2" aria-label="Click to return">
-                Return
-            </a>
-            <a href="{% url 'starter_delete' starter.id %}" class="btn btn-recipe-delete mt-2 pt-1"
-                aria-label="Click to Delete">
-                <img src="{% static '/icons/delete_icon.svg' %}" alt="Delete Icon" class="recipe-delete">
-            </a>
-        </div>
+    </div>
+    <div class="detail-container btn-edit-view">
+        <a href="{% url 'starters' %}" class="btn btn-return mt-2" aria-label="Click to return">
+            Return
+        </a>
+        <a href="{% url 'starter_delete' starter.id %}" class="btn btn-recipe-delete mt-2 pt-1"
+            aria-label="Click to Delete">
+            <img src="{% static '/icons/delete_icon.svg' %}" alt="Delete Icon" class="recipe-delete">
+        </a>
     </div>
 </div>
 {% endblock %}

@@ -134,7 +134,7 @@ def add_starter_item(request, pk):
             return redirect("menu_starter_details", pk=starter_dish_item.id)
         else:
             return render(request,
-                          "includes/add_starter.html",
+                          "includes/add_menu_starter.html",
                           context={
                               "form": form
                               })
@@ -159,7 +159,7 @@ def menu_starter_details(request, pk):
     return render(request, "includes/menu_starter_details.html", context)
 
 
-def add_starter(request):
+def add_menu_starter(request):
     """
     Renders The Form To Add Extra Starter Item
     """
@@ -167,7 +167,7 @@ def add_starter(request):
     context = {
         "form": form
     }
-    return render(request, "includes/add_starter.html", context)
+    return render(request, "includes/add_menu_starter.html", context)
 
 
 def menu_starter_view(request, pk):
@@ -199,7 +199,7 @@ def edit_menu_starter(request, pk):
         "starter_dish_item": starter_dish_item,
     }
 
-    return render(request, "includes/add_starter.html", context)
+    return render(request, "includes/add_menu_starter.html", context)
 
 
 def delete_starter_dish_item(request, pk):
@@ -238,7 +238,7 @@ def add_main_item(request, pk):
             return redirect("menu_main_details", pk=main_dish_item.id)
         else:
             return render(request,
-                          "includes/add_main.html",
+                          "includes/add_menu_main.html",
                           context={
                               "form": form
                               })
@@ -271,7 +271,7 @@ def add_main(request):
     context = {
         "form": form
     }
-    return render(request, "includes/add_main.html", context)
+    return render(request, "includes/add_menu_main.html", context)
 
 
 def menu_main_view(request, pk):
@@ -303,7 +303,7 @@ def edit_menu_main(request, pk):
         "main_dish_item": main_dish_item,
     }
 
-    return render(request, "includes/add_main.html", context)
+    return render(request, "includes/add_menu_main.html", context)
 
 
 def delete_main_dish_item(request, pk):
@@ -342,7 +342,7 @@ def add_dessert_item(request, pk):
             return redirect("menu_dessert_details", pk=dessert_dish_item.id)
         else:
             return render(request,
-                          "includes/add_dessert.html",
+                          "includes/add_menu_dessert.html",
                           context={
                               "form": form
                               })
@@ -375,7 +375,7 @@ def add_dessert(request):
     context = {
         "form": form
     }
-    return render(request, "includes/add_dessert.html", context)
+    return render(request, "includes/add_menu_dessert.html", context)
 
 
 def menu_dessert_view(request, pk):
@@ -407,7 +407,7 @@ def edit_menu_dessert(request, pk):
         "dessert_dish_item": dessert_dish_item,
     }
 
-    return render(request, "includes/add_dessert.html", context)
+    return render(request, "includes/add_menu_dessert.html", context)
 
 
 def delete_dessert_dish_item(request, pk):
@@ -446,7 +446,7 @@ def add_side_item(request, pk):
             return redirect("menu_side_details", pk=side_item.id)
         else:
             return render(request,
-                          "includes/add_side.html",
+                          "includes/add_menu_side.html",
                           context={
                               "form": form
                               })
@@ -479,7 +479,7 @@ def add_side(request):
     context = {
         "form": form
     }
-    return render(request, "includes/add_side.html", context)
+    return render(request, "includes/add_menu_side.html", context)
 
 
 def menu_side_view(request, pk):
@@ -511,7 +511,7 @@ def edit_menu_side(request, pk):
         "side_item": side_item,
     }
 
-    return render(request, "includes/add_side.html", context)
+    return render(request, "includes/add_menu_side.html", context)
 
 
 def delete_side_item(request, pk):
@@ -550,7 +550,7 @@ def add_sauce_item(request, pk):
             return redirect("menu_sauce_details", pk=sauce_item.id)
         else:
             return render(request,
-                          "includes/add_sauce.html",
+                          "includes/add_menu_sauce.html",
                           context={
                               "form": form
                               })
@@ -583,7 +583,7 @@ def add_sauce(request):
     context = {
         "form": form
     }
-    return render(request, "includes/add_sauce.html", context)
+    return render(request, "includes/add_menu_sauce.html", context)
 
 
 def menu_sauce_view(request, pk):
@@ -615,7 +615,7 @@ def edit_menu_sauce(request, pk):
         "sauce_item": sauce_item,
     }
 
-    return render(request, "includes/add_sauce.html", context)
+    return render(request, "includes/add_menu_sauce.html", context)
 
 
 def delete_sauce_item(request, pk):

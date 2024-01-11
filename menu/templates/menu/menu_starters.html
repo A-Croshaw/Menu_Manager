@@ -11,9 +11,9 @@
                 {% for starter_dish_item in starter_dish_item %}
                 {% include "includes/menu_starter_details.html" %}
                 {% endfor %}
-                <div id="addstartersforms" ></div>
+                <div id="addmenustartersforms" ></div>
                 <div class="btn-edit-view">
-                    <button type="button" hx-get="{% url 'add_starter' %}" hx-target="#addstartersforms" hx-swap="beforeend" class="btn btn-return" aria-label="Click to add starter">
+                    <button type="button" hx-get="{% url 'add_menu_starter' %}" hx-target="#addmenustartersforms" hx-swap="beforeend" class="btn btn-return" aria-label="Click to add starter">
                         Add
                     </button>
                 </div>

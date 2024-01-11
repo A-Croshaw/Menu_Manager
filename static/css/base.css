@@ -476,7 +476,7 @@ a.card-link:hover {
 
 @media screen and (min-width: 1200px) {
     .form {
-        width: 35%;
+        width: 40%;
     }
 
     .bg-fade {
@@ -509,7 +509,7 @@ a.card-link:hover {
 
 @media screen and (min-width: 1500px) {
     .form {
-        width: 35%;
+        width: 40%;
     }
 
     .bg-fade-details {
