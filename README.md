@@ -1,108 +1,157 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# _Menu Manager_
 
-Welcome ACroshaw88,
+![Giff-Image](documents/readme-images/game-gif.gif)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+[_Click here to view live deployment_](https://menu-manager-32aec1a9f4d5.herokuapp.com)
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
 
-## Gitpod Reminders
+# _Content Menu_
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+- [Menu Manager](#menu_manager)
+- [_Content Menu_](#content-menu)
+- [_Features_](#features)
+  - [_Elements_](#game-elements)
+  - [_Data Storage_](#data-storage)
+  - [_Implemented Features_](#implemented-features)
+  - [_Features to be Implemented_](#features-to-be-implemented)
+- [_Design_](#design)
+- [_Bugs_](#bugs)
+- [_Testing_](#testing)
+- [_Validation_](#validation)
+- [_Technologies_](#technologies)
+- [_Deployment_](#deployment)
+  - [_1 - Version Control_](#1---version-control)
+  - [_2 - Page Deployment_](#2---page-deployment)
+  - [_3 - Cloning Repository_](#3---cloning-repository)
+- [_Credits_](#credits)
 
-`python3 -m http.server`
+# _Features_
 
-A blue button should appear to click: _Make Public_,
+## __
+    
 
-Another blue button should appear to click: _Open Browser_.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+## _Elements_
 
-A blue button should appear to click: _Make Public_,
+### _1 
 
-Another blue button should appear to click: _Open Browser_.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
 
-To log into the Heroku toolbelt CLI:
+## _Data Storage_
+ 
+ * 
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+ * 
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+ * 
 
-------
+## _Implemented Features_
 
-## Release History
+ * 
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+ * 
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+ * 
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+ * 
+  
+## _Features to be Implemented_
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+ * .
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+# _Design_
+ 
+ * This flow chart shows how the game responds within the different sections.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+ * This flow chart will Help through the testing to determine whether the game responds as it should.
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+ ![Flow Chart](documents/readme-images/flow-chart.png)
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+# _Bugs_
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+ * Through testing there are no current known bugs within the game
+ 
+ _Testing_
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+# _Validation_
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+ * This game passes through the [Code Institute PEP8](https://pep8ci.herokuapp.com/) Validator with no errors.
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+![Validation](documents/readme-images/validation.png)
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+# _Technologies_
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+ * Python/ Django programming language to produce the backend functionallity.
 
-------
+ * HTML and CSS is used for the Frontend UI
+ 
+ * Bootstarp 5.3.2 is used with in the Frontend UI
+  
+ * [ElephantSQL](https://www.elephantsql.com/) is used to the database storage.
 
-## FAQ about the uptime script
+ * [Cloudinary](https://cloudinary.com/) is used For the static file and image storage
 
-**Why have you added this script?**
+ * [LucidChart](https://www.lucidchart.com/pages/) used to create the flow chart showing the website functionality and flow.
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+ * [GitHub](https://www.github.com) was used to hold the website repository files.
 
-**How will this affect me?**
+ * [Gitpod](https://www.gitpod.io) was used for the coding environment.
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+ * [Heroku](https://www.heroku.com) was used to deploy the website to the web.
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+# _Deployment_
 
-**So….?**
+## _1 - Version Control_
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+ Verion controle was maintained using GIT within GitPod to push code to the GitHub repository
 
-**Can I opt out?**
+ * From the Gitpod terminal use "git add ." which tells git you would like to make changes/updates to the files.
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+ * Then use "git commit -m " with a comment, this will commit the changes and update the files.
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+ * Then using the "git push" command this will push the committed changes to your GitHub repository.
 
-**Anything more?**
+## _2 - Page Deployment_
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+ * Go to Heroku and log in
 
----
+ * click "New" to create a new app from the dashboard
 
-Happy coding!
+ * Choose app name and select your region, press "Create app".
+
+ * Go to "Settings" and navigate to Config Vars.
+
+ * Add Config Vars. 
+    * This app used 4 confid vars 
+        * for the clouninary (KEY: CLOUNDINARY_URL / VALUE: *****)
+        * for the database (KEY: DATABASE_URL / VALUE: ****** )
+        * KEY: SECRET_KEY / VALUE:*******
+        * KEY: PORT / VALUE = 8000.
+ 
+ * Now go to the Deploy tab.
+ 
+ * Scroll Down to Deployment Method and select GitHub.
+ 
+ * Select repository to be deployed and connect to Heroku.
+ 
+ * Now Scroll down to depoly : 
+    * Option 1 is selecting Automatic deploys (Will Update Automaticly when every git push to the repository).
+    * Option 2 is selecting Manual deploy (Needs to be redeployed after every change manually via Heroku deploy tab).
+
+ Visit the live deployment [HERE](https://menu-manager-32aec1a9f4d5.herokuapp.com).
+
+## _3 - Cloning Repository_
+
+ * To clone the repository for download or use within your GitHub head-over to this [link](https://github.com/git-guides/git-clone) 
+
+# _Credits_
+
+  * I used [python.org](https://www.python.org/) for References for the Pyhton code and functionality
+
+ * I used [w3schools](https://www.w3schools.com/python/default.asp) for References for the Pyhton code and functionality
+
+ * I used [stackoverflow](https://stackoverflow.com/) for References for the Pyhton code and functionality
+
+ * I Used [Django Docs](https://docs.djangoproject.com/en/5.0/) to the reference for the django code and functionality

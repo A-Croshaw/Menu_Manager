@@ -16,12 +16,6 @@ class StarterDish(models.Model):
     """
     A Model To Create starter Recipes
     """
-    user = models.ForeignKey(
-        User,
-        related_name="starter_dish_user",
-        on_delete=models.SET_NULL,
-        null=True,
-    )
     starter_dish_name = models.CharField(
         max_length=300,
         null=False,

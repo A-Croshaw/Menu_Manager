@@ -27,12 +27,6 @@ class Sauce(models.Model):
     """
     A Model To Create Recipes
     """
-    user = models.ForeignKey(
-        User,
-        related_name="sauce_recipe_user",
-        on_delete=models.SET_NULL,
-        null=True,
-    )
     sauce_name = models.CharField(
         max_length=300,
         null=False,

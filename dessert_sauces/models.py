@@ -21,13 +21,6 @@ UNITS = (
 
 class DessertSauce(models.Model):
     """A Model To Create Dessert Sauce Recipes"""
-
-    user = models.ForeignKey(
-        User,
-        related_name="dessert_sauce_user",
-        on_delete=models.SET_NULL,
-        null=True,
-    )
     dessert_sauce_name = models.CharField(
         max_length=300,
         null=False,
@@ -53,7 +46,7 @@ class DessertSauce(models.Model):
 class DessertSauceIngredients(models.Model):
     """A Model To Create Ingredients For The Recipes"""
 
-    dessert_sauce = models.ForeignKey(
+    dessert_sauce_name  = models.ForeignKey(
         DessertSauce,
         on_delete=models.CASCADE
         )
@@ -81,7 +74,7 @@ class DessertSauceIngredients(models.Model):
 class DessertSauceMethod(models.Model):
     """A Model To Create Steps For The Recipe"""
     
-    dessert_sauce = models.ForeignKey(
+    dessert_sauce_name  = models.ForeignKey(
         DessertSauce,
         on_delete=models.CASCADE
         )

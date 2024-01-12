@@ -23,12 +23,6 @@ class Side(models.Model):
     """
     A Model To Create Recipes
     """
-    user = models.ForeignKey(
-        User,
-        related_name="side_recipe_user",
-        on_delete=models.SET_NULL,
-        null=True,
-    )
     side_name = models.CharField(
         max_length=300,
         null=False,
