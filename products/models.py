@@ -25,9 +25,12 @@ class Product(models.Model):
     """
     A model to create and manage Products
     """
-    product_name = models.CharField(
-        max_length=300, null=False,
-        blank=False)
+    user = models.ForeignKey(
+        User,
+        related_name="admin_user",
+        on_delete=models.CASCADE
+    )
+    product_name = models.CharField(max_length=300, null=False, blank=False)
     product_type = models.CharField(
         max_length=50,
         choices=PRODUCT_TYPE,

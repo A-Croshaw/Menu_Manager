@@ -21,6 +21,13 @@ UNITS = (
 
 class DessertSauce(models.Model):
     """A Model To Create Dessert Sauce Recipes"""
+
+    user = models.ForeignKey(
+        User,
+        related_name="dessert_sauce_user",
+        on_delete=models.SET_NULL,
+        null=True,
+    )
     dessert_sauce_name = models.CharField(
         max_length=300,
         null=False,
