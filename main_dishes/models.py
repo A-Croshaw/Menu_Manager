@@ -17,6 +17,12 @@ class MainDish(models.Model):
     """
     A Model To Create Main Recipes
     """
+    user = models.ForeignKey(
+        User,
+        related_name="main_dish_user",
+        on_delete=models.SET_NULL,
+        null=True,
+    )
     main_dish_name = models.CharField(
         max_length=300,
         null=False,

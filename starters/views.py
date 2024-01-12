@@ -1,10 +1,7 @@
 from django.http.response import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import (
-    UserPassesTestMixin,
-    LoginRequiredMixin
-)
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DeleteView
 from django.db.models import Q
 from django.contrib import messages
@@ -46,8 +43,8 @@ def add_starter(request):
             starter = form.save(commit=False)
             starter.starter = starter
             starter.save()
-            messages.success(request, 'Starter Successfully Added!')
             return redirect("starter_view", pk=starter.id)
+            return render(messages.success(request, 'Starter Successfully Added!'))
         else:
             return render(request,
                           "starters/add_starter.html",
@@ -92,15 +89,15 @@ def starter_ingredients(request, pk):
             starter_ingredient = form.save(commit=False)
             starter_ingredient.starter = starter
             starter_ingredient.save()
-            messages.success(request, 'Ingredient Successfully Added!')
             return redirect("starter_ing_details", pk=starter_ingredient.id)
+            
         else:
             return render(request,
                           "includes/add_starter_ing.html",
                           context={
                               "form": form
                               })
-
+        return render(messages.success(request, 'Ingredient Successfully Added!'))  
     context = {
         "form": form,
         "starter": starter,
@@ -125,8 +122,8 @@ def starter_method(request, pk):
             starter_step = form.save(commit=False)
             starter_step.starter = starter
             starter_step.save()
-            messages.success(request, 'Step Successfully Added!')
             return redirect("starter_step_details", pk=starter_step.id)
+            return render(messages.success(request, 'Step Successfully Added!'))
         else:
             return render(request,
                           "includes/add_starter_step.html",
@@ -159,8 +156,9 @@ def update_starter_ing(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, 'Updated Successfull!')
-        return redirect("starter_ing_details", pk=starter_ingredient.id)
-
+        return redirect("starter_ing_details",  pk=starter_ingredient.id,)
+        
+        
     context = {
         "form": form,
         "starter_ingredient": starter_ingredient
@@ -180,7 +178,7 @@ def update_starter_step(request, pk):
     if request.method == "POST":
         if form.is_valid():
             form.save()
-            messages.success(request, 'Updated Successfully!')
+            messages.success(request, 'Updated Successfull!')
         return redirect("starter_step_details", pk=starter_step.id)
 
     context = {
@@ -204,8 +202,9 @@ def edit_starter(request, pk):
     if request.method == "POST":
         if form.is_valid():
             form.save()
-            messages.success(request, 'Updated Successfully!')
+            messages.success(request, 'Updated Successfull!')
         return redirect("starter_view", pk=starter.id)
+
 
     context = {
         "form": form,
@@ -228,6 +227,7 @@ def delete_starter_ing(request, pk):
         starter_ingredient.delete()
         messages.success(request, 'Ingredient Deleted')
         return HttpResponse("")
+        
 
     return HttpResponseNotAllowed(
         [
@@ -255,13 +255,12 @@ def delete_starter_step(request, pk):
     )
 
 
-class StarterDelete(UserPassesTestMixin,LoginRequiredMixin, DeleteView):
+class StarterDelete(LoginRequiredMixin, DeleteView):
     """
     Deletes Starter Course
     """
     model = Starter
     success_url = '/starters/'
-
     def test_func(self):
 
         return self.request.user == self.get_object().user

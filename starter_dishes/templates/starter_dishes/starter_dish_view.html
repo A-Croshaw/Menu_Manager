@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %}Starter Dish View{% endblock %}
 {% block content %}
-<div class="container mt-4 pb-4 bg-fade-details">
+<div class="container mt-5 py-4 bg-fade-details">
     <div class="detail-container mb-2 pt-2 justify-content-center">
         <h1 class="view-headers">{{starter_dish.starter_dish_name|title}}</h1>
     </div>
@@ -13,12 +13,14 @@
         <div class="description col p-3 view-border">
             <h2 class="view-headers">Description</h2>
             <p class="view-txt">{{starter_dish.starter_dish_description}}</p>
+            {% if user.is_superuser %}
             <div class="btn-view pt-3">
                 <a href="{% url 'edit_starter_dish' pk=starter_dish.id%}" class="btn btn-edit"
-                    aria-label="Click to edit method ">
+                    aria-label="Click to edit Starter dish ">
                     <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
                 </a>
             </div>
+            {% endif %}
         </div>
     </div>
     <div class="detail-container justify-content-center">
@@ -41,13 +43,14 @@
             {% for starter_dish_element in starter_dish_element %}
             {% include "includes/starter_dish_element_details.html" %}
             {% endfor %}
-            {% endif %}
+            {% if user.is_superuser %}
             <div class="btn-view pt-3">
                 <a href="{% url 'starter_dish_element' pk=starter_dish.id%}" class="btn btn-edit"
                     aria-label="Click to edit elements ">
                     <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
                 </a>
             </div>
+            {% endif %}
         </div>
     </div>
     <div class="detail-container btn-edit-view">

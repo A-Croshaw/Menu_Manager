@@ -64,12 +64,14 @@ def main_dish_view(request, pk):
     View full Main dish
     """
     main_dish = MainDish.objects.get(id=pk)
+    main_dish_side = MainDishSide.objects.filter(main_dish=main_dish)
     main_dish_sauce = MainDishSauce.objects.filter(main_dish=main_dish)
     main_dish_element = MainDishElement.objects.filter(main_dish=main_dish)
 
     context = {
         "main_dish": main_dish,
         "main_dish_element": main_dish_element,
+        "main_dish_side": main_dish_side,
         "main_dish_sauce": main_dish_sauce
     }
 
@@ -83,6 +85,7 @@ def edit_main_dish(request, pk):
     """
     main_dish = MainDish.objects.get(id=pk)
     form = MainDishForm(request.POST or None, instance=main_dish)
+    main_dish_side = MainDishSide.objects.filter(main_dish=main_dish)
     main_dish_sauce = MainDishSauce.objects.filter(main_dish=main_dish)
     main_dish_element = MainDishElement.objects.filter(main_dish=main_dish)
 
@@ -95,6 +98,7 @@ def edit_main_dish(request, pk):
     context = {
         "form": form,
         "main_dish": main_dish,
+        "main_dish_side": main_dish_side,
         "main_dish_sauce": main_dish_sauce,
         "main_dish_element": main_dish_element,
     }
@@ -120,6 +124,7 @@ def main_dish_element(request, pk):
     """
     main_dish = MainDish.objects.get(id=pk)
     main_dish_sauce = MainDishSauce.objects.filter(main_dish=main_dish)
+    main_dish_side = MainDishSide.objects.filter(main_dish=main_dish)
     main_dish_element = MainDishElement.objects.filter(main_dish=main_dish)
     form = MainDishElementForm(request.POST or None)
 
@@ -140,6 +145,7 @@ def main_dish_element(request, pk):
     context = {
         "form": form,
         "main_dish": main_dish,
+        "main_dish_side": main_dish_side,
         "main_dish_sauce": main_dish_sauce,
         "main_dish_element": main_dish_element,
     }
@@ -228,6 +234,7 @@ def main_dish_sauce(request, pk):
     """
     main_dish = MainDish.objects.get(id=pk)
     main_dish_sauce = MainDishSauce.objects.filter(main_dish=main_dish)
+    main_dish_side = MainDishSide.objects.filter(main_dish=main_dish)
     main_dish_element = MainDishElement.objects.filter(main_dish=main_dish)
     form = MainDishSauceForm(request.POST or None)
 
@@ -248,6 +255,7 @@ def main_dish_sauce(request, pk):
     context = {
         "form": form,
         "main_dish": main_dish,
+        "main_dish_side": main_dish_side,
         "main_dish_sauce": main_dish_sauce,
         "main_dish_element": main_dish_element,
     }
@@ -361,6 +369,7 @@ def main_dish_side(request, pk):
         "main_dish": main_dish,
         "main_dish_sauce": main_dish_sauce,
         "main_dish_element": main_dish_element,
+        "main_dish_side": main_dish_side,
     }
 
     return render(request, "main_dishes/main_dish_side.html", context)

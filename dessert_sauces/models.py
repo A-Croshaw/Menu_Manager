@@ -20,7 +20,7 @@ UNITS = (
 
 
 class DessertSauce(models.Model):
-    """A Model To Create Dessert Sauce Recipes"""
+    """A Model To Create Dessert_sauce Recipes"""
 
     user = models.ForeignKey(
         User,
@@ -40,9 +40,8 @@ class DessertSauce(models.Model):
         )
     dessert_sauce_type = models.CharField(
         max_length=50, choices=TYPE,
-        default="Cold Dessert Sauce"
+        default="Cold Dessert_sauce"
     )
-
     class Meta:
         ordering = ["dessert_sauce_name"]
 
@@ -53,7 +52,7 @@ class DessertSauce(models.Model):
 class DessertSauceIngredients(models.Model):
     """A Model To Create Ingredients For The Recipes"""
 
-    dessert_sauce_name  = models.ForeignKey(
+    dessert_sauce = models.ForeignKey(
         DessertSauce,
         on_delete=models.CASCADE
         )
@@ -80,16 +79,16 @@ class DessertSauceIngredients(models.Model):
 
 class DessertSauceMethod(models.Model):
     """A Model To Create Steps For The Recipe"""
-    
-    dessert_sauce_name  = models.ForeignKey(
+
+    dessert_sauce = models.ForeignKey(
         DessertSauce,
         on_delete=models.CASCADE
         )
-    dessert_sauce_Steps = models.CharField(
+    dessert_sauce_steps = models.CharField(
         max_length=500,
         null=False,
         blank=False
     )
 
     def __str__(self):
-        return str(self.dessert_sauce_Steps)
+        return str(self.dessert_sauce_steps)

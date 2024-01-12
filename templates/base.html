@@ -19,7 +19,15 @@
 </head>
 <body>
     {% include 'includes/header.html' %}
-    {% include 'includes/messages.html' %}
+    <div class="container row d-flex float-right">
+        <div class="col">
+            {% if messages %}
+            <div class="message-container">
+                {% include 'includes/messages.html' %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
     <main>
         {% block content %}
         {% endblock %}

@@ -1,7 +1,12 @@
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
+{% for message in messages %}
+<div class="p-2 toast-shadow" id="my-alert">
+<button type="button" class="btn-close" data-bs-dismiss="alert" data-bs-target="#my-alert" aria-label="Close"></button>
+<div class="arrow-up arrow-success"></div>
+<div class="w-100 toast-capper bg-success"></div>
+<div class="row">
+    <div class="col">
+            <p class="toast-top-txt toast-top-success "> {{ message }}</p>
+    </div>
+</div>
+</div>
+{% endfor %}

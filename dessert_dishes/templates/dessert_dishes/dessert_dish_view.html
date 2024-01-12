@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %}Dessert Dish View{% endblock %}
 {% block content %}
-<div class="container mt-4 pb-4 bg-fade-details">
+<div class="containermt-5 py-4 bg-fade-details">
     <div class="detail-container mb-2 pt-2 justify-content-center">
         <h1 class="view-headers">{{dessert_dish.dessert_dish_name|title}}</h1>
     </div>
@@ -24,48 +24,49 @@
             </div>
             {%endif%}
         </div>
-        <div class="detail-container justify-content-center">
-            <div class="ingredients col p-3 view-border">
-                <h2 class="view-headers">Sauces</h2>
-                {% for dessert_dish_sauce in dessert_dish_sauce %}
-                {% include "includes/dessert_dish_sauce_details.html" %}
-                {% endfor %}
-                {% if user.is_superuser %}
-                <div class="btn-view pt-3">
-                    <div class="btn-view ">
-                        <a href="{% url 'dessert_dish_sauce' pk=dessert_dish.id%}" class="btn btn-edit"
-                            aria-label="Click to edit sauces ">
-                            <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
-                        </a>
-                    </div>
-                </div>
-                {%endif%}
-                <div class="p-3 method col view-border">
-                    <h2 class="view-headers">Elements</h2>
-                    {% for dessert_dish_element in dessert_dish_element %}
-                    {% include "includes/dessert_dish_element_details.html" %}
-                    {% endfor %}
-                    {% if user.is_superuser %}
-                    <div class="btn-view pt-3">
-                        <div class="btn-view ">
-                            <a href="{% url 'dessert_dish_element' pk=dessert_dish.id%}" class="btn btn-edit"
-                                aria-label="Click to edit elements ">
-                                <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
-                            </a>
-                        </div>
-                    </div>
-                    {%endif%}
-                </div>
-                <div class="detail-container btn-edit-view">
-                    <a href="{% url 'dessert_dishes' %}" class="btn btn-return mt-2" aria-label="Click to return">
-                        Return
+    </div>
+    <div class="detail-container justify-content-center">
+        <div class="ingredients col p-3 view-border">
+            <h2 class="view-headers">Sauces</h2>
+            {% for dessert_dish_sauce in dessert_dish_sauce %}
+            {% include "includes/dessert_dish_sauce_details.html" %}
+            {% endfor %}
+            {% if user.is_superuser %}
+            <div class="btn-view pt-3">
+                <div class="btn-view ">
+                    <a href="{% url 'dessert_dish_sauce' pk=dessert_dish.id%}" class="btn btn-edit"
+                        aria-label="Click to edit sauces ">
+                        <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
                     </a>
-                    {% if user.is_superuser %}
-                    <a href="{% url 'dessert_dish_delete' dessert_dish.id %}" class="btn btn-recipe-delete mt-2 pt-1"
-                        aria-label="Click to Delete">
-                        <img src="{% static '/icons/delete_icon.svg' %}" alt="Delete Icon" class="recipe-delete">
-                    </a>
-                    {%endif%}
                 </div>
             </div>
-            {% endblock %}
+            {%endif%}
+        </div>
+        <div class="p-3 method col view-border">
+            <h2 class="view-headers">Elements</h2>
+            {% for dessert_dish_element in dessert_dish_element %}
+            {% include "includes/dessert_dish_element_details.html" %}
+            {% endfor %}
+            {% if user.is_superuser %}
+            <div class="btn-view pt-3">
+                <a href="{% url 'dessert_dish_element' pk=dessert_dish.id%}" class="btn btn-edit"
+                    aria-label="Click to edit ingredients ">
+                    <img src="{% static '/icons/edit-icon.svg' %}" alt="Edit Icon" class="edit">
+                </a>
+            </div>
+            {%endif%}
+        </div>
+    </div>
+    <div class="detail-container btn-edit-view">
+        <a href="{% url 'dessert_dishes' %}" class="btn btn-return mt-2" aria-label="Click to return">
+            Return
+        </a>
+        {% if user.is_superuser %}
+        <a href="{% url 'dessert_dish_delete' dessert_dish.id %}" class="btn btn-recipe-delete mt-2 pt-1"
+            aria-label="Click to Delete">
+            <img src="{% static '/icons/delete_icon.svg' %}" alt="Delete Icon" class="recipe-delete">
+        </a>
+        {%endif%}
+    </div>
+</div>
+{% endblock %}

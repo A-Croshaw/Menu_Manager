@@ -1,43 +1,41 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<section>
-    <div class="container mt-4 pb-4 bg-fade-details">
-        <div class="detail-container mb-2 pt-2 justify-content-center">
-            <h1 class="menu-title-header">{{menu.title|title}}</h1>
-        </div>
-        <div class="detail-container justify-content-center view-border">
-            <div class="col p-3">
-                <h2 class="menu-header text-center">{{menu.menu_type|title}}</h2>
-                <h3 class="text-center">{{menu.menu_date}}</h3>
-                <p class="text-center">~~~~~</p>
-                <h3 class="menu-subheader text-center">Starters</h3>
-                {% for starter_dish_item in starter_dish_item %}
-                {% include "includes/menu_starter_view.html" %}
-                {% endfor %}
-                <p class="text-center">~~~~~</p>
-                <h3 class="menu-subheader text-center">Mains</h3>
-                {% for main_dish_item in main_dish_item %}
-                {% include "includes/menu_main_view.html" %}
-                {% endfor %}
-                <p class="text-center">~~~~~</p>
-                <h3 class="menu-subheader text-center">Desserts</h3>
-                {% for dessert_dish_item in dessert_dish_item %}
-                {% include "includes/menu_dessert_view.html" %}
-                {% endfor %}
-            </div>
-        </div>
-        <div class="detail-container btn-edit-view">
-            <a href="{% url 'menus' %}" class="btn btn-return mt-2" aria-label="Click to return">
-                Return
-            </a>
-            <a href="{% url 'edit_menu' pk=menu.id%}" class="btn btn-return mt-2" aria-label="Click to edit menu ">
-                Edit
-            </a>
-            <a href="{% url 'menu_delete' menu.id%}" class="btn btn-recipe-delete mt-2 pt-1" aria-label="Click to Delete">
-                <img src="{% static '/icons/delete_icon.svg' %}" alt="Delete Icon" class="recipe-delete">
-            </a>
+<div class="container mt-5 py-4 bg-fade-details">
+    <div class="detail-container mb-2 pt-2 justify-content-center">
+        <h1 class="menu-title-header">{{menu.title|title}}</h1>
+    </div>
+    <div class="detail-container justify-content-center view-border">
+        <div class="col p-3">
+            <h2 class="menu-header text-center">{{menu.menu_type|title}}</h2>
+            <h3 class="text-center">{{menu.menu_date}}</h3>
+            <p class="text-center">~~~~~</p>
+            <h3 class="menu-subheader text-center">Starters</h3>
+            {% for starter_dish_item in starter_dish_item %}
+            {% include "includes/menu_starter_view.html" %}
+            {% endfor %}
+            <p class="text-center">~~~~~</p>
+            <h3 class="menu-subheader text-center">Mains</h3>
+            {% for main_dish_item in main_dish_item %}
+            {% include "includes/menu_main_view.html" %}
+            {% endfor %}
+            <p class="text-center">~~~~~</p>
+            <h3 class="menu-subheader text-center">Desserts</h3>
+            {% for dessert_dish_item in dessert_dish_item %}
+            {% include "includes/menu_dessert_view.html" %}
+            {% endfor %}
         </div>
     </div>
-</section>
+    <div class="detail-container btn-edit-view">
+        <a href="{% url 'menus' %}" class="btn btn-return mt-2" aria-label="Click to return">
+            Return
+        </a>
+        <a href="{% url 'edit_menu' pk=menu.id%}" class="btn btn-return mt-2" aria-label="Click to edit menu ">
+            Edit
+        </a>
+        <a href="{% url 'menu_delete' menu.id%}" class="btn btn-recipe-delete mt-2 pt-1" aria-label="Click to Delete">
+            <img src="{% static '/icons/delete_icon.svg' %}" alt="Delete Icon" class="recipe-delete">
+        </a>
+    </div>
+</div>
 {% endblock %}

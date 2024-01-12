@@ -237,6 +237,27 @@ footer {
 
 }
 
+/* messages */
+
+.message-container {
+    position: fixed;
+    top: 50px;
+    right: 5px;
+    z-index: 99999999999;
+    max-width: 280px;
+    box-shadow: var(--box-shadows);
+    margin-top: 50px;
+}
+
+.toast-top-txt{
+    font-size: 1.2rem;
+}
+
+.toast-top-success{
+    color: #ff0000;
+}
+
+
 /* Form */
 .edit-form {
     width: 50%;

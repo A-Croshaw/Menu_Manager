@@ -1,35 +1,34 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<section>
-    <div class="container mt-4 pb-4 bg-fade-details">
-        <div class="detail-container mb-2 pt-2 justify-content-center">
-            <h1 class="view-headers">Main's</h1>
-        </div>
-        <div class="detail-container justify-content-center">
-            <div class="ingredients col p-3 view-border">
-                {% for main_dish_item in main_dish_item %}
-                {% include "includes/menu_main_details.html" %}
-                {% endfor %}
-                <div id="addmainsforms" ></div>
-                <div class="btn-edit-view">
-                    <button type="button" hx-get="{% url 'add_menu_main' %}" hx-target="#addmainsforms" hx-swap="beforeend" class="btn btn-return" aria-label="Click to edit ingredients ">
-                        Add
-                    </button>
-                </div>
-            </div>22.3
-        </div>
-        <div class="btn-edit-view mt-5 pb-4">
-            {% if menu.menu_type == "à la carte" %} 
-            <a href="{% url 'add_side_item' menu.id%}" class="btn btn-return mt-2" aria-label="Click to return">
-                Next
-            </a>
-            {% else %}
-            <a href="{% url 'add_dessert_item' menu.id%}" class="btn btn-return mt-2" aria-label="Click to return">
-                Next
-            </a>
-            {% endif %}
+<div class="container mt-5 py-4 bg-fade-details">
+    <div class="detail-container mb-2 pt-2 justify-content-center">
+        <h1 class="view-headers">Main's</h1>
+    </div>
+    <div class="detail-container justify-content-center">
+        <div class="ingredients col p-3 view-border">
+            {% for main_dish_item in main_dish_item %}
+            {% include "includes/menu_main_details.html" %}
+            {% endfor %}
+            <div id="addmainsforms"></div>
+            <div class="btn-edit-view">
+                <button type="button" hx-get="{% url 'add_menu_main' %}" hx-target="#addmainsforms" hx-swap="beforeend"
+                    class="btn btn-return" aria-label="Click to edit ingredients ">
+                    Add
+                </button>
+            </div>
         </div>
     </div>
-</section>
+    <div class="btn-edit-view mt-5 pb-4">
+        {% if menu.menu_type == "à la carte" %}
+        <a href="{% url 'add_side_item' menu.id%}" class="btn btn-return mt-2" aria-label="Click to return">
+            Next
+        </a>
+        {% else %}
+        <a href="{% url 'add_dessert_item' menu.id%}" class="btn btn-return mt-2" aria-label="Click to return">
+            Next
+        </a>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

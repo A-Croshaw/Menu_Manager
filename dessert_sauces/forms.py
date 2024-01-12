@@ -51,8 +51,8 @@ class DessertSauceMethodForm(forms.ModelForm):
         """Form Fields"""
         
         model = DessertSauceMethod
-        fields = ("dessert_sauce_Steps",
+        fields = ("dessert_sauce_steps",
                   )
         labels = {
-            "dessert_sauce_Steps": "Steps",
+            "dessert_sauce_steps": "Steps",
         }

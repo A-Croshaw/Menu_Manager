@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %}Edit Starter Dish{% endblock %}
 {% block content %}
-<div class="container mt-4 pb-4 bg-fade-details">
+<div class="container mt-5 py-4 bg-fade-details">
     <div class="detail-container mb-2 pt-2 justify-content-center">
         <h1 class="view-headers">{{starter_dish.starter_dish_name|title}}</h1>
     </div>
@@ -29,7 +29,7 @@
         <div class="ingredients col p-3 view-border">
             <h2 class="view-headers">Sauces</h2>
             {% for starter_dish_sauce in starter_dish_sauce %}
-            {% include "includes/starter_dish_sauce_details.html" %}
+            {% include "includes/starter_dish_sauce_detail_view.html" %}
             {% endfor %}
         </div>
         <div class="p-3 method col view-border">

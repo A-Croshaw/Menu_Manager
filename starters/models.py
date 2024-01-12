@@ -33,6 +33,12 @@ class Starter(models.Model):
     """
     A Model To Create Recipes
     """
+    user = models.ForeignKey(
+        User,
+        related_name="starter_user",
+        on_delete=models.SET_NULL,
+        null=True,
+    )
     starter_name = models.CharField(
         max_length=300,
         null=False,
