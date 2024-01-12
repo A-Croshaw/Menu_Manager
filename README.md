@@ -16,8 +16,9 @@
   - [_Features to be Implemented_](#features-to-be-implemented)
 - [_Design_](#design)
 - [_Bugs_](#bugs)
-- [_Testing_](#testing)
-- [_Validation_](#validation)
+-[_Testing & Validation_](#testing-&-validation)
+  - [_Testing_](#testing)
+  - [_Validation_](#validation)
 - [_Technologies_](#technologies)
 - [_Deployment_](#deployment)
   - [_1 - Version Control_](#1---version-control)
@@ -39,11 +40,9 @@
 
 ## _Data Storage_
  
- * 
+ * The site data is stored on [ElephantSQL](https://www.elephantsql.com/) which is a ProsgreSQL based database.
 
- * 
-
- * 
+ * Background image and the Static files are storded on [Cloudinary](https://cloudinary.com/).
 
 ## _Implemented Features_
 
@@ -57,7 +56,9 @@
   
 ## _Features to be Implemented_
 
- * .
+ * Add Allergen Choices to the menu dishes
+ * Add Costings to the recipes that then can generate 70% gdp for dishes and the menus.
+ * Hide features on buttons as others sho during the adding og ingredients and steps on the recipe pages, also the elements, sauce and sides ont the dish pages.
 
 # _Design_
  
@@ -71,10 +72,13 @@
 
  * Through testing there are no current known bugs within the game
  
- _Testing_
+# Testing & Validation
 
+## Testing
 
-# _Validation_
+  * Case testing with results can be found here in the [TESTING.md](TESTING.md) file. (This is separate to reduce the readme file size)
+
+## _Validation_
 
  * This game passes through the [Code Institute PEP8](https://pep8ci.herokuapp.com/) Validator with no errors.
 
@@ -82,23 +86,36 @@
 
 # _Technologies_
 
- * Python/ Django programming language to produce the backend functionallity.
-
- * HTML and CSS is used for the Frontend UI
- 
- * Bootstarp 5.3.2 is used with in the Frontend UI
-  
- * [ElephantSQL](https://www.elephantsql.com/) is used to the database storage.
-
- * [Cloudinary](https://cloudinary.com/) is used For the static file and image storage
-
- * [LucidChart](https://www.lucidchart.com/pages/) used to create the flow chart showing the website functionality and flow.
-
- * [GitHub](https://www.github.com) was used to hold the website repository files.
-
- * [Gitpod](https://www.gitpod.io) was used for the coding environment.
-
- * [Heroku](https://www.heroku.com) was used to deploy the website to the web.
+ * Python/ Django,
+  - Python is the main proggraming language whilst using the django framework.
+ * HTML,
+  - Used to for main website language.
+ * CSS,
+  - For the styling for the website.
+ * Bootstarp 5.3.2,
+  - Is used With in the site for different styling and for responsiveness.
+ * Font Awesome,
+  - Used for difrerent icons through out the site.
+ * Git,
+  - Used to commit and push through out the development.
+ * [balsamiq](https://balsamiq.com/),
+  - wireframes were created using balsamiq.
+ * [TinyPNG](https://tinypng.com/),
+  - Was used to compress the background image 
+ * [cloudconvert](https://cloudconvert.com/webp-converter,)
+  - Was used to change image files to webp.
+ * [ElephantSQL](https://www.elephantsql.com/),
+  - Was Used as the main database storage.
+ * [Cloudinary](https://cloudinary.com/),
+  - Was used For the storage of static file and images.
+ * [LucidChart](https://www.lucidchart.com/pages/),
+  - Was used to create the flow chart showing the website functionality and flow.
+ * [GitHub](https://www.github.com),
+  - Is the main repository site files.
+ * [Gitpod](https://www.gitpod.io),
+  - Was the main the coding environment.
+ * [Heroku](https://www.heroku.com),
+  - Is used to deploy the website to the web.
 
 
 # _Deployment_

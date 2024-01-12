@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5 py-4 bg-fade-home justify-content-center">
+    <div class="detail-container justify-content-center mb-2 pt-2">
+        <h1 calss="home-header text-center"> Restraunt Menu Manager</h1>
+    </div>
+    <div class="detail-container justify-content-center mb-2">
+        <h1> 403 Forbidden</h1>
+        <p>You are not authorised to do the requested action!</p>
+    <a href="{% url 'home' %}" class="btn btn-return">Home</a>
+    </div>
+</div>
+{% endblock %}
