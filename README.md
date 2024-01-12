@@ -48,11 +48,19 @@
 
  * 
 
- * 
+ * **Favicon**
+    * A favicon was implemented to Show the user that They still are pressent on site
+    * This also provides an image in the tabs to allow the user to easily identify the website if they have multiple tabs open.
 
- * 
+ * **403 Error**
+  - A 403 error page has been implemented to provide feedback to the user when they try to access unauthorized content or actions.
+  - This covers the actions of adding, updating and deleting of content for all users except those how are admin users.
 
- * 
+ * **404 Error**
+  - A 404 error page has been implemented to provide feedback to the user if they try to open a page that does not exist.
+
+ * **500 Error**
+  - A 500 error page has been implemented to provide feedback to the user that the server has encounted a problem.
   
 ## _Features to be Implemented_
 
@@ -86,35 +94,37 @@
 
 # _Technologies_
 
- * Python/ Django,
+ * **Python/ Django**
   - Python is the main proggraming language whilst using the django framework.
- * HTML,
+ * **HTML**
   - Used to for main website language.
- * CSS,
+ * **CSS**
   - For the styling for the website.
- * Bootstarp 5.3.2,
+ * **Bootstarp 5.3.2**
   - Is used With in the site for different styling and for responsiveness.
- * Font Awesome,
+ * **[UXWing](uxwing.com)**
   - Used for difrerent icons through out the site.
- * Git,
+ * **Git**
   - Used to commit and push through out the development.
- * [balsamiq](https://balsamiq.com/),
+ * **[balsamiq](https://balsamiq.com/)**
   - wireframes were created using balsamiq.
- * [TinyPNG](https://tinypng.com/),
+ * **[TinyPNG](https://tinypng.com/)**
   - Was used to compress the background image 
- * [cloudconvert](https://cloudconvert.com/webp-converter,)
+ * **[cloudconvert](https://cloudconvert.com/webp-converter,)**
   - Was used to change image files to webp.
- * [ElephantSQL](https://www.elephantsql.com/),
+ * **[ElephantSQL](https://www.elephantsql.com/)**
   - Was Used as the main database storage.
- * [Cloudinary](https://cloudinary.com/),
+ * **[Cloudinary](https://cloudinary.com/)**
   - Was used For the storage of static file and images.
- * [LucidChart](https://www.lucidchart.com/pages/),
+ * **[favicon](https://favicon.io/favicon-generator/)**
+  - Favicon.io was used to generate the favicon.
+ * **[LucidChart](https://www.lucidchart.com/pages/)**
   - Was used to create the flow chart showing the website functionality and flow.
- * [GitHub](https://www.github.com),
+ * **[GitHub](https://www.github.com)**
   - Is the main repository site files.
- * [Gitpod](https://www.gitpod.io),
+ * **[Gitpod](https://www.gitpod.io)**
   - Was the main the coding environment.
- * [Heroku](https://www.heroku.com),
+ * **[Heroku](https://www.heroku.com)**
   - Is used to deploy the website to the web.
 
 
