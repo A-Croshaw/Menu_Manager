@@ -14,7 +14,7 @@
   data-bs-pause="hover" data-bs-touch="true">
   <div class="carousel-inner">
     {% for menu in menu %}
-    <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}" id="slide{{forloop.counter}}">
+    <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}" id="MenuEb{{forloop.counter}}">
       <a href="#" class="card-link" aria-label="Click to view {{menu.menu_name}}">
         <div class="carousel-card view-border my-3 py-2">
           <h2 class="carousel-name pt-1">{{menu.title|title}}</h2>
@@ -26,7 +26,7 @@
     </div>
     {% endfor %}
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselSauce" data-bs-slide="prev">
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselMenuEb" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>

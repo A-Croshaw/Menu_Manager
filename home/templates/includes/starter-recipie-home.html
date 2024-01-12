@@ -14,7 +14,7 @@
   data-bs-pause="hover" data-bs-touch="true">
   <div class="carousel-inner">
     {% for starter in starter %}
-    <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}" id="slide{{forloop.counter}}">
+    <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}" id="starter{{forloop.counter}}">
       <a href="{% url 'starter_view' starter.id %}" class="card-link"
         aria-label="Click to view {{starter.starter_name}}">
         <div class="carousel-card my-3 py-2 view-border">

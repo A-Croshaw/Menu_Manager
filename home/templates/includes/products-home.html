@@ -10,11 +10,11 @@
   </a>
   {% endif %}
 </div>
-<div id="carouselSauce" class="carousel slide mt-2" data-bs-ride="carousel" data-bs-interval="3000"
+<div id="carouselproduct" class="carousel slide mt-2" data-bs-ride="carousel" data-bs-interval="3000"
   data-bs-pause="hover" data-bs-touch="true">
   <div class="carousel-inner">
     {% for product in product %}
-    <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}" id="slide{{forloop.counter}}">
+    <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}" id="product{{forloop.counter}}">
       <a href="{% url 'products' %}" class="card-link" aria-label="Click to view products">
         <div class="carousel-card my-3 py-2 view-border">
           <h2 class="carousel-name pt-1">{{ product.product_name|title }}</h2>
@@ -25,11 +25,11 @@
     </div>
     {% endfor %}
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselSauce" data-bs-slide="prev">
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselproduct" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselSauce" data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselproduct" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
