@@ -27,55 +27,26 @@
         - [Product Delete](#product-delete)
       - [Recipes](#recipes)
         - [Starters](#starters)
-          - [Starter Add](#starter-add)
-          - [Starter Edit](#starter-edit)
-          - [Starter Delete](#starter-delete)
         - [Mains](#mains)
-          - [Main Add](#main-add)
-          - [Main Edit](#main-edit)
-          - [Main Delete](#main-delete)
         - [Sides](#sides)
-          - [Side Add](#side-add)
-          - [Side Edit](#side-edit)
-          - [Side Delete](#side-delete)
         - [Sauces](#sauces)
-          - [Sauce Add](#sauce-add)
-          - [Sauce Edit](#sauce-edit)
-          - [Sauce Delete](#sauce-delete)
         - [Desserts](#desserts)
-          - [Dessert Add](#dessert-add)
-          - [Dessert Edit](#dessert-edit)
-          - [Dessert Delete](#dessert-delete)
         - [Dessert Sauces](#dessert-sauces)
-          - [Dessert Sauces Add](#dessert-sauces-add)
-          - [Dessert Sauces Edit](#dessert-sauces-edit)
-          - [Dessert Sauces Delete](#dessert-sauces-delete)
+        - [Recipe Add Edit](#recipe-add-edit)
+        - [Recipe Delete](#recipe-delete)
       - [Dishes](#dishes)
         - [Starter Dishes](#starter-dishes)
-          - [Starter Dishes Add](#starter-dishes-Add)
-          - [Starter Dishes Edit](#starter-dishes-edit)
-          - [Starter Dishes Delete](#dessert-dishes-delete)
         - [Main Dishes](#main-dishes)
-          - [Main Dishes Add](#main-dishes-add)
-          - [Main Dishes Edit](#main-dishes-edit)
-          - [Main Dishes Delete](#main-dishes-delete)
         - [Dessert Dishes](#dessert-dishes)
-          - [Dessert Dishes Add](#dessert-dishes-add)
-          - [Dessert Dishes Edit](#dessert-dishes-edit)
-          - [Dessert Dishes Delete](#dessert-dishes-delete)
+        - [Dishes Add Edit](#dishes-add-edit)
+        - [Dishes Delete](#dishes-delete)
       - [Menus](#menus)
-        - [Early Bird](#early-bird)
-          - [Early Bird Add](#early-bird-add)
-          - [Early Bird Edit](#early-bird-edit)
-          - [Early Bird Delete](#early-bird-delete)
-        - [Specials](#specials)
-          - [Specials Add](#specials-add)
-          - [Specials Edit](#specials-edit)
-          - [Specials Delete](#specials-delete)
-        - [À la carte](#à-la-carte)
-          - [À la carte Add](#à-la-carte-add)
-          - [À la carte Edit](#à-la-carte-edit)
-          - [À la carte Delete](#à-la-carte-delete)
+        - [Menus Page](#menus-page)
+          - [Add/Edit Menu](#addedit-menu)
+          - [Early Bird Menu View](#early-bird-menu-view)
+          - [Specials Menu View](#specials-menu-view)
+          - [À la carte Menu View](#à-la-carte-menu-view)
+          - [Menu Delete](#menu-delete)
       - [Favicon](#favicon)
       -[Errors](#errors)
         - [403 Error](#403-error)
@@ -136,99 +107,74 @@
 #### **Recipes**
 
 ##### **Starters**
-###### **Starter Add**
-
-###### **Starter Edit**
-
-###### **Starter Delete**
-
 ##### **Mains**
-###### **Main Add**
-
-###### **Main Edit**
-
-###### **Main Delete**
-
 ##### **Sides**
-###### **Side Add**
-
-###### **Side Edit**
-
-###### **Side Delete**
-
 ##### **Sauces**
-
-###### **Sauce Add**
-
-###### **Sauce Edit**
-
-###### **Sauce Delete**
-
 ##### **Desserts**
-###### **Dessert Add**
-
-###### **Dessert Edit**
-
-###### **Dessert Delete**
-
-##### ***Dessert Sauces**
-###### **Dessert Sauces Add**
-
-###### **Dessert Sauces Edit**
-
-###### **Dessert Sauces Delete**
+##### **Dessert Sauces**
+##### **Recipe Add Edit**
+##### **Recipe Delete**
 
 #### **Dishes**
 
 ##### **Starter Dishes**
-###### **Starter Dishes Add**
-
-###### **Starter Dishes Edit**
-
-###### **Starter Dishes Delete**
-
-##### **Main Dishes**
-###### **Main Dishes Add**
-
-###### **Main Dishes Edit**
-
-###### **Main Dishes Delete**
-
 ##### **Dessert Dishes**
-###### **Dessert Dishes Add**
+##### **Main Dishes**
+##### **Dishes Add Edit**
+##### **Dishes Delete**
 
-###### **Dessert Dishes Edit**
-
-###### **Dessert Dishes Delete**
 
 #### **Menus**
 ##### **Menus Page**
+    When a user navigates to the menu sectio they will see this page first. it has the 3 different menus in the own sections,
+    A user can select a menu by clicking on it and it will take them to that menu style view and from there they will be able to edit od delete the menu.
+##### **Add/Edit Menu**
+    When the user clicks on the add menu via the nav bar they will be prompt with the add menu form.
+    Depending on the menu type the choose will run though different stages to generate the desired menu.
+![Add Menu](docs/readme_images/menu-add.png)
 
-##### **Early Bird**
-###### ** Early Bird Menu View**
+    The add starters will be the next form this will allow the user to add multiple mains items before moving on.
 
-###### **Early Bird Add**
+![Add Menu Starter](docs/readme_images/menu-starter-add.png)
+![view Menu Starter](docs/readme_images/menu-starter-view.png)
 
-###### **Early Bird Edit**
+    The add mains will be the next form to allow the user to add multiple mains items before moving on.
 
-###### **Early Bird Delete**
+![Add Menu Main](docs/readme_images/menu-mains-add.png)
+![view Menu Main](docs/readme_images/menu-mains-view.png)
 
-##### **Specials**
-###### **Specials Menu View**
-###### **Specials Add**
+    The adding of sides will only show for the À la carte Menu Choice.
+    If the À la carte Menu Choice is selected the user can add multiple items before moving on.
 
-###### **Specials Edit**
+![Add Menu Side](docs/readme_images/menu-sides-add.png)
+![view Menu Side](docs/readme_images/menu-sides-view.png)
 
-###### **Specials Delete**
+    The adding of sauces this will also only show for the À la carte Menu Choice.
+    If the À la carte Menu Choice is selected the user can add multiple items before moving on.
 
-##### **À la carte**
-###### **À la carte Menu View**
-###### **À la carte Add**
+![Add Menu Sauce](docs/readme_images/menu-sauces-add.png)
+![view Menu Sauce](docs/readme_images/menu-sauces-view.png)
+    And finally the adding of desserts which also allows the user to add multiple items before moving on to view the menu.
+![Add Menu Dessert](docs/readme_images/menu-dessert-add.png)
+![view Menu Dessert](docs/readme_images/menu-dessert-view.png)
 
-###### **À la carte Edit**
+    The edit menu can be accessed from the single menu view which is only avalible to admin/superusers.
+    the edit menu will loop back though the same proccess as adding a new menu aloowing the user to remove add or edit menu items.
 
-###### **À la carte Delete**
-
+![Edit Menu](docs/readme_images/menu-edit.png)
+##### ** Early Bird Menu View**
+    This is the Early Bird Menu View. which anybody can view but if the user is not superuser/admin then the edit and bit buttons will not be displayed.
+![Early Bird Menu View](docs/readme_images/early-bird-menu-view.png)
+##### **Specials Menu View**
+    This is the Specials Menu View. which anybody can view but if the user is not superuser/admin then the edit and bit buttons will not be displayed.
+![Specials Menu View](docs/readme_images/specials-menu-view.png)
+##### **À la carte Menu View**
+    This is the À la carte Menu View. which anybody can view but if the user is not superuser/admin user then the edit and bit buttons will not be displayed.
+![A La Carte Menu View](docs/readme_images/a-la-carte-menu-view.png)
+##### **Menu Delete**
+    When superuser/admin user Clicks on the delet button they will be prompt with a deletion confermation screen. if click  Confirm the menu will be deleted and will return to the main menu page.
+    If Cancel is clicked they will be returned to the menu they was viewing.  
+![Delete Menu](docs/readme_images/menu-delete.png)
 #### **Favicon**
     * A favicon was implemented to Show the user that They still are pressent on site
     * This also provides an image in the tabs to allow the user to easily identify the website if they have multiple tabs open.

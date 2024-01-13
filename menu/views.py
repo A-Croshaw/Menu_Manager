@@ -115,7 +115,7 @@ def edit_menu(request, pk):
     return render(request, "menu/edit_menu.html", context)
 
 
-class MenuDelete(UserPassesTestMixin,LoginRequiredMixin, DeleteView):
+class MenuDelete(LoginRequiredMixin, DeleteView):
     """
     Deletes menu
     """

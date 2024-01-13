@@ -106,7 +106,7 @@ def edit_dessert_dish(request, pk):
     return render(request, "dessert_dishes/edit_dessert_dish.html", context)
 
 
-class DessertDishDelete(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
+class DessertDishDelete(LoginRequiredMixin, DeleteView):
     """Deletes Dessert Dish"""
 
     model = DessertDish

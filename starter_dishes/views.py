@@ -111,7 +111,7 @@ def edit_starter_dish(request, pk):
     return render(request, "starter_dishes/edit_starter_dish.html", context)
 
 
-class StarterDishDelete(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
+class StarterDishDelete(LoginRequiredMixin, DeleteView):
     """
     Deletes starter Dish
     """

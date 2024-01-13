@@ -258,7 +258,7 @@ def delete_starter_step(request, pk):
     )
 
 
-class StarterDelete(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
+class StarterDelete(LoginRequiredMixin, DeleteView):
     """
     Deletes Starter Course
     """

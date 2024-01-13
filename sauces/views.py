@@ -253,7 +253,7 @@ def delete_sauce_step(request, pk):
     )
 
 
-class SauceDelete(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
+class SauceDelete(LoginRequiredMixin, DeleteView):
     """
     Deletes Sauce Course
     """

@@ -253,7 +253,7 @@ def delete_side_step(request, pk):
     )
 
 
-class SideDelete(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
+class SideDelete(LoginRequiredMixin, DeleteView):
     """
     Deletes Side Course
     """

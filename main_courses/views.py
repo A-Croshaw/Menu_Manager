@@ -250,7 +250,7 @@ def delete_main_step(request, pk):
     )
 
 
-class MainDelete(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
+class MainDelete(LoginRequiredMixin, DeleteView):
     """
     Deletes Main Course
     """

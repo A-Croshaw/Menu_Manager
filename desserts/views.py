@@ -243,7 +243,7 @@ def delete_dessert_step(request, pk):
     )
 
 
-class DessertDelete(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
+class DessertDelete(LoginRequiredMixin, DeleteView):
     """Deletes Dessert Course"""
 
     model = Dessert

@@ -42,7 +42,7 @@ class ProductList(ListView):
         return products
 
 
-class DeleteProduct(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class DeleteProduct(LoginRequiredMixin, DeleteView):
     """Delete Product"""
     model = Product
     success_url = '/products/'

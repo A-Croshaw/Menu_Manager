@@ -111,7 +111,7 @@ def edit_main_dish(request, pk):
     return render(request, "main_dishes/edit_main_dish.html", context)
 
 
-class MainDishDelete(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
+class MainDishDelete(LoginRequiredMixin, DeleteView):
     """
     Deletes main Dish
     """
