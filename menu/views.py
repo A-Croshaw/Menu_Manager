@@ -1,7 +1,8 @@
 from django.http.response import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import (UserPassesTestMixin,
+LoginRequiredMixin)
 from django.views.generic import ListView, DeleteView
 from django.db.models import Q
 from django.contrib import messages
@@ -114,7 +115,7 @@ def edit_menu(request, pk):
     return render(request, "menu/edit_menu.html", context)
 
 
-class MenuDelete(LoginRequiredMixin, DeleteView):
+class MenuDelete(UserPassesTestMixin,LoginRequiredMixin, DeleteView):
     """
     Deletes menu
     """

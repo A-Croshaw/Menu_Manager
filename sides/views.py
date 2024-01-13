@@ -1,7 +1,9 @@
 from django.http.response import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import (
+    UserPassesTestMixin,
+    LoginRequiredMixin)
 from django.views.generic import ListView, DeleteView
 from django.db.models import Q
 from django.contrib import messages
@@ -251,7 +253,7 @@ def delete_side_step(request, pk):
     )
 
 
-class SideDelete(LoginRequiredMixin, DeleteView):
+class SideDelete(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
     """
     Deletes Side Course
     """
