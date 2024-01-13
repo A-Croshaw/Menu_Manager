@@ -59,7 +59,7 @@ class MainDishSauce(models.Model):
         null=True,
         related_name="main_sauce"
         )
-        
+
     def __str__(self):
         return str(self.main_dish_sauce)
 
@@ -69,7 +69,7 @@ class MainDishElement(models.Model):
     A Model To Add Elements To A Main Dish
     """
     main_dish = models.ForeignKey(
-       MainDish,
+        MainDish,
         on_delete=models.CASCADE
         )
     main_dish_element = models.ForeignKey(
@@ -89,7 +89,7 @@ class MainDishSide(models.Model):
     A Model To Add Sides To A Main Dish
     """
     main_dish = models.ForeignKey(
-       MainDish,
+        MainDish,
         on_delete=models.CASCADE
         )
     main_dish_side = models.ForeignKey(

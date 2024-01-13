@@ -19,7 +19,7 @@ class DessertMethodAdmin(admin.StackedInline):
 class DessertRecipeAdmin(admin.ModelAdmin):
     """Creates Admin For The Main Part OF The Recipe And Adds Method
     And Ingredients To an Inline Output and Displays as one Item"""
-    
+
     fieldsets = []
     inlines = [DessertIndgredientsAdmin, DessertMethodAdmin]
 

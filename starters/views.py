@@ -44,7 +44,8 @@ def add_starter(request):
             starter.starter = starter
             starter.save()
             return redirect("starter_view", pk=starter.id)
-            return render(messages.success(request, 'Starter Successfully Added!'))
+            return render(
+                messages.success(request, 'Starter Successfully Added!'))
         else:
             return render(request,
                           "starters/add_starter.html",
@@ -90,14 +91,16 @@ def starter_ingredients(request, pk):
             starter_ingredient.starter = starter
             starter_ingredient.save()
             return redirect("starter_ing_details", pk=starter_ingredient.id)
-            
         else:
             return render(request,
                           "includes/add_starter_ing.html",
                           context={
                               "form": form
                               })
-        return render(messages.success(request, 'Ingredient Successfully Added!'))  
+        return render(messages.success(
+            request, 'Ingredient Successfully Added!'
+            ))
+
     context = {
         "form": form,
         "starter": starter,
@@ -123,7 +126,8 @@ def starter_method(request, pk):
             starter_step.starter = starter
             starter_step.save()
             return redirect("starter_step_details", pk=starter_step.id)
-            return render(messages.success(request, 'Step Successfully Added!'))
+            return render(messages.success(
+                request, 'Step Successfully Added!'))
         else:
             return render(request,
                           "includes/add_starter_step.html",
@@ -157,8 +161,7 @@ def update_starter_ing(request, pk):
             form.save()
             messages.success(request, 'Updated Successfull!')
         return redirect("starter_ing_details",  pk=starter_ingredient.id,)
-        
-        
+
     context = {
         "form": form,
         "starter_ingredient": starter_ingredient
@@ -205,7 +208,6 @@ def edit_starter(request, pk):
             messages.success(request, 'Updated Successfull!')
         return redirect("starter_view", pk=starter.id)
 
-
     context = {
         "form": form,
         "starter": starter,
@@ -227,7 +229,6 @@ def delete_starter_ing(request, pk):
         starter_ingredient.delete()
         messages.success(request, 'Ingredient Deleted')
         return HttpResponse("")
-        
 
     return HttpResponseNotAllowed(
         [
@@ -261,6 +262,7 @@ class StarterDelete(LoginRequiredMixin, DeleteView):
     """
     model = Starter
     success_url = '/starters/'
+
     def test_func(self):
 
         return self.request.user == self.get_object().user

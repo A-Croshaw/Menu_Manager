@@ -4,7 +4,7 @@ from .models import Main, MainIngredients, MainMethod
 
 class MainIndgredientsAdmin(admin.StackedInline):
     """Creates Admin For The Ingredients"""
-    
+
     model = MainIngredients
     extra = 0
 

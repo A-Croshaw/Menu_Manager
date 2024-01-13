@@ -1,5 +1,12 @@
 from django.contrib import admin
-from .models import Menu, StarterDishItem, MainDishItem, DessertDishItem, SideItem, SauceItem
+from .models import (
+    Menu,
+    StarterDishItem,
+    MainDishItem,
+    DessertDishItem,
+    SideItem,
+    SauceItem
+)
 
 
 class StarterDishItemAdmin(admin.StackedInline):
@@ -48,7 +55,12 @@ class MenuAdmin(admin.ModelAdmin):
     And Ingredients To an Inline Output and Displays as one Item
     """
     fieldsets = []
-    inlines = [StarterDishItemAdmin, MainDishItemAdmin, DessertDishItemAdmin, SideItemAdmin, SauceItemAdmin]
+    inlines = [
+        StarterDishItemAdmin,
+        MainDishItemAdmin,
+        DessertDishItemAdmin,
+        SideItemAdmin,
+        SauceItemAdmin]
 
 
 admin.site.register(Menu, MenuAdmin)
@@ -57,4 +69,3 @@ admin.site.register(MainDishItem)
 admin.site.register(DessertDishItem)
 admin.site.register(SideItem)
 admin.site.register(SauceItem)
-

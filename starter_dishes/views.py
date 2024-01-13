@@ -1,15 +1,18 @@
 from django.http.response import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import (
-    UserPassesTestMixin,
-    LoginRequiredMixin
-)
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DeleteView
 from django.db.models import Q
 from django.contrib import messages
-from .models import StarterDish, StarterDishSauce, StarterDishElement
-from .forms import StarterDishForm, StarterDishSauceForm, StarterDishElementForm
+from .models import (
+    StarterDish,
+    StarterDishSauce,
+    StarterDishElement)
+from .forms import (
+    StarterDishForm,
+    StarterDishSauceForm,
+    StarterDishElementForm)
 
 
 class ViewStarterDish(ListView):
@@ -64,8 +67,10 @@ def starter_dish_view(request, pk):
     View full starter dish
     """
     starter_dish = StarterDish.objects.get(id=pk)
-    starter_dish_sauce = StarterDishSauce.objects.filter(starter_dish=starter_dish)
-    starter_dish_element = StarterDishElement.objects.filter(starter_dish=starter_dish)
+    starter_dish_sauce = StarterDishSauce.objects.filter(
+        starter_dish=starter_dish)
+    starter_dish_element = StarterDishElement.objects.filter(
+        starter_dish=starter_dish)
 
     context = {
         "starter_dish": starter_dish,
@@ -83,8 +88,10 @@ def edit_starter_dish(request, pk):
     """
     starter_dish = StarterDish.objects.get(id=pk)
     form = StarterDishForm(request.POST or None, instance=starter_dish)
-    starter_dish_sauce = StarterDishSauce.objects.filter(starter_dish=starter_dish)
-    starter_dish_element = StarterDishElement.objects.filter(starter_dish=starter_dish)
+    starter_dish_sauce = StarterDishSauce.objects.filter(
+        starter_dish=starter_dish)
+    starter_dish_element = StarterDishElement.objects.filter(
+        starter_dish=starter_dish)
 
     if request.method == "POST":
         if form.is_valid():
@@ -119,8 +126,10 @@ def starter_dish_element(request, pk):
     Add Dish Elements
     """
     starter_dish = StarterDish.objects.get(id=pk)
-    starter_dish_sauce = StarterDishSauce.objects.filter(starter_dish=starter_dish)
-    starter_dish_element = StarterDishElement.objects.filter(starter_dish=starter_dish)
+    starter_dish_sauce = StarterDishSauce.objects.filter(
+        starter_dish=starter_dish)
+    starter_dish_element = StarterDishElement.objects.filter(
+        starter_dish=starter_dish)
     form = StarterDishElementForm(request.POST or None)
 
     if request.method == "POST":
@@ -129,7 +138,9 @@ def starter_dish_element(request, pk):
             starter_dish_element.starter_dish = starter_dish
             starter_dish_element.save()
             messages.success(request, 'Element Successfully Added!')
-            return redirect("starter_dish_element_details", pk=starter_dish_element.id)
+            return redirect(
+                "starter_dish_element_details",
+                pk=starter_dish_element.id)
         else:
             return render(request,
                           "includes/add_starter_dish_element.html",
@@ -153,13 +164,15 @@ def update_starter_dish_element(request, pk):
     Updates dish_element Fields
     """
     starter_dish_element = StarterDishElement.objects.get(id=pk)
-    form = StarterDishElementForm(request.POST or None, instance=starter_dish_element)
+    form = StarterDishElementForm(
+        request.POST or None, instance=starter_dish_element)
 
     if request.method == "POST":
         if form.is_valid():
             form.save()
             messages.success(request, 'Updated Successfully!')
-        return redirect("starter_dish_element_details", pk=starter_dish_element.id)
+        return redirect(
+            "starter_dish_element_details", pk=starter_dish_element.id)
 
     context = {
         "form": form,
@@ -177,7 +190,9 @@ def starter_dish_element_detail_view(request, pk):
     context = {
         " starter_dish_element":  starter_dish_element
         }
-    return render(request, "includes/ starter_dish_element_details.html", context)
+    return render(
+        request,
+        "includes/ starter_dish_element_details.html", context)
 
 
 def starter_dish_element_details(request, pk):
@@ -188,7 +203,9 @@ def starter_dish_element_details(request, pk):
     context = {
         "starter_dish_element": starter_dish_element
     }
-    return render(request, "includes/starter_dish_element_details.html", context)
+    return render(
+        request,
+        "includes/starter_dish_element_details.html", context)
 
 
 @login_required
@@ -200,7 +217,9 @@ def add_starter_dish_element(request):
     context = {
         "form": form
     }
-    return render(request, "includes/add_starter_dish_element.html", context)
+    return render(
+        request,
+        "includes/add_starter_dish_element.html", context)
 
 
 @login_required
@@ -208,7 +227,8 @@ def delete_starter_dish_element(request, pk):
     """
     Deletes Element Field
     """
-    starter_dish_element = get_object_or_404(StarterDishElement, id=pk)
+    starter_dish_element = get_object_or_404(
+        StarterDishElement, id=pk)
 
     if request.method == "POST":
         starter_dish_element.delete()
@@ -227,8 +247,10 @@ def starter_dish_sauce(request, pk):
     Add Dish Sauces
     """
     starter_dish = StarterDish.objects.get(id=pk)
-    starter_dish_sauce = StarterDishSauce.objects.filter(starter_dish=starter_dish)
-    starter_dish_element = StarterDishElement.objects.filter(starter_dish=starter_dish)
+    starter_dish_sauce = StarterDishSauce.objects.filter(
+        starter_dish=starter_dish)
+    starter_dish_element = StarterDishElement.objects.filter(
+        starter_dish=starter_dish)
     form = StarterDishSauceForm(request.POST or None)
 
     if request.method == "POST":
@@ -237,7 +259,8 @@ def starter_dish_sauce(request, pk):
             starter_dish_sauce.starter_dish = starter_dish
             starter_dish_sauce.save()
             messages.success(request, 'Sauce Successfully Added!')
-            return redirect("starter_dish_sauce_details", pk=starter_dish_sauce.id)
+            return redirect(
+                "starter_dish_sauce_details", pk=starter_dish_sauce.id)
         else:
             return render(request,
                           "includes/add_starter_dish_sauce.html",
@@ -252,7 +275,9 @@ def starter_dish_sauce(request, pk):
         "starter_dish_element": starter_dish_element,
     }
 
-    return render(request, "starter_dishes/starter_dish_sauce.html", context)
+    return render(
+        request,
+        "starter_dishes/starter_dish_sauce.html", context)
 
 
 @login_required
@@ -261,20 +286,23 @@ def update_starter_dish_sauce(request, pk):
     Updates dish sauce Fields
     """
     starter_dish_sauce = StarterDishSauce.objects.get(id=pk)
-    form = StarterDishSauceForm(request.POST or None, instance=starter_dish_sauce)
+    form = StarterDishSauceForm(
+        request.POST or None, instance=starter_dish_sauce)
 
     if request.method == "POST":
         if form.is_valid():
             form.save()
             messages.success(request, 'Updated Successfully!')
-        return redirect("starter_dish_sauce_details", pk=starter_dish_sauce.id)
+        return redirect(
+            "starter_dish_sauce_details", pk=starter_dish_sauce.id)
 
     context = {
         "form": form,
         "starter_dish_sauce": starter_dish_sauce
     }
 
-    return render(request, "includes/add_starter_dish_sauce.html", context)
+    return render(
+        request, "includes/add_starter_dish_sauce.html", context)
 
 
 def starter_dish_sauce_detail_view(request, pk):
@@ -285,7 +313,8 @@ def starter_dish_sauce_detail_view(request, pk):
     context = {
         " starter_dish_sauce":  starter_dish_sauce
         }
-    return render(request, "includes/ starter_dish_sauce_details.html", context)
+    return render(
+        request, "includes/ starter_dish_sauce_details.html", context)
 
 
 def starter_dish_sauce_details(request, pk):
@@ -296,7 +325,8 @@ def starter_dish_sauce_details(request, pk):
     context = {
         "starter_dish_sauce": starter_dish_sauce
     }
-    return render(request, "includes/starter_dish_sauce_details.html", context)
+    return render(
+        request, "includes/starter_dish_sauce_details.html", context)
 
 
 @login_required
@@ -308,7 +338,8 @@ def add_starter_dish_sauce(request):
     context = {
         "form": form
     }
-    return render(request, "includes/add_starter_dish_sauce.html", context)
+    return render(
+        request, "includes/add_starter_dish_sauce.html", context)
 
 
 @login_required
@@ -328,4 +359,3 @@ def delete_starter_dish_sauce(request, pk):
             "POST",
         ]
     )
-

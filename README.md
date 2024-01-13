@@ -202,8 +202,11 @@
 ###### **Dessert Dishes Delete**
 
 #### **Menus**
+##### **Menus Page**
 
 ##### **Early Bird**
+###### ** Early Bird Menu View**
+
 ###### **Early Bird Add**
 
 ###### **Early Bird Edit**
@@ -211,6 +214,7 @@
 ###### **Early Bird Delete**
 
 ##### **Specials**
+###### **Specials Menu View**
 ###### **Specials Add**
 
 ###### **Specials Edit**
@@ -218,6 +222,7 @@
 ###### **Specials Delete**
 
 ##### **À la carte**
+###### **À la carte Menu View**
 ###### **À la carte Add**
 
 ###### **À la carte Edit**
@@ -227,18 +232,14 @@
 #### **Favicon**
     * A favicon was implemented to Show the user that They still are pressent on site
     * This also provides an image in the tabs to allow the user to easily identify the website if they have multiple tabs open.
-
 #### **Errors**
 ##### **403 Error**
     * A 403 error page has been implemented to provide feedback to the user when they try to access unauthorized content or actions.
     * This covers the actions of adding, updating and deleting of content for all users except those how are admin users.
-
 ##### **404 Error**
     * A 404 error page has been implemented to provide feedback to the user if they try to open a page that does not exist.
-
 ##### **500 Error**
-    * A 500 error page has been implemented to provide feedback to the user that the server has encounted a problem.
-  
+    * A 500 error page has been implemented to provide feedback to the user that the server has encounted a problem.  
 ### _Features to be Implemented_
     * Add Allergen Choices to the menu dishes
     * Add Costings to the recipes that then can generate 70% gdp for dishes and the menus.
@@ -278,21 +279,24 @@
 ### _Imagery_
     The Logo was created by using paint 3d and using text on a transparent canvas.
     The Background image is a personal photo taken whilst working in a kictch.
-
 # Bugs, Testing & Validation
 
 ## _Bugs_
+    After Testing the site there does not appeart to be any faults with the functions of the site main features.
+    whit that in mind the only minor bug that can be seen at pressent is the messages outputed to the user after updating items with out redirecting are only shown when the page is reloaded.
 
 ## Testing
     For testing with results click the link below to navigate to the testing md file (This is separate to reduce the readme file size)
   [TESTING.md](TESTING.md)
 ## _Validation_
-  * This game passes through the [Code Institute PEP8](https://pep8ci.herokuapp.com/) Validator with no errors.
+    All file passed through the [Code Institute PEP8](https://pep8ci.herokuapp.com/) Validator after removing a few white spaces and Shortening a few line lenghts.
 
-![Validation](documents/readme-images/validation.png)
+![PEP8 Validation](docs/testing/pep8-validation.png)
 
+    The site passed through W3 Valadator with just a few minor errors on carousel ids as they had same name, so after remaning them it passed.
+
+![W3 Validation](docs/testing/w3-validation.png)
 # _Technologies_
-
 #### **Python/ Django**
     Python is the main proggraming language whilst using the django framework.
 #### **HTML**
@@ -325,12 +329,8 @@
     Was the main the coding environment.
 #### **[Heroku](https://www.heroku.com)**
     Is used to deploy the website to the web.
-
-
 # _Deployment_
-
 ## _1 - Version Control_
-
     Verion controle was maintained using GIT within GitPod to push code to the GitHub repository
 
     From the Gitpod terminal use "git add ." which tells git you would like to make changes/updates to the files.
@@ -338,9 +338,7 @@
     Then use "git commit -m " with a comment, this will commit the changes and update the files.
 
     Then using the "git push" command this will push the committed changes to your GitHub repository.
-
 ## _2 - Page Deployment_
-
     Go to Heroku and log in
 
     click "New" to create a new app from the dashboard
@@ -365,19 +363,14 @@
     Now Scroll down to depoly : 
       * Option 1 is selecting Automatic deploys (Will Update Automaticly when every git push to the repository).
       * Option 2 is selecting Manual deploy (Needs to be redeployed after every change manually via Heroku deploy tab).
-
  Visit the live deployment [HERE](https://menu-manager-32aec1a9f4d5.herokuapp.com).
-
 ## _3 - Cloning Repository_
-
  * To clone the repository for download or use within your GitHub head-over to this [link](https://github.com/git-guides/git-clone) 
-
 # _Credits_
+* I used [python.org](https://www.python.org/) for References for the Pyhton code and functionality
 
-  * I used [python.org](https://www.python.org/) for References for the Pyhton code and functionality
+* I used [w3schools](https://www.w3schools.com/python/default.asp) for References for the Pyhton code and functionality
 
- * I used [w3schools](https://www.w3schools.com/python/default.asp) for References for the Pyhton code and functionality
+* I used [stackoverflow](https://stackoverflow.com/) for References for the Pyhton code and functionality
 
- * I used [stackoverflow](https://stackoverflow.com/) for References for the Pyhton code and functionality
-
- * I Used [Django Docs](https://docs.djangoproject.com/en/5.0/) to the reference for the django code and functionality
+* I Used [Django Docs](https://docs.djangoproject.com/en/5.0/) to the reference for the django code and functionality

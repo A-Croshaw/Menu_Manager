@@ -30,5 +30,3 @@ class StarterDishesAdmin(admin.ModelAdmin):
 admin.site.register(StarterDish, StarterDishesAdmin)
 admin.site.register(StarterDishSauce)
 admin.site.register(StarterDishElement)
-
-

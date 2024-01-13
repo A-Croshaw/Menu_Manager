@@ -9,7 +9,12 @@ from django.contrib.auth.mixins import (
 from django.db.models import Q
 from django.contrib import messages
 from .models import MainDish, MainDishSauce, MainDishElement, MainDishSide
-from .forms import MainDishForm, MainDishSauceForm, MainDishElementForm, MainDishSideForm
+from .forms import (
+    MainDishForm,
+    MainDishSauceForm,
+    MainDishElementForm,
+    MainDishSideForm
+    )
 
 
 class ViewMainDish(ListView):
@@ -134,7 +139,9 @@ def main_dish_element(request, pk):
             main_dish_element.main_dish = main_dish
             main_dish_element.save()
             messages.success(request, 'Element Successfully Added!')
-            return redirect("main_dish_element_details", pk=main_dish_element.id)
+            return redirect(
+                "main_dish_element_details",
+                pk=main_dish_element.id)
         else:
             return render(request,
                           "includes/add_main_dish_element.html",
@@ -159,7 +166,9 @@ def update_main_dish_element(request, pk):
     Updates dish_element Fields
     """
     main_dish_element = MainDishElement.objects.get(id=pk)
-    form = MainDishElementForm(request.POST or None, instance=main_dish_element)
+    form = MainDishElementForm(
+        request.POST or None,
+        instance=main_dish_element)
 
     if request.method == "POST":
         if form.is_valid():

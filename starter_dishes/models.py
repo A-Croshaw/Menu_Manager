@@ -58,7 +58,7 @@ class StarterDishSauce(models.Model):
         null=True,
         related_name="starter_sauce"
         )
-        
+
     def __str__(self):
         return str(self.starter_dish_sauce)
 
@@ -68,7 +68,7 @@ class StarterDishElement(models.Model):
     A Model To Add Elements To A starter Dish
     """
     starter_dish = models.ForeignKey(
-       StarterDish,
+        StarterDish,
         on_delete=models.CASCADE
         )
     starter_dish_element = models.ForeignKey(
@@ -81,6 +81,3 @@ class StarterDishElement(models.Model):
 
     def __str__(self):
         return str(self.starter_dish_element)
-
-
-

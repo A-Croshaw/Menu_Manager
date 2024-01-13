@@ -54,7 +54,7 @@ class Main(models.Model):
     main_meat_type = models.CharField(
         max_length=50, choices=Meat_TYPE, default="chicken"
     )
-    
+
     class Meta:
         ordering = ["main_name"]
 
@@ -86,7 +86,7 @@ class MainIngredients(models.Model):
         choices=UNITS,
         default="gr"
         )
-    
+
     def __str__(self):
         return str(self.main_ingredient)
 

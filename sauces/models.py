@@ -1,7 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
 from djrichtextfield.models import RichTextField
 from products.models import Product
-from django.contrib.auth.models import User
 
 
 # Choice Fields
@@ -49,6 +49,7 @@ class Sauce(models.Model):
     sauce_course = models.CharField(
         max_length=50, choices=COURSE, default="Side"
     )
+
     def __str__(self):
         return str(self.sauce_name)
 
@@ -98,4 +99,3 @@ class SauceMethod(models.Model):
 
     def __str__(self):
         return str(self.sauce_Steps)
-

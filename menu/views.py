@@ -1,15 +1,18 @@
 from django.http.response import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import (
-    UserPassesTestMixin,
-    LoginRequiredMixin
-)
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DeleteView
 from django.db.models import Q
 from django.contrib import messages
-from .forms import MenuForm, StarterDishItemForm, MainDishItemForm, DessertDishItemForm, SideItemForm, SauceItemForm
-from .models import Menu, StarterDishItem, MainDishItem, DessertDishItem, SideItem, SauceItem
+from .forms import (
+    MenuForm, StarterDishItemForm,
+    MainDishItemForm, DessertDishItemForm,
+    SideItemForm, SauceItemForm)
+from .models import (
+    Menu, StarterDishItem,
+    MainDishItem, DessertDishItem,
+    SideItem, SauceItem)
 
 
 class ViewMenus(ListView):
@@ -111,7 +114,7 @@ def edit_menu(request, pk):
     return render(request, "menu/edit_menu.html", context)
 
 
-class MenuDelete(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
+class MenuDelete(LoginRequiredMixin, DeleteView):
     """
     Deletes menu
     """
@@ -196,7 +199,8 @@ def edit_menu_starter(request, pk):
     Updates menu starter
     """
     starter_dish_item = StarterDishItem.objects.get(id=pk)
-    form = StarterDishItemForm(request.POST or None, instance=starter_dish_item)
+    form = StarterDishItemForm(
+        request.POST or None, instance=starter_dish_item)
 
     if request.method == "POST":
         if form.is_valid():
@@ -296,6 +300,7 @@ def menu_main_view(request, pk):
         "main_dish_item":  main_dish_item
         }
     return render(request, "includes/ menu_main_view.html", context)
+
 
 @login_required
 def edit_menu_main(request, pk):
@@ -411,7 +416,8 @@ def edit_menu_dessert(request, pk):
     Updates menu dessert
     """
     dessert_dish_item = DessertDishItem.objects.get(id=pk)
-    form = DessertDishItemForm(request.POST or None, instance=dessert_dish_item)
+    form = DessertDishItemForm(
+        request.POST or None, instance=dessert_dish_item)
 
     if request.method == "POST":
         if form.is_valid():
@@ -660,4 +666,3 @@ def delete_sauce_item(request, pk):
             "POST",
         ]
     )
-

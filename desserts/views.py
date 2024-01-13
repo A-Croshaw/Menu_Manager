@@ -264,7 +264,7 @@ def dessert_ing_details(request, pk):
 
 def dessert_step_details(request, pk):
     """Displays Step Fields for updating"""
-    
+
     dessert_step = get_object_or_404(DessertMethod, id=pk)
     context = {
         "dessert_step": dessert_step
@@ -312,4 +312,3 @@ def add_dessert_step(request):
         "form": form
     }
     return render(request, "includes/add_dessert_step.html", context)
-

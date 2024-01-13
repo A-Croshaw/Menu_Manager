@@ -1,15 +1,16 @@
 from django.http.response import HttpResponse, HttpResponseNotAllowed
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import (
-    UserPassesTestMixin,
-    LoginRequiredMixin
-)
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView, DeleteView
 from django.db.models import Q
 from django.contrib import messages
 from .models import DessertDish, DessertDishSauce, DessertDishElement
-from .forms import DessertDishForm, DessertDishSauceForm, DessertDishElementForm
+from .forms import (
+    DessertDishForm,
+    DessertDishSauceForm,
+    DessertDishElementForm
+    )
 
 
 class ViewDessertDish(ListView):
@@ -62,8 +63,10 @@ def dessert_dish_view(request, pk):
     """View full Dessert dish"""
 
     dessert_dish = DessertDish.objects.get(id=pk)
-    dessert_dish_sauce = DessertDishSauce.objects.filter(dessert_dish=dessert_dish)
-    dessert_dish_element = DessertDishElement.objects.filter(dessert_dish=dessert_dish)
+    dessert_dish_sauce = DessertDishSauce.objects.filter(
+        dessert_dish=dessert_dish)
+    dessert_dish_element = DessertDishElement.objects.filter(
+        dessert_dish=dessert_dish)
 
     context = {
         "dessert_dish": dessert_dish,
@@ -80,8 +83,10 @@ def edit_dessert_dish(request, pk):
 
     dessert_dish = DessertDish.objects.get(id=pk)
     form = DessertDishForm(request.POST or None, instance=dessert_dish)
-    dessert_dish_sauce = DessertDishSauce.objects.filter(dessert_dish=dessert_dish)
-    dessert_dish_element = DessertDishElement.objects.filter(dessert_dish=dessert_dish)
+    dessert_dish_sauce = DessertDishSauce.objects.filter(
+        dessert_dish=dessert_dish)
+    dessert_dish_element = DessertDishElement.objects.filter(
+        dessert_dish=dessert_dish)
 
     if request.method == "POST":
         if form.is_valid():
@@ -99,22 +104,26 @@ def edit_dessert_dish(request, pk):
     return render(request, "dessert_dishes/edit_dessert_dish.html", context)
 
 
-class DessertDishDelete(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
+class DessertDishDelete(LoginRequiredMixin, DeleteView):
     """Deletes Dessert Dish"""
 
     model = DessertDish
     success_url = '/dessert_dishes/'
+
     def test_func(self):
 
         return self.request.user == self.get_object().user
+
 
 # Elements
 def dessert_dish_element(request, pk):
     """Add Dish Elements"""
 
     dessert_dish = DessertDish.objects.get(id=pk)
-    dessert_dish_sauce = DessertDishSauce.objects.filter(dessert_dish=dessert_dish)
-    dessert_dish_element = DessertDishElement.objects.filter(dessert_dish=dessert_dish)
+    dessert_dish_sauce = DessertDishSauce.objects.filter(
+        dessert_dish=dessert_dish)
+    dessert_dish_element = DessertDishElement.objects.filter(
+        dessert_dish=dessert_dish)
     form = DessertDishElementForm(request.POST or None)
 
     if request.method == "POST":
@@ -123,7 +132,9 @@ def dessert_dish_element(request, pk):
             dessert_dish_element.dessert_dish = dessert_dish
             dessert_dish_element.save()
             messages.success(request, 'Dish Element Successfully!')
-            return redirect("dessert_dish_element_details", pk=dessert_dish_element.id)
+            return redirect(
+                "dessert_dish_element_details",
+                pk=dessert_dish_element.id)
         else:
             return render(request,
                           "includes/add_dessert_dish_element.html",
@@ -146,13 +157,17 @@ def update_dessert_dish_element(request, pk):
     """Updates dish_element Fields"""
 
     dessert_dish_element = DessertDishElement.objects.get(id=pk)
-    form = DessertDishElementForm(request.POST or None, instance=dessert_dish_element)
+    form = DessertDishElementForm(
+        request.POST or None,
+        instance=dessert_dish_element)
 
     if request.method == "POST":
         if form.is_valid():
             form.save()
             messages.success(request, 'Updated Successfully!')
-        return redirect("dessert_dish_element_details", pk=dessert_dish_element.id)
+        return redirect(
+            "dessert_dish_element_details",
+            pk=dessert_dish_element.id)
 
     context = {
         "form": form,
@@ -169,7 +184,10 @@ def dessert_dish_element_detail_view(request, pk):
     context = {
         " dessert_dish_element":  dessert_dish_element
         }
-    return render(request, "includes/ dessert_dish_element_details.html", context)
+    return render(
+        request,
+        "includes/ dessert_dish_element_details.html",
+        context)
 
 
 def dessert_dish_element_details(request, pk):
@@ -179,7 +197,10 @@ def dessert_dish_element_details(request, pk):
     context = {
         "dessert_dish_element": dessert_dish_element
     }
-    return render(request, "includes/dessert_dish_element_details.html", context)
+    return render(
+        request,
+        "includes/dessert_dish_element_details.html",
+        context)
 
 
 @login_required
@@ -190,14 +211,19 @@ def add_dessert_dish_element(request):
     context = {
         "form": form
     }
-    return render(request, "includes/add_dessert_dish_element.html", context)
+    return render(
+        request,
+        "includes/add_dessert_dish_element.html",
+        context)
 
 
 @login_required
 def delete_dessert_dish_element(request, pk):
     """Deletes Element Field"""
 
-    dessert_dish_element = get_object_or_404(DessertDishElement, id=pk)
+    dessert_dish_element = get_object_or_404(
+        DessertDishElement,
+        id=pk)
 
     if request.method == "POST":
         dessert_dish_element.delete()
@@ -216,8 +242,10 @@ def dessert_dish_sauce(request, pk):
     """Add Dish Sauces"""
 
     dessert_dish = DessertDish.objects.get(id=pk)
-    dessert_dish_sauce = DessertDishSauce.objects.filter(dessert_dish=dessert_dish)
-    dessert_dish_element = DessertDishElement.objects.filter(dessert_dish=dessert_dish)
+    dessert_dish_sauce = DessertDishSauce.objects.filter(
+        dessert_dish=dessert_dish)
+    dessert_dish_element = DessertDishElement.objects.filter(
+        dessert_dish=dessert_dish)
     form = DessertDishSauceForm(request.POST or None)
 
     if request.method == "POST":
@@ -226,7 +254,9 @@ def dessert_dish_sauce(request, pk):
             dessert_dish_sauce.dessert_dish = dessert_dish
             dessert_dish_sauce.save()
             messages.success(request, 'Dish Sauce Successfully!')
-            return redirect("dessert_dish_sauce_details", pk=dessert_dish_sauce.id)
+            return redirect(
+                "dessert_dish_sauce_details",
+                pk=dessert_dish_sauce.id)
         else:
             return render(request,
                           "includes/add_dessert_dish_sauce.html",
@@ -249,13 +279,17 @@ def update_dessert_dish_sauce(request, pk):
     """Updates dish sauce Fields"""
 
     dessert_dish_sauce = DessertDishSauce.objects.get(id=pk)
-    form = DessertDishSauceForm(request.POST or None, instance=dessert_dish_sauce)
+    form = DessertDishSauceForm(
+        request.POST or None,
+        instance=dessert_dish_sauce)
 
     if request.method == "POST":
         if form.is_valid():
             form.save()
             messages.success(request, 'Updated Successfully!')
-        return redirect("dessert_dish_sauce_details", pk=dessert_dish_sauce.id)
+        return redirect(
+            "dessert_dish_sauce_details",
+            pk=dessert_dish_sauce.id)
 
     context = {
         "form": form,
@@ -272,7 +306,10 @@ def dessert_dish_sauce_detail_view(request, pk):
     context = {
         " dessert_dish_sauce":  dessert_dish_sauce
         }
-    return render(request, "includes/ dessert_dish_sauce_details.html", context)
+    return render(
+        request,
+        "includes/ dessert_dish_sauce_details.html",
+        context)
 
 
 def dessert_dish_sauce_details(request, pk):
@@ -282,7 +319,10 @@ def dessert_dish_sauce_details(request, pk):
     context = {
         "dessert_dish_sauce": dessert_dish_sauce
     }
-    return render(request, "includes/dessert_dish_sauce_details.html", context)
+    return render(
+        request,
+        "includes/dessert_dish_sauce_details.html",
+        context)
 
 
 @login_required

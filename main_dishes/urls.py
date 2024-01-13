@@ -5,7 +5,7 @@ from . import views
 
 urlpatterns = [
      path(
-         "",ViewMainDish.as_view(),
+         "", ViewMainDish.as_view(),
          name="main_dishes"
          ),
      path(

@@ -58,7 +58,7 @@ class DessertDishSauce(models.Model):
         null=True,
         related_name="dessert_sauce"
         )
-        
+
     def __str__(self):
         return str(self.dessert_dish_sauce)
 
@@ -68,7 +68,7 @@ class DessertDishElement(models.Model):
     A Model To Add Elements To A Dessert Dish
     """
     dessert_dish = models.ForeignKey(
-       DessertDish,
+        DessertDish,
         on_delete=models.CASCADE
         )
     dessert_dish_element = models.ForeignKey(

@@ -42,6 +42,7 @@ class DessertSauce(models.Model):
         max_length=50, choices=TYPE,
         default="Cold Dessert_sauce"
     )
+
     class Meta:
         ordering = ["dessert_sauce_name"]
 

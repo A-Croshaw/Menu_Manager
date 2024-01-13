@@ -1,9 +1,6 @@
 from django.http.response import HttpResponse, HttpResponseNotAllowed
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import (
-    UserPassesTestMixin,
-    LoginRequiredMixin
-)
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView, DeleteView
 from django.db.models import Q
@@ -251,7 +248,7 @@ def delete_main_step(request, pk):
     )
 
 
-class MainDelete(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
+class MainDelete(LoginRequiredMixin, DeleteView):
     """
     Deletes Main Course
     """

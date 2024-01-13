@@ -30,4 +30,3 @@ class SauceRecipeAdmin(admin.ModelAdmin):
 admin.site.register(Sauce, SauceRecipeAdmin)
 admin.site.register(SauceIngredients)
 admin.site.register(SauceMethod)
-

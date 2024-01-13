@@ -1,5 +1,11 @@
 from django import forms
-from .models import Menu, StarterDishItem, MainDishItem, DessertDishItem, SideItem, SauceItem
+from .models import (
+    Menu,
+    StarterDishItem,
+    MainDishItem,
+    DessertDishItem,
+    SideItem,
+    SauceItem)
 
 
 class StarterDishItemForm(forms.ModelForm):

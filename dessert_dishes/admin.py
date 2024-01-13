@@ -30,4 +30,3 @@ class DessertDishesAdmin(admin.ModelAdmin):
 admin.site.register(DessertDish, DessertDishesAdmin)
 admin.site.register(DessertDishSauce)
 admin.site.register(DessertDishElement)
-
