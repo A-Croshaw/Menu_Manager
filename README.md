@@ -1,6 +1,7 @@
 # _Menu Manager_
+    Menu Manager is a site where a chain of hotels/restrants can have a central point for menu, dish and recipe management. Keeping the same stand across all locations.
 
-![Giff-Image](documents/readme-images/game-gif.gif)
+![Mockup Image](docs/readme_images/mockup.png)
 
 [_Click here to view live deployment_](https://menu-manager-32aec1a9f4d5.herokuapp.com)
 
@@ -19,12 +20,7 @@
         - [Header](#header)
         - [Footer](#footer)
       - [Accounts](#accounts)
-        - [Admin](#admin)
-        - [User](#user)
       - [Products](#products)
-        - [Product Add](#Add)
-        - [Product Edit](#product-add)
-        - [Product Delete](#product-delete)
       - [Recipes](#recipes)
         - [Starters](#starters)
         - [Mains](#mains)
@@ -56,7 +52,6 @@
 - [Skeleton Plane](#skeleton-plane)
   - [Database](#design)
   - [WireFrames](#wireframes)
-  - [Security](#security)
 - [Surface Plane](#surface-plane)
   - [Design](#design)
   - [Colour And Style Scheme](#colour-and-style-scheme)
@@ -88,42 +83,115 @@
 #### **Site Features**
 
 ##### **Home Page**
+    The home page has each section of the site using carousels desplaying that sections recipes, dishes or menus. for a genarle user they will only be able to navigate to view each item as where an admin user will have to option to navigate to add items to the selected section.
+
+![Home Page](docs/readme_images/home.png)
 
 ##### **Header**
+    The navbar is a deep blue with white text. with the red and black logo with a search feature allowing the user to search the site. 
+    the search bar is locked to the section the user is on when they are navigated away from the home page.
+![Navebar](docs/readme_images/navbar.png)
+
+    The mains and starters dropdown has recipies, add recipes, dishes and add dishes as options.
+![Dropdowns](docs/readme_images/dropdowns.png)
+
+    The sides and sauces dropdown has recipies and add recipes as options.
+![Dropdowns](docs/readme_images/dropdowns.png)
+
+    The menus dropdown has menus and  add menu as options.
+![Menu Dropdown](docs/readme_images/menu-dropdown.png)
+
+    The dessert dropdown has recipies, add recipes, dishes, add dishes, sauces and add sauces as options.
+![Dessert Dropdown](docs/readme_images/dessert-dropdown.png)
 
 ##### **Footer**
+    The footer is the same dark blue as the header and just consists of a link to the git hub repository
+![Footer](docs/readme_images/footer.png)
 
 #### **Accounts**
-##### Admin
+    Sign Up form allowing new users to sign up to the site. once signed up users will be dirrected to home page and will have to navigate to sign in.
+![Sign Up](docs/readme_images/sign-up.png)
 
-##### User
+    Sign in form allowing users to sign in to the site. once signed in users will be dirrected to home page.
+![Sign In](docs/readme_images/sign-in.png)
+
+    On the navbar when a user is logged in the account menu will say the users name.
+![Menu Display](docs/readme_images/menu-display.png)
+
+    When the user goes to log out they will be prompt with a confirmation screen, and if confirmed they will be looged out and redirected to the home page.
+![Sing Out](docs/readme_images/sign-out.png)
 
 #### **Products**
-##### **Product Add**
+    PRoducts are only available to admin users. when an admin user navigates to the product view they will see the list of products with the search bar at the top of the page with an add buttton to the right.
+![Product View](docs/readme_images/product-view.png)
 
-##### **Product Edit**
+    When the add button on the add product link in the nav bar is clicked the admin user will be directed to add a new product form and once completed will be directed back to the product view page.
+![Product Add](docs/readme_images/product-add.png)
 
-##### **Product Delete**
+    When the edit button on the Individual product is clicked the admin user will be directed to edit the  product and once completed will be directed back to the product view page.
+![Product Edit](docs/readme_images/product-edit.png)
+
+    When the delete button on the Individual product is clicked the admin user will be directed to confirm deletion of the product and once completed will be directed back to the product view page.
+![Product Delete](docs/readme_images/product-delete.png)
 
 #### **Recipes**
 
 ##### **Starters**
+    Starter Recipe main page Shows all recipes that have been created. Users can click on the tiles to navigate to that praticular recipe.
+![Starter Recipes](docs/readme_images/starter-recipes.png)
 ##### **Mains**
+    Main Course Recipe main page Shows all recipes that have been created. Users can click on the tiles to navigate to that praticular recipe.
+![Main Recipes](docs/readme_images/main-recipes.png)
 ##### **Sides**
+    Side Recipe main page Shows all recipes that have been created. Users can click on the tiles to navigate to that praticular recipe.
+![Side Recipes](docs/readme_images/side-recipes.png)
 ##### **Sauces**
+    Sauce Recipe main page Shows all recipes that have been created. Users can click on the tiles to navigate to that praticular recipe.
+![Sauce Recipes](docs/readme_images/sauce-recipes.png)
 ##### **Desserts**
+    Dessert Recipe main page Shows all recipes that have been created. Users can click on the tiles to navigate to that praticular recipe.
+![Dessert Recipes](docs/readme_images/dessert-recipes.png)
 ##### **Dessert Sauces**
+    Dessert Sauce Recipe main page Shows all recipes that have been created. Users can click on the tiles to navigate to that praticular recipe.
+![Dessert Sauce Recipes](docs/readme_images/dessert-sauce-recipe.png)
+
 ##### **Recipe Add Edit**
+    Only Admin users can Add recipes. for Starters, Mains, Sides, Sauces, Desserts or Dessert sauces recipes the proccess is the same and the forms and lay out are identical. then the admin user clicks one of the add recipe links in the nav bar they will be directed to the add recipe form. Once the form is filled out the admin user will be directed to the recipe view page where the will be able to add the ingredients that is show in a drop down ment populated from the products database. they will also be able to add the method from this view aswell.
+![Recipe Add](docs/readme_images/recipe-add.png)
+
+    Once the Admin users has created the recipe. They will be directed to the recipe view where they can add the ingredients and method for the recipe.
+![Recipe Add 2](docs/readme_images/recipe-add-2.png)
+
+    Only Admin users can edit recipes. This is the same view that appears after adding the recipe. When the admin user is on the recipe view they will be able to edit each section of the recipe separately by clicking on the edit icons.
+![Recipe Edit](docs/readme_images/recipe-edit.png)
+
 ##### **Recipe Delete**
+    Recipes can only be deleted by admin users When the delete button is clicked the admin user will be directed to confirm deletion of the recipe and once completed they will be directed back to the recipe view page for Starters, Mains, Sides, Sauces, Desserts or Dessert sauces depending what the recipe was deleted.
+![Recipe Delete](docs/readme_images/recipe-delete.png)
 
 #### **Dishes**
 
 ##### **Starter Dishes**
-##### **Dessert Dishes**
+    Starter Dishes main page Shows all Starter Dishes that have been created. Users can click on the tiles to navigate to that praticular Starter Dish.
+![Starter Dishes](docs/readme_images/starter-dish.png)
 ##### **Main Dishes**
+    Main Course Dishes main page Shows all Main Course Dishes that have been created. Users can click on the tiles to navigate to that praticular Main Course Dish.
+![Main Dishes](docs/readme_images/main-dish.png)
+##### **Dessert Dishes**
+    Dessert Dish main page Shows all Dessert Dishes that have been created. Users can click on the tiles to navigate to that praticular Dessert Dish.
+![Dessert Dishes](docs/readme_images/dessert-dish.png)
 ##### **Dishes Add Edit**
+    Only Admin users can Add dishes. for Starter Dishes, Main Dishes or Dessert Dishes the proccess is the same and the forms and lay out are identical for Starter Dishes and Dessert Dishes. when the admin user clicks one of the add dishes links in the nav bar they will be directed to the add dishes form. Once the form is filled out the admin user will be directed to the dish view page. 
+![Add Dishes](docs/readme_images/add-dish.png)
+    Once directed to the dish view where they will be able to add the sauces and elements fom populated drop down menus for the praticular items eg. elements from the recipes and sauces from the sauces. and Main dishes has and extra item for sides that populates using drop down menus populated from the side recipies.
+![Dish View](docs/readme_images/starter-dessert-dish-view.png)
+![main Dish View](docs/readme_images/main-dish-view.png)
+    Only Admin users can edit dishes. This is the same view that appears after adding the dishes. When the admin user is on the recipe view they will be able to edit each section of the recipe separately by clicking on the edit icons.
+![Dish Edit](docs/readme_images/edit-view-dessert-starter.png)
+![Dish Edit Main](docs/readme_images/main-dish-edit-view.png)
 ##### **Dishes Delete**
-
+    Dishes can only be deleted by admin users When the delete button is clicked the admin user will be directed to confirm deletion of the Dish and once completed they will be directed back to the dish view page for Starter Dishes, Main Dishes or Dessert Dishes depending what the Dish was deleted.
+![Dish Delete](docs/readme_images/delete-dish.png)
 
 #### **Menus**
 ##### **Menus Page**
@@ -194,7 +262,6 @@
 # _Skeleton Plane_
 ## _Database_
 ## _WireFrames_
-## _Security_
 # _Surface Plane_
 ## _Design_
 ### _Colour And Style Scheme_
@@ -276,6 +343,8 @@
     Was the main the coding environment.
 #### **[Heroku](https://www.heroku.com)**
     Is used to deploy the website to the web.
+#### **[Techsini.com](https://techsini.com/multi-mockup/index.php)**
+    Is used to create the mockup image for the readme.
 # _Deployment_
 ## _1 - Version Control_
     Verion controle was maintained using GIT within GitPod to push code to the GitHub repository
