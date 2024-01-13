@@ -74,6 +74,7 @@
 - [Credits](#credits)
 
 # _Strategy Plane_
+
 # _Scope Plane_
     Fully responsive Design that will function on all device off 320px and up.
     Hamburger with offcanvus menu for mobile devices.
