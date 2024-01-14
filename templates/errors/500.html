@@ -6,9 +6,13 @@
         <h1 calss="home-header text-center"> Restraunt Menu Manager</h1>
     </div>
     <div class="detail-container justify-content-center mb-2">
-        <h1> 500 Internal Server Error</h1>
-        <p>We have encountered a problem please try again later</p>
-    <a href="{% url 'home' %}" class="btn btn-return">Home</a>
+        <div class="col">
+            <h1 class="text-center"> 500 Internal Server Error</h1>
+            <p class="text-center">We have encountered a problem please try again later</p>
+            <div class="text-center">
+                <a href="{% url 'home' %}" class="btn btn-return text-center">Home</a>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

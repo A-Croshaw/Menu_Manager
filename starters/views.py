@@ -1,8 +1,9 @@
 from django.http.response import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404, redirect, render
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import (
+    login_required, permission_required)
 from django.contrib.auth.mixins import (
-    UserPassesTestMixin,
+    PermissionRequiredMixin,
     LoginRequiredMixin)
 from django.views.generic import ListView, DeleteView
 from django.db.models import Q
@@ -34,6 +35,7 @@ class ViewStarter(ListView):
 
 
 @login_required
+@permission_required("starters.add_starter", raise_exception=True)
 def add_starter(request):
     """
     Add starter Course function
@@ -78,6 +80,48 @@ def starter_view(request, pk):
 
 
 @login_required
+@permission_required("sarters.edit_starter", raise_exception=True)
+def edit_starter(request, pk):
+    """
+    Updates Starter
+    """
+    starter = Starter.objects.get(id=pk)
+    form = StarterForm(request.POST or None, instance=starter)
+    starter_step = StarterMethod.objects.filter(starter=starter)
+    starter_ingredients = StarterIngredients.objects.filter(starter=starter)
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Updated Successfull!')
+        return redirect("starter_view", pk=starter.id)
+
+    context = {
+        "form": form,
+        "starter": starter,
+        "starter_ingredients": starter_ingredients,
+        "starter_step": starter_step,
+    }
+
+    return render(request, "starters/edit_starter.html", context)
+
+
+class StarterDelete(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
+    """
+    Deletes Starter Course
+    """
+    permission_required = "StarterDelete"
+    model = Starter
+    success_url = '/starters/'
+
+    def test_func(self):
+
+        return self.request.user == self.get_object().user
+
+
+# Starter Ingredients
+@login_required
+@permission_required("starters.starter_ingredients", raise_exception=True)
 def starter_ingredients(request, pk):
     """
     Creates Ingredient Fields And Add More Enterys
@@ -113,6 +157,92 @@ def starter_ingredients(request, pk):
     return render(request, "starters/starter_ingredients.html", context)
 
 
+@login_required
+@permission_required("sarters.add_starter_ing", raise_exception=True)
+def add_starter_ing(request):
+    """
+    Renders The Form Add Extra Ingredients
+    """
+    form = StarterIngredientForm()
+    context = {
+        "form": form
+    }
+    return render(request, "includes/add_starter_ing.html", context)
+
+
+@login_required
+@permission_required("sarters.starter_ing_details", raise_exception=True)
+def starter_ing_details(request, pk):
+    """
+    Displays Ingredient Fields for updating
+    """
+    starter_ingredient = get_object_or_404(StarterIngredients, id=pk)
+    context = {
+        "starter_ingredient": starter_ingredient
+    }
+    return render(request, "includes/starter_ing_details.html", context)
+
+
+def starter_ing_detail_view(request, pk):
+    """
+    Displays Ingredient Fields After Being Added
+    """
+    starter_ingredient = get_object_or_404(StarterIngredients, id=pk)
+    context = {
+        "starter_ingredient": starter_ingredient
+        }
+    return render(request, "includes/starter_ing_details.html", context)
+
+
+@login_required
+@permission_required("sarters.update_starter_ing", raise_exception=True)
+def update_starter_ing(request, pk):
+    """
+    Updates Ingredient Fields
+    """
+    starter_ingredient = StarterIngredients.objects.get(id=pk)
+    form = StarterIngredientForm(
+        request.POST or None,
+        instance=starter_ingredient
+        )
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Updated Successfull!')
+        return redirect("starter_ing_details",  pk=starter_ingredient.id,)
+
+    context = {
+        "form": form,
+        "starter_ingredient": starter_ingredient
+    }
+
+    return render(request, "includes/add_starter_ing.html", context)
+
+
+@login_required
+@permission_required("sarters.delete_starter_ing", raise_exception=True)
+def delete_starter_ing(request, pk):
+    """
+    Deletes Ingredient Fields
+    """
+    starter_ingredient = get_object_or_404(StarterIngredients, id=pk)
+
+    if request.method == "POST":
+        starter_ingredient.delete()
+        messages.success(request, 'Ingredient Deleted')
+        return HttpResponse("")
+
+    return HttpResponseNotAllowed(
+        [
+            "POST",
+        ]
+    )
+
+
+# Starter Steps
+@login_required
+@permission_required("sarters.starter_method", raise_exception=True)
 def starter_method(request, pk):
     """
     Add Recipe Steps
@@ -148,31 +278,44 @@ def starter_method(request, pk):
 
 
 @login_required
-def update_starter_ing(request, pk):
+@permission_required("sarters.add_starter_step", raise_exception=True)
+def add_starter_step(request):
     """
-    Updates Ingredient Fields
+    Renders The Form Add Extra Step
     """
-    starter_ingredient = StarterIngredients.objects.get(id=pk)
-    form = StarterIngredientForm(
-        request.POST or None,
-        instance=starter_ingredient
-        )
-
-    if request.method == "POST":
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Updated Successfull!')
-        return redirect("starter_ing_details",  pk=starter_ingredient.id,)
-
+    form = StarterMethodForm()
     context = {
-        "form": form,
-        "starter_ingredient": starter_ingredient
+        "form": form
     }
-
-    return render(request, "includes/add_starter_ing.html", context)
+    return render(request, "includes/add_starter_step.html", context)
 
 
 @login_required
+@permission_required("sarters.starter_step_details", raise_exception=True)
+def starter_step_details(request, pk):
+    """
+    Displays Step Fields for updating
+    """
+    starter_step = get_object_or_404(StarterMethod, id=pk)
+    context = {
+        "starter_step": starter_step
+    }
+    return render(request, "includes/starter_step_details.html", context)
+
+
+def starter_step_detail_view(request, pk):
+    """
+    Displays Ingredient Fields After Being Added
+    """
+    starter_step = get_object_or_404(StarterMethod, id=pk)
+    context = {
+        " starter_step":  starter_step
+        }
+    return render(request, "includes/ starter_step_details.html", context)
+
+
+@login_required
+@permission_required("sarters.update_starter_step", raise_exception=True)
 def update_starter_step(request, pk):
     """
     Updates step Fields
@@ -195,51 +338,7 @@ def update_starter_step(request, pk):
 
 
 @login_required
-def edit_starter(request, pk):
-    """
-    Updates Ingredient Fields
-    """
-    starter = Starter.objects.get(id=pk)
-    form = StarterForm(request.POST or None, instance=starter)
-    starter_step = StarterMethod.objects.filter(starter=starter)
-    starter_ingredients = StarterIngredients.objects.filter(starter=starter)
-
-    if request.method == "POST":
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Updated Successfull!')
-        return redirect("starter_view", pk=starter.id)
-
-    context = {
-        "form": form,
-        "starter": starter,
-        "starter_ingredients": starter_ingredients,
-        "starter_step": starter_step,
-    }
-
-    return render(request, "starters/edit_starter.html", context)
-
-
-@login_required
-def delete_starter_ing(request, pk):
-    """
-    Deletes Ingredient Fields
-    """
-    starter_ingredient = get_object_or_404(StarterIngredients, id=pk)
-
-    if request.method == "POST":
-        starter_ingredient.delete()
-        messages.success(request, 'Ingredient Deleted')
-        return HttpResponse("")
-
-    return HttpResponseNotAllowed(
-        [
-            "POST",
-        ]
-    )
-
-
-@login_required
+@permission_required("sarters.delete_starter_step", raise_exception=True)
 def delete_starter_step(request, pk):
     """
     Deletes Step Fields
@@ -256,83 +355,3 @@ def delete_starter_step(request, pk):
             "POST",
         ]
     )
-
-
-class StarterDelete(LoginRequiredMixin, DeleteView):
-    """
-    Deletes Starter Course
-    """
-    model = Starter
-    success_url = '/starters/'
-
-    def test_func(self):
-
-        return self.request.user == self.get_object().user
-
-
-def starter_ing_details(request, pk):
-    """
-    Displays Ingredient Fields for updating
-    """
-    starter_ingredient = get_object_or_404(StarterIngredients, id=pk)
-    context = {
-        "starter_ingredient": starter_ingredient
-    }
-    return render(request, "includes/starter_ing_details.html", context)
-
-
-def starter_step_details(request, pk):
-    """
-    Displays Step Fields for updating
-    """
-    starter_step = get_object_or_404(StarterMethod, id=pk)
-    context = {
-        "starter_step": starter_step
-    }
-    return render(request, "includes/starter_step_details.html", context)
-
-
-def starter_ing_detail_view(request, pk):
-    """
-    Displays Ingredient Fields After Being Added
-    """
-    starter_ingredient = get_object_or_404(StarterIngredients, id=pk)
-    context = {
-        "starter_ingredient": starter_ingredient
-        }
-    return render(request, "includes/starter_ing_details.html", context)
-
-
-def starter_step_detail_view(request, pk):
-    """
-    Displays Ingredient Fields After Being Added
-    """
-    starter_step = get_object_or_404(StarterMethod, id=pk)
-    context = {
-        " starter_step":  starter_step
-        }
-    return render(request, "includes/ starter_step_details.html", context)
-
-
-@login_required
-def add_starter_ing(request):
-    """
-    Renders The Form Add Extra Ingredients
-    """
-    form = StarterIngredientForm()
-    context = {
-        "form": form
-    }
-    return render(request, "includes/add_starter_ing.html", context)
-
-
-@login_required
-def add_starter_step(request):
-    """
-    Renders The Form Add Extra Step
-    """
-    form = StarterMethodForm()
-    context = {
-        "form": form
-    }
-    return render(request, "includes/add_starter_step.html", context)

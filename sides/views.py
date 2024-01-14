@@ -1,8 +1,9 @@
 from django.http.response import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404, redirect, render
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import (
+    login_required, permission_required)
 from django.contrib.auth.mixins import (
-    UserPassesTestMixin,
+    PermissionRequiredMixin,
     LoginRequiredMixin)
 from django.views.generic import ListView, DeleteView
 from django.db.models import Q
@@ -34,9 +35,10 @@ class ViewSide(ListView):
 
 
 @login_required
+@permission_required("sides.add_side", raise_exception=True)
 def add_side(request):
     """
-    Add Side Course function
+    Add Side function
     """
     form = SideForm(request.POST or None)
 
@@ -49,10 +51,10 @@ def add_side(request):
             return redirect("side_view", pk=side.id)
         else:
             return render(request,
-                          "sides/add_side.html",
-                          context={
-                              "form": form
-                              })
+                        "sides/add_side.html",
+                        context={
+                            "form": form
+                            })
     context = {
         "form": form,
     }
@@ -76,6 +78,49 @@ def side_view(request, pk):
     return render(request, "sides/side_view.html", context,)
 
 
+@login_required
+@permission_required("sides.edit_side", raise_exception=True)
+def edit_side(request, pk):
+    """
+    Updates recipe Fields
+    """
+    side = Side.objects.get(id=pk)
+    form = SideForm(request.POST or None, instance=side)
+    side_step = SideMethod.objects.filter(side=side)
+    side_ingredients = SideIngredients.objects.filter(side=side)
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Updated Successfully!')
+        return redirect("side_view", pk=side.id)
+
+    context = {
+        "form": form,
+        "side": side,
+        "side_ingredients": side_ingredients,
+        "side_step": side_step,
+    }
+
+    return render(request, "sides/edit_side.html", context)
+
+
+class SideDelete(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
+    """
+    Deletes Side Course
+    """
+    permission_required = "SideDelete"
+    model = Side
+    success_url = '/sides/'
+
+    def test_func(self):
+
+        return self.request.user == self.get_object().user
+
+
+# Side Ingredients
+@login_required
+@permission_required("sides.side_ingredients", raise_exception=True)
 def side_ingredients(request, pk):
     """
     Creates Ingredient Fields And Add More Enterys
@@ -109,6 +154,92 @@ def side_ingredients(request, pk):
     return render(request, "sides/side_ingredients.html", context)
 
 
+@login_required
+@permission_required("sides.add_side_ing", raise_exception=True)
+def add_side_ing(request):
+    """
+    Renders The Form Add Extra Ingredients
+    """
+    form = SideIngredientForm()
+    context = {
+        "form": form
+    }
+    return render(request, "includes/add_side_ing.html", context)
+
+
+def side_ing_detail_view(request, pk):
+    """
+    Displays Ingredient Fields After Being Added
+    """
+    side_ingredient = get_object_or_404(SideIngredients, id=pk)
+    context = {
+        "side_ingredient": side_ingredient
+        }
+    return render(request, "includes/side_ing_details.html", context)
+
+
+@login_required
+@permission_required("sides.update_side_ing", raise_exception=True)
+def update_side_ing(request, pk):
+    """
+    Updates Ingredient Fields
+    """
+    side_ingredient = SideIngredients.objects.get(id=pk)
+    form = SideIngredientForm(
+        request.POST or None,
+        instance=side_ingredient
+        )
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Updated Successfull!')
+        return redirect("side_ing_details", pk=side_ingredient.id)
+
+    context = {
+        "form": form,
+        "side_ingredient": side_ingredient
+    }
+
+    return render(request, "includes/add_side_ing.html", context)
+
+
+@login_required
+@permission_required("sides.side_ing_details", raise_exception=True)
+def side_ing_details(request, pk):
+    """
+    Displays Ingredient Fields for updating
+    """
+    side_ingredient = get_object_or_404(SideIngredients, id=pk)
+    context = {
+        "side_ingredient": side_ingredient
+    }
+    return render(request, "includes/side_ing_details.html", context)
+
+
+@login_required
+@permission_required("sides.delete_side_ing", raise_exception=True)
+def delete_side_ing(request, pk):
+    """
+    Deletes Ingredient Fields
+    """
+    side_ingredient = get_object_or_404(SideIngredients, id=pk)
+
+    if request.method == "POST":
+        side_ingredient.delete()
+        messages.success(request, 'Ingredient Deleted')
+        return HttpResponse("")
+
+    return HttpResponseNotAllowed(
+        [
+            "POST",
+        ]
+    )
+
+
+# Side Method
+@login_required
+@permission_required("sides.side_method", raise_exception=True)
 def side_method(request, pk):
     """
     Add Recipe Steps
@@ -143,31 +274,31 @@ def side_method(request, pk):
 
 
 @login_required
-def update_side_ing(request, pk):
+@permission_required("sides.add_side_ing", raise_exception=True)
+def add_side_step(request):
     """
-    Updates Ingredient Fields
+    Renders The Form Add Extra step
     """
-    side_ingredient = SideIngredients.objects.get(id=pk)
-    form = SideIngredientForm(
-        request.POST or None,
-        instance=side_ingredient
-        )
-
-    if request.method == "POST":
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Updated Successfull!')
-        return redirect("side_ing_details", pk=side_ingredient.id)
-
+    form = SideMethodForm()
     context = {
-        "form": form,
-        "side_ingredient": side_ingredient
+        "form": form
     }
+    return render(request, "includes/add_side_step.html", context)
 
-    return render(request, "includes/add_side_ing.html", context)
+
+def side_step_detail_view(request, pk):
+    """
+    Displays Ingredient Fields After Being Added
+    """
+    side_step = get_object_or_404(SideMethod, id=pk)
+    context = {
+        " side_step":  side_step
+        }
+    return render(request, "includes/ side_step_details.html", context)
 
 
 @login_required
+@permission_required("sides.update_side_step", raise_exception=True)
 def update_side_step(request, pk):
     """
     Updates step Fields
@@ -190,51 +321,20 @@ def update_side_step(request, pk):
 
 
 @login_required
-def edit_side(request, pk):
+@permission_required("sides.side_step_details", raise_exception=True)
+def side_step_details(request, pk):
     """
-    Updates recipe Fields
+    Displays Step Fields for updating
     """
-    side = Side.objects.get(id=pk)
-    form = SideForm(request.POST or None, instance=side)
-    side_step = SideMethod.objects.filter(side=side)
-    side_ingredients = SideIngredients.objects.filter(side=side)
-
-    if request.method == "POST":
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Updated Successfully!')
-        return redirect("side_view", pk=side.id)
-
+    side_step = get_object_or_404(SideMethod, id=pk)
     context = {
-        "form": form,
-        "side": side,
-        "side_ingredients": side_ingredients,
-        "side_step": side_step,
+        "side_step": side_step
     }
-
-    return render(request, "sides/edit_side.html", context)
-
-
-@login_required
-def delete_side_ing(request, pk):
-    """
-    Deletes Ingredient Fields
-    """
-    side_ingredient = get_object_or_404(SideIngredients, id=pk)
-
-    if request.method == "POST":
-        side_ingredient.delete()
-        messages.success(request, 'Ingredient Deleted')
-        return HttpResponse("")
-
-    return HttpResponseNotAllowed(
-        [
-            "POST",
-        ]
-    )
+    return render(request, "includes/side_step_details.html", context)
 
 
 @login_required
+@permission_required("sides.delete_side_step", raise_exception=True)
 def delete_side_step(request, pk):
     """
     Deletes Step Fields
@@ -251,83 +351,3 @@ def delete_side_step(request, pk):
             "POST",
         ]
     )
-
-
-class SideDelete(LoginRequiredMixin, DeleteView):
-    """
-    Deletes Side Course
-    """
-    model = Side
-    success_url = '/sides/'
-
-    def test_func(self):
-
-        return self.request.user == self.get_object().user
-
-
-def side_ing_details(request, pk):
-    """
-    Displays Ingredient Fields for updating
-    """
-    side_ingredient = get_object_or_404(SideIngredients, id=pk)
-    context = {
-        "side_ingredient": side_ingredient
-    }
-    return render(request, "includes/side_ing_details.html", context)
-
-
-def side_step_details(request, pk):
-    """
-    Displays Step Fields for updating
-    """
-    side_step = get_object_or_404(SideMethod, id=pk)
-    context = {
-        "side_step": side_step
-    }
-    return render(request, "includes/side_step_details.html", context)
-
-
-def side_ing_detail_view(request, pk):
-    """
-    Displays Ingredient Fields After Being Added
-    """
-    side_ingredient = get_object_or_404(SideIngredients, id=pk)
-    context = {
-        "side_ingredient": side_ingredient
-        }
-    return render(request, "includes/side_ing_details.html", context)
-
-
-def side_step_detail_view(request, pk):
-    """
-    Displays Ingredient Fields After Being Added
-    """
-    side_step = get_object_or_404(SideMethod, id=pk)
-    context = {
-        " side_step":  side_step
-        }
-    return render(request, "includes/ side_step_details.html", context)
-
-
-@login_required
-def add_side_ing(request):
-    """
-    Renders The Form Add Extra Ingredients
-    """
-    form = SideIngredientForm()
-    context = {
-        "form": form
-    }
-    return render(request, "includes/add_side_ing.html", context)
-
-
-@login_required
-def add_side_step(request):
-    """
-    Renders The Form Add Extra step
-    """
-    form = SideMethodForm()
-    context = {
-        "form": form
-    }
-    return render(request, "includes/add_side_step.html", context)

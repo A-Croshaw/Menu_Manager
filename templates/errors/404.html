@@ -6,13 +6,13 @@
         <h1 calss="home-header text-center"> Restraunt Menu Manager</h1>
     </div>
     <div class="detail-container justify-content-center mb-2">
-        <div class="col-12 text-center">
-            <h1> 404 Page Not Found</h1>
+        <div class="col">
+            <h1 class="text-center"> 404 Page Not Found</h1>
+            <p class="text-center">The page you have tried to reach cannot be found!</p>
+            <div class="text-center">
+                <a href="{% url 'home' %}" class="btn btn-return text-center">Home</a>
+            </div>
         </div>
-        <div class="col-12 text-center">
-            <p>The page you have tried to reach cannot be found!</p>
-        </div> 
-    <a href="{% url 'home' %}" class="btn btn-return">Home</a>
     </div>
 </div>
 {% endblock %}

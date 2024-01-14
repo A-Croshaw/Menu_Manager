@@ -1,11 +1,11 @@
 from django.http.response import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView, DeleteView
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import (
+    login_required, permission_required)
 from django.contrib.auth.mixins import (
-    UserPassesTestMixin,
-    LoginRequiredMixin
-)
+    PermissionRequiredMixin,
+    LoginRequiredMixin)
 from django.db.models import Q
 from django.contrib import messages
 from .models import MainDish, MainDishSauce, MainDishElement, MainDishSide
@@ -39,6 +39,7 @@ class ViewMainDish(ListView):
 
 
 @login_required
+@permission_required("main_dishes.add_main_dish", raise_exception=True)
 def add_main_dish(request):
     """
     Add Main Dish function
@@ -84,6 +85,7 @@ def main_dish_view(request, pk):
 
 
 @login_required
+@permission_required("main_dishes.edit_main_dish", raise_exception=True)
 def edit_main_dish(request, pk):
     """
     Updates dish Fields
@@ -111,18 +113,22 @@ def edit_main_dish(request, pk):
     return render(request, "main_dishes/edit_main_dish.html", context)
 
 
-class MainDishDelete(LoginRequiredMixin, DeleteView):
+class MainDishDelete(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
     """
     Deletes main Dish
     """
+    permission_required = "MainDishDelete"
     model = MainDish
-    success_url = '/main_dishes/'
+    success_url = '/main_course_dishes/'
 
     def test_func(self):
 
         return self.request.user == self.get_object().user
 
 
+# Main Dish Elements
+@login_required
+@permission_required("main_dishes.main_dish_element", raise_exception=True)
 def main_dish_element(request, pk):
     """
     Add Dish Elements
@@ -161,6 +167,7 @@ def main_dish_element(request, pk):
 
 
 @login_required
+@permission_required("main_dishes.update_main_dish_element", raise_exception=True)
 def update_main_dish_element(request, pk):
     """
     Updates dish_element Fields
@@ -195,6 +202,8 @@ def main_dish_element_detail_view(request, pk):
     return render(request, "includes/ main_dish_element_details.html", context)
 
 
+@login_required
+@permission_required("main_dishes.main_dish_element_details", raise_exception=True)
 def main_dish_element_details(request, pk):
     """
     Displays dish_element Fields for updating
@@ -207,6 +216,7 @@ def main_dish_element_details(request, pk):
 
 
 @login_required
+@permission_required("main_dishes.add_main_dish_element", raise_exception=True)
 def add_main_dish_element(request):
     """
     Renders The Form Add Extra dish_element
@@ -219,6 +229,7 @@ def add_main_dish_element(request):
 
 
 @login_required
+@permission_required("main_dishes.delete_main_dish_elemen", raise_exception=True)
 def delete_main_dish_element(request, pk):
     """
     Deletes Element Field
@@ -237,6 +248,9 @@ def delete_main_dish_element(request, pk):
     )
 
 
+# Main Dish Sauces
+@login_required
+@permission_required("main_dishes.main_dish_sauce", raise_exception=True)
 def main_dish_sauce(request, pk):
     """
     Add Dish Sauces
@@ -273,6 +287,7 @@ def main_dish_sauce(request, pk):
 
 
 @login_required
+@permission_required("main_dishes.update_main_dish_sauce", raise_exception=True)
 def update_main_dish_sauce(request, pk):
     """
     Updates dish sauce Fields
@@ -305,6 +320,8 @@ def main_dish_sauce_detail_view(request, pk):
     return render(request, "includes/ main_dish_sauce_details.html", context)
 
 
+@login_required
+@permission_required("main_dishes.main_dish_sauce_details", raise_exception=True)
 def main_dish_sauce_details(request, pk):
     """
     Displays dish sauce Fields for updating
@@ -317,6 +334,7 @@ def main_dish_sauce_details(request, pk):
 
 
 @login_required
+@permission_required("main_dishes.add_main_dish_sauce", raise_exception=True)
 def add_main_dish_sauce(request):
     """
     Renders The Form Add Extra dish_sauce
@@ -329,6 +347,7 @@ def add_main_dish_sauce(request):
 
 
 @login_required
+@permission_required("main_dishes.delete_main_dish_sauce", raise_exception=True)
 def delete_main_dish_sauce(request, pk):
     """
     Deletes Sauce Field
@@ -348,7 +367,8 @@ def delete_main_dish_sauce(request, pk):
 
 
 # Sides
-
+@login_required
+@permission_required("main_dishes.main_dish_side", raise_exception=True)
 def main_dish_side(request, pk):
     """
     Add Dish Side
@@ -385,6 +405,7 @@ def main_dish_side(request, pk):
 
 
 @login_required
+@permission_required("main_dishes.update_main_dish_side", raise_exception=True)
 def update_main_dish_side(request, pk):
     """
     Updates dish side Fields
@@ -417,6 +438,8 @@ def main_dish_side_detail_view(request, pk):
     return render(request, "includes/ main_dish_side_details.html", context)
 
 
+@login_required
+@permission_required("main_dishes.main_dish_side_details", raise_exception=True)
 def main_dish_side_details(request, pk):
     """
     Displays dish side Fields for updating
@@ -429,6 +452,7 @@ def main_dish_side_details(request, pk):
 
 
 @login_required
+@permission_required("main_dishes.add_main_dish_side", raise_exception=True)
 def add_main_dish_side(request):
     """
     Renders The Form Add Extra dish_side
@@ -441,6 +465,7 @@ def add_main_dish_side(request):
 
 
 @login_required
+@permission_required("main_dishes.delete_main_dish_side", raise_exception=True)
 def delete_main_dish_side(request, pk):
     """
     Deletes Side Field

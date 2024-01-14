@@ -1,7 +1,8 @@
 from django.http.response import HttpResponse, HttpResponseNotAllowed
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import (
+    login_required, permission_required)
 from django.contrib.auth.mixins import (
-    UserPassesTestMixin,
+    PermissionRequiredMixin,
     LoginRequiredMixin)
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView, DeleteView
@@ -33,6 +34,7 @@ class ViewDessert(ListView):
 
 
 @login_required
+@permission_required("desserts.add_main_dish", raise_exception=True)
 def add_dessert(request):
     """Add Dessert Course function"""
 
@@ -73,6 +75,47 @@ def dessert_view(request, pk):
     return render(request, "desserts/dessert_view.html", context,)
 
 
+@login_required
+@permission_required("desserts.edit_dessert", raise_exception=True)
+def edit_dessert(request, pk):
+    """Updates Recipe Fields"""
+
+    dessert = Dessert.objects.get(id=pk)
+    form = DessertForm(request.POST or None, instance=dessert)
+    dessert_step = DessertMethod.objects.filter(dessert=dessert)
+    dessert_ingredients = DessertIngredients.objects.filter(dessert=dessert)
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Updated Successfully!')
+        return redirect("dessert_view", pk=dessert.id)
+
+    context = {
+        "form": form,
+        "dessert": dessert,
+        "dessert_ingredients": dessert_ingredients,
+        "dessert_step": dessert_step,
+    }
+
+    return render(request, "desserts/edit_dessert.html", context)
+
+
+class DessertDelete(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
+    """Deletes Dessert Course"""
+
+    permission_required = "DessertDelete"
+    model = Dessert
+    success_url = '/desserts/'
+
+    def test_func(self):
+
+        return self.request.user == self.get_object().user
+
+
+# Dessert Ingredients
+@login_required
+@permission_required("desserts.dessert_ingredients", raise_exception=True)
 def dessert_ingredients(request, pk):
     """Creates Ingredient Fields And Add More Enterys"""
 
@@ -105,6 +148,87 @@ def dessert_ingredients(request, pk):
     return render(request, "desserts/dessert_ingredients.html", context)
 
 
+@login_required
+@permission_required("desserts.add_dessert_ing", raise_exception=True)
+def add_dessert_ing(request):
+    """Renders The Form Add Extra Ingredients"""
+
+    form = DessertIngredientForm()
+    context = {
+        "form": form
+    }
+    return render(request, "includes/add_dessert_ing.html", context)
+
+
+def dessert_ing_detail_view(request, pk):
+    """Displays Ingredient Fields After Being Added"""
+
+    dessert_ingredient = get_object_or_404(DessertIngredients, id=pk)
+    context = {
+        "dessert_ingredient": dessert_ingredient
+        }
+    return render(request, "includes/dessert_ing_details.html", context)
+
+
+@login_required
+@permission_required("desserts.update_dessert_ing", raise_exception=True)
+def update_dessert_ing(request, pk):
+    """Updates Ingredient Fields"""
+
+    dessert_ingredient = DessertIngredients.objects.get(id=pk)
+    form = DessertIngredientForm(
+        request.POST or None,
+        instance=dessert_ingredient
+        )
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Updated Successfull!')
+        return redirect("dessert_ing_details", pk=dessert_ingredient.id)
+
+    context = {
+        "form": form,
+        "dessert_ingredient": dessert_ingredient
+    }
+
+    return render(request, "includes/add_dessert_ing.html", context)
+
+
+@login_required
+@permission_required("desserts.dessert_ing_details", raise_exception=True)
+def dessert_ing_details(request, pk):
+    """Displays Ingredient Fields for updating"""
+
+    dessert_ingredient = get_object_or_404(DessertIngredients, id=pk)
+    context = {
+        "dessert_ingredient": dessert_ingredient
+    }
+    return render(request, "includes/dessert_ing_details.html", context)
+
+
+@login_required
+@permission_required("desserts.delete_dessert_ing", raise_exception=True)
+def delete_dessert_ing(request, pk):
+    """Deletes Ingredient Fields"""
+
+    dessert_ingredient = get_object_or_404(DessertIngredients, id=pk)
+
+    if request.method == "POST":
+        dessert_ingredient.delete()
+        messages.success(request, 'Ingredient Deleted')
+        return HttpResponse("")
+
+    return HttpResponseNotAllowed(
+        [
+            "POST",
+        ]
+    )
+
+
+# Dessert method
+@login_required
+@permission_required("desserts.dessert_method", raise_exception=True)
 def dessert_method(request, pk):
     """Add Recipe Steps"""
 
@@ -138,30 +262,29 @@ def dessert_method(request, pk):
 
 
 @login_required
-def update_dessert_ing(request, pk):
-    """Updates Ingredient Fields"""
+@permission_required("desserts.add_dessert_step", raise_exception=True)
+def add_dessert_step(request):
+    """Renders The Form Add Extra Step"""
 
-    dessert_ingredient = DessertIngredients.objects.get(id=pk)
-    form = DessertIngredientForm(
-        request.POST or None,
-        instance=dessert_ingredient
-        )
-
-    if request.method == "POST":
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Updated Successfull!')
-        return redirect("dessert_ing_details", pk=dessert_ingredient.id)
-
+    form = DessertMethodForm()
     context = {
-        "form": form,
-        "dessert_ingredient": dessert_ingredient
+        "form": form
     }
+    return render(request, "includes/add_dessert_step.html", context)
 
-    return render(request, "includes/add_dessert_ing.html", context)
+
+def dessert_step_detail_view(request, pk):
+    """Displays Step Fields After Being Added"""
+
+    dessert_step = get_object_or_404(DessertMethod, id=pk)
+    context = {
+        " dessert_step":  dessert_step
+        }
+    return render(request, "includes/ dessert_step_details.html", context)
 
 
 @login_required
+@permission_required("desserts.update_dessert_step", raise_exception=True)
 def update_dessert_step(request, pk):
     """Updates Step Fields"""
 
@@ -183,49 +306,19 @@ def update_dessert_step(request, pk):
 
 
 @login_required
-def edit_dessert(request, pk):
-    """Updates Recipe Fields"""
+@permission_required("desserts.dessert_step_details", raise_exception=True)
+def dessert_step_details(request, pk):
+    """Displays Step Fields for updating"""
 
-    dessert = Dessert.objects.get(id=pk)
-    form = DessertForm(request.POST or None, instance=dessert)
-    dessert_step = DessertMethod.objects.filter(dessert=dessert)
-    dessert_ingredients = DessertIngredients.objects.filter(dessert=dessert)
-
-    if request.method == "POST":
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Updated Successfully!')
-        return redirect("dessert_view", pk=dessert.id)
-
+    dessert_step = get_object_or_404(DessertMethod, id=pk)
     context = {
-        "form": form,
-        "dessert": dessert,
-        "dessert_ingredients": dessert_ingredients,
-        "dessert_step": dessert_step,
+        "dessert_step": dessert_step
     }
-
-    return render(request, "desserts/edit_dessert.html", context)
-
-
-@login_required
-def delete_dessert_ing(request, pk):
-    """Deletes Ingredient Fields"""
-
-    dessert_ingredient = get_object_or_404(DessertIngredients, id=pk)
-
-    if request.method == "POST":
-        dessert_ingredient.delete()
-        messages.success(request, 'Ingredient Deleted')
-        return HttpResponse("")
-
-    return HttpResponseNotAllowed(
-        [
-            "POST",
-        ]
-    )
+    return render(request, "includes/dessert_step_details.html", context)
 
 
 @login_required
+@permission_required("desserts.delete_dessert_step", raise_exception=True)
 def delete_dessert_step(request, pk):
     """Deletes Step Fields"""
 
@@ -241,76 +334,3 @@ def delete_dessert_step(request, pk):
             "POST",
         ]
     )
-
-
-class DessertDelete(LoginRequiredMixin, DeleteView):
-    """Deletes Dessert Course"""
-
-    model = Dessert
-    success_url = '/desserts/'
-
-    def test_func(self):
-
-        return self.request.user == self.get_object().user
-
-
-def dessert_ing_details(request, pk):
-    """Displays Ingredient Fields for updating"""
-
-    dessert_ingredient = get_object_or_404(DessertIngredients, id=pk)
-    context = {
-        "dessert_ingredient": dessert_ingredient
-    }
-    return render(request, "includes/dessert_ing_details.html", context)
-
-
-def dessert_step_details(request, pk):
-    """Displays Step Fields for updating"""
-
-    dessert_step = get_object_or_404(DessertMethod, id=pk)
-    context = {
-        "dessert_step": dessert_step
-    }
-    return render(request, "includes/dessert_step_details.html", context)
-
-
-def dessert_ing_detail_view(request, pk):
-    """Displays Ingredient Fields After Being Added"""
-
-    dessert_ingredient = get_object_or_404(DessertIngredients, id=pk)
-    context = {
-        "dessert_ingredient": dessert_ingredient
-        }
-    return render(request, "includes/dessert_ing_details.html", context)
-
-
-def dessert_step_detail_view(request, pk):
-    """Displays Step Fields After Being Added"""
-
-    dessert_step = get_object_or_404(DessertMethod, id=pk)
-    context = {
-        " dessert_step":  dessert_step
-        }
-    return render(request, "includes/ dessert_step_details.html", context)
-
-
-@login_required
-def add_dessert_ing(request):
-    """Renders The Form Add Extra Ingredients"""
-
-    form = DessertIngredientForm()
-    context = {
-        "form": form
-    }
-    return render(request, "includes/add_dessert_ing.html", context)
-
-
-@login_required
-def add_dessert_step(request):
-    """Renders The Form Add Extra Step"""
-
-    form = DessertMethodForm()
-    context = {
-        "form": form
-    }
-    return render(request, "includes/add_dessert_step.html", context)

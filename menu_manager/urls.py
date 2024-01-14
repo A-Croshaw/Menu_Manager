@@ -79,6 +79,7 @@ urlpatterns = [
         include('allauth.urls')
         ),
     ]
+
 handler404 = 'menu_manager.views.handler404'
 handler403 = 'menu_manager.views.handler403'
 handler500 = 'menu_manager.views.handler500'

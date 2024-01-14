@@ -1,7 +1,8 @@
 from django.http.response import HttpResponse, HttpResponseNotAllowed
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import (
+    login_required, permission_required)
 from django.contrib.auth.mixins import (
-    UserPassesTestMixin,
+    PermissionRequiredMixin,
     LoginRequiredMixin)
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView, DeleteView
@@ -34,6 +35,7 @@ class ViewMain(ListView):
 
 
 @login_required
+@permission_required("main_courses.add_main", raise_exception=True)
 def add_main(request):
     """
     Add Main Course function
@@ -66,6 +68,7 @@ def main_view(request, pk):
     main = Main.objects.get(id=pk)
     main_step = MainMethod.objects.filter(main=main)
     main_ingredients = MainIngredients.objects.filter(main=main)
+    
 
     context = {
         "main": main,
@@ -76,6 +79,49 @@ def main_view(request, pk):
     return render(request, "main_courses/main_view.html", context,)
 
 
+@login_required
+@permission_required("main_courses.edit_main", raise_exception=True)
+def edit_main(request, pk):
+    """
+    Updates Main Fields
+    """
+    main = Main.objects.get(id=pk)
+    form = MainForm(request.POST or None, instance=main)
+    main_step = MainMethod.objects.filter(main=main)
+    main_ingredients = MainIngredients.objects.filter(main=main)
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Updated Successfully!')
+        return redirect("main_view", pk=main.id)
+
+    context = {
+        "form": form,
+        "main": main,
+        "main_ingredients": main_ingredients,
+        "main_step": main_step,
+    }
+
+    return render(request, "main_courses/edit_main.html", context)
+
+
+class MainDelete(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
+    """
+    Deletes Main Course
+    """
+    permission_required = "MainDelete"
+    model = Main
+    success_url = '/main_courses/'
+
+    def test_func(self):
+
+        return self.request.user == self.get_object().user
+
+
+# Main Ingredients
+@login_required
+@permission_required("main_courses.edit_main", raise_exception=True)
 def main_ingredients(request, pk):
     """
     Creates Ingredient Fields And Add More Enterys
@@ -109,6 +155,89 @@ def main_ingredients(request, pk):
     return render(request, "main_courses/main_ingredients.html", context)
 
 
+@login_required
+@permission_required("main_courses.add_main_ing", raise_exception=True)
+def add_main_ing(request):
+    """
+    Renders The Form Add Extra Ingredients
+    """
+    form = MainIngredientForm()
+    context = {
+        "form": form
+    }
+    return render(request, "includes/add_main_ing.html", context)
+
+
+@login_required
+@permission_required("main_courses.main_ing_details", raise_exception=True)
+def main_ing_details(request, pk):
+    """
+    Displays Ingredient Fields for updating
+    """
+    main_ingredient = get_object_or_404(MainIngredients, id=pk)
+    context = {
+        "main_ingredient": main_ingredient
+    }
+    return render(request, "includes/main_ing_details.html", context)
+
+
+@login_required
+@permission_required("main_courses.update_main_ing", raise_exception=True)
+def update_main_ing(request, pk):
+    """
+    Updates Ingredient Fields
+    """
+    main_ingredient = MainIngredients.objects.get(id=pk)
+    form = MainIngredientForm(request.POST or None, instance=main_ingredient)
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Updated Successfull!')
+        return redirect("main_ing_details", pk=main_ingredient.id)
+
+    context = {
+        "form": form,
+        "main_ingredient": main_ingredient
+    }
+
+    return render(request, "includes/add_main_ing.html", context)
+
+
+def main_ing_detail_view(request, pk):
+    """
+    Displays Ingredient Fields After Being Added
+    """
+    main_ingredient = get_object_or_404(MainIngredients, id=pk)
+    context = {
+        "main_ingredient": main_ingredient
+        }
+    return render(request, "includes/main_ing_details.html", context)
+
+
+@login_required
+@permission_required("main_courses.delete_main_ing", raise_exception=True)
+def delete_main_ing(request, pk):
+    """
+    Deletes Ingredient Fields
+    """
+    main_ingredient = get_object_or_404(MainIngredients, id=pk)
+
+    if request.method == "POST":
+        main_ingredient.delete()
+        messages.success(request, 'Ingredient Deleted')
+        return HttpResponse("")
+
+    return HttpResponseNotAllowed(
+        [
+            "POST",
+        ]
+    )
+
+
+# Main Method
+@login_required
+@permission_required("main_courses.main_method", raise_exception=True)
 def main_method(request, pk):
     """
     Add Recipe Steps
@@ -143,28 +272,31 @@ def main_method(request, pk):
 
 
 @login_required
-def update_main_ing(request, pk):
+@permission_required("main_courses.main_method", raise_exception=True)
+def add_main_step(request):
     """
-    Updates Ingredient Fields
+    Renders The Form Add Extra Steps
     """
-    main_ingredient = MainIngredients.objects.get(id=pk)
-    form = MainIngredientForm(request.POST or None, instance=main_ingredient)
-
-    if request.method == "POST":
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Updated Successfull!')
-        return redirect("main_ing_details", pk=main_ingredient.id)
-
+    form = MainMethodForm()
     context = {
-        "form": form,
-        "main_ingredient": main_ingredient
+        "form": form
     }
+    return render(request, "includes/add_main_step.html", context)
 
-    return render(request, "includes/add_main_ing.html", context)
+
+def main_step_detail_view(request, pk):
+    """
+    Displays Step Fields After Being Added
+    """
+    main_step = get_object_or_404(MainMethod, id=pk)
+    context = {
+        " main_step":  main_step
+        }
+    return render(request, "includes/ main_step_details.html", context)
 
 
 @login_required
+@permission_required("main_courses.update_main_step", raise_exception=True)
 def update_main_step(request, pk):
     """
     Updates step Fields
@@ -187,51 +319,20 @@ def update_main_step(request, pk):
 
 
 @login_required
-def edit_main(request, pk):
+@permission_required("main_courses.main_step_details", raise_exception=True)
+def main_step_details(request, pk):
     """
-    Updates Main Fields
+    Displays Step Fields for updating
     """
-    main = Main.objects.get(id=pk)
-    form = MainForm(request.POST or None, instance=main)
-    main_step = MainMethod.objects.filter(main=main)
-    main_ingredients = MainIngredients.objects.filter(main=main)
-
-    if request.method == "POST":
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Updated Successfully!')
-        return redirect("main_view", pk=main.id)
-
+    main_step = get_object_or_404(MainMethod, id=pk)
     context = {
-        "form": form,
-        "main": main,
-        "main_ingredients": main_ingredients,
-        "main_step": main_step,
+        "main_step": main_step
     }
-
-    return render(request, "main_courses/edit_main.html", context)
-
-
-@login_required
-def delete_main_ing(request, pk):
-    """
-    Deletes Ingredient Fields
-    """
-    main_ingredient = get_object_or_404(MainIngredients, id=pk)
-
-    if request.method == "POST":
-        main_ingredient.delete()
-        messages.success(request, 'Ingredient Deleted')
-        return HttpResponse("")
-
-    return HttpResponseNotAllowed(
-        [
-            "POST",
-        ]
-    )
+    return render(request, "includes/main_step_details.html", context)
 
 
 @login_required
+@permission_required("main_courses.delete_main_step", raise_exception=True)
 def delete_main_step(request, pk):
     """
     Deletes Step Fields
@@ -248,83 +349,3 @@ def delete_main_step(request, pk):
             "POST",
         ]
     )
-
-
-class MainDelete(LoginRequiredMixin, DeleteView):
-    """
-    Deletes Main Course
-    """
-    model = Main
-    success_url = '/main_courses/'
-
-    def test_func(self):
-
-        return self.request.user == self.get_object().user
-
-
-def main_ing_details(request, pk):
-    """
-    Displays Ingredient Fields for updating
-    """
-    main_ingredient = get_object_or_404(MainIngredients, id=pk)
-    context = {
-        "main_ingredient": main_ingredient
-    }
-    return render(request, "includes/main_ing_details.html", context)
-
-
-def main_step_details(request, pk):
-    """
-    Displays Step Fields for updating
-    """
-    main_step = get_object_or_404(MainMethod, id=pk)
-    context = {
-        "main_step": main_step
-    }
-    return render(request, "includes/main_step_details.html", context)
-
-
-def main_ing_detail_view(request, pk):
-    """
-    Displays Ingredient Fields After Being Added
-    """
-    main_ingredient = get_object_or_404(MainIngredients, id=pk)
-    context = {
-        "main_ingredient": main_ingredient
-        }
-    return render(request, "includes/main_ing_details.html", context)
-
-
-def main_step_detail_view(request, pk):
-    """
-    Displays Step Fields After Being Added
-    """
-    main_step = get_object_or_404(MainMethod, id=pk)
-    context = {
-        " main_step":  main_step
-        }
-    return render(request, "includes/ main_step_details.html", context)
-
-
-@login_required
-def add_main_ing(request):
-    """
-    Renders The Form Add Extra Ingredients
-    """
-    form = MainIngredientForm()
-    context = {
-        "form": form
-    }
-    return render(request, "includes/add_main_ing.html", context)
-
-
-@login_required
-def add_main_step(request):
-    """
-    Renders The Form Add Extra Steps
-    """
-    form = MainMethodForm()
-    context = {
-        "form": form
-    }
-    return render(request, "includes/add_main_step.html", context)

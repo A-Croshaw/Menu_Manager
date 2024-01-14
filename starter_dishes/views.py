@@ -1,8 +1,9 @@
 from django.http.response import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404, redirect, render
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import (
+    login_required, permission_required)
 from django.contrib.auth.mixins import (
-    UserPassesTestMixin,
+    PermissionRequiredMixin,
     LoginRequiredMixin)
 from django.views.generic import ListView, DeleteView
 from django.db.models import Q
@@ -39,6 +40,7 @@ class ViewStarterDish(ListView):
 
 
 @login_required
+@permission_required("starter_dishes.add_starter_dish", raise_exception=True)
 def add_starter_dish(request):
     """
     Add Starter Dish function
@@ -84,6 +86,7 @@ def starter_dish_view(request, pk):
 
 
 @login_required
+@permission_required("starter_dishes.edit_starter_dish", raise_exception=True)
 def edit_starter_dish(request, pk):
     """
     Updates dish Fields
@@ -111,10 +114,11 @@ def edit_starter_dish(request, pk):
     return render(request, "starter_dishes/edit_starter_dish.html", context)
 
 
-class StarterDishDelete(LoginRequiredMixin, DeleteView):
+class StarterDishDelete(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
     """
     Deletes starter Dish
     """
+    permission_required = "StarterDishDelete"
     model = StarterDish
     success_url = '/starter_dishes/'
 
@@ -123,6 +127,9 @@ class StarterDishDelete(LoginRequiredMixin, DeleteView):
         return self.request.user == self.get_object().user
 
 
+# Starter Dish Element
+@login_required
+@permission_required("starter_dishes.starter_dish_element", raise_exception=True)
 def starter_dish_element(request, pk):
     """
     Add Dish Elements
@@ -161,6 +168,7 @@ def starter_dish_element(request, pk):
 
 
 @login_required
+@permission_required("starter_dishes.update_starter_dish_element", raise_exception=True)
 def update_starter_dish_element(request, pk):
     """
     Updates dish_element Fields
@@ -197,6 +205,8 @@ def starter_dish_element_detail_view(request, pk):
         "includes/ starter_dish_element_details.html", context)
 
 
+@login_required
+@permission_required("starter_dishes.starter_dish_element_details", raise_exception=True)
 def starter_dish_element_details(request, pk):
     """
     Displays dish_element Fields for updating
@@ -211,6 +221,7 @@ def starter_dish_element_details(request, pk):
 
 
 @login_required
+@permission_required("starter_dishes.add_starter_dish_element", raise_exception=True)
 def add_starter_dish_element(request):
     """
     Renders The Form Add Extra dish_element
@@ -225,6 +236,7 @@ def add_starter_dish_element(request):
 
 
 @login_required
+@permission_required("starter_dishes.delete_starter_dish_element", raise_exception=True)
 def delete_starter_dish_element(request, pk):
     """
     Deletes Element Field
@@ -244,6 +256,9 @@ def delete_starter_dish_element(request, pk):
     )
 
 
+# Starter Dish Sauce
+@login_required
+@permission_required("starter_dishes.starter_dish_sauce", raise_exception=True)
 def starter_dish_sauce(request, pk):
     """
     Add Dish Sauces
@@ -283,6 +298,7 @@ def starter_dish_sauce(request, pk):
 
 
 @login_required
+@permission_required("starter_dishes.update_starter_dish_sauce", raise_exception=True)
 def update_starter_dish_sauce(request, pk):
     """
     Updates dish sauce Fields
@@ -319,6 +335,8 @@ def starter_dish_sauce_detail_view(request, pk):
         request, "includes/ starter_dish_sauce_details.html", context)
 
 
+@login_required
+@permission_required("starter_dishes.starter_dish_sauce_details", raise_exception=True)
 def starter_dish_sauce_details(request, pk):
     """
     Displays dish sauce Fields for updating
@@ -332,6 +350,7 @@ def starter_dish_sauce_details(request, pk):
 
 
 @login_required
+@permission_required("starter_dishes.add_starter_dish_sauce", raise_exception=True)
 def add_starter_dish_sauce(request):
     """
     Renders The Form Add Extra dish_sauce
@@ -345,6 +364,7 @@ def add_starter_dish_sauce(request):
 
 
 @login_required
+@permission_required("starter_dishes.delete_starter_dish_sauce", raise_exception=True)
 def delete_starter_dish_sauce(request, pk):
     """
     Deletes Sauce Field

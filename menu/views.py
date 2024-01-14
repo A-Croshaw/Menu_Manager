@@ -1,8 +1,10 @@
 from django.http.response import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404, redirect, render
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import (UserPassesTestMixin,
-LoginRequiredMixin)
+from django.contrib.auth.decorators import (
+    login_required, permission_required)
+from django.contrib.auth.mixins import (
+    UserPassesTestMixin,
+    LoginRequiredMixin)
 from django.views.generic import ListView, DeleteView
 from django.db.models import Q
 from django.contrib import messages
@@ -40,6 +42,7 @@ class ViewMenus(ListView):
 
 
 @login_required
+@permission_required("menu.add_menu", raise_exception=True)
 def add_menu(request):
     """
     Add Menu function
@@ -94,6 +97,7 @@ def menu_view(request, pk):
 
 
 @login_required
+@permission_required("menu.edit_menu", raise_exception=True)
 def edit_menu(request, pk):
     """
     Updates dish Fields
@@ -115,7 +119,7 @@ def edit_menu(request, pk):
     return render(request, "menu/edit_menu.html", context)
 
 
-class MenuDelete(LoginRequiredMixin, DeleteView):
+class MenuDelete(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
     """
     Deletes menu
     """
@@ -129,6 +133,7 @@ class MenuDelete(LoginRequiredMixin, DeleteView):
 
 # starters
 @login_required
+@permission_required("menu.add_starter_item", raise_exception=True)
 def add_starter_item(request, pk):
     """
     Creates Starter Item And Adds More Enterys
@@ -160,6 +165,8 @@ def add_starter_item(request, pk):
     return render(request, "menu/menu_starters.html", context)
 
 
+@login_required
+@permission_required("menu.menu_starter_details", raise_exception=True)
 def menu_starter_details(request, pk):
     """
     Displays Starter Item for updating
@@ -172,6 +179,7 @@ def menu_starter_details(request, pk):
 
 
 @login_required
+@permission_required("menu.add_menu_starter", raise_exception=True)
 def add_menu_starter(request):
     """
     Renders The Form To Add Extra Starter Item
@@ -195,6 +203,7 @@ def menu_starter_view(request, pk):
 
 
 @login_required
+@permission_required("menu.edit_menu_starter", raise_exception=True)
 def edit_menu_starter(request, pk):
     """
     Updates menu starter
@@ -218,6 +227,7 @@ def edit_menu_starter(request, pk):
 
 
 @login_required
+@permission_required("menu.delete_starter_dish_item", raise_exception=True)
 def delete_starter_dish_item(request, pk):
     """
     Deletes Element Field
@@ -238,6 +248,7 @@ def delete_starter_dish_item(request, pk):
 
 # mains
 @login_required
+@permission_required("menu.add_main_item", raise_exception=True)
 def add_main_item(request, pk):
     """
     Creates Main Item And Adds More Enterys
@@ -281,6 +292,7 @@ def menu_main_details(request, pk):
 
 
 @login_required
+@permission_required("menu.add_main", raise_exception=True)
 def add_main(request):
     """
     Renders The Form To Add Extra Main Item
@@ -304,6 +316,7 @@ def menu_main_view(request, pk):
 
 
 @login_required
+@permission_required("menu.edit_menu_main", raise_exception=True)
 def edit_menu_main(request, pk):
     """
     Updates menu main
@@ -326,6 +339,7 @@ def edit_menu_main(request, pk):
 
 
 @login_required
+@permission_required("menu.delete_main_dish_item", raise_exception=True)
 def delete_main_dish_item(request, pk):
     """
     Deletes Main Item
@@ -346,6 +360,7 @@ def delete_main_dish_item(request, pk):
 
 # desserts
 @login_required
+@permission_required("menu.add_dessert_item", raise_exception=True)
 def add_dessert_item(request, pk):
     """
     Creates Dessert Items And Adds More Enterys
@@ -377,6 +392,8 @@ def add_dessert_item(request, pk):
     return render(request, "menu/menu_desserts.html", context)
 
 
+@login_required
+@permission_required("menu.menu_dessert_details", raise_exception=True)
 def menu_dessert_details(request, pk):
     """
     Displays Dessert Items for updating
@@ -389,6 +406,7 @@ def menu_dessert_details(request, pk):
 
 
 @login_required
+@permission_required("menu.add_dessert", raise_exception=True)
 def add_dessert(request):
     """
     Renders The Form To Adds Extra Dessert Item
@@ -412,6 +430,7 @@ def menu_dessert_view(request, pk):
 
 
 @login_required
+@permission_required("menu.edit_menu_dessert", raise_exception=True)
 def edit_menu_dessert(request, pk):
     """
     Updates menu dessert
@@ -435,6 +454,7 @@ def edit_menu_dessert(request, pk):
 
 
 @login_required
+@permission_required("menu.delete_dessert_dish_item", raise_exception=True)
 def delete_dessert_dish_item(request, pk):
     """
     Deletes Dessert Item
@@ -455,6 +475,7 @@ def delete_dessert_dish_item(request, pk):
 
 # Sides
 @login_required
+@permission_required("menu.add_side_item", raise_exception=True)
 def add_side_item(request, pk):
     """
     Creates Side Item And Adds More Enterys
@@ -486,6 +507,8 @@ def add_side_item(request, pk):
     return render(request, "menu/menu_side.html", context)
 
 
+@login_required
+@permission_required("menu.menu_side_details", raise_exception=True)
 def menu_side_details(request, pk):
     """
     Displays Side Items Fields for updating
@@ -498,6 +521,7 @@ def menu_side_details(request, pk):
 
 
 @login_required
+@permission_required("menu.add_side", raise_exception=True)
 def add_side(request):
     """
     Renders The Form To Add Extra Side Items
@@ -521,6 +545,7 @@ def menu_side_view(request, pk):
 
 
 @login_required
+@permission_required("menu.edit_menu_side", raise_exception=True)
 def edit_menu_side(request, pk):
     """
     Updates menu side
@@ -543,6 +568,7 @@ def edit_menu_side(request, pk):
 
 
 @login_required
+@permission_required("menu.delete_side_item", raise_exception=True)
 def delete_side_item(request, pk):
     """
     Deletes Side Item
@@ -563,6 +589,7 @@ def delete_side_item(request, pk):
 
 # Sauces
 @login_required
+@permission_required("menu.add_sauce_item", raise_exception=True)
 def add_sauce_item(request, pk):
     """
     Creates sauce Fields And Add More Enterys
@@ -594,6 +621,8 @@ def add_sauce_item(request, pk):
     return render(request, "menu/menu_sauce.html", context)
 
 
+@login_required
+@permission_required("menu.menu_sauce_details", raise_exception=True)
 def menu_sauce_details(request, pk):
     """
     Displays sauce Fields for updating
@@ -606,6 +635,7 @@ def menu_sauce_details(request, pk):
 
 
 @login_required
+@permission_required("menu.add_sauce", raise_exception=True)
 def add_sauce(request):
     """
     Renders The Form Add Extra sauces
@@ -629,6 +659,7 @@ def menu_sauce_view(request, pk):
 
 
 @login_required
+@permission_required("menu.edit_menu_sauce", raise_exception=True)
 def edit_menu_sauce(request, pk):
     """
     Updates menu dessert
@@ -651,6 +682,7 @@ def edit_menu_sauce(request, pk):
 
 
 @login_required
+@permission_required("menu.delete_sauce_item", raise_exception=True)
 def delete_sauce_item(request, pk):
     """
     Deletes Sauce Item

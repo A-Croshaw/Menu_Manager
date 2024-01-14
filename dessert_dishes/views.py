@@ -1,7 +1,8 @@
 from django.http.response import HttpResponse, HttpResponseNotAllowed
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import (
+    login_required, permission_required)
 from django.contrib.auth.mixins import (
-    UserPassesTestMixin,
+    PermissionRequiredMixin,
     LoginRequiredMixin)
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView, DeleteView
@@ -37,6 +38,7 @@ class ViewDessertDish(ListView):
 
 
 @login_required
+@permission_required("dessert_dishes.add_dessert_dish", raise_exception=True)
 def add_dessert_dish(request):
     """Add Dessert Dish function"""
 
@@ -80,6 +82,7 @@ def dessert_dish_view(request, pk):
 
 
 @login_required
+@permission_required("dessert_dishes.edit_dessert_dish", raise_exception=True)
 def edit_dessert_dish(request, pk):
     """Updates dish Fields"""
 
@@ -106,9 +109,10 @@ def edit_dessert_dish(request, pk):
     return render(request, "dessert_dishes/edit_dessert_dish.html", context)
 
 
-class DessertDishDelete(LoginRequiredMixin, DeleteView):
+class DessertDishDelete(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
     """Deletes Dessert Dish"""
 
+    permission_required = "DessertDishDelete"
     model = DessertDish
     success_url = '/dessert_dishes/'
 
@@ -118,6 +122,8 @@ class DessertDishDelete(LoginRequiredMixin, DeleteView):
 
 
 # Elements
+@login_required
+@permission_required("dessert_dishes.dessert_dish_element", raise_exception=True)
 def dessert_dish_element(request, pk):
     """Add Dish Elements"""
 
@@ -155,6 +161,7 @@ def dessert_dish_element(request, pk):
 
 
 @login_required
+@permission_required("dessert_dishes.update_dessert_dish_element", raise_exception=True)
 def update_dessert_dish_element(request, pk):
     """Updates dish_element Fields"""
 
@@ -192,6 +199,8 @@ def dessert_dish_element_detail_view(request, pk):
         context)
 
 
+@login_required
+@permission_required("dessert_dishes.dessert_dish_element_details", raise_exception=True)
 def dessert_dish_element_details(request, pk):
     """Displays dish_element Fields for updating"""
 
@@ -206,6 +215,7 @@ def dessert_dish_element_details(request, pk):
 
 
 @login_required
+@permission_required("dessert_dishes.add_dessert_dish_element", raise_exception=True)
 def add_dessert_dish_element(request):
     """Renders The Form Add Extra dish_element"""
 
@@ -220,6 +230,7 @@ def add_dessert_dish_element(request):
 
 
 @login_required
+@permission_required("dessert_dishes.delete_dessert_dish_element", raise_exception=True)
 def delete_dessert_dish_element(request, pk):
     """Deletes Element Field"""
 
@@ -240,6 +251,8 @@ def delete_dessert_dish_element(request, pk):
 
 
 # Sauces
+@login_required
+@permission_required("dessert_dishes.dessert_dish_sauce", raise_exception=True)
 def dessert_dish_sauce(request, pk):
     """Add Dish Sauces"""
 
@@ -277,6 +290,7 @@ def dessert_dish_sauce(request, pk):
 
 
 @login_required
+@permission_required("dessert_dishes.update_dessert_dish_sauce", raise_exception=True)
 def update_dessert_dish_sauce(request, pk):
     """Updates dish sauce Fields"""
 
@@ -314,6 +328,8 @@ def dessert_dish_sauce_detail_view(request, pk):
         context)
 
 
+@login_required
+@permission_required("dessert_dishes.dessert_dish_sauce_details", raise_exception=True)
 def dessert_dish_sauce_details(request, pk):
     """Displays dish sauce Fields for updating"""
 
@@ -328,6 +344,7 @@ def dessert_dish_sauce_details(request, pk):
 
 
 @login_required
+@permission_required("dessert_dishes.add_dessert_dish_sauce", raise_exception=True)
 def add_dessert_dish_sauce(request):
     """Renders The Form Add Extra dish_sauce"""
 
@@ -339,6 +356,7 @@ def add_dessert_dish_sauce(request):
 
 
 @login_required
+@permission_required("dessert_dishes.delete_dessert_dish_sauce", raise_exception=True)
 def delete_dessert_dish_sauce(request, pk):
     """Deletes sauce Field"""
 
