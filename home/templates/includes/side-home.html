@@ -1,11 +1,11 @@
 {% load static %}
 <h2 class="home-section-header">Sides</h2>
 <div class="btn-edit-view">
-  <a href="{% url 'sides' %}" class="btn btn-return mt-2" aria-label="Click to return">
+  <a href="{% url 'sides' %}" class="btn btn-return mt-2" aria-label="Click to view sides">
     View
   </a>
   {% if user.is_superuser %}
-  <a href="{% url 'add_side' %}" class="btn btn-return mt-2" aria-label="Click to return">
+  <a href="{% url 'add_side' %}" class="btn btn-return mt-2" aria-label="Click to add sides">
     Add
   </a>
   {% endif %}

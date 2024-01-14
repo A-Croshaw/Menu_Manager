@@ -1,11 +1,11 @@
 {% load static %}
 <h2 class="home-section-header">Main Recipes</h2>
 <div class="btn-edit-view">
-  <a href="{% url 'mains' %}" class="btn btn-return mt-2" aria-label="Click to return">
+  <a href="{% url 'mains' %}" class="btn btn-return mt-2" aria-label="Click to view mains">
     View
   </a>
   {% if user.is_superuser %}
-  <a href="{% url 'add_main' %}" class="btn btn-return mt-2" aria-label="Click to return">
+  <a href="{% url 'add_main' %}" class="btn btn-return mt-2" aria-label="Click to add mins">
     Add
   </a>
   {% endif %}
