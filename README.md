@@ -301,22 +301,8 @@ Entity relationship diagram was created using [DBVisualizer](https://www.dbvis.c
     The Logo was created by using paint 3d and using text on a transparent canvas.
     The Background image is a personal photo taken whilst working in a kictch.
 # Bugs, Testing & Validation
-
-## _Bugs_
-    After Testing the site there does not appeart to be any faults with the functions of the site main features.
-    whit that in mind the only minor bug that can be seen at pressent is the messages outputed to the user after updating items with out redirecting are only shown when the page is reloaded.
-
-## Testing
-    For testing with results click the link below to navigate to the testing md file (This is separate to reduce the readme file size)
+        For Bugs, Testing & Validation. with results click the link below to navigate to the testing md file (This is separate to reduce the readme file size)
   [TESTING.md](TESTING.md)
-## _Validation_
-    All file passed through the [Code Institute PEP8](https://pep8ci.herokuapp.com/) Validator after removing a few white spaces and Shortening a few line lenghts.
-
-![PEP8 Validation](docs/testing/pep8-validation.png)
-
-    The site passed through W3 Valadator with just a few minor errors on carousel ids as they had same name, so after remaning them it passed.
-
-![W3 Validation](docs/testing/w3-validation.png)
 # _Technologies_
 #### **Python/ Django**
     Python is the main proggraming language whilst using the django framework.
