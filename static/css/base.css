@@ -83,8 +83,7 @@ nav {
 }
 
 a.nav-link,
-a.dropdown-item,
-.btn-outline-success {
+a.dropdown-item{
     color: var(--nav-txt);
 }
 
@@ -180,10 +179,6 @@ footer {
 
 .btn-edit {
     padding: 0;
-}
-
-.btn-edit:hover {
-    background-color: var(--nav-hover-txt);
 }
 
 .btn-view {
