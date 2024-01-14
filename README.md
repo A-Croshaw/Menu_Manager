@@ -261,6 +261,13 @@
     * Hide features on buttons as others sho during the adding og ingredients and steps on the recipe pages, also the elements, sauce and sides ont the dish pages.
 # _Skeleton Plane_
 ## _Database_
+    This shows the schemas for each of the models and how they are related.
+Entity relationship diagram was created using [DBVisualizer](https://www.dbvis.com/)
+![Database 1](docs/readme_images/database1.png)
+![Database 2](docs/readme_images/database2.png)
+![Database 3](docs/readme_images/database3.png)
+![Database 4](docs/readme_images/database4.png)
+![Database 5](docs/readme_images/database5.png)
 ## _WireFrames_
 # _Surface Plane_
 ## _Design_
