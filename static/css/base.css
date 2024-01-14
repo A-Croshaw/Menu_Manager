@@ -109,12 +109,6 @@ button.navbar-toggler:hover {
     border: var(--borders);
 }
 
-button.btn-outline-success:hover {
-    background-color: var(--nav-hover-txt);
-    color: var(--btn-hover-txt);
-    border: var(--borders);
-}
-
 .logo {
     width: 6.5rem;
     background-color: #e70000;
@@ -214,12 +208,6 @@ footer {
 .btn-delete {
     padding: 0 3px 2px 3px;
     margin: 0;
-}
-
-.btn-delete:hover,
-.btn-recipe-delete:hover {
-    background-color: var(--delete);
-    align-items: center;
 }
 
 .btn-recipe-delete {
