@@ -13,8 +13,8 @@
 - [Strategy Plane](#strategy-plane)
 - [Scope Plane](#scope-plane)
 - [Structure Plane](#structure-plane)
-  - [_Features_](#features)
-    - [_Implemented Features_](#implemented-features)
+  - [Features](#features)
+    - [Implemented Features](#implemented-features)
       - [Site Features](#site-features)
         - [Home Page](#home-page)
         - [Header](#header)
@@ -48,7 +48,7 @@
         - [403 Error](#403-error)
         - [404 Error](#403-error)
         - [500 Error](#500-error)
-    - [_Features to be Implemented_](#features-to-be-implemented)
+    - [Features to be Implemented](#features-to-be-implemented)
 - [Skeleton Plane](#skeleton-plane)
   - [Database](#design)
   - [WireFrames](#wireframes)
@@ -70,13 +70,122 @@
 
 # _Strategy Plane_
 
+    The project Consists of 16 main Epics
+
+**EPIC 1** - Base Setup
+
+    As a developer, I need to create the base.html and structure so all pages can use the same layout
+    As a developer, I need to create static resources for all css and Images and JavaScript
+    As a developer, I need to set up the project ready for implementing core features
+    As a developer, I need to create the footer
+    As a developer, I need to create the navbar sousers can navigate from any device
+
+**EPIC 2** - Stand alone Pages
+
+    As a developer, I need to implement a 404 error page
+    As a developer, I need to implement a 500 error page
+    As a developer, I need to implement a 403 error page
+
+**EPIC 3** - Authentication
+
+    As a developer, I need to implement allauth so that users can sign up and have access to the websites features
+    As a site owner,  allauth pages to be customized to that they fit in with the sites styling
+
+**EPIC 4** - Products
+
+    As a Admin user, I would like to be able to view product.
+    As a Admin user, I would like to add a product.
+    As a Admin user, I would like to edit a product.
+    As a Admin user, I would like to delete a product.
+
+**EPIC 5** - Starters
+
+    As a user,I would like to be able to view Starter Recipes
+    As a Admin user, I would like to Add a Starter Recipes.
+    As a Admin user, I would like to edit a Starter Recipes.
+    As a Admin user, I would like to delete a Starter Recipes.
+
+**EPIC 6** - Main Courses
+
+    As a User,I would like to be able to view Main Course Recipes
+    As a Admin user, I would like to Add a Main Course Recipes.
+    As a Admin user, I would like to edit a Main Course Recipes.
+    As a Admin user, I would like to delete a Main Course Recipes.
+
+**EPIC 7** - Desserts
+
+    As a User,I would like to be able to view Dessert Recipes
+    As a Admin user, I would like to Add a Dessert Recipes.
+    As a Admin user, I would like to edit a Dessert Recipes.
+    As a Admin user, I would like to delete a Dessert Recipes.
+
+**EPIC 8** - Sides
+
+    As a User,I would like to be able to view Side Recipes
+    As a Admin user, I would like to Add a Side Recipes.
+    As a Admin user, I would like to edit a Side Recipes.
+    As a Admin user, I would like to delete a Side Recipes.
+
+**EPIC 9** - Sauces
+
+    As a User,I would like to be able to view Sauce Recipes
+    As a Admin user, I would like to Add a Sauce Recipes.
+    As a Admin user, I would like to edit a Sauce Recipes.
+    As a Admin user, I would like to delete a Sauce Recipes.
+
+**EPIC 10** - Dessert Sauces
+
+    As a User,I would like to be able to view Dessert Sauce Recipes
+    As a Admin user, I would like to Add a Dessert Sauce Recipes.
+    As a Admin user, I would like to edit a Dessert Sauce Recipes.
+    As a Admin user, I would like to delete a Dessert Sauce Recipes.
+
+**EPIC 11** - Starter Dishes
+
+    As a User,I would like to be able to view Starter Dishes.
+    As a Admin user, I would like to Add a Starter Dishes.
+    As a Admin user, I would like to edit a Starter Dishes.
+    As a Admin user, I would like to delete a Starter Dishes.
+
+**EPIC 12** - Main Course Dishes
+
+    As a User,I would like to be able to view Main Course Dishes.
+    As a Admin user, I would like to Add a Main Course Dishes.
+    As a Admin user, I would like to edit a Main Course Dishes.
+    As a Admin user, I would like to delete a Main Course Dishes.
+
+**EPIC 13** - Dessert Dishes
+
+    As a User,I would like to be able to view Dessert Dishes.
+    As a Admin user, I would like to Add a Dessert Dishes.
+    As a Admin user, I would like to edit a Dessert Dishes.
+    As a Admin user, I would like to delete a Dessert Dishes.
+
+
+**EPIC 14** - Menus
+
+    As a User,I would like to be able to view Menus.
+    As a Admin user, I would like to Add a Menus.
+    As a Admin user, I would like to HAve a Choice of Menus Styles.
+    As a Admin user, I would like to edit a Menus.
+    As a Admin user, I would like to delete a Menus.
+
+**EPIC 15** - Deployment
+
+    As a developer, I need to deploy the project to heroku so that it is live for customer
+
+**EPIC 16** - Documentation
+
+    Complete readme documentation
+    Complete testing documentation write up
+
 # _Scope Plane_
     Fully responsive Design that will function on all device off 320px and up.
     Hamburger with offcanvus menu for mobile devices.
     Full CRUD functionality on Products Recipes, Dishes and Menus.
     Restricted role for different user types features.
 
-# _StructurePlane_
+# _Structure Plane_
 ## _Features_
 ### _Implemented Features_
 
@@ -90,107 +199,149 @@
 ##### **Header**
     The navbar is a deep blue with white text. with the red and black logo with a search feature allowing the user to search the site. 
     the search bar is locked to the section the user is on when they are navigated away from the home page.
+
 ![Navebar](docs/readme_images/navbar.png)
 
     The mains and starters dropdown has recipies, add recipes, dishes and add dishes as options.
+
 ![Dropdowns](docs/readme_images/dropdowns.png)
 
     The sides and sauces dropdown has recipies and add recipes as options.
+
 ![Dropdowns](docs/readme_images/dropdowns.png)
 
     The menus dropdown has menus and  add menu as options.
+
 ![Menu Dropdown](docs/readme_images/menu-dropdown.png)
 
     The dessert dropdown has recipies, add recipes, dishes, add dishes, sauces and add sauces as options.
+
 ![Dessert Dropdown](docs/readme_images/dessert-dropdown.png)
 
 ##### **Footer**
     The footer is the same dark blue as the header and just consists of a link to the git hub repository
+
 ![Footer](docs/readme_images/footer.png)
 
 #### **Accounts**
     Sign Up form allowing new users to sign up to the site. once signed up users will be dirrected to home page and will have to navigate to sign in.
+
 ![Sign Up](docs/readme_images/sign-up.png)
 
     Sign in form allowing users to sign in to the site. once signed in users will be dirrected to home page.
+
 ![Sign In](docs/readme_images/sign-in.png)
 
     On the navbar when a user is logged in the account menu will say the users name.
+
 ![Menu Display](docs/readme_images/menu-display.png)
 
     When the user goes to log out they will be prompt with a confirmation screen, and if confirmed they will be looged out and redirected to the home page.
+
 ![Sing Out](docs/readme_images/sign-out.png)
 
 #### **Products**
     PRoducts are only available to admin users. when an admin user navigates to the product view they will see the list of products with the search bar at the top of the page with an add buttton to the right.
+
 ![Product View](docs/readme_images/product-view.png)
 
     When the add button on the add product link in the nav bar is clicked the admin user will be directed to add a new product form and once completed will be directed back to the product view page.
+
 ![Product Add](docs/readme_images/product-add.png)
 
     When the edit button on the Individual product is clicked the admin user will be directed to edit the  product and once completed will be directed back to the product view page.
+
 ![Product Edit](docs/readme_images/product-edit.png)
 
     When the delete button on the Individual product is clicked the admin user will be directed to confirm deletion of the product and once completed will be directed back to the product view page.
+
 ![Product Delete](docs/readme_images/product-delete.png)
 
 #### **Recipes**
 
 ##### **Starters**
     Starter Recipe main page Shows all recipes that have been created. Users can click on the tiles to navigate to that praticular recipe.
+
 ![Starter Recipes](docs/readme_images/starter-recipes.png)
+
 ##### **Mains**
     Main Course Recipe main page Shows all recipes that have been created. Users can click on the tiles to navigate to that praticular recipe.
+
 ![Main Recipes](docs/readme_images/main-recipes.png)
+
 ##### **Sides**
     Side Recipe main page Shows all recipes that have been created. Users can click on the tiles to navigate to that praticular recipe.
+
 ![Side Recipes](docs/readme_images/side-recipes.png)
+
 ##### **Sauces**
     Sauce Recipe main page Shows all recipes that have been created. Users can click on the tiles to navigate to that praticular recipe.
+
 ![Sauce Recipes](docs/readme_images/sauce-recipes.png)
+
 ##### **Desserts**
     Dessert Recipe main page Shows all recipes that have been created. Users can click on the tiles to navigate to that praticular recipe.
+
 ![Dessert Recipes](docs/readme_images/dessert-recipes.png)
+
 ##### **Dessert Sauces**
     Dessert Sauce Recipe main page Shows all recipes that have been created. Users can click on the tiles to navigate to that praticular recipe.
+
 ![Dessert Sauce Recipes](docs/readme_images/dessert-sauce-recipe.png)
 
 ##### **Recipe Add Edit**
     Only Admin users can Add recipes. for Starters, Mains, Sides, Sauces, Desserts or Dessert sauces recipes the proccess is the same and the forms and lay out are identical. then the admin user clicks one of the add recipe links in the nav bar they will be directed to the add recipe form. Once the form is filled out the admin user will be directed to the recipe view page where the will be able to add the ingredients that is show in a drop down ment populated from the products database. they will also be able to add the method from this view aswell.
+
 ![Recipe Add](docs/readme_images/recipe-add.png)
 
     Once the Admin users has created the recipe. They will be directed to the recipe view where they can add the ingredients and method for the recipe.
+
 ![Recipe Add 2](docs/readme_images/recipe-add-2.png)
 
     Only Admin users can edit recipes. This is the same view that appears after adding the recipe. When the admin user is on the recipe view they will be able to edit each section of the recipe separately by clicking on the edit icons.
+
 ![Recipe Edit](docs/readme_images/recipe-edit.png)
 
 ##### **Recipe Delete**
     Recipes can only be deleted by admin users When the delete button is clicked the admin user will be directed to confirm deletion of the recipe and once completed they will be directed back to the recipe view page for Starters, Mains, Sides, Sauces, Desserts or Dessert sauces depending what the recipe was deleted.
+
 ![Recipe Delete](docs/readme_images/recipe-delete.png)
 
 #### **Dishes**
 
 ##### **Starter Dishes**
     Starter Dishes main page Shows all Starter Dishes that have been created. Users can click on the tiles to navigate to that praticular Starter Dish.
+
 ![Starter Dishes](docs/readme_images/starter-dish.png)
+
 ##### **Main Dishes**
     Main Course Dishes main page Shows all Main Course Dishes that have been created. Users can click on the tiles to navigate to that praticular Main Course Dish.
+
 ![Main Dishes](docs/readme_images/main-dish.png)
+
 ##### **Dessert Dishes**
     Dessert Dish main page Shows all Dessert Dishes that have been created. Users can click on the tiles to navigate to that praticular Dessert Dish.
+
 ![Dessert Dishes](docs/readme_images/dessert-dish.png)
+
 ##### **Dishes Add Edit**
     Only Admin users can Add dishes. for Starter Dishes, Main Dishes or Dessert Dishes the proccess is the same and the forms and lay out are identical for Starter Dishes and Dessert Dishes. when the admin user clicks one of the add dishes links in the nav bar they will be directed to the add dishes form. Once the form is filled out the admin user will be directed to the dish view page. 
+
 ![Add Dishes](docs/readme_images/add-dish.png)
+
     Once directed to the dish view where they will be able to add the sauces and elements fom populated drop down menus for the praticular items eg. elements from the recipes and sauces from the sauces. and Main dishes has and extra item for sides that populates using drop down menus populated from the side recipies.
+
 ![Dish View](docs/readme_images/starter-dessert-dish-view.png)
 ![main Dish View](docs/readme_images/main-dish-view.png)
+
     Only Admin users can edit dishes. This is the same view that appears after adding the dishes. When the admin user is on the recipe view they will be able to edit each section of the recipe separately by clicking on the edit icons.
+
 ![Dish Edit](docs/readme_images/edit-view-dessert-starter.png)
 ![Dish Edit Main](docs/readme_images/main-dish-edit-view.png)
+
 ##### **Dishes Delete**
     Dishes can only be deleted by admin users When the delete button is clicked the admin user will be directed to confirm deletion of the Dish and once completed they will be directed back to the dish view page for Starter Dishes, Main Dishes or Dessert Dishes depending what the Dish was deleted.
+
 ![Dish Delete](docs/readme_images/delete-dish.png)
 
 #### **Menus**
@@ -200,6 +351,7 @@
 ##### **Add/Edit Menu**
     When the user clicks on the add menu via the nav bar they will be prompt with the add menu form.
     Depending on the menu type the choose will run though different stages to generate the desired menu.
+
 ![Add Menu](docs/readme_images/menu-add.png)
 
     The add starters will be the next form this will allow the user to add multiple mains items before moving on.
@@ -223,7 +375,9 @@
 
 ![Add Menu Sauce](docs/readme_images/menu-sauces-add.png)
 ![view Menu Sauce](docs/readme_images/menu-sauces-view.png)
+
     And finally the adding of desserts which also allows the user to add multiple items before moving on to view the menu.
+
 ![Add Menu Dessert](docs/readme_images/menu-dessert-add.png)
 ![view Menu Dessert](docs/readme_images/menu-dessert-view.png)
 
@@ -231,19 +385,28 @@
     the edit menu will loop back though the same proccess as adding a new menu aloowing the user to remove add or edit menu items.
 
 ![Edit Menu](docs/readme_images/menu-edit.png)
+
 ##### ** Early Bird Menu View**
     This is the Early Bird Menu View. which anybody can view but if the user is not superuser/admin then the edit and bit buttons will not be displayed.
+
 ![Early Bird Menu View](docs/readme_images/early-bird-menu-view.png)
+
 ##### **Specials Menu View**
     This is the Specials Menu View. which anybody can view but if the user is not superuser/admin then the edit and bit buttons will not be displayed.
+
 ![Specials Menu View](docs/readme_images/specials-menu-view.png)
+
 ##### **À la carte Menu View**
     This is the À la carte Menu View. which anybody can view but if the user is not superuser/admin user then the edit and bit buttons will not be displayed.
+
 ![A La Carte Menu View](docs/readme_images/a-la-carte-menu-view.png)
+
 ##### **Menu Delete**
     When superuser/admin user Clicks on the delet button they will be prompt with a deletion confermation screen. if click  Confirm the menu will be deleted and will return to the main menu page.
     If Cancel is clicked they will be returned to the menu they was viewing.  
+
 ![Delete Menu](docs/readme_images/menu-delete.png)
+
 #### **Favicon**
     * A favicon was implemented to Show the user that They still are pressent on site
     * This also provides an image in the tabs to allow the user to easily identify the website if they have multiple tabs open.
@@ -263,6 +426,7 @@
 ## _Database_
     This shows the schemas for each of the models and how they are related.
 Entity relationship diagram was created using [DBVisualizer](https://www.dbvis.com/)
+
 ![Database 1](docs/readme_images/database1.png)
 ![Database 2](docs/readme_images/database2.png)
 ![Database 3](docs/readme_images/database3.png)
