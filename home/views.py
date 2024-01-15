@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView
+from django.contrib.auth.decorators import login_required
 from main_courses.models import Main
 from main_dishes.models import MainDish
 from starters.models import Starter
@@ -13,6 +13,7 @@ from products.models import Product
 from django.shortcuts import render
 
 
+@login_required
 def Index(request):
     """View full Main Recipie"""
 
